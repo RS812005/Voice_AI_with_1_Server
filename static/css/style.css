@@ -1,0 +1,30 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  background: #fff;
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+#volume-level {
+  margin-top: 10px;
+}
+
+.volume-bar {
+  display: inline-block;
+  width: 10px;
+  height: 30px;
+  margin-right: 2px;
+  background-color: #ddd;
+}
+
+.volume-bar.active {
+  background-color: #4caf50;
+}

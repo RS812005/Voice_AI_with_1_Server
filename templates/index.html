@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>VAPI Integrated App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>PDF Question Extractor & VAPI Assistant</h1>
+
+      <!-- PDF Upload Section -->
+      <div id="pdf-upload-section">
+        <h2>Upload PDF</h2>
+        <input type="file" id="pdf-file" accept="application/pdf" />
+        <button id="upload-btn">Upload and Extract</button>
+        <p id="upload-status"></p>
+      </div>
+ 
+      <!-- Call Status Section (initially hidden) -->
+      <div id="call-section" style="display: none">
+        <h2>Call in Progress</h2>
+        <p id="assistant-status">Assistant Status: Not Speaking</p>
+        <div id="volume-level"></div>
+        <button id="stop-btn" onclick="stopWebCall()">Stop Call</button>
+        <div id="call-summary"></div>
+      </div>
+    </div>
+
+    <script>
+      var vapiInstance = null;
+      const assistant = "c2c9eeb8-5a2e-44d9-8bab-998770797253"; // Your assistant ID
+      const apiKey = "917908ea-7b08-45b2-af6f-181bc59dfdc2"; // Use the API key passed from the Flask template
+
+      (function (d, t) {
+        var g = document.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+        g.src =
+          "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
+        g.defer = true;
+        g.async = true;
+        s.parentNode.insertBefore(g, s);
+
+        g.onload = function () {
+          vapiInstance = window.vapiSDK.run({
+            apiKey: apiKey, // mandatory
+            assistant: assistant, // mandatory
+            // config: buttonConfig, // optional
+          });
+
+          // Register event listeners after vapiInstance is loaded
+          vapiInstance.on("speech-start", () => {
+            document.getElementById("assistant-status").textContent =
+              "Assistant Status: Speaking";
+          });
+          vapiInstance.on("speech-end", () => {
+            document.getElementById("assistant-status").textContent =
+              "Assistant Status: Not Speaking";
+          });
+          vapiInstance.on("volume-level", (level) => {
+            const volumeEl = document.getElementById("volume-level");
+            volumeEl.innerHTML = "";
+            const numBars = 10;
+            for (let i = 0; i < numBars; i++) {
+              let bar = document.createElement("div");
+              bar.className =
+                "volume-bar" + (i / numBars < level ? " active" : "");
+              volumeEl.appendChild(bar);
+            }
+          });
+        };
+      })(document, "script");
+    </script>
+
+    <script>
+      let globalCallId = null;
+
+      // Function to start the assistant call using the Web SDK
+      function startWebCall(extractedText) {
+        const assistantOverrides = {
+          firstMessageMode: "assistant-speaks-first",
+          model: {
+            provider: "openai",
+            model: "gpt-4",
+            messages: [
+              {
+                role: "system",
+                content: `Context from PDF:\n${extractedText}\nPlease respond accordingly.`,
+              },
+            ],
+          },
+        };
+
+        return vapiInstance
+          .start(assistant, assistantOverrides)
+          .then((response) => {
+            console.log("VAPI Web call started:", response);
+            globalCallId = response.id;
+            return response;
+          })
+          .catch((error) => {
+            console.error("Error starting web call:", error);
+          });
+      }
+
+      // Function to stop the Web SDK call
+      function stopWebCall() {
+        vapiInstance.stop();
+        setTimeout(() => {
+          pollCallDetails(globalCallId);
+        }, 1000);
+      }
+
+      // Handle PDF upload and extraction
+      document.getElementById("upload-btn").addEventListener("click", function () {
+        const fileInput = document.getElementById("pdf-file");
+        const file = fileInput.files[0];
+        const statusEl = document.getElementById("upload-status");
+
+        if (!file) {
+          alert("Please select a PDF file.");
+          return;
+        }
+
+        const formData = new FormData();
+        formData.append("file", file);
+
+        statusEl.textContent = "Uploading and extracting PDF...";
+
+        fetch("/extract", {
+          method: "POST",
+          headers: {
+            "Authorization": "Bearer " + apiKey
+          },
+          body: formData,
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.error) {
+              statusEl.textContent = "Error: " + data.error;
+              return;
+            }
+            statusEl.textContent = "Extraction complete.";
+            const extractedText = data.text;
+
+            document.getElementById("pdf-upload-section").style.display = "none";
+            document.getElementById("call-section").style.display = "block";
+
+            fetch("/start-call", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + apiKey
+              },
+              body: JSON.stringify({ text: extractedText }),
+            })
+              .then((response) => response.json())
+              .then((callData) => {
+                if (callData.error) {
+                  statusEl.textContent = "Call start error: " + callData.error;
+                  return;
+                }
+                const callId = callData.call_id;
+                pollCallDetails(callId);
+              });
+
+            startWebCall(extractedText);
+          })
+          .catch((err) => {
+            statusEl.textContent = "Error during upload: " + err;
+          });
+      });
+
+      // Poll for call details from the backend
+      function pollCallDetails(callId, interval = 3000) {
+        fetch("/call-details?call_id=" + callId, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + apiKey
+          }
+        })
+          .then((response) => {
+            if (!response.ok) {
+              console.error("Error fetching call details:", response.status, response.statusText);
+              if (response.status === 403) {
+                document.getElementById("call-summary").innerHTML =
+                  "<h3>Error:</h3><p>Access forbidden. Please check your credentials or try again later.</p>";
+              }
+              throw new Error("HTTP error " + response.status);
+            }
+            return response.json();
+          })
+          .then((data) => {
+            if (data.error) {
+              console.error("Error in call details response:", data.error);
+              return;
+            }
+            if (data.summary) {
+              document.getElementById("call-summary").innerHTML =
+                "<h3>Call Summary</h3><p>" + data.summary + "</p>";
+            } else {
+              console.log("Summary not yet available; retrying in", interval, "ms");
+              setTimeout(() => pollCallDetails(callId, interval), interval);
+            }
+          })
+          .catch((err) => {
+            console.error("Error polling call details:", err);
+          });
+      }
+
+      document.getElementById("stop-btn").addEventListener("click", function () {
+        stopWebCall();
+      });
+    </script>
+  </body>
+</html>
