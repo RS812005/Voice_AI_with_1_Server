@@ -4,6 +4,13 @@
     <meta charset="UTF-8" />
     <title>VAPI Integrated App</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+    <style>
+      /* Hide the Vapi call button injected from the CDN */
+      #vapi-icon-container,
+  #vapi-support-btn {
+    display: none !important;
+  }
+    </style>
   </head>
   <body>
     <div class="container">
@@ -45,7 +52,6 @@
           vapiInstance = window.vapiSDK.run({
             apiKey: apiKey, // mandatory
             assistant: assistant, // mandatory
-            // config: buttonConfig, // optional
           });
 
           // Register event listeners after vapiInstance is loaded
