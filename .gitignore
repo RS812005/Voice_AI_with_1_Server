@@ -1,0 +1,50 @@
+# ---------------------------
+#  Python ignores
+# ---------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.env
+*.egg-info/
+*.egg
+*.log
+*.sqlite3
+
+# If you have a virtual environment in a folder named "venv" or "env":
+venv/
+env/
+
+# ---------------------------
+#  Node / Webpack ignores
+# ---------------------------
+# Node modules
+vapi-web/node_modules/
+node_modules/
+
+# Build outputs (Webpack)
+vapi-web/dist/
+dist/
+build/
+
+# Lockfiles (optional if you don't want them in repo)
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# ---------------------------
+#  Environment & system files
+# ---------------------------
+# Environments / secrets
+.env
+
+# IDE / Editor directories and files
+.vscode/
+.idea/
+
+# Mac / OS files
+.DS_Store
+
+# Windows system files
+Thumbs.db
