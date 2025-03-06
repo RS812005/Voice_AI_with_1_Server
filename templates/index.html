@@ -9,12 +9,42 @@
       #vapi-icon-container,
   #vapi-support-btn {
     display: none !important;
+
+    /* Optional styling for the survey section */
+    #survey-section textarea {
+        margin-bottom: 10px;
+      }
+      #survey-response {
+  width: 100%;
+  height: 300px;
+  resize: vertical;
+}
   }
     </style>
   </head>
   <body>
     <div class="container">
       <h1>PDF Question Extractor & VAPI Assistant</h1>
+
+      <!-- Survey Prompt Section -->
+      <div id="survey-section">
+        <h2>Create a Survey Prompt</h2>
+        <label for="survey-prompt">Enter Prompt:</label>
+        <!-- Small textbox for prompt entry -->
+        <textarea id="survey-prompt" rows="2" cols="50" placeholder="Enter your survey prompt here..."></textarea>
+        <br />
+        <button id="survey-submit-btn">Submit Survey Prompt</button>
+        <p id="survey-status"></p>
+        <br />
+        <label for="survey-response">Response:</label>
+        <!-- Larger textbox for displaying the backend response -->
+        <textarea id="survey-response" rows="15" cols="50" placeholder="Response will appear here..." readonly></textarea>
+        <br />
+        <!-- New button to send the backend response text to the Voice AI -->
+        <button id="send-voice-btn">Send to Voice AI</button>
+      </div>
+      
+
 
       <!-- PDF Upload Section -->
       <div id="pdf-upload-section">
@@ -25,7 +55,7 @@
       </div>
  
       <!-- Call Status Section (initially hidden) -->
-      <div id="call-section" style="display: none">
+      <div id="call-section" >
         <h2>Call in Progress</h2>
         <p id="assistant-status">Assistant Status: Not Speaking</p>
         <div id="volume-level"></div>
@@ -98,9 +128,9 @@ Avoid making the survey feel like an evaluation—this is about gathering insigh
 This approach is inspired by advanced voice AI from ChatGPT that pre-configures questions, dynamically adapts to responses, records those responses, and organizes data for analysis.
 
 Introduction:
-"Hey there! I am gathering some quick feedback to help improve teamwork and collaboration within our team. This will just take a few minutes, and your input will really help us enhance how we work together. Sound good?"
 
-Avoid "\n" as it's extracted from programming language so just see the words.
+
+Avoid "\n" as it's extracted from programming language so just see the words, Avoid *** etc
 
 Take time between each question and each sub-question <wait for user response> and let the user speak after each question and sub-question.
 
@@ -242,6 +272,70 @@ Before ending:
             console.error("Error polling call details:", err);
           });
       }
+       // Handle survey prompt submission and display backend response
+       document.getElementById("survey-submit-btn").addEventListener("click", function () {
+        const promptText = document.getElementById("survey-prompt").value;
+        const surveyStatusEl = document.getElementById("survey-status");
+        const responseBox = document.getElementById("survey-response");
+
+        if (!promptText) {
+          alert("Please enter a survey prompt.");
+          return;
+        }
+
+        surveyStatusEl.textContent = "Submitting survey prompt...";
+
+        fetch("/groq-chat", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ prompt: promptText }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.error) {
+              surveyStatusEl.textContent = "Error: " + data.error;
+            } else {
+              responseBox.value = data.response;
+              surveyStatusEl.textContent = "Response received and displayed below.";
+            }
+          })
+          .catch((err) => {
+            surveyStatusEl.textContent = "Error: " + err;
+          });
+      });
+
+      document.getElementById("send-voice-btn").addEventListener("click", function () {
+  const responseText = document.getElementById("survey-response").value;
+  if (!responseText) {
+    alert("No response text available to send.");
+    return;
+  }
+  // Start the call using the response text instead of PDF text
+  fetch("/start-call", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + apiKey
+              },
+              body: JSON.stringify({ text: responseText }),
+            })
+              .then((response) => response.json())
+              .then((callData) => {
+                if (callData.error) {
+                  statusEl.textContent = "Call start error: " + callData.error;
+                  return;
+                }
+                const callId = callData.call_id;
+                pollCallDetails(callId);
+              });
+
+            startWebCall(responseText);
+    
+});
+
+
 
       document.getElementById("stop-btn").addEventListener("click", function () {
         stopWebCall();

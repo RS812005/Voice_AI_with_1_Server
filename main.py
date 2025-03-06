@@ -6,6 +6,7 @@ from flask_cors import CORS
 import PyPDF2
 import time
 import jwt
+from groq import Groq
 # Import the Vapi Python Library and error class.
 from vapi import Vapi
 from vapi.core.api_error import ApiError
@@ -91,6 +92,35 @@ def get_call_details():
         url = f"https://api.vapi.ai/call/{call_id}"
         response = requests.get(url, headers=headers)
         return jsonify(response.json()), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+@app.route("/groq-chat", methods=["POST"])
+def groq_chat():
+    try:
+        # Get the prompt from the request payload
+        data = request.get_json()
+        prompt = data.get("prompt")
+        if not prompt:
+            return jsonify({"error": "Missing prompt in request"}), 400
+
+        # Initialize Groq client using the API key from environment variables.
+        client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
+
+        # Create chat completion using the provided prompt.
+        chat_completion = client.chat.completions.create(
+            messages=[
+                {
+                    "role": "user",
+                    "content": prompt
+                }
+            ],
+            model="llama-3.3-70b-versatile",
+        )
+
+        # Extract and return the generated message.
+        response_text = chat_completion.choices[0].message.content
+        return jsonify({"response": response_text})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
