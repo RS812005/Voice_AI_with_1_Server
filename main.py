@@ -17,8 +17,8 @@ app = Flask(__name__, static_folder="static", static_url_path="/static")
 CORS(app)
 
 def generate_jwt():
-    api_key = os.getenv("VITE_VAPI_API_TOKEN")
-    org_id = os.getenv("ORG_ID")
+    api_key = os.getenv("VITE_VAPI_API_TOKEN") #API_CHANGE
+    org_id = os.getenv("ORG_ID") #API_CHANGE
     
     if not api_key or not org_id:
         raise ValueError("Missing API key or ORG_ID in environment variables.")
@@ -41,8 +41,8 @@ def get_auth_headers():
 # Home route: Serve the integrated HTML page.
 @app.route("/")
 def index():
-    public_key = os.getenv("VITE_VAPI_PUBLIC_KEY")
-    api_key = os.getenv("VITE_VAPI_API_TOKEN")
+    public_key = os.getenv("VITE_VAPI_PUBLIC_KEY") #API_CHANGE
+    api_key = os.getenv("VITE_VAPI_API_TOKEN") #API_CHANGE
     return render_template("index.html", public_key=public_key, api_token=api_key)
 
 # Endpoint to extract text from a PDF file.
@@ -105,7 +105,7 @@ def groq_chat():
             return jsonify({"error": "Missing prompt in request"}), 400
 
         # Initialize Groq client using the API key from environment variables.
-        client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
+        client = Groq(api_key=os.environ.get("GROQ_API_KEY")) #API_CHANGE
 
         # Create chat completion using the provided prompt.
         chat_completion = client.chat.completions.create(
