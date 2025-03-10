@@ -98,21 +98,35 @@ def get_call_details():
 @app.route("/groq-chat", methods=["POST"])
 def groq_chat():
     try:
-        # Get the prompt from the request payload
+        # Get the prompt and survey_length from the request payload
         data = request.get_json()
         prompt = data.get("prompt")
+        survey_length = data.get("survey_length", "medium")  # Default to medium if not provided
         if not prompt:
             return jsonify({"error": "Missing prompt in request"}), 400
 
-        # Initialize Groq client using the API key from environment variables.
-        client = Groq(api_key=os.environ.get("GROQ_API_KEY")) #API_CHANGE
+        # Define instructions based on survey length
+        if survey_length == "short":
+            length_instruction = "Please generate a short survey (around 2 minutes long)."
+        elif survey_length == "medium":
+            length_instruction = "Please generate a medium-length survey (3-5 minutes long)."
+        elif survey_length == "long":
+            length_instruction = "Please generate a detailed survey that is long (over 5 minutes)."
+        else:
+            length_instruction = ""
 
-        # Create chat completion using the provided prompt.
+        # Combine the prompt with the survey length instruction
+        full_prompt = f"{prompt}\n\n{length_instruction}"
+
+        # Initialize Groq client using the API key from environment variables.
+        client = Groq(api_key=os.environ.get("GROQ_API_KEY"))  # API_CHANGE
+
+        # Create chat completion using the provided full prompt.
         chat_completion = client.chat.completions.create(
             messages=[
                 {
                     "role": "user",
-                    "content": prompt
+                    "content": full_prompt
                 }
             ],
             model="llama-3.3-70b-versatile",
@@ -123,6 +137,7 @@ def groq_chat():
         return jsonify({"response": response_text})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
 
 if __name__ == "__main__":
     app.run(debug=True)
