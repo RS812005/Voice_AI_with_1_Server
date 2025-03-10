@@ -26,7 +26,7 @@ def generate_jwt():
     payload = {
         "orgId": org_id,
         "iat": int(time.time()),
-        "exp": int(time.time()) + 3600,
+        "exp": int(time.time()) + 3500,
         "iss": "vapi",
         "aud": "vapi"
     }
