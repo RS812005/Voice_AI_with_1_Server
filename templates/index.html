@@ -3,123 +3,211 @@
   <head>
     <meta charset="UTF-8" />
     <title>VAPI Integrated App</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
     <style>
       /* Hide the Vapi call button injected from the CDN */
       #vapi-icon-container,
-  #vapi-support-btn {
-    display: none !important;
+      #vapi-support-btn {
+        display: none !important;
 
-    /* Optional styling for the survey section */
-    #survey-section textarea {
-        margin-bottom: 10px;
+        /* Optional styling for the survey section */
+        #survey-section textarea {
+          margin-bottom: 10px;
+        }
+        #survey-response {
+          width: 100%;
+          height: 300px;
+          resize: vertical;
+        }
       }
-      #survey-response {
-  width: 100%;
-  height: 300px;
-  resize: vertical;
-}
-  }
     </style>
   </head>
   <body>
     <div class="bg-gray-50">
-     
       <!-- Survey Prompt Section -->
       <div class="container mx-auto px-4 py-8 max-w-4xl">
-        <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">PDF Question Extractor & VAPI Assistant</h1>
-  
+        <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">
+          PDF Question Extractor & VAPI Assistant
+        </h1>
+
         <!-- Survey Prompt Section -->
         <div id="survey-section" class="bg-white p-6 rounded-lg shadow-md mb-8">
-          <h2 class="text-xl font-semibold mb-4 text-gray-700">Create a Survey Prompt</h2>
-          <label for="survey-prompt" class="block text-sm font-medium text-gray-700 mb-1">Enter Prompt:</label>
+          <h2 class="text-xl font-semibold mb-4 text-gray-700">
+            Create a Survey Prompt
+          </h2>
+          <label
+            for="survey-prompt"
+            class="block text-sm font-medium text-gray-700 mb-1"
+            >Enter Prompt:</label
+          >
           <!-- Small textbox for prompt entry -->
-          <textarea id="survey-prompt" rows="2" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4" placeholder="Enter your survey prompt here..."></textarea>
+          <textarea
+            id="survey-prompt"
+            rows="2"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
+            placeholder="Enter your survey prompt here..."
+          ></textarea>
           <!-- Additional Options Dropdowns -->
-  <!-- Horizontal Dropdown Container -->
-<div class="flex items-center space-x-4 mb-4">
-  <!-- Accent Dropdown -->
-  <div class="w-fit">
-    <label for="accent" class="block text-sm font-medium text-gray-700 mb-1">Accent:</label>
-    <select id="accent" class="w-fit px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-      <option value="indian_lady">Indian Lady</option>
-      <option value="indian_man">Indian Man</option>
-      <option value="british_lady">British Female</option>
-      <option value="british_man">British Man</option>
-      <option value="anime_girl">Anime Girl</option>
-      <option value="middle_east_women">Middle Eastern Women</option>
-      <option value="australian_women">Australian Women</option>
-    </select>
-  </div>
+          <!-- Horizontal Dropdown Container -->
+          <div class="flex items-center space-x-4 mb-4">
+            <!-- Accent Dropdown -->
+            <div class="w-fit">
+              <label
+                for="accent"
+                class="block text-sm font-medium text-gray-700 mb-1"
+                >Accent:</label
+              >
+              <select
+                id="accent"
+                class="w-fit px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >
+                <option value="indian_lady">Indian Lady</option>
+                <option value="indian_man">Indian Man</option>
+                <option value="british_lady">British Female</option>
+                <option value="british_man">British Man</option>
+                <option value="anime_girl">Anime Girl</option>
+                <option value="middle_east_women">Middle Eastern Women</option>
+                <option value="australian_women">Australian Women</option>
+              </select>
+            </div>
 
-  <!-- Survey Length Dropdown -->
-  <div class="w-fit">
-    <label for="survey-length" class="block text-sm font-medium text-gray-700 mb-1">Survey Length:</label>
-    <select id="survey-length" class="w-fit px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-      <option value="short">Short (2 mins)</option>
-      <option value="medium">Medium (3-5 mins)</option>
-      <option value="long">Long (5+ mins)</option>
-    </select>
-  </div>
+            <!-- Survey Length Dropdown -->
+            <div class="w-fit">
+              <label
+                for="survey-length"
+                class="block text-sm font-medium text-gray-700 mb-1"
+                >Survey Length:</label
+              >
+              <select
+                id="survey-length"
+                class="w-fit px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >
+                <option value="short">Short (2 mins)</option>
+                <option value="medium">Medium (3-5 mins)</option>
+                <option value="long">Long (5+ mins)</option>
+              </select>
+            </div>
 
-  <!-- Tone Dropdown -->
-  <div class="w-fit">
-    <label for="tone" class="block text-sm font-medium text-gray-700 mb-1">Tone:</label>
-    <select id="tone" class="w-fit px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-      <option value="neutral">Neutral</option>
-      <option value="friendly">Friendly</option>
-      <option value="professional">Professional</option>
-    </select>
-  </div>
+            <!-- Tone Dropdown -->
+            <div class="w-fit">
+              <label
+                for="tone"
+                class="block text-sm font-medium text-gray-700 mb-1"
+                >Tone:</label
+              >
+              <select
+                id="tone"
+                class="w-fit px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >
+                <option value="neutral">Neutral</option>
+                <option value="friendly">Friendly</option>
+                <option value="professional">Professional</option>
+              </select>
+            </div>
 
-  <!-- Extras Dropdown -->
-  <div class="w-fit">
-    <label for="extras" class="block text-sm font-medium text-gray-700 mb-1">Extras:</label>
-    <select id="extras" class="w-fit px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-      <option value="none">None</option>
-      <option value="anger">Anger</option>
-      <option value="positivity">Positivity</option>
-      <option value="surprise">Surprise</option>
-      <option value="sadness">Sadness</option>
-      <option value="curiosity">Curiosity</option>
-    </select>
-  </div>
-</div>
-  </div>
-          <button id="survey-submit-btn" class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md transition duration-200">Submit Survey Prompt</button>
-          <p id="survey-status" class="text-sm text-gray-600 mt-2"></p>
-          
-          <label for="survey-response" class="block text-sm font-medium text-gray-700 mt-4 mb-1">Response:</label>
-          <!-- Larger textbox for displaying the backend response -->
-          <textarea id="survey-response" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 h-64 resize-y mb-4" placeholder="Response will appear here..." readonly></textarea>
-          
-          <!-- New button to send the backend response text to the Voice AI -->
-          <button id="send-voice-btn" class="bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-4 rounded-md transition duration-200">Send to Voice AI</button>
+            <!-- Extras Dropdown -->
+            <div class="w-fit">
+              <label
+                for="extras"
+                class="block text-sm font-medium text-gray-700 mb-1"
+                >Extras:</label
+              >
+              <select
+                id="extras"
+                class="w-fit px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >
+                <option value="none">None</option>
+                <option value="anger">Anger</option>
+                <option value="positivity">Positivity</option>
+                <option value="surprise">Surprise</option>
+                <option value="sadness">Sadness</option>
+                <option value="curiosity">Curiosity</option>
+              </select>
+            </div>
+          </div>
         </div>
-        <div class="flex flex-wrap gap-4">
+        <button
+          id="survey-submit-btn"
+          class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md transition duration-200"
+        >
+          Submit Survey Prompt
+        </button>
+        <p id="survey-status" class="text-sm text-gray-600 mt-2"></p>
+
+        <label
+          for="survey-response"
+          class="block text-sm font-medium text-gray-700 mt-4 mb-1"
+          >Response:</label
+        >
+        <!-- Larger textbox for displaying the backend response -->
+        <textarea
+          id="survey-response"
+          class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 h-64 resize-y mb-4"
+          placeholder="Response will appear here..."
+          
+        ></textarea>
+
+        <!-- New button to send the backend response text to the Voice AI -->
+        <button
+          id="send-voice-btn"
+          class="bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-4 rounded-md transition duration-200"
+        >
+          Send to Voice AI
+        </button>
+      </div>
+      <div class="flex flex-wrap gap-4">
         <!-- PDF Upload Section -->
-        <div id="pdf-upload-section" class="bg-white p-6 rounded-lg shadow-md flex-1 min-w-[300px]">
+        <div
+          id="pdf-upload-section"
+          class="bg-white p-6 rounded-lg shadow-md flex-1 min-w-[300px]"
+        >
           <h2 class="text-xl font-semibold mb-4 text-gray-700">Upload PDF</h2>
           <div class="flex items-center space-x-4">
-            <input type="file" id="pdf-file" accept="application/pdf" class="flex-1 text-sm text-gray-700" />
-            <button id="upload-btn" class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md transition duration-200">Upload and Extract</button>
+            <input
+              type="file"
+              id="pdf-file"
+              accept="application/pdf"
+              class="flex-1 text-sm text-gray-700"
+            />
+            <button
+              id="upload-btn"
+              class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md transition duration-200"
+            >
+              Upload and Extract
+            </button>
           </div>
           <p id="upload-status" class="text-sm text-gray-600 mt-2"></p>
         </div>
-   
+
         <!-- Call Status Section (initially hidden) -->
-        <div id="call-section" class="bg-white p-6 rounded-lg shadow-md flex-1 min-w-[300px]">
-          <h2 class="text-xl font-semibold mb-4 text-gray-700">Call in Progress</h2>
-          <p id="assistant-status" class="text-sm text-gray-600 mb-4">Assistant Status: Not Speaking</p>
-          
+        <div
+          id="call-section"
+          class="bg-white p-6 rounded-lg shadow-md flex-1 min-w-[300px]"
+        >
+          <h2 class="text-xl font-semibold mb-4 text-gray-700">
+            Call in Progress
+          </h2>
+          <p id="assistant-status" class="text-sm text-gray-600 mb-4">
+            Assistant Status: Not Speaking
+          </p>
+
           <div id="volume-level" class="flex h-8 space-x-1 mb-4"></div>
-          
-          <button id="stop-btn" onclick="stopWebCall()" class="bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-4 rounded-md transition duration-200 mb-4">Stop Call</button>
-          
+
+          <button
+            id="stop-btn"
+            onclick="stopWebCall()"
+            class="bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-4 rounded-md transition duration-200 mb-4"
+          >
+            Stop Call
+          </button>
+
           <div id="call-summary" class="prose max-w-none"></div>
         </div>
       </div>
-      </div>
+    </div>
 
     <script>
       var vapiInstance = null;
@@ -172,70 +260,68 @@
       function startWebCall(extractedText) {
         const accentValue = document.getElementById("accent").value;
         const extrasValue = document.getElementById("extras").value;
-        const toneValue=  document.getElementById("tone").value
+        const toneValue = document.getElementById("tone").value;
 
-  // Map the accent selection to the voice config
-  let voiceConfig = {};
-  switch (accentValue) {
-    case "indian_lady":
-      voiceConfig = {
-        provider: "cartesia",
-        voiceId: "3b554273-4299-48b9-9aaf-eefd438e3941",
-      };
-      break;
-    case "indian_man":
-      voiceConfig = {
-        provider: "cartesia",
-        voiceId: "638efaaa-4d0c-442e-b701-3fae16aad012",
-      };
-      break;
-    case "british_lady":
-      voiceConfig = {
-        provider: "cartesia",
-        voiceId: "79a125e8-cd45-4c13-8a67-188112f4dd22",
-      };
-      break;
-    case "anime_girl":
-      voiceConfig = {
-        provider: "cartesia",
-        voiceId: "1001d611-b1a8-46bd-a5ca-551b23505334",
-      };
-      break;
-    case "british_man":
-      voiceConfig = {
-        provider: "cartesia",
-        voiceId: "63ff761f-c1e8-414b-b969-d1833d1c870c",
-      };
-      break;
-    case "middle_east_women":
-      voiceConfig = {
-        provider: "cartesia",
-        voiceId: "daf747c6-6bc2-4083-bd59-aa94dce23f5d",
-      };
-      break;
-    case "australian_women":
-      voiceConfig = {
-        provider: "cartesia",
-        voiceId: "043cfc81-d69f-4bee-ae1e-7862cb358650",
-      };
-      break;
-    default:
-      // Fallback or default voice
-      voiceConfig = {
-        provider: "cartesia",
-        voiceId: "3b554273-4299-48b9-9aaf-eefd438e3941",
-      };
-      break;
-  }
-  console.log(toneValue)
+        // Map the accent selection to the voice config
+        let voiceConfig = {};
+        switch (accentValue) {
+          case "indian_lady":
+            voiceConfig = {
+              provider: "cartesia",
+              voiceId: "3b554273-4299-48b9-9aaf-eefd438e3941",
+            };
+            break;
+          case "indian_man":
+            voiceConfig = {
+              provider: "cartesia",
+              voiceId: "638efaaa-4d0c-442e-b701-3fae16aad012",
+            };
+            break;
+          case "british_lady":
+            voiceConfig = {
+              provider: "cartesia",
+              voiceId: "79a125e8-cd45-4c13-8a67-188112f4dd22",
+            };
+            break;
+          case "anime_girl":
+            voiceConfig = {
+              provider: "cartesia",
+              voiceId: "1001d611-b1a8-46bd-a5ca-551b23505334",
+            };
+            break;
+          case "british_man":
+            voiceConfig = {
+              provider: "cartesia",
+              voiceId: "63ff761f-c1e8-414b-b969-d1833d1c870c",
+            };
+            break;
+          case "middle_east_women":
+            voiceConfig = {
+              provider: "cartesia",
+              voiceId: "daf747c6-6bc2-4083-bd59-aa94dce23f5d",
+            };
+            break;
+          case "australian_women":
+            voiceConfig = {
+              provider: "cartesia",
+              voiceId: "043cfc81-d69f-4bee-ae1e-7862cb358650",
+            };
+            break;
+          default:
+            // Fallback or default voice
+            voiceConfig = {
+              provider: "cartesia",
+              voiceId: "3b554273-4299-48b9-9aaf-eefd438e3941",
+            };
+            break;
+        }
+        console.log(toneValue);
 
-  if (extrasValue !== "none") {
-    voiceConfig.experimentalControls = {
-      emotion: [
-        `${extrasValue}:highest`
-      ]
-    };
-  }
+        if (extrasValue !== "none") {
+          voiceConfig.experimentalControls = {
+            emotion: [`${extrasValue}:highest`],
+          };
+        }
 
         const assistantOverrides = {
           firstMessageMode: "assistant-speaks-first",
@@ -245,7 +331,7 @@
             messages: [
               {
                 role: "system",
-              content: `Keep the tone ${toneValue} and non-intrusive. Ensure that the conversation flows naturally and dynamically rather than presenting questions as a rigid list. The AI should integrate pre-configured questions into the conversation fluidly—adapting the phrasing to match the context. For instance, if checking on employee happiness, it might say, "How have you been feeling lately?" or "How did the last project make you feel?" depending on the flow of the conversation, while still comparing peers on the same metrics.
+                content: `Keep the tone ${toneValue} and non-intrusive. Ensure that the conversation flows naturally and dynamically rather than presenting questions as a rigid list. The AI should integrate pre-configured questions into the conversation fluidly—adapting the phrasing to match the context. For instance, if checking on employee happiness, it might say, "How have you been feeling lately?" or "How did the last project make you feel?" depending on the flow of the conversation, while still comparing peers on the same metrics.
 
 Avoid making the survey feel like an evaluation—this is about gathering insights for improvement. Encourage honest responses without pressure, and allow team members to share as much or as little as they feel comfortable with.
 
@@ -273,13 +359,13 @@ If the team member has no feedback:
 
 Before ending:
 "Any questions for me? Happy to keep the conversation going if there is anything else on your mind!"
-`
+`,
               },
             ],
           },
-          summaryPrompt: "You will be given a transcript of a call. Extract key information, including the tone of the user, and structure it into a clean, concise JSON-like object format. Ensure the output is short and well-organized, avoiding unnecessary verbosity.\n\nOutput Format:\n\n{\n  \"summary\": \"\",\n  \"ratings\": {\n    \"\": { \"rating\": 5, \"comment\": \"\" },\n    \"\": { \"rating\": 2, \"comment\": \"\" },\n    \"\": { \"rating\": 1, \"comment\": \"\" },\n    \"\": { \"rating\": 1, \"comment\": \"\" },\n    \"\": { \"rating\": 4, \"comment\": \"\" }\n  },\n  \"overall\": \"\",\n  \"next_steps\": \"\"\n}",
+          summaryPrompt:
+            'You will be given a transcript of a call. Extract key information, including the tone of the user, and structure it into a clean, concise JSON-like object format. Ensure the output is short and well-organized, avoiding unnecessary verbosity.\n\nOutput Format:\n\n{\n  "summary": "",\n  "ratings": {\n    "": { "rating": 5, "comment": "" },\n    "": { "rating": 2, "comment": "" },\n    "": { "rating": 1, "comment": "" },\n    "": { "rating": 1, "comment": "" },\n    "": { "rating": 4, "comment": "" }\n  },\n  "overall": "",\n  "next_steps": ""\n}',
 
-          
           voice: voiceConfig,
         };
 
@@ -304,64 +390,68 @@ Before ending:
       }
 
       // Handle PDF upload and extraction
-      document.getElementById("upload-btn").addEventListener("click", function () {
-        const fileInput = document.getElementById("pdf-file");
-        const file = fileInput.files[0];
-        const statusEl = document.getElementById("upload-status");
+      document
+        .getElementById("upload-btn")
+        .addEventListener("click", function () {
+          const fileInput = document.getElementById("pdf-file");
+          const file = fileInput.files[0];
+          const statusEl = document.getElementById("upload-status");
 
-        if (!file) {
-          alert("Please select a PDF file.");
-          return;
-        }
+          if (!file) {
+            alert("Please select a PDF file.");
+            return;
+          }
 
-        const formData = new FormData();
-        formData.append("file", file);
+          const formData = new FormData();
+          formData.append("file", file);
 
-        statusEl.textContent = "Uploading and extracting PDF...";
+          statusEl.textContent = "Uploading and extracting PDF...";
 
-        fetch("/extract", {
-          method: "POST",
-          headers: {
-            "Authorization": "Bearer " + apiKey
-          },
-          body: formData,
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            if (data.error) {
-              statusEl.textContent = "Error: " + data.error;
-              return;
-            }
-            statusEl.textContent = "Extraction complete.";
-            const extractedText = data.text;
-
-            document.getElementById("pdf-upload-section").style.display = "none";
-            document.getElementById("call-section").style.display = "block";
-
-            fetch("/start-call", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-                "Authorization": "Bearer " + apiKey
-              },
-              body: JSON.stringify({ text: extractedText }),
-            })
-              .then((response) => response.json())
-              .then((callData) => {
-                if (callData.error) {
-                  statusEl.textContent = "Call start error: " + callData.error;
-                  return;
-                }
-                const callId = callData.call_id;
-                pollCallDetails(callId);
-              });
-
-            startWebCall(extractedText);
+          fetch("/extract", {
+            method: "POST",
+            headers: {
+              Authorization: "Bearer " + apiKey,
+            },
+            body: formData,
           })
-          .catch((err) => {
-            statusEl.textContent = "Error during upload: " + err;
-          });
-      });
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.error) {
+                statusEl.textContent = "Error: " + data.error;
+                return;
+              }
+              statusEl.textContent = "Extraction complete.";
+              const extractedText = data.text;
+
+              document.getElementById("pdf-upload-section").style.display =
+                "none";
+              document.getElementById("call-section").style.display = "block";
+
+              fetch("/start-call", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: "Bearer " + apiKey,
+                },
+                body: JSON.stringify({ text: extractedText }),
+              })
+                .then((response) => response.json())
+                .then((callData) => {
+                  if (callData.error) {
+                    statusEl.textContent =
+                      "Call start error: " + callData.error;
+                    return;
+                  }
+                  const callId = callData.call_id;
+                  pollCallDetails(callId);
+                });
+
+              startWebCall(extractedText);
+            })
+            .catch((err) => {
+              statusEl.textContent = "Error during upload: " + err;
+            });
+        });
 
       // Poll for call details from the backend
       function pollCallDetails(callId, interval = 3000) {
@@ -369,12 +459,16 @@ Before ending:
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer " + apiKey
-          }
+            Authorization: "Bearer " + apiKey,
+          },
         })
           .then((response) => {
             if (!response.ok) {
-              console.error("Error fetching call details:", response.status, response.statusText);
+              console.error(
+                "Error fetching call details:",
+                response.status,
+                response.statusText
+              );
               if (response.status === 403) {
                 document.getElementById("call-summary").innerHTML =
                   "<h3>Error:</h3><p>Access forbidden. Please check your credentials or try again later.</p>";
@@ -392,7 +486,11 @@ Before ending:
               document.getElementById("call-summary").innerHTML =
                 "<h3>Call Summary</h3><p>" + data.summary + "</p>";
             } else {
-              console.log("Summary not yet available; retrying in", interval, "ms");
+              console.log(
+                "Summary not yet available; retrying in",
+                interval,
+                "ms"
+              );
               setTimeout(() => pollCallDetails(callId, interval), interval);
             }
           })
@@ -400,76 +498,83 @@ Before ending:
             console.error("Error polling call details:", err);
           });
       }
-       // Handle survey prompt submission and display backend response
-       document.getElementById("survey-submit-btn").addEventListener("click", function () {
-        const promptText = document.getElementById("survey-prompt").value;
-        const accentValue = document.getElementById("accent").value; // Retrieve accent value
-        const surveyStatusEl = document.getElementById("survey-status");
-        const surveyLength = document.getElementById("survey-length").value; // Retrieve survey length value
-        const responseBox = document.getElementById("survey-response");
+      // Handle survey prompt submission and display backend response
+      document
+        .getElementById("survey-submit-btn")
+        .addEventListener("click", function () {
+          const promptText = document.getElementById("survey-prompt").value;
+          const accentValue = document.getElementById("accent").value; // Retrieve accent value
+          const surveyStatusEl = document.getElementById("survey-status");
+          const surveyLength = document.getElementById("survey-length").value; // Retrieve survey length value
+          const responseBox = document.getElementById("survey-response");
 
-        if (!promptText) {
-          alert("Please enter a survey prompt.");
-          return;
-        }
+          if (!promptText) {
+            alert("Please enter a survey prompt.");
+            return;
+          }
 
-        surveyStatusEl.textContent = "Submitting survey prompt...";
+          surveyStatusEl.textContent = "Submitting survey prompt...";
 
-        fetch("/groq-chat", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({ prompt: promptText,survey_length: surveyLength }),
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            if (data.error) {
-              surveyStatusEl.textContent = "Error: " + data.error;
-            } else {
-              responseBox.value = data.response;
-              surveyStatusEl.textContent = "Response received and displayed below.";
-            }
+          fetch("/groq-chat", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              prompt: promptText,
+              survey_length: surveyLength,
+            }),
           })
-          .catch((err) => {
-            surveyStatusEl.textContent = "Error: " + err;
-          });
-      });
-
-      document.getElementById("send-voice-btn").addEventListener("click", function () {
-  const responseText = document.getElementById("survey-response").value;
-  if (!responseText) {
-    alert("No response text available to send.");
-    return;
-  }
-  // Start the call using the response text instead of PDF text
-  fetch("/start-call", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-                "Authorization": "Bearer " + apiKey
-              },
-              body: JSON.stringify({ text: responseText }),
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.error) {
+                surveyStatusEl.textContent = "Error: " + data.error;
+              } else {
+                responseBox.value = data.response;
+                surveyStatusEl.textContent =
+                  "Response received and displayed below.";
+              }
             })
-              .then((response) => response.json())
-              .then((callData) => {
-                if (callData.error) {
-                  statusEl.textContent = "Call start error: " + callData.error;
-                  return;
-                }
-                const callId = callData.call_id;
-                pollCallDetails(callId);
-              });
+            .catch((err) => {
+              surveyStatusEl.textContent = "Error: " + err;
+            });
+        });
 
-            startWebCall(responseText);
-    
-});
+      document
+        .getElementById("send-voice-btn")
+        .addEventListener("click", function () {
+          const responseText = document.getElementById("survey-response").value;
+          if (!responseText) {
+            alert("No response text available to send.");
+            return;
+          }
+          // Start the call using the response text instead of PDF text
+          fetch("/start-call", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + apiKey,
+            },
+            body: JSON.stringify({ text: responseText }),
+          })
+            .then((response) => response.json())
+            .then((callData) => {
+              if (callData.error) {
+                statusEl.textContent = "Call start error: " + callData.error;
+                return;
+              }
+              const callId = callData.call_id;
+              pollCallDetails(callId);
+            });
 
+          startWebCall(responseText);
+        });
 
-
-      document.getElementById("stop-btn").addEventListener("click", function () {
-        stopWebCall();
-      });
+      document
+        .getElementById("stop-btn")
+        .addEventListener("click", function () {
+          stopWebCall();
+        });
     </script>
   </body>
 </html>
