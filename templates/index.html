@@ -36,44 +36,55 @@
           <!-- Small textbox for prompt entry -->
           <textarea id="survey-prompt" rows="2" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4" placeholder="Enter your survey prompt here..."></textarea>
           <!-- Additional Options Dropdowns -->
-  <div class="grid grid-cols-2 gap-4 mb-4">
-    <!-- Accent Dropdown -->
-    <div>
-      <label for="accent" class="block text-sm font-medium text-gray-700 mb-1">Accent:</label>
-      <select id="accent" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-        <option value="canadian">Canadian</option>
-        <option value="indian_female">Indian Female</option>
-        <option value="indian_male">Indian Male</option>
-      </select>
-    </div>
-    <!-- Survey Length Dropdown -->
-    <div>
-      <label for="survey-length" class="block text-sm font-medium text-gray-700 mb-1">Survey Length:</label>
-      <select id="survey-length" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-        <option value="short">Short (2 mins)</option>
-        <option value="medium">Medium (3-5 mins)</option>
-        <option value="long">Long (5+ mins)</option>
-      </select>
-    </div>
-    <!-- Tone Dropdown -->
-    <div>
-      <label for="tone" class="block text-sm font-medium text-gray-700 mb-1">Tone:</label>
-      <select id="tone" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-        <option value="neutral">Neutral</option>
-        <option value="friendly">Friendly</option>
-        <option value="professional">Professional</option>
-      </select>
-    </div>
-    <!-- Extras Dropdown -->
-    <div>
-      <label for="extras" class="block text-sm font-medium text-gray-700 mb-1">Extras:</label>
-      <select id="extras" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-        <option value="none">None</option>
-        <option value="funny">Funny</option>
-        <option value="sarcastic">Sarcastic</option>
-        <option value="bold">Bold</option>
-      </select>
-    </div>
+  <!-- Horizontal Dropdown Container -->
+<div class="flex items-center space-x-4 mb-4">
+  <!-- Accent Dropdown -->
+  <div class="w-fit">
+    <label for="accent" class="block text-sm font-medium text-gray-700 mb-1">Accent:</label>
+    <select id="accent" class="w-fit px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+      <option value="indian_lady">Indian Lady</option>
+      <option value="indian_man">Indian Man</option>
+      <option value="british_lady">British Female</option>
+      <option value="british_man">British Man</option>
+      <option value="anime_girl">Anime Girl</option>
+      <option value="middle_east_women">Middle Eastern Women</option>
+      <option value="australian_women">Australian Women</option>
+    </select>
+  </div>
+
+  <!-- Survey Length Dropdown -->
+  <div class="w-fit">
+    <label for="survey-length" class="block text-sm font-medium text-gray-700 mb-1">Survey Length:</label>
+    <select id="survey-length" class="w-fit px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+      <option value="short">Short (2 mins)</option>
+      <option value="medium">Medium (3-5 mins)</option>
+      <option value="long">Long (5+ mins)</option>
+    </select>
+  </div>
+
+  <!-- Tone Dropdown -->
+  <div class="w-fit">
+    <label for="tone" class="block text-sm font-medium text-gray-700 mb-1">Tone:</label>
+    <select id="tone" class="w-fit px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+      <option value="neutral">Neutral</option>
+      <option value="friendly">Friendly</option>
+      <option value="professional">Professional</option>
+    </select>
+  </div>
+
+  <!-- Extras Dropdown -->
+  <div class="w-fit">
+    <label for="extras" class="block text-sm font-medium text-gray-700 mb-1">Extras:</label>
+    <select id="extras" class="w-fit px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+      <option value="none">None</option>
+      <option value="anger">Anger</option>
+      <option value="positivity">Positivity</option>
+      <option value="surprise">Surprise</option>
+      <option value="sadness">Sadness</option>
+      <option value="curiosity">Curiosity</option>
+    </select>
+  </div>
+</div>
   </div>
           <button id="survey-submit-btn" class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md transition duration-200">Submit Survey Prompt</button>
           <p id="survey-status" class="text-sm text-gray-600 mt-2"></p>
@@ -85,9 +96,9 @@
           <!-- New button to send the backend response text to the Voice AI -->
           <button id="send-voice-btn" class="bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-4 rounded-md transition duration-200">Send to Voice AI</button>
         </div>
-        
+        <div class="flex flex-wrap gap-4">
         <!-- PDF Upload Section -->
-        <div id="pdf-upload-section" class="bg-white p-6 rounded-lg shadow-md mb-8">
+        <div id="pdf-upload-section" class="bg-white p-6 rounded-lg shadow-md flex-1 min-w-[300px]">
           <h2 class="text-xl font-semibold mb-4 text-gray-700">Upload PDF</h2>
           <div class="flex items-center space-x-4">
             <input type="file" id="pdf-file" accept="application/pdf" class="flex-1 text-sm text-gray-700" />
@@ -97,7 +108,7 @@
         </div>
    
         <!-- Call Status Section (initially hidden) -->
-        <div id="call-section" class="bg-white p-6 rounded-lg shadow-md mb-8 ">
+        <div id="call-section" class="bg-white p-6 rounded-lg shadow-md flex-1 min-w-[300px]">
           <h2 class="text-xl font-semibold mb-4 text-gray-700">Call in Progress</h2>
           <p id="assistant-status" class="text-sm text-gray-600 mb-4">Assistant Status: Not Speaking</p>
           
@@ -107,6 +118,7 @@
           
           <div id="call-summary" class="prose max-w-none"></div>
         </div>
+      </div>
       </div>
 
     <script>
@@ -158,6 +170,73 @@
 
       // Function to start the assistant call using the Web SDK
       function startWebCall(extractedText) {
+        const accentValue = document.getElementById("accent").value;
+        const extrasValue = document.getElementById("extras").value;
+        const toneValue=  document.getElementById("tone").value
+
+  // Map the accent selection to the voice config
+  let voiceConfig = {};
+  switch (accentValue) {
+    case "indian_lady":
+      voiceConfig = {
+        provider: "cartesia",
+        voiceId: "3b554273-4299-48b9-9aaf-eefd438e3941",
+      };
+      break;
+    case "indian_man":
+      voiceConfig = {
+        provider: "cartesia",
+        voiceId: "638efaaa-4d0c-442e-b701-3fae16aad012",
+      };
+      break;
+    case "british_lady":
+      voiceConfig = {
+        provider: "cartesia",
+        voiceId: "79a125e8-cd45-4c13-8a67-188112f4dd22",
+      };
+      break;
+    case "anime_girl":
+      voiceConfig = {
+        provider: "cartesia",
+        voiceId: "1001d611-b1a8-46bd-a5ca-551b23505334",
+      };
+      break;
+    case "british_man":
+      voiceConfig = {
+        provider: "cartesia",
+        voiceId: "63ff761f-c1e8-414b-b969-d1833d1c870c",
+      };
+      break;
+    case "middle_east_women":
+      voiceConfig = {
+        provider: "cartesia",
+        voiceId: "daf747c6-6bc2-4083-bd59-aa94dce23f5d",
+      };
+      break;
+    case "australian_women":
+      voiceConfig = {
+        provider: "cartesia",
+        voiceId: "043cfc81-d69f-4bee-ae1e-7862cb358650",
+      };
+      break;
+    default:
+      // Fallback or default voice
+      voiceConfig = {
+        provider: "cartesia",
+        voiceId: "3b554273-4299-48b9-9aaf-eefd438e3941",
+      };
+      break;
+  }
+  console.log(toneValue)
+
+  if (extrasValue !== "none") {
+    voiceConfig.experimentalControls = {
+      emotion: [
+        `${extrasValue}:highest`
+      ]
+    };
+  }
+
         const assistantOverrides = {
           firstMessageMode: "assistant-speaks-first",
           model: {
@@ -166,7 +245,7 @@
             messages: [
               {
                 role: "system",
-              content: `Keep the tone warm, professional, and non-intrusive. Ensure that the conversation flows naturally and dynamically rather than presenting questions as a rigid list. The AI should integrate pre-configured questions into the conversation fluidly—adapting the phrasing to match the context. For instance, if checking on employee happiness, it might say, "How have you been feeling lately?" or "How did the last project make you feel?" depending on the flow of the conversation, while still comparing peers on the same metrics.
+              content: `Keep the tone ${toneValue} and non-intrusive. Ensure that the conversation flows naturally and dynamically rather than presenting questions as a rigid list. The AI should integrate pre-configured questions into the conversation fluidly—adapting the phrasing to match the context. For instance, if checking on employee happiness, it might say, "How have you been feeling lately?" or "How did the last project make you feel?" depending on the flow of the conversation, while still comparing peers on the same metrics.
 
 Avoid making the survey feel like an evaluation—this is about gathering insights for improvement. Encourage honest responses without pressure, and allow team members to share as much or as little as they feel comfortable with.
 
@@ -198,6 +277,10 @@ Before ending:
               },
             ],
           },
+          summaryPrompt: "You will be given a transcript of a call. Extract key information, including the tone of the user, and structure it into a clean, concise JSON-like object format. Ensure the output is short and well-organized, avoiding unnecessary verbosity.\n\nOutput Format:\n\n{\n  \"summary\": \"\",\n  \"ratings\": {\n    \"\": { \"rating\": 5, \"comment\": \"\" },\n    \"\": { \"rating\": 2, \"comment\": \"\" },\n    \"\": { \"rating\": 1, \"comment\": \"\" },\n    \"\": { \"rating\": 1, \"comment\": \"\" },\n    \"\": { \"rating\": 4, \"comment\": \"\" }\n  },\n  \"overall\": \"\",\n  \"next_steps\": \"\"\n}",
+
+          
+          voice: voiceConfig,
         };
 
         return vapiInstance
