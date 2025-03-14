@@ -28,7 +28,7 @@
       select,
       textarea,
       input {
-        background-color: white;
+        background-color: #FFFDFB;
         border: 1px solid #e5e7eb;
         border-radius: 4px;
         width: 100%;
@@ -53,14 +53,14 @@
         box-shadow: 0 0 0 1px #e5e7eb;
       }
 
-      /* Simple volume bar styling */
       .volume-bar {
-        width: 4px;
-        background-color: #d1d5db; /* Gray-300 */
-      }
-      .volume-bar.active {
-        background-color: #3b82f6; /* Blue-500 */
-      }
+  width: 4px;
+  height: 30px; /* Added fixed height */
+  background-color: #d1d5db; /* Gray-300 */
+}
+.volume-bar.active {
+  background-color: #3b82f6; /* Blue-500 */
+}
       
     </style>
   </head>
@@ -70,13 +70,16 @@
       <!-- Sidebar -->
       <aside class="w-16 bg-gray-800 text-white flex flex-col items-center p-4">
         <!-- History Icon -->
-        <a href="/history" class="mb-4 hover:text-gray-400 text-2xl" title="View History">
-          🕒
+        <a href="/history" class="mt-8 mb-4 hover:text-gray-400 text-2xl text-center" title="View History">
+          <img src="{{ url_for('static', filename='images/history.png') }}" alt="History Icon" class="w-8 h-8 transform translate-x-2">
+          <span class="text-sm mt-2 block font-bold">History</span>
         </a>
       </aside>
+      
+    
   
       <!-- Main Container -->
-      <div class="flex-1">
+      <div class="flex-1 ">
         <div class="max-w-7xl mx-auto px-4 py-6 grid grid-cols-4 gap-6">
           <div class="bg-white p-6 rounded-lg shadow-sm space-y-6 h-full">
             <!-- Survey Prompt Section -->
@@ -92,7 +95,7 @@
                   id="survey-prompt"
                   rows="4"
                   placeholder="Enter your survey prompt here..."
-                  class="w-full border border-gray-300 rounded-md px-3 py-2"
+                  class="w-full border border-gray-300 rounded-xl px-3 py-2"
                 ></textarea>
               </div>
   
@@ -102,7 +105,7 @@
                   <label class="block text-sm text-gray-600 mb-1">Accent:</label>
                   <select
                     id="accent"
-                    class="w-full border border-gray-300 rounded-md px-3 py-2"
+                    class="w-full border border-gray-300 rounded-xl px-3 py-2"
                   >
                     <option value="indian_lady">Indian Lady</option>
                     <option value="indian_man">Indian Man</option>
@@ -117,7 +120,7 @@
                   <label class="block text-sm text-gray-600 mb-1">Survey Length:</label>
                   <select
                     id="survey-length"
-                    class="w-full border border-gray-300 rounded-md px-3 py-2"
+                    class="w-full border border-gray-300 rounded-xl px-3 py-2"
                   >
                     <option value="short">Short (2 mins)</option>
                     <option value="medium">Medium (3-5 mins)</option>
@@ -131,7 +134,7 @@
                   <label class="block text-sm text-gray-600 mb-1">Tone:</label>
                   <select
                     id="tone"
-                    class="w-full border border-gray-300 rounded-md px-3 py-2"
+                    class="w-full border border-gray-300 rounded-xl px-3 py-2"
                   >
                     <option value="neutral">Neutral</option>
                     <option value="friendly">Friendly</option>
@@ -142,7 +145,7 @@
                   <label class="block text-sm text-gray-600 mb-1">Extras:</label>
                   <select
                     id="extras"
-                    class="w-full border border-gray-300 rounded-md px-3 py-2"
+                    class="w-full border border-gray-300 rounded-xl px-3 py-2"
                   >
                     <option value="none">None</option>
                     <option value="anger">Anger</option>
@@ -156,11 +159,11 @@
   
               <button
                 id="survey-submit-btn"
-                class="w-full bg-[#FF714C] text-white py-2 px-4 rounded-full hover:bg-[#f2613c] transition-colors"
+                class="w-full bg-[#FF714C] text-white py-2 px-4 rounded-full hover:bg-[#f2613c] transition-colors font-bold"
               >
                 Submit Survey Prompt
               </button>
-              <p id="survey-status" class="text-sm text-gray-600"></p>
+              <!-- <p id="survey-status" class="text-sm text-gray-600"></p> -->
   
               <!-- Integrated PDF Upload -->
               <div id="pdf-upload-section" class="mt-6 border-t pt-6">
@@ -174,7 +177,7 @@
                   />
                   <button
                     id="upload-btn"
-                    class="bg-[#FF714C] text-white py-2 px-4 rounded-full hover:bg-[#f2613c transition-colors"
+                    class="bg-[#FF714C] text-white py-2 px-4 rounded-full hover:bg-[#f2613c transition-colors font-bold"
                   >
                     Extract
                   </button>
@@ -204,12 +207,14 @@
             <!-- Button at the bottom -->
             <button
               id="send-voice-btn"
-              class="bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors mt-4 self-end"
+              class="bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors mt-4 self-end font-semibold"
             >
               Send to Voice AI
             </button>
           </div>
         </div>
+  <!-- Divider between survey response and call section
+  <hr class="my-8 border-t border-gray-300" /> -->
   
         <div id="call-section" class="w-full max-w-3xl mx-auto my-8 p-6 bg-white rounded-lg shadow-lg">
           <h2 class="text-xl font-semibold text-gray-700 mb-4">Call in Progress</h2>
@@ -350,15 +355,18 @@
                 role: "system",
                 content: `Keep the tone ${toneValue} and non-intrusive. Ensure that the conversation flows naturally and dynamically rather than presenting questions as a rigid list. The AI should integrate pre-configured questions fluidly—adapting to context. Encourage honest responses without pressure.
 
+
+
 Flow of Questions:
 ${extractedText}
+make the questions strcitly in a a long conversational manner rather than just sayign what the actual question you can change it appear more conversational, you can also expland the question if the given question is too small, think of it as talking to a friend or co-worker, you dont ask directly a question but rather in a conversational manner. When asking questions, focus on guiding the user toward thoughtful answers. If the questions contains option, strcitly dont tell the user the options unless he he or she asks for it, Only and If the user asks for suggestions or clarification, provide options naturally within the flow of the conversation — avoid reading out the options directly unless prompted.
 
 Open Feedback:
-"Anything else you would like to share or suggest?"
+"Is there anything else you'd like to add or clarify?"
 
 Closing:
-"Thank you! We'll review everything and make improvements. Let me know if there's anything else on your mind!"
-`,
+"Thank you! We will carefully review your input and make improvements. If you think of anything else, feel free to share!"`
+,
               },
             ],
           },
@@ -500,7 +508,7 @@ Closing:
         .getElementById("survey-submit-btn")
         .addEventListener("click", function () {
           const promptText = document.getElementById("survey-prompt").value;
-          const surveyStatusEl = document.getElementById("survey-status");
+          // const surveyStatusEl = document.getElementById("survey-status");
           const surveyLength = document.getElementById("survey-length").value;
           const responseBox = document.getElementById("survey-response");
 
@@ -508,8 +516,8 @@ Closing:
             alert("Please enter a survey prompt.");
             return;
           }
-
-          surveyStatusEl.textContent = "Submitting survey prompt...";
+          responseBox.value = "Waiting for response...";
+          // surveyStatusEl.textContent = "Submitting survey prompt...";
 
           fetch("/groq-chat", {
             method: "POST",
@@ -524,15 +532,15 @@ Closing:
             .then((response) => response.json())
             .then((data) => {
               if (data.error) {
-                surveyStatusEl.textContent = "Error: " + data.error;
+                // surveyStatusEl.textContent = "Error: " + data.error;
               } else {
                 responseBox.value = data.response;
-                surveyStatusEl.textContent =
-                  "Response received and displayed below.";
+                // surveyStatusEl.textContent =
+                //   "Response received and displayed below.";
               }
             })
             .catch((err) => {
-              surveyStatusEl.textContent = "Error: " + err;
+              // surveyStatusEl.textContent = "Error: " + err;
             });
         });
 
@@ -541,7 +549,7 @@ Closing:
         .getElementById("send-voice-btn")
         .addEventListener("click", function () {
           const responseText = document.getElementById("survey-response").value;
-          const surveyStatusEl = document.getElementById("survey-status");
+          // const surveyStatusEl = document.getElementById("survey-status");
 
           if (!responseText) {
             alert("No response text available to send.");
@@ -560,8 +568,8 @@ Closing:
             .then((response) => response.json())
             .then((callData) => {
               if (callData.error) {
-                surveyStatusEl.textContent =
-                  "Call start error: " + callData.error;
+                // surveyStatusEl.textContent =
+                //   "Call start error: " + callData.error;
                 return;
               }
               const callId = callData.call_id;
