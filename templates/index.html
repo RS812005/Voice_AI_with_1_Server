@@ -3,10 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <title>VAPI Integrated App</title>
-    <link
+    <!-- <link
       rel="stylesheet"
       href="{{ url_for('static', filename='css/style.css') }}"
-    />
+    /> -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
       
       /* Hide the Vapi call button injected from the CDN */
@@ -33,7 +34,7 @@
         border-radius: 4px;
         width: 100%;
         padding: 8px 12px;
-        font-size: 14px;
+        /* font-size: 14px; */
         color: #374151;
       }
 
@@ -68,7 +69,7 @@
     
     <div class="flex min-h-screen">
       <!-- Sidebar -->
-      <aside class="w-16 bg-gray-800 text-white flex flex-col items-center p-4">
+      <aside class="w-16 bg-[#210803] text-white flex flex-col items-center p-4">
         <!-- History Icon -->
         <a href="/history" class="mt-8 mb-4 hover:text-gray-400 text-2xl text-center" title="View History">
           <img src="{{ url_for('static', filename='images/history.png') }}" alt="History Icon" class="w-8 h-8 transform translate-x-2">
@@ -95,7 +96,7 @@
                   id="survey-prompt"
                   rows="4"
                   placeholder="Enter your survey prompt here..."
-                  class="w-full border border-gray-300 rounded-xl px-3 py-2"
+                  class="w-full border  text-sm border-gray-300 rounded-xl px-3 py-2"
                 ></textarea>
               </div>
   
@@ -105,7 +106,7 @@
                   <label class="block text-sm text-gray-600 mb-1">Accent:</label>
                   <select
                     id="accent"
-                    class="w-full border border-gray-300 rounded-xl px-3 py-2"
+                    class="w-full border text-sm border-gray-300 rounded-xl px-3 py-2"
                   >
                     <option value="indian_lady">Indian Lady</option>
                     <option value="indian_man">Indian Man</option>
@@ -120,7 +121,7 @@
                   <label class="block text-sm text-gray-600 mb-1">Survey Length:</label>
                   <select
                     id="survey-length"
-                    class="w-full border border-gray-300 rounded-xl px-3 py-2"
+                    class="w-full border text-sm border-gray-300 rounded-xl px-3 py-2"
                   >
                     <option value="short">Short (2 mins)</option>
                     <option value="medium">Medium (3-5 mins)</option>
@@ -134,7 +135,7 @@
                   <label class="block text-sm text-gray-600 mb-1">Tone:</label>
                   <select
                     id="tone"
-                    class="w-full border border-gray-300 rounded-xl px-3 py-2"
+                    class="w-full border text-sm border-gray-300 rounded-xl px-3 py-2"
                   >
                     <option value="neutral">Neutral</option>
                     <option value="friendly">Friendly</option>
@@ -145,7 +146,7 @@
                   <label class="block text-sm text-gray-600 mb-1">Extras:</label>
                   <select
                     id="extras"
-                    class="w-full border border-gray-300 rounded-xl px-3 py-2"
+                    class="w-full border text-sm border-gray-300 rounded-xl px-3 py-2"
                   >
                     <option value="none">None</option>
                     <option value="anger">Anger</option>
@@ -159,7 +160,7 @@
   
               <button
                 id="survey-submit-btn"
-                class="w-full bg-[#FF714C] text-white py-2 px-4 rounded-full hover:bg-[#f2613c] transition-colors font-bold"
+                class="w-full bg-[#FF714C] hover:bg-[#f2613c] text-white py-2 px-4 rounded-full  transition-colors font-bold"
               >
                 Submit Survey Prompt
               </button>
@@ -199,7 +200,7 @@
               </label>
               <textarea
                 id="survey-response"
-                class="w-full flex-1 border border-gray-300 rounded-md resize-none p-2"
+                class="w-full flex-1  text-sm border border-gray-300 rounded-md resize-none p-2"
                 placeholder="Response will appear here..."
               ></textarea>
             </div>
@@ -207,7 +208,7 @@
             <!-- Button at the bottom -->
             <button
               id="send-voice-btn"
-              class="bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors mt-4 self-end font-semibold"
+              class="bg-[#FF714C] hover:bg-[#f2613c] text-white py-2 px-4 rounded-md  transition-colors mt-4 self-end font-semibold"
             >
               Send to Voice AI
             </button>

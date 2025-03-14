@@ -4,3 +4,6 @@ python-dotenv
 PyPDF2
 requests
 vapi_server_sdk
+PyJWT
+groq
+pymongo
