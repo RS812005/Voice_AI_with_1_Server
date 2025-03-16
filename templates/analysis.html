@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Survey Ratings Analysis</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body class="bg-[#F6F6F6] [font-family:'Mangrove Sans',sans-serif]">
+    <div class="max-w-4xl mx-auto p-6">
+      <h1 class="text-3xl font-bold text-center mb-8">Survey Ratings Analysis</h1>
+      <!-- Chart container -->
+      <canvas id="ratingsChart"></canvas>
+      <div class="mt-8 text-center">
+        <a href="/" class="text-blue-500 hover:underline">Go back</a>
+      </div>
+    </div>
+
+    <script>
+      // Aggregated data passed from Flask (via /analysis route)
+      // Convert the Python dict to a valid JS object
+  const aggregated = {{ aggregated | tojson }};
+  // If total_users is an integer, it can be used directly
+  const totalUsers = {{ total_users }};
+
+  console.log("Aggregated data:", aggregated);
+  console.log("Total users:", totalUsers);
+      
+      // Parameters and rating scale are defined here:
+      const parameters = ["happiness", "mental_health", "job_satisfaction", "enps", "communication"];
+      const ratingScale = [1, 2, 3, 4, 5];
+
+      // Function to prepare Chart.js datasets from aggregated data
+      function prepareDatasets(aggregatedData) {
+        // Define colors for each parameter
+        const colors = {
+          happiness: 'rgba(255, 99, 132, 0.8)',
+          mental_health: 'rgba(54, 162, 235, 0.8)',
+          job_satisfaction: 'rgba(255, 206, 86, 0.8)',
+          enps: 'rgba(75, 192, 192, 0.8)',
+          communication: 'rgba(153, 102, 255, 0.8)'
+        };
+        const borderColors = {
+          happiness: 'rgba(255, 99, 132, 1)',
+          mental_health: 'rgba(54, 162, 235, 1)',
+          job_satisfaction: 'rgba(255, 206, 86, 1)',
+          enps: 'rgba(75, 192, 192, 1)',
+          communication: 'rgba(153, 102, 255, 1)'
+        };
+
+        const datasets = [];
+        parameters.forEach(param => {
+          // For each rating in the scale (1-5), extract the count from aggregatedData.
+          const data = ratingScale.map(rating => aggregatedData[param][rating.toString()]);
+          datasets.push({
+            label: param.replace('_', ' ').toUpperCase(),
+            data: data,
+            backgroundColor: colors[param],
+            borderColor: borderColors[param],
+            borderWidth: 1
+          });
+        });
+        return datasets;
+      }
+
+      // Prepare the datasets and create the chart
+      const datasets = prepareDatasets(aggregated);
+      const ctx = document.getElementById('ratingsChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ratingScale,
+          datasets: datasets
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: { stepSize: 1 },
+              title: { display: true, text: 'Number of Users' }
+            },
+            x: {
+              title: { display: true, text: 'Rating' }
+            }
+          },
+          plugins: {
+            legend: { display: true, position: 'top' },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  return context.dataset.label + ": " + context.parsed.y;
+                }
+              }
+            }
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

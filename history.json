@@ -1,0 +1,151 @@
+[
+  {
+    "id": 1,
+    "prompt": "internal feedbakc with 3 questions and options only\n",
+    "prompt_summary": "Here is a short internal feedback survey with 3 questions and options:\n\n**Internal Feedback Survey**\n\nWe value your opinion and would like to hear about your experience. Please take a minute to complete this survey.\n\n**1. How would you rate the overall quality of our internal processes?**\na) Excellent\nb) Good\nc) Fair\nd) Poor\n\n**2. How easy is it for you to find the information you need to do your job?**\na) Very Easy\nb) Somewhat Easy\nc) Neutral\nd) Somewhat Difficult\n\n**3. How likely are you to recommend our company to a friend or colleague?**\na) Very Likely\nb) Likely\nc) Neutral\nd) Unlikely",
+    "call_summary": "{\n  \"summary\": \"Brief survey call with minimal engagement from user. User gave positive but very short responses about internal processes, then indicated neutral likelihood to recommend the company.\",\n  \"ratings\": {\n    \"Internal Processes\": { \"rating\": 4, \"comment\": \"User responded with 'Good. Good.' when asked about quality\" },\n    \"Information Access\": { \"rating\": 4, \"comment\": \"User responded with 'You're good'\" },\n    \"Recommendation Likelihood\": { \"rating\": 3, \"comment\": \"User explicitly stated 'Neutral'\" }\n  },\n  \"overall\": \"User was minimally engaged, giving very short answers. Tone seemed somewhat disinterested or hurried.\",\n  \"next_steps\": \"Follow up with more specific questions or a different format that might encourage more detailed feedback.\"\n}",
+    "created_at": "2025-03-16T09:24:48.194990",
+    "structured_data": {
+      "overall": "The user showed minimal engagement throughout the survey, providing very brief responses without elaboration. Their neutral stance on recommending the company suggests moderate satisfaction at best. The survey format may not have been effective for gathering meaningful insights from this particular user.",
+      "ratings": {
+        "enps": {
+          "rating": 2,
+          "comment": "User explicitly stated 'Neutral' when asked about recommending the company"
+        },
+        "happiness": {
+          "rating": 3,
+          "comment": "User responded with 'Good' but showed minimal engagement"
+        },
+        "communication": {
+          "rating": 2,
+          "comment": "User gave very brief responses, suggesting reluctance to engage"
+        },
+        "mental_health": {
+          "rating": 3,
+          "comment": "Insufficient data to properly assess"
+        },
+        "job_satisfaction": {
+          "rating": 3,
+          "comment": "User responded positively but without enthusiasm"
+        }
+      },
+      "summary": "Brief survey interaction with minimal responses from user. User appears disengaged, giving short answers like 'Good' and 'Neutral' without elaboration.",
+      "next_steps": "Follow up with a more personalized approach. Consider a different format that might encourage more detailed responses.",
+      "raw_transcript": "AI: 8. How are you? I want to take some some of time for a short survey.\nUser: Exactly.\nAI: Great. Let's get started. First off, based on your experience, how do you feel about the overall quality of our internal\nUser: But\nAI: Sure. No problem. I'm here to help. To start off,\nUser: Good. Good. Good.\nAI: Alright. Let's start with the first question. How would you describe the overall quality of the processes we have in place internally? Have they been meeting your expectations?\nUser: Good. Good.\nAI: That's good to hear. Moving on. How do you find the ease of locating the information you need to do your job? Is it generally straightforward,\nUser: You're good.\nAI: Thank you. I appreciate that. Let's continue. How likely would you say you are to recommend our company to a friend or colleague? Does it feel like a place you'd\nUser: Neutral.\nAI: Noted. Thank you for sharing your thoughts. Is there anything else you'd like to add or clarify about your experience with us?",
+      "transcript_summary": {
+        "concerns": [
+          "Minimal engagement throughout the survey",
+          "Lack of detailed feedback"
+        ],
+        "feedback": [
+          "Survey format may not be effective for this user",
+          "Consider alternative methods to gather meaningful insights"
+        ],
+        "highlights": [
+          "User acknowledged processes are 'Good'",
+          "User expressed neutral sentiment about recommending the company"
+        ]
+      }
+    }
+  },
+  {
+    "id": 2,
+    "prompt": "internal feeback and 5 question only with 5 options ",
+    "prompt_summary": "Here's a short 5-question survey:\n\n**Survey: Internal Feedback**\n\nWe value your opinions and would like to hear from you. Please take a few minutes to complete this survey. \n\n1. How would you rate your overall satisfaction with our internal processes?\n   A) Very Satisfied\n   B) Satisfied\n   C) Neutral\n   D) Dissatisfied\n   E) Very Dissatisfied\n\n2. How easy is it for you to provide feedback to your supervisor or manager?\n   A) Very Easy\n   B) Easy\n   C) Neutral\n   D) Difficult\n   E) Very Difficult\n\n3. How often do you receive constructive feedback from your colleagues or supervisors?\n   A) Daily\n   B) Weekly\n   C) Monthly\n   D) Rarely\n   E) Never\n\n4. How would you rate the effectiveness of our internal communication channels?\n   A) Very Effective\n   B) Effective\n   C) Neutral\n   D) Ineffective\n   E) Very Ineffective\n\n5. How likely are you to recommend our internal feedback process to others?\n   A) Very Likely\n   B) Likely\n   C) Neutral\n   D) Unlikely\n   E) Very Unlikely\n\nThank you for taking the time to complete this survey! Your feedback is greatly appreciated.",
+    "call_summary": "{\n  \"summary\": \"Brief survey about internal processes. User was terse, giving minimal responses and eventually refusing to elaborate.\",\n  \"ratings\": {\n    \"Internal processes\": { \"rating\": 3, \"comment\": \"User stated they were 'satisfied'\" },\n    \"Feedback to management\": { \"rating\": 1, \"comment\": \"User found it 'very difficult'\" },\n    \"Receiving feedback\": { \"rating\": 4, \"comment\": \"User receives feedback 'daily'\" },\n    \"Communication channels\": { \"rating\": 5, \"comment\": \"User rated as 'very effective'\" },\n    \"Recommending process\": { \"rating\": 1, \"comment\": \"User was 'very unlikely' to recommend\" }\n  },\n  \"overall\": \"User seemed disengaged and reluctant to participate fully in the survey, giving minimal responses and eventually refusing to continue.\",\n  \"next_steps\": \"Follow up with a different format that requires less verbal elaboration, possibly a written survey.\"\n}",
+    "created_at": "2025-03-16T09:51:16.890089",
+    "structured_data": {
+      "overall": "The survey reveals contradictions in the user's experience - they find communication channels effective yet struggle to communicate with management. They receive daily feedback but are very unlikely to recommend the feedback process. The user's reluctance to elaborate suggests potential underlying issues that require further investigation.",
+      "ratings": {
+        "enps": {
+          "rating": 1,
+          "comment": "User explicitly stated they would be 'very unlikely' to recommend internal feedback process"
+        },
+        "happiness": {
+          "rating": 3,
+          "comment": "User expressed minimal emotion but indicated basic satisfaction with processes"
+        },
+        "communication": {
+          "rating": 2,
+          "comment": "Despite stating communication channels are effective, user finds it 'very difficult' to communicate with management"
+        },
+        "mental_health": {
+          "rating": 2,
+          "comment": "User showed reluctance to communicate and abruptly ended conversation"
+        },
+        "job_satisfaction": {
+          "rating": 3,
+          "comment": "Satisfied with processes but has issues with management communication"
+        }
+      },
+      "summary": "The user participated in a brief survey about internal processes and communication but was reluctant to elaborate on their responses. They indicated satisfaction with internal processes and communication channels, but expressed difficulty in sharing concerns with management and were very unlikely to recommend the internal feedback process.",
+      "next_steps": "Follow up with a more private communication channel to understand the disconnect between effective communication channels and difficulty speaking with management. Consider reviewing the feedback process that the user is unlikely to recommend.",
+      "raw_transcript": "AI: 8. How are you? I want to take some some of time for a short survey.\nUser: Yeah. Go ahead.\nAI: Great. To start things off, how do you feel about the way our internal processes work? Do they meet your expectations, or is there something that stands out to you? Either positively or negatively?\nUser: Yeah. Satisfied.\nAI: That's good to hear. When it comes to sharing your thoughts or concerns with your supervisor or manager\nUser: Very difficult.\nAI: do you find the process I see. That can definitely be challenging. Is there something specific? That makes it difficult for you to provide feedback? Or is it more of a\nUser: Hello.\nAI: Hello. Let's continue focusing on the survey. Do you often receive any constructive feedback from your colleagues or supervisors?\nUser: Yeah. Daily.\nAI: It's great to know you're receiving daily feedback. It shows there's a consistent flow of communication. Shifting gears a bit, how would you describe the effectiveness of our internal communication channels? Do they support\nUser: Very effective.\nAI: That's wonderful to hear. Effective communication channels can really make a difference. Lastly, how inclined would you be to recommend our internal feedback process to others? Feel free to share\nUser: Very unlikely.\nAI: I see. What makes you feel that way? Is there a particular aspect of the feedback process that you think needs improvement?\nUser: No. I I don't want to talk.",
+      "transcript_summary": {
+        "concerns": [
+          "Very difficult to share thoughts with supervisor/manager",
+          "Very unlikely to recommend internal feedback process",
+          "Reluctance to elaborate on responses"
+        ],
+        "feedback": [
+          "Internal communication channels described as 'very effective'",
+          "Disconnect between effective channels and difficult management communication"
+        ],
+        "highlights": [
+          "User finds internal processes satisfactory",
+          "User receives daily feedback from colleagues"
+        ]
+      }
+    }
+  },
+
+  {
+    "id": 3,
+    "prompt": "boss feedback with 2 questions and options only",
+    "prompt_summary": "Here is a 2-minute survey with 2 questions and options for boss feedback:\n\n**Survey: Boss Feedback**\n\nWe value your opinion and would like to hear about your experience with your supervisor. Please take a minute to complete this short survey.\n\n**1. How would you rate your boss's communication style?**\n\nA) Effective - they keep me informed and listen to my concerns\nB) Neutral - they communicate, but sometimes I feel left out of the loop\nC) Ineffective - they rarely communicate or don't listen to my concerns\n\n**2. How would you rate your boss's support for your professional growth and development?**\n\nA) Strongly supportive - they provide opportunities and resources for me to grow\nB) Somewhat supportive - they provide some opportunities, but I have to seek them out\nC) Not supportive - they don't provide opportunities or resources for me to grow\n\nThank you for taking the time to provide your feedback!",
+    "call_summary": "{\n  \"summary\": \"Brief survey about boss relationship. User was reluctant to elaborate but expressed negative views.\",\n  \"ratings\": {\n    \"Communication\": { \"rating\": 1, \"comment\": \"User described boss's communication as 'very ineffective'\" },\n    \"Professional Support\": { \"rating\": 1, \"comment\": \"User stated boss is 'not supporting' of professional growth\" }\n  },\n  \"overall\": \"User was brief, unwilling to elaborate, and appeared dissatisfied with management relationship.\",\n  \"next_steps\": \"Consider a more private or anonymous feedback channel as user seemed uncomfortable sharing details.\"\n}",
+    "created_at": "2025-03-16T10:01:22.153494",
+    "structured_data": {
+      "overall": "The user appears highly dissatisfied with their management situation, particularly regarding communication and professional development support. Their reluctance to provide details suggests possible concerns about confidentiality or fear of consequences.",
+      "ratings": {
+        "enps": {
+          "rating": 1,
+          "comment": "Negative responses indicate low likelihood to recommend employer"
+        },
+        "happiness": {
+          "rating": 2,
+          "comment": "User appears unhappy with workplace dynamics"
+        },
+        "communication": {
+          "rating": 1,
+          "comment": "User explicitly stated boss's communication is 'very ineffective'"
+        },
+        "mental_health": {
+          "rating": 2,
+          "comment": "Brief responses and reluctance to elaborate suggest possible distress"
+        },
+        "job_satisfaction": {
+          "rating": 1,
+          "comment": "Expressed clear dissatisfaction with management support"
+        }
+      },
+      "summary": "The user expressed significant dissatisfaction with their boss, describing communication as 'very ineffective' and support as 'not supporting'. They declined to provide specific details when asked for elaboration.",
+      "next_steps": "Follow up with a more private channel for feedback. Consider management intervention regarding communication issues and lack of support.",
+      "raw_transcript": "AI: 8. How are you? I want to take some some of time for a short survey.\nUser: Yeah. The leg\nAI: I hope your leg feels better soon. I wanted to ask you about your experience with your boss. How do you find their communication style? Do you feel informed and listened to? Or is there\nUser: Very ineffective.\nAI: I'm sorry to hear that that communication has been a challenge. Could you share more about what makes it ineffective? Is there a specific aspect or incident that you found\nUser: I don't want to comment\nAI: That's perfectly fine. Let's move on to another aspect. How would you describe the support you receive from your boss for your professional growth and development? Do you feel like there are opportunities and resources provided for you to grow in your role?\nUser: Not supporting.\nAI: It's unfortunate that you feel there's a lack of for your growth. Is there anything specific you think could be improved in terms of the opportunities or resources provided?\nUser: Don't want to comment.\nAI: That's completely understandable. If there's anything else you'd like to add or clarify, feel free to share. Otherwise, thank you for your feedback.",
+      "transcript_summary": {
+        "concerns": [
+          "User's reluctance to elaborate suggests possible fear of repercussions",
+          "Complete lack of positive feedback about management"
+        ],
+        "feedback": [
+          "Management communication needs significant improvement",
+          "Professional development support is inadequate"
+        ],
+        "highlights": [
+          "Communication with boss described as 'very ineffective'",
+          "Support for professional growth described as 'not supporting'"
+        ]
+      }
+    }
+  }
+]

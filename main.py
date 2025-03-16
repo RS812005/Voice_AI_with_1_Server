@@ -11,25 +11,56 @@ from groq import Groq
 from vapi import Vapi
 from vapi.core.api_error import ApiError
 
-# NEW: Import MongoClient and ObjectId from pymongo and datetime for timestamps
-from pymongo import MongoClient
-from bson import ObjectId
+# Import for JSON file handling and datetime
+import json
 from datetime import datetime
+import os.path
 
 load_dotenv()
 
 app = Flask(__name__, static_folder="static", static_url_path="/static")
 CORS(app)
 
-# Expect your MongoDB URI to be in the environment variable MONGO_URI
-MONGO_URI = os.getenv("MONGO_URI")
-# Database name is 'lasso' and collection name is 'history'
-mongo_client = MongoClient(MONGO_URI)
-db_mongo = mongo_client["lasso"]
-history_collection = db_mongo["history"]
+# Define the path for our JSON storage file
+HISTORY_FILE = "history.json"
 
+# Helper function to read history from JSON file
+def read_history():
+    if not os.path.exists(HISTORY_FILE):
+        return []
+    try:
+        with open(HISTORY_FILE, 'r') as file:
+            return json.load(file)
+    except (json.JSONDecodeError, FileNotFoundError):
+        return []
 
+# Helper function to write history to JSON file
+def write_history(history_data):
+    with open(HISTORY_FILE, 'w') as file:
+        json.dump(history_data, file, indent=2, default=str)
 
+# Helper function to add a new record to history
+def add_history_record(prompt, prompt_summary, call_summary=""):
+    history = read_history()
+    new_record = {
+        "id": len(history) + 1,
+        "prompt": prompt,
+        "prompt_summary": prompt_summary,
+        "call_summary": call_summary,
+        "created_at": datetime.utcnow().isoformat()
+    }
+    history.append(new_record)
+    write_history(history)
+    return new_record
+
+# Helper function to update a record in history
+def update_history_record(record_id, updates):
+    history = read_history()
+    for record in history:
+        if record["id"] == record_id:
+            record.update(updates)
+            break
+    write_history(history)
 
 def generate_jwt():
     api_key = os.getenv("VITE_VAPI_API_TOKEN") #API_CHANGE
@@ -96,11 +127,9 @@ def start_call():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-# Endpoint to fetch call details and update the call summary.
 @app.route("/call-details", methods=["GET"])
 def get_call_details():
     call_id = request.args.get("call_id")
-    # record_id = request.args.get("record_id")  # optional parameter from frontend
     if not call_id:
         return jsonify({"error": "Call ID is required"}), 400
     try:
@@ -108,19 +137,49 @@ def get_call_details():
         url = f"https://api.vapi.ai/call/{call_id}"
         response = requests.get(url, headers=headers)
         data = response.json()
-        # If the response contains a summary and a record_id is provided,
-        # update the call_summary field.
-        if "summary" in data:
-    # Find the most recent record in the history collection
-            recent_record = history_collection.find_one(sort=[("_id", -1)])
-            if recent_record:
-                history_collection.update_one(
-            {"_id": recent_record["_id"]},  # Filter: update this specific document.
-            {"$set": {"call_summary": data["summary"]}}  # Update document.
-        )
+        
+        # If the response contains an "analysis" object, update the most recent record
+        if "analysis" in data:
+            analysis = data["analysis"]
+            history = read_history()
+            if history:
+                most_recent = history[-1]
+                # Update the call summary if present in analysis
+                if "summary" in analysis:
+                    most_recent["call_summary"] = analysis["summary"]
+                # Update structured data if present in analysis
+                if "structuredData" in analysis:
+                    most_recent["structured_data"] = analysis["structuredData"]
+                write_history(history)
+                
         return jsonify(data), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+@app.route("/analysis")
+def analysis_route():
+    # Load all history records from history.json
+    records = read_history()
+    
+    # Define the parameters we're interested in
+    parameters = ["happiness", "mental_health", "job_satisfaction", "enps", "communication"]
+    # Initialize an aggregated count dictionary for each parameter with ratings 1 to 5
+    aggregated = { param: {str(rating): 0 for rating in range(1, 6)} for param in parameters }
+    
+    total_users = 0
+    for record in records:
+        total_users += 1
+        structured = record.get("structured_data", {})
+        ratings = structured.get("ratings", {})
+        for param in parameters:
+            if param in ratings:
+                rating_value = ratings[param].get("rating")
+                # Convert rating to an integer between 1 and 5, if valid
+                if isinstance(rating_value, (int, float)) and 1 <= rating_value <= 5:
+                    aggregated[param][str(int(rating_value))] += 1
+
+    # Pass the aggregated data and total user count to analysis.html
+    return render_template("analysis.html", aggregated=aggregated, total_users=total_users)
 
 
 @app.route("/groq-chat", methods=["POST"])
@@ -158,14 +217,8 @@ def groq_chat():
         # Extract the generated message.
         response_text = chat_completion.choices[0].message.content
 
-        # Insert a new record into the history collection.
-        # The prompt summary is stored in 'prompt_summary' and initially call_summary is empty.
-        history_collection.insert_one({
-            "prompt": prompt,
-            "prompt_summary": response_text,
-            "call_summary": "",
-            "created_at": datetime.utcnow()
-        })
+        # Add a new record to our JSON history
+        add_history_record(prompt, response_text)
 
         return jsonify({"response": response_text})
     except Exception as e:
@@ -175,9 +228,13 @@ def groq_chat():
 @app.route("/history", methods=["GET"])
 def history():
     try:
-        # Query the last 10 records from the history collection.
-        records = list(history_collection.find().sort("_id", -1).limit(10))
-        # Format records: convert ObjectId to string if needed.
+        # Get the last 10 records from our JSON file
+        records = read_history()
+        # Sort by created_at in descending order and take the last 10
+        records.sort(key=lambda x: x.get("created_at", ""), reverse=True)
+        records = records[:10]
+        
+        # Format records for display
         formatted_records = []
         for record in records:
             formatted_records.append({
@@ -185,10 +242,13 @@ def history():
                 "prompt_summary": record.get("prompt_summary", ""),
                 "call_summary": record.get("call_summary", "")
             })
+            
         # Render the index template and pass the history records.
         return render_template("history.html", records=formatted_records)
     except Exception as e:
         return f"Error fetching history: {str(e)}", 500
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)

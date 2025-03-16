@@ -75,7 +75,14 @@
           <img src="{{ url_for('static', filename='images/history.png') }}" alt="History Icon" class="w-8 h-8 transform translate-x-2">
           <span class="text-sm mt-2 block font-bold">History</span>
         </a>
+      
+        <!-- Analysis Icon -->
+        <a href="/analysis" class="mb-4 hover:text-gray-400 text-2xl text-center" title="View Analysis">
+          <img src="{{ url_for('static', filename='images/graph.png') }}" alt="Analysis Icon" class="w-8 h-8 transform translate-x-2">
+          <span class="text-sm mt-2 block font-bold">Analysis</span>
+        </a>
       </aside>
+      
       
     
   
@@ -360,8 +367,14 @@
 
 Flow of Questions:
 ${extractedText}
-make the questions strcitly in a a long conversational manner rather than just sayign what the actual question you can change it appear more conversational, you can also expland the question if the given question is too small, think of it as talking to a friend or co-worker, you dont ask directly a question but rather in a conversational manner. When asking questions, focus on guiding the user toward thoughtful answers. If the questions contains option, strcitly dont tell the user the options unless he he or she asks for it, Only and If the user asks for suggestions or clarification, provide options naturally within the flow of the conversation — avoid reading out the options directly unless prompted.
+make the questions strcitly in a a long conversational manner rather than just sayign what the actual question you can change it appear more conversational, you can also expland the question if the given question is too small, think of it as talking to a friend or co-worker, you dont ask directly a question but rather in a conversational manner. When asking questions, focus on guiding the user toward thoughtful answers. If the questions contains option, strcitly dont tell the user the options unless he he or she asks for it, Only and If the user asks for suggestions or clarification, provide options naturally within the flow of the conversation — avoid reading out the options directly unless prompted. Stay on Topic:
 
+The conversation must remain strictly within the scope of the survey.
+Politely refuse to engage with or answer any question or comment that is not related to the survey topic. If the user tries to introduce unrelated topics, respond with:
+"I'm here to assist with the survey. Let's stay focused on the questions."
+If the user persists, respond with:
+"I’m sorry, but I can only respond to questions related to the survey."
+If the answer is not satisfactory, there should be a follow up question— ex. What did you find challenging about that
 Open Feedback:
 "Is there anything else you'd like to add or clarify?"
 
@@ -588,6 +601,20 @@ Closing:
       document.getElementById("stop-btn").addEventListener("click", function () {
         stopWebCall();
       });
+      document.addEventListener("DOMContentLoaded", function () {
+    const params = new URLSearchParams(window.location.search);
+    const prompt = params.get("prompt");
+    const promptSummary = params.get("prompt_summary");
+    
+    if (prompt) {
+      document.getElementById("survey-prompt").value = prompt;
+    }
+    
+    // Optionally, if you want to also pre-fill the response box with prompt_summary:
+    if (promptSummary) {
+      document.getElementById("survey-response").value = promptSummary;
+    }
+  });
     </script>
   </body>
 </html>
