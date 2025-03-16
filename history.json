@@ -98,7 +98,6 @@
       }
     }
   },
-
   {
     "id": 3,
     "prompt": "boss feedback with 2 questions and options only",
@@ -144,6 +143,56 @@
         "highlights": [
           "Communication with boss described as 'very ineffective'",
           "Support for professional growth described as 'not supporting'"
+        ]
+      }
+    }
+  },
+  {
+    "id": 4,
+    "prompt": "3 questions regarding internal team feedback with only options",
+    "prompt_summary": "Here's a short survey with 3 questions regarding internal team feedback:\n\n**Question 1: How often do you receive feedback from your team members?**\n\nA) Daily\nB) Weekly\nC) Monthly\nD) Rarely\nE) Never\n\n**Question 2: What type of feedback do you find most helpful?**\n\nA) Constructive criticism\nB) Positive reinforcement\nC) Suggestions for improvement\nD) Feedback on specific projects\nE) Other (please specify)\n\n**Question 3: How do you prefer to receive feedback from your team members?**\n\nA) In-person meetings\nB) Email\nC) Instant messaging or chat apps\nD) Regular team meetings\nE) Anonymous surveys or feedback forms\n\nThank you for taking the time to provide your feedback!",
+    "call_summary": "{\n  \"summary\": \"Brief survey about feedback preferences. User prefers weekly feedback delivered with direct but empathetic communication, preferably in face-to-face meetings.\",\n  \"ratings\": {\n    \"FeedbackFrequency\": { \"rating\": 4, \"comment\": \"Weekly rhythm works well\" },\n    \"FeedbackDelivery\": { \"rating\": 5, \"comment\": \"Prefers in-person meetings\" }\n  },\n  \"overall\": \"User was cooperative but brief in responses. Tone was neutral to slightly disengaged, especially toward the end.\",\n  \"next_steps\": \"Consider scheduling in-person feedback sessions with direct but empathetic communication style.\"\n}",
+    "created_at": "2025-03-16T16:06:41.418301",
+    "structured_data": {
+      "overall": "The user participated in a feedback survey with minimal engagement. They expressed preference for weekly, direct yet empathetic feedback delivered in person. The abrupt ending suggests possible discomfort with the survey format or time constraints.",
+      "ratings": {
+        "enps": {
+          "rating": 3,
+          "comment": "User showed neither strong advocacy nor criticism"
+        },
+        "happiness": {
+          "rating": 3,
+          "comment": "User seemed neutral, neither particularly happy nor unhappy"
+        },
+        "communication": {
+          "rating": 2,
+          "comment": "User provided brief responses and ended the conversation abruptly"
+        },
+        "mental_health": {
+          "rating": 3,
+          "comment": "No clear indicators of mental health concerns or exceptional wellbeing"
+        },
+        "job_satisfaction": {
+          "rating": 3,
+          "comment": "Limited information provided about job satisfaction"
+        }
+      },
+      "summary": "The user participated in a brief survey about feedback preferences, indicating they receive feedback weekly and prefer direct, empathetic feedback delivered in person. The conversation was brief, with the user providing minimal responses.",
+      "next_steps": "Follow up with a more targeted survey focusing on specific aspects of feedback implementation. Consider shorter, more focused interactions given the user's brief response style.",
+      "raw_transcript": "AI: 8. How are you? I want to take some some of time for a short survey.\nUser: Yeah. Go ahead.\nAI: Alright. Thank you. Let's start with something simple. It comes to receiving feedback from your team members, how often does that happen for you? Do you feel it's a regular part of your interactions, or does it happen more sporadically?\nUser: I think it depends weekly.\nAI: Weekly is a good rhythm for staying connected. It keeps communication open without being overwhelming. Do you find that there are specific types of feedback that really resonate with you and help you the most?\nUser: I think sometimes, like, I I would like to see if I would put empathy, like, I want the MPT component to be direct. The the ones you score me just they can talk talk to me direct, they should have empathy, like, yeah.\nAI: That's a really thoughtful perspective. It sounds\nUser: Right.\nAI: Got it. Having feedback delivered with empathy but also being direct is such a valuable balance. Honest communication can be so much more meaningful when it's considerate. Now on that note, how do you feel about the way this feedback is typically delivered? Do you prefer it to be shared in a face to face conversation through written messages like email? Or maybe something else entirely.\nUser: I think in person, like, meetings should be nice.\nAI: That makes sense. In person meetings can feel more personal and give that opportunity for real time discussion. Which is great for clarity and connection. Is there anything else you'd like to share about how feedback is currently working for you or anything you wish could be improved?\nUser: No. I don't want to come.\nAI: No problem at all. Thank you so much for sharing your thoughts. We'll carefully review your input and make improvements where we can.",
+      "transcript_summary": {
+        "concerns": [
+          "User ended the conversation abruptly with 'No. I don't want to come'",
+          "Limited engagement throughout the survey"
+        ],
+        "feedback": [
+          "Implement more in-person feedback sessions",
+          "Train feedback providers to balance directness with empathy"
+        ],
+        "highlights": [
+          "User receives feedback weekly",
+          "Prefers direct feedback delivered with empathy",
+          "Prefers in-person meetings for feedback"
         ]
       }
     }

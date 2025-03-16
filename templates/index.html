@@ -517,46 +517,95 @@ Closing:
           });
       });
 
-      // Survey Prompt Submission
-      document
-        .getElementById("survey-submit-btn")
-        .addEventListener("click", function () {
-          const promptText = document.getElementById("survey-prompt").value;
-          // const surveyStatusEl = document.getElementById("survey-status");
-          const surveyLength = document.getElementById("survey-length").value;
-          const responseBox = document.getElementById("survey-response");
+    // Global variable to store the latest record id returned from /groq-chat
+window.latestRecordId = null;
 
-          if (!promptText) {
-            alert("Please enter a survey prompt.");
-            return;
-          }
-          responseBox.value = "Waiting for response...";
-          // surveyStatusEl.textContent = "Submitting survey prompt...";
+document.getElementById("survey-submit-btn").addEventListener("click", function () {
+  const promptText = document.getElementById("survey-prompt").value;
+  const surveyLength = document.getElementById("survey-length").value;
+  const responseBox = document.getElementById("survey-response");
 
-          fetch("/groq-chat", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              prompt: promptText,
-              survey_length: surveyLength,
-            }),
-          })
-            .then((response) => response.json())
-            .then((data) => {
-              if (data.error) {
-                // surveyStatusEl.textContent = "Error: " + data.error;
-              } else {
-                responseBox.value = data.response;
-                // surveyStatusEl.textContent =
-                //   "Response received and displayed below.";
-              }
-            })
-            .catch((err) => {
-              // surveyStatusEl.textContent = "Error: " + err;
-            });
-        });
+  if (!promptText) {
+    alert("Please enter a survey prompt.");
+    return;
+  }
+  responseBox.value = "Waiting for response...";
+
+  fetch("/groq-chat", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ prompt: promptText, survey_length: surveyLength })
+  })
+    .then(response => response.json())
+    .then(data => {
+      if (data.error) {
+        responseBox.value = "Error: " + data.error;
+      } else {
+        responseBox.value = data.response;
+        // Store the record id globally for later use in chat.
+        window.latestRecordId = data.record_id;
+      }
+    })
+    .catch(err => {
+      responseBox.value = "Error: " + err;
+    });
+});
+
+function pollCallDetails(callId, interval = 3000) {
+  fetch("/call-details?call_id=" + callId, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + apiKey,
+    },
+  })
+    .then(response => {
+      if (!response.ok) {
+        console.error("Error fetching call details:", response.status, response.statusText);
+        if (response.status === 403) {
+          document.getElementById("call-summary").innerHTML =
+            "<h3>Error:</h3><p>Access forbidden. Check credentials.</p>";
+        }
+        throw new Error("HTTP error " + response.status);
+      }
+      return response.json();
+    })
+    .then(data => {
+      if (data.error) {
+        console.error("Error in call details response:", data.error);
+        return;
+      }
+      if (data.summary) {
+        document.getElementById("call-summary").innerHTML =
+          "<h3 class='font-semibold mb-2'>Call Summary</h3><p>" + data.summary + "</p>";
+        // Once summary is available, create or show the chat button.
+        let chatBtn = document.getElementById("chat-btn");
+        if (!chatBtn) {
+          chatBtn = document.createElement("button");
+          chatBtn.id = "chat-btn";
+          chatBtn.className = "bg-green-500 hover:bg-green-600 text-white font-semibold rounded-md px-4 py-2 transition-colors mt-4 self-end";
+          chatBtn.textContent = "Chat with User Response";
+          // Append the chat button to the call-section container.
+          document.getElementById("call-section").appendChild(chatBtn);
+          // Set click handler: redirect to /chat with the record id.
+          chatBtn.onclick = function () {
+            if (window.latestRecordId) {
+              window.location.href = "/chat?record_id=" + window.latestRecordId;
+            } else {
+              alert("Record ID not available yet.");
+            }
+          };
+        }
+        chatBtn.classList.remove("hidden");
+      } else {
+        console.log("Summary not yet available; retrying in", interval, "ms");
+        setTimeout(() => pollCallDetails(callId, interval), interval);
+      }
+    })
+    .catch(err => {
+      console.error("Error polling call details:", err);
+    });
+}
 
       // Send Survey Response to Voice AI
       document

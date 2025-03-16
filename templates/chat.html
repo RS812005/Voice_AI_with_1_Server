@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Chat with User Response</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 [font-family:'Mangrove Sans',sans-serif]">
+    <div class="max-w-3xl mx-auto p-6">
+      <h1 class="text-3xl font-bold text-center mb-6">Chat with User Response</h1>
+      
+      <!-- Chat Interface -->
+      <div id="chat-container" class="bg-white p-4 rounded-lg shadow-lg mb-4 h-80 overflow-y-auto">
+        <!-- Initial greeting message -->
+        <div class="mb-2 text-green-600">Bot: Hey, how can I assist you with this user's response?</div>
+      </div>
+      
+      <!-- Chat Input -->
+      <div class="flex space-x-4">
+        <input type="text" id="chat-input" class="flex-1 p-2 border rounded-md" placeholder="Type your question..." />
+        <button id="chat-send-btn" class="bg-[#FF714C] text-white font-semibold rounded-md px-4 py-2 hover:bg-[#f2613c] transition-colors">
+          Send
+        </button>
+      </div>
+      
+      <div class="mt-4 text-center">
+        <a href="/history" class="text-blue-500 hover:underline">Back to History</a>
+      </div>
+    </div>
+    
+    <script>
+      // The raw transcript is passed from Flask as a template variable
+      const rawTranscript = {{ raw_transcript | tojson }};
+      const chatContainer = document.getElementById('chat-container');
+      const chatInput = document.getElementById('chat-input');
+      const chatSendBtn = document.getElementById('chat-send-btn');
+
+      chatSendBtn.addEventListener('click', async () => {
+        const question = chatInput.value.trim();
+        if (!question) return;
+        
+        // Append user's message
+        const userMessage = document.createElement('div');
+        userMessage.textContent = "You: " + question;
+        userMessage.classList.add("mb-2", "text-right", "text-blue-600");
+        chatContainer.appendChild(userMessage);
+        chatInput.value = "";
+        
+        try {
+          const response = await fetch('/chat-query', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ question: question, raw_transcript: rawTranscript })
+          });
+          const data = await response.json();
+          const botMessage = document.createElement('div');
+          if (data.error) {
+            botMessage.textContent = "Error: " + data.error;
+            botMessage.classList.add("text-red-500");
+          } else {
+            botMessage.textContent = "Bot: " + data.response;
+            botMessage.classList.add("text-green-600");
+          }
+          botMessage.classList.add("mb-2");
+          chatContainer.appendChild(botMessage);
+          // Auto-scroll to the bottom
+          chatContainer.scrollTop = chatContainer.scrollHeight;
+        } catch (err) {
+          console.error("Error sending chat query:", err);
+        }
+      });
+    </script>
+  </body>
+</html>

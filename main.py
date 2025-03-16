@@ -206,8 +206,7 @@ def groq_chat():
         full_prompt = f"{prompt}\n\n{length_instruction}"
 
         # Initialize Groq client using the API key from environment variables.
-        client = Groq(api_key=os.environ.get("GROQ_API_KEY"))  # API_CHANGE
-
+        client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
         # Create chat completion using the provided full prompt.
         chat_completion = client.chat.completions.create(
             messages=[{"role": "user", "content": full_prompt}],
@@ -217,12 +216,15 @@ def groq_chat():
         # Extract the generated message.
         response_text = chat_completion.choices[0].message.content
 
-        # Add a new record to our JSON history
-        add_history_record(prompt, response_text)
+        # Add a new record to our JSON history and capture the new record.
+        new_record = add_history_record(prompt, response_text)
 
-        return jsonify({"response": response_text})
+        # Return the response along with the new record id so that the frontend
+        # can use this id to open the chat interface (after summary appears).
+        return jsonify({"response": response_text, "record_id": new_record["id"]})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
     
 # Endpoint to fetch history and send it to index.html.
 @app.route("/history", methods=["GET"])
@@ -234,20 +236,59 @@ def history():
         records.sort(key=lambda x: x.get("created_at", ""), reverse=True)
         records = records[:10]
         
-        # Format records for display
+        # Format records for display, including the record id
         formatted_records = []
         for record in records:
             formatted_records.append({
+                "id": record.get("id", ""),
                 "prompt": record.get("prompt", ""),
                 "prompt_summary": record.get("prompt_summary", ""),
                 "call_summary": record.get("call_summary", "")
             })
             
-        # Render the index template and pass the history records.
+        # Render the history template and pass the history records.
         return render_template("history.html", records=formatted_records)
     except Exception as e:
         return f"Error fetching history: {str(e)}", 500
 
+
+# Endpoint to handle chat queries using the raw transcript context
+@app.route("/chat-query", methods=["POST"])
+def chat_query():
+    data = request.get_json()
+    question = data.get("question")
+    raw_transcript = data.get("raw_transcript", "")
+    if not question:
+        return jsonify({"error": "Missing question"}), 400
+    try:
+        prompt = (
+            f"Based on the following transcript:\n\n{raw_transcript}\n\n"
+            f"Answer the following question in a friendly, conversational manner:\n{question}"
+        )
+        client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
+        chat_completion = client.chat.completions.create(
+            messages=[{"role": "user", "content": prompt}],
+            model="llama-3.3-70b-versatile",
+        )
+        response_text = chat_completion.choices[0].message.content
+        return jsonify({"response": response_text})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+# Chat page: load raw transcript from a specific history record based on record_id
+@app.route("/chat")
+def chat():
+    record_id = request.args.get("record_id")
+    raw_transcript = ""
+    if record_id:
+        history = read_history()
+        for rec in history:
+            if str(rec.get("id")) == record_id:
+                # Extract raw transcript from structured_data if it exists
+                if rec.get("structured_data", {}).get("raw_transcript"):
+                    raw_transcript = rec["structured_data"]["raw_transcript"]
+                break
+    return render_template("chat.html", raw_transcript=raw_transcript)
 
 
 if __name__ == "__main__":
