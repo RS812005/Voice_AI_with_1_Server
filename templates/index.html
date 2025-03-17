@@ -3,20 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <title>VAPI Integrated App</title>
-    <!-- <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/style.css') }}"
-    /> -->
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-      
       /* Hide the Vapi call button injected from the CDN */
       #vapi-icon-container,
       #vapi-support-btn {
         display: none !important;
       }
-
-      /* Optional styling for the survey section */
+      /* Survey section styling */
       #survey-section textarea {
         margin-bottom: 10px;
       }
@@ -25,7 +20,6 @@
         height: 300px;
         resize: vertical;
       }
-
       select,
       textarea,
       input {
@@ -34,10 +28,8 @@
         border-radius: 4px;
         width: 100%;
         padding: 8px 12px;
-        /* font-size: 14px; */
         color: #374151;
       }
-
       select {
         appearance: none;
         background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
@@ -46,27 +38,23 @@
         background-size: 1.5em 1.5em;
         padding-right: 2.5rem;
       }
-
       textarea:focus,
       select:focus {
         outline: none;
         border-color: #e5e7eb;
         box-shadow: 0 0 0 1px #e5e7eb;
       }
-
       .volume-bar {
-  width: 4px;
-  height: 30px; /* Added fixed height */
-  background-color: #d1d5db; /* Gray-300 */
-}
-.volume-bar.active {
-  background-color: #3b82f6; /* Blue-500 */
-}
-      
+        width: 4px;
+        height: 30px;
+        background-color: #d1d5db;
+      }
+      .volume-bar.active {
+        background-color: #3b82f6;
+      }
     </style>
   </head>
   <body class="bg-[#F6F6F6]">
-    
     <div class="flex min-h-screen">
       <!-- Sidebar -->
       <aside class="w-16 bg-[#210803] text-white flex flex-col items-center p-4">
@@ -75,155 +63,105 @@
           <img src="{{ url_for('static', filename='images/history.png') }}" alt="History Icon" class="w-8 h-8 transform translate-x-2">
           <span class="text-sm mt-2 block font-bold">History</span>
         </a>
-      
         <!-- Analysis Icon -->
         <a href="/analysis" class="mb-4 hover:text-gray-400 text-2xl text-center" title="View Analysis">
           <img src="{{ url_for('static', filename='images/graph.png') }}" alt="Analysis Icon" class="w-8 h-8 transform translate-x-2">
           <span class="text-sm mt-2 block font-bold">Analysis</span>
         </a>
       </aside>
-      
-      
-    
-  
       <!-- Main Container -->
-      <div class="flex-1 ">
+      <div class="flex-1">
         <div class="max-w-7xl mx-auto px-4 py-6 grid grid-cols-4 gap-6">
+          <!-- Survey Prompt Section -->
           <div class="bg-white p-6 rounded-lg shadow-sm space-y-6 h-full">
-            <!-- Survey Prompt Section -->
-            <div>
-              <h2 class="text-2xl font-semibold text-gray-700 mb-4">
-                Create a Survey Prompt
-              </h2>
-  
-              <!-- Prompt Input -->
-              <div class="mb-4">
-                <label class="block text-sm text-gray-600 mb-1">Enter Prompt:</label>
-                <textarea
-                  id="survey-prompt"
-                  rows="4"
-                  placeholder="Enter your survey prompt here..."
-                  class="w-full border  text-sm border-gray-300 rounded-xl px-3 py-2"
-                ></textarea>
+            <h2 class="text-2xl font-semibold text-gray-700 mb-4">Create a Survey Prompt</h2>
+            <!-- Prompt Input -->
+            <div class="mb-4">
+              <label class="block text-sm text-gray-600 mb-1">Enter Prompt:</label>
+              <textarea id="survey-prompt" rows="4" placeholder="Enter your survey prompt here..." class="w-full text-sm border border-gray-300 rounded-xl px-3 py-2"></textarea>
+            </div>
+            <!-- Dropdowns -->
+            <div class="grid grid-cols-2 gap-4 mb-4">
+              <div>
+                <label class="block text-sm text-gray-600 mb-1">Accent:</label>
+                <select id="accent" class="w-full text-sm border border-gray-300 rounded-xl px-3 py-2">
+                  <option value="indian_lady">Indian Lady</option>
+                  <option value="indian_man">Indian Man</option>
+                  <option value="british_lady">British Female</option>
+                  <option value="british_man">British Man</option>
+                  <option value="anime_girl">Anime Girl</option>
+                  <option value="middle_east_women">Middle Eastern Women</option>
+                  <option value="australian_women">Australian Women</option>
+                </select>
               </div>
-  
-              <!-- Dropdowns: Accent, Survey Length, Tone, Extras -->
-              <div class="grid grid-cols-2 gap-4 mb-4">
-                <div>
-                  <label class="block text-sm text-gray-600 mb-1">Accent:</label>
-                  <select
-                    id="accent"
-                    class="w-full border text-sm border-gray-300 rounded-xl px-3 py-2"
-                  >
-                    <option value="indian_lady">Indian Lady</option>
-                    <option value="indian_man">Indian Man</option>
-                    <option value="british_lady">British Female</option>
-                    <option value="british_man">British Man</option>
-                    <option value="anime_girl">Anime Girl</option>
-                    <option value="middle_east_women">Middle Eastern Women</option>
-                    <option value="australian_women">Australian Women</option>
-                  </select>
-                </div>
-                <div>
-                  <label class="block text-sm text-gray-600 mb-1">Survey Length:</label>
-                  <select
-                    id="survey-length"
-                    class="w-full border text-sm border-gray-300 rounded-xl px-3 py-2"
-                  >
-                    <option value="short">Short (2 mins)</option>
-                    <option value="medium">Medium (3-5 mins)</option>
-                    <option value="long">Long (5+ mins)</option>
-                  </select>
-                </div>
+              <div>
+                <label class="block text-sm text-gray-600 mb-1">Survey Length:</label>
+                <select id="survey-length" class="w-full text-sm border border-gray-300 rounded-xl px-3 py-2">
+                  <option value="short">Short (2 mins)</option>
+                  <option value="medium">Medium (3-5 mins)</option>
+                  <option value="long">Long (5+ mins)</option>
+                </select>
               </div>
-  
-              <div class="grid grid-cols-2 gap-4 mb-4">
-                <div>
-                  <label class="block text-sm text-gray-600 mb-1">Tone:</label>
-                  <select
-                    id="tone"
-                    class="w-full border text-sm border-gray-300 rounded-xl px-3 py-2"
-                  >
-                    <option value="neutral">Neutral</option>
-                    <option value="friendly">Friendly</option>
-                    <option value="professional">Professional</option>
-                  </select>
-                </div>
-                <div>
-                  <label class="block text-sm text-gray-600 mb-1">Extras:</label>
-                  <select
-                    id="extras"
-                    class="w-full border text-sm border-gray-300 rounded-xl px-3 py-2"
-                  >
-                    <option value="none">None</option>
-                    <option value="anger">Anger</option>
-                    <option value="positivity">Positivity</option>
-                    <option value="surprise">Surprise</option>
-                    <option value="sadness">Sadness</option>
-                    <option value="curiosity">Curiosity</option>
-                  </select>
-                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4 mb-4">
+              <div>
+                <label class="block text-sm text-gray-600 mb-1">Tone:</label>
+                <select id="tone" class="w-full text-sm border border-gray-300 rounded-xl px-3 py-2">
+                  <option value="neutral">Neutral</option>
+                  <option value="friendly">Friendly</option>
+                  <option value="professional">Professional</option>
+                </select>
               </div>
-  
-              <button
-                id="survey-submit-btn"
-                class="w-full bg-[#FF714C] hover:bg-[#f2613c] text-white py-2 px-4 rounded-full  transition-colors font-bold"
-              >
+              <div>
+                <label class="block text-sm text-gray-600 mb-1">Extras:</label>
+                <select id="extras" class="w-full text-sm border border-gray-300 rounded-xl px-3 py-2">
+                  <option value="none">None</option>
+                  <option value="anger">Anger</option>
+                  <option value="positivity">Positivity</option>
+                  <option value="surprise">Surprise</option>
+                  <option value="sadness">Sadness</option>
+                  <option value="curiosity">Curiosity</option>
+                </select>
+              </div>
+            </div>
+            <!-- Survey Submission Button -->
+            <div class="flex space-x-4 mt-4">
+              <button id="survey-submit-btn" class="bg-[#FF714C] hover:bg-[#f2613c] text-white py-2 px-4 rounded-full transition-colors font-bold">
                 Submit Survey Prompt
               </button>
-              <!-- <p id="survey-status" class="text-sm text-gray-600"></p> -->
-  
-              <!-- Integrated PDF Upload -->
-              <div id="pdf-upload-section" class="mt-6 border-t pt-6">
-                <h3 class="text-xl font-semibold text-gray-700">Or Upload PDF</h3>
-                <div class="flex items-center gap-4">
-                  <input
-                    type="file"
-                    id="pdf-file"
-                    accept="application/pdf"
-                    class="flex-1 px-3 py-2 text-sm text-gray-700"
-                  />
-                  <button
-                    id="upload-btn"
-                    class="bg-[#FF714C] text-white py-2 px-4 rounded-full hover:bg-[#f2613c transition-colors font-bold"
-                  >
-                    Extract
-                  </button>
-                </div>
-                <p id="upload-status" class="text-sm text-gray-600 mt-2"></p>
+            </div>
+            <!-- Integrated PDF Upload -->
+            <div id="pdf-upload-section" class="mt-6 border-t pt-6">
+              <h3 class="text-xl font-semibold text-gray-700">Or Upload PDF</h3>
+              <div class="flex items-center gap-4">
+                <input type="file" id="pdf-file" accept="application/pdf" class="flex-1 px-3 py-2 text-sm text-gray-700" />
+                <button id="upload-btn" class="bg-[#FF714C] text-white py-2 px-4 rounded-full hover:bg-[#f2613c] transition-colors font-bold">
+                  Extract
+                </button>
               </div>
+              <p id="upload-status" class="text-sm text-gray-600 mt-2"></p>
             </div>
           </div>
-  
-          <!-- Main Content Area -->
+          <!-- Main Content Area (Survey Response) -->
           <div class="col-span-3 h-screen flex flex-col p-6 pt-0">
-            <!-- Label + Textarea wrapper -->
             <div class="flex-1 flex flex-col">
-              <label
-                class="mb-2 text-sm font-medium text-gray-700"
-                for="survey-response"
-              >
+              <label class="mb-2 text-sm font-medium text-gray-700" for="survey-response">
                 Response:
               </label>
-              <textarea
-                id="survey-response"
-                class="w-full flex-1  text-sm border border-gray-300 rounded-md resize-none p-2"
-                placeholder="Response will appear here..."
-              ></textarea>
+              <textarea id="survey-response" class="w-full flex-1 text-sm border border-gray-300 rounded-md resize-none p-2" placeholder="Response will appear here..."></textarea>
             </div>
-  
-            <!-- Button at the bottom -->
-            <button
-              id="send-voice-btn"
-              class="bg-[#FF714C] hover:bg-[#f2613c] text-white py-2 px-4 rounded-md  transition-colors mt-4 self-end font-semibold"
-            >
-              Send to Voice AI
-            </button>
+            <!-- Buttons for Voice AI and Chat with Survey -->
+            <div class="flex space-x-4 mt-4 self-end">
+              <button id="send-voice-btn" class="bg-[#FF714C] hover:bg-[#f2613c] text-white py-2 px-4 rounded-md transition-colors font-semibold">
+                Send to Voice AI
+              </button>
+              <button id="chat-survey-btn" class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-md transition-colors font-semibold hidden">
+                Chat with Survey
+              </button>
+            </div>
           </div>
         </div>
-  <!-- Divider between survey response and call section
-  <hr class="my-8 border-t border-gray-300" /> -->
-  
+        <!-- Call Section -->
         <div id="call-section" class="w-full max-w-3xl mx-auto my-8 p-6 bg-white rounded-lg shadow-lg">
           <h2 class="text-xl font-semibold text-gray-700 mb-4">Call in Progress</h2>
           <p id="assistant-status" class="text-sm text-gray-600 mb-4">Assistant Status: Not Speaking</p>
@@ -233,20 +171,35 @@
           </button>
           <div id="call-summary" class="mt-4 text-sm text-gray-600"></div>
         </div>
+        <!-- Chat Container (hidden by default) -->
+        <div id="chat-container" class="hidden max-w-3xl mx-auto my-8 p-6 bg-white rounded-lg shadow-lg">
+          <h2 class="text-xl font-semibold text-gray-700 mb-4">Chat Interface</h2>
+          <div id="chat-messages" class="mb-4 overflow-auto max-h-64">
+            <!-- Initial message will be inserted here -->
+          </div>
+          <div class="flex space-x-4">
+            <input type="text" id="chat-input" class="flex-1 p-2 border rounded-md" placeholder="Type your question..." />
+            <button id="chat-send-btn" class="bg-green-500 hover:bg-green-600 text-white font-semibold rounded-md px-4 py-2 transition-colors">
+              Send
+            </button>
+          </div>
+          <div class="mt-4 text-right">
+            <a href="#" id="back-to-voice" class="text-blue-500 hover:underline">Back to Voice AI</a>
+          </div>
+        </div>
       </div>
     </div>
 
     <!-- VAPI SDK Script -->
     <script>
       var vapiInstance = null;
-      const assistant = "5e7d3a07-f7d5-4975-8bd8-2c32ae092f01"; // Your assistant ID
-      const apiKey = "c2e5d26a-941f-42c7-8bf4-02ebc2844242"; // Your API key
+      const assistant = "5e7d3a07-f7d5-4975-8bd8-2c32ae092f01";
+      const apiKey = "c2e5d26a-941f-42c7-8bf4-02ebc2844242";
 
       (function (d, t) {
         var g = document.createElement(t),
           s = d.getElementsByTagName(t)[0];
-        g.src =
-          "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
+        g.src = "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
         g.defer = true;
         g.async = true;
         s.parentNode.insertBefore(g, s);
@@ -257,14 +210,11 @@
             assistant: assistant,
           });
 
-          // Register event listeners
           vapiInstance.on("speech-start", () => {
-            document.getElementById("assistant-status").textContent =
-              "Assistant Status: Speaking";
+            document.getElementById("assistant-status").textContent = "Assistant Status: Speaking";
           });
           vapiInstance.on("speech-end", () => {
-            document.getElementById("assistant-status").textContent =
-              "Assistant Status: Not Speaking";
+            document.getElementById("assistant-status").textContent = "Assistant Status: Not Speaking";
           });
           vapiInstance.on("volume-level", (level) => {
             const volumeEl = document.getElementById("volume-level");
@@ -272,87 +222,55 @@
             const numBars = 10;
             for (let i = 0; i < numBars; i++) {
               let bar = document.createElement("div");
-              bar.className =
-                "volume-bar" + (i / numBars < level ? " active" : "");
+              bar.className = "volume-bar" + (i / numBars < level ? " active" : "");
               volumeEl.appendChild(bar);
             }
           });
         };
       })(document, "script");
-    </script>
 
-    <script>
       let globalCallId = null;
+      // Use separate variables for history record and chat record IDs.
+      window.latestRecordId = null;
+      window.latestChatRecordId = null;
+      window.latestRawTranscript = null;
 
       // Start the assistant call using the Web SDK
       function startWebCall(extractedText) {
         const accentValue = document.getElementById("accent").value;
         const extrasValue = document.getElementById("extras").value;
         const toneValue = document.getElementById("tone").value;
-
-        // Voice config mapping
         let voiceConfig = {};
         switch (accentValue) {
           case "indian_lady":
-            voiceConfig = {
-              provider: "cartesia",
-              voiceId: "3b554273-4299-48b9-9aaf-eefd438e3941",
-            };
+            voiceConfig = { provider: "cartesia", voiceId: "3b554273-4299-48b9-9aaf-eefd438e3941" };
             break;
           case "indian_man":
-            voiceConfig = {
-              provider: "cartesia",
-              voiceId: "638efaaa-4d0c-442e-b701-3fae16aad012",
-            };
+            voiceConfig = { provider: "cartesia", voiceId: "638efaaa-4d0c-442e-b701-3fae16aad012" };
             break;
           case "british_lady":
-            voiceConfig = {
-              provider: "cartesia",
-              voiceId: "79a125e8-cd45-4c13-8a67-188112f4dd22",
-            };
+            voiceConfig = { provider: "cartesia", voiceId: "79a125e8-cd45-4c13-8a67-188112f4dd22" };
             break;
           case "anime_girl":
-            voiceConfig = {
-              provider: "cartesia",
-              voiceId: "1001d611-b1a8-46bd-a5ca-551b23505334",
-            };
+            voiceConfig = { provider: "cartesia", voiceId: "1001d611-b1a8-46bd-a5ca-551b23505334" };
             break;
           case "british_man":
-            voiceConfig = {
-              provider: "cartesia",
-              voiceId: "63ff761f-c1e8-414b-b969-d1833d1c870c",
-            };
+            voiceConfig = { provider: "cartesia", voiceId: "63ff761f-c1e8-414b-b969-d1833d1c870c" };
             break;
           case "middle_east_women":
-            voiceConfig = {
-              provider: "cartesia",
-              voiceId: "daf747c6-6bc2-4083-bd59-aa94dce23f5d",
-            };
+            voiceConfig = { provider: "cartesia", voiceId: "daf747c6-6bc2-4083-bd59-aa94dce23f5d" };
             break;
           case "australian_women":
-            voiceConfig = {
-              provider: "cartesia",
-              voiceId: "043cfc81-d69f-4bee-ae1e-7862cb358650",
-            };
+            voiceConfig = { provider: "cartesia", voiceId: "043cfc81-d69f-4bee-ae1e-7862cb358650" };
             break;
           default:
-            voiceConfig = {
-              provider: "cartesia",
-              voiceId: "3b554273-4299-48b9-9aaf-eefd438e3941",
-            };
+            voiceConfig = { provider: "cartesia", voiceId: "3b554273-4299-48b9-9aaf-eefd438e3941" };
             break;
         }
-
-        // Add emotion if selected
         if (extrasValue !== "none") {
-          voiceConfig.experimentalControls = {
-            emotion: [`${extrasValue}:highest`],
-          };
+          voiceConfig.experimentalControls = { emotion: [`${extrasValue}:highest`] };
         }
-
         console.log(toneValue);
-
-        // Assistant overrides
         const assistantOverrides = {
           firstMessageMode: "assistant-speaks-first",
           model: {
@@ -363,24 +281,19 @@
                 role: "system",
                 content: `Keep the tone ${toneValue} and non-intrusive. Ensure that the conversation flows naturally and dynamically rather than presenting questions as a rigid list. The AI should integrate pre-configured questions fluidly—adapting to context. Encourage honest responses without pressure.
 
-
-
 Flow of Questions:
 ${extractedText}
-make the questions strcitly in a a long conversational manner rather than just sayign what the actual question you can change it appear more conversational, you can also expland the question if the given question is too small, think of it as talking to a friend or co-worker, you dont ask directly a question but rather in a conversational manner. When asking questions, focus on guiding the user toward thoughtful answers. If the questions contains option, strcitly dont tell the user the options unless he he or she asks for it, Only and If the user asks for suggestions or clarification, provide options naturally within the flow of the conversation — avoid reading out the options directly unless prompted. Stay on Topic:
-
-The conversation must remain strictly within the scope of the survey.
-Politely refuse to engage with or answer any question or comment that is not related to the survey topic. If the user tries to introduce unrelated topics, respond with:
+make the questions strictly in a long conversational manner rather than just saying what the actual question is. You can change it to appear more conversational, even expand the question if it's too short, as if talking to a friend or co-worker. Avoid directly asking the question; guide the user towards thoughtful answers. If options are present, do not list them unless asked for.
+Stay on Topic: The conversation must remain strictly within the scope of the survey.
+If unrelated topics are introduced, respond with:
 "I'm here to assist with the survey. Let's stay focused on the questions."
-If the user persists, respond with:
+If persistence occurs, respond with:
 "I’m sorry, but I can only respond to questions related to the survey."
-If the answer is not satisfactory, there should be a follow up question— ex. What did you find challenging about that
+If the answer is not satisfactory, include a follow-up like: "What did you find challenging about that?"
 Open Feedback:
 "Is there anything else you'd like to add or clarify?"
-
 Closing:
 "Thank you! We will carefully review your input and make improvements. If you think of anything else, feel free to share!"`
-,
               },
             ],
           },
@@ -388,9 +301,7 @@ Closing:
             'You will be given a transcript of a call. Extract key information, including the user’s tone, and structure it into a concise JSON-like format. Keep it short:\n\n{\n  "summary": "",\n  "ratings": {\n    "TopicA": { "rating": 5, "comment": "" },\n    "TopicB": { "rating": 2, "comment": "" }\n  },\n  "overall": "",\n  "next_steps": ""\n}',
           voice: voiceConfig,
         };
-
-        return vapiInstance
-          .start(assistant, assistantOverrides)
+        return vapiInstance.start(assistant, assistantOverrides)
           .then((response) => {
             console.log("VAPI Web call started:", response);
             globalCallId = response.id;
@@ -401,7 +312,6 @@ Closing:
           });
       }
 
-      // Stop the call
       function stopWebCall() {
         vapiInstance.stop();
         setTimeout(() => {
@@ -409,7 +319,6 @@ Closing:
         }, 1000);
       }
 
-      // Poll for call details (summary) from the backend
       function pollCallDetails(callId, interval = 3000) {
         fetch("/call-details?call_id=" + callId, {
           method: "GET",
@@ -420,11 +329,7 @@ Closing:
         })
           .then((response) => {
             if (!response.ok) {
-              console.error(
-                "Error fetching call details:",
-                response.status,
-                response.statusText
-              );
+              console.error("Error fetching call details:", response.status, response.statusText);
               if (response.status === 403) {
                 document.getElementById("call-summary").innerHTML =
                   "<h3>Error:</h3><p>Access forbidden. Check credentials.</p>";
@@ -440,9 +345,12 @@ Closing:
             }
             if (data.summary) {
               document.getElementById("call-summary").innerHTML =
-                "<h3 class='font-semibold mb-2'>Call Summary</h3><p>" +
-                data.summary +
-                "</p>";
+                "<h3 class='font-semibold mb-2'>Call Summary</h3><p>" + data.summary + "</p>";
+              // Once summary is available, show the Chat with Survey button
+              let chatBtn = document.getElementById("chat-survey-btn");
+              if (chatBtn) {
+                chatBtn.classList.remove("hidden");
+              }
             } else {
               console.log("Summary not yet available; retrying in", interval, "ms");
               setTimeout(() => pollCallDetails(callId, interval), interval);
@@ -458,22 +366,16 @@ Closing:
         const fileInput = document.getElementById("pdf-file");
         const file = fileInput.files[0];
         const statusEl = document.getElementById("upload-status");
-
         if (!file) {
           alert("Please select a PDF file.");
           return;
         }
-
         const formData = new FormData();
         formData.append("file", file);
-
         statusEl.textContent = "Uploading and extracting PDF...";
-
         fetch("/extract", {
           method: "POST",
-          headers: {
-            Authorization: "Bearer " + apiKey,
-          },
+          headers: { Authorization: "Bearer " + apiKey },
           body: formData,
         })
           .then((response) => response.json())
@@ -484,13 +386,8 @@ Closing:
             }
             statusEl.textContent = "Extraction complete.";
             const extractedText = data.text;
-
-            // Hide PDF upload section
             document.getElementById("pdf-upload-section").style.display = "none";
-            // Show call section
             document.getElementById("call-section").style.display = "block";
-
-            // Start call on backend
             fetch("/start-call", {
               method: "POST",
               headers: {
@@ -508,8 +405,6 @@ Closing:
                 const callId = callData.call_id;
                 pollCallDetails(callId);
               });
-
-            // Start the web call in the browser
             startWebCall(extractedText);
           })
           .catch((err) => {
@@ -517,153 +412,159 @@ Closing:
           });
       });
 
-    // Global variable to store the latest record id returned from /groq-chat
-window.latestRecordId = null;
-
-document.getElementById("survey-submit-btn").addEventListener("click", function () {
-  const promptText = document.getElementById("survey-prompt").value;
-  const surveyLength = document.getElementById("survey-length").value;
-  const responseBox = document.getElementById("survey-response");
-
-  if (!promptText) {
-    alert("Please enter a survey prompt.");
-    return;
-  }
-  responseBox.value = "Waiting for response...";
-
-  fetch("/groq-chat", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ prompt: promptText, survey_length: surveyLength })
-  })
-    .then(response => response.json())
-    .then(data => {
-      if (data.error) {
-        responseBox.value = "Error: " + data.error;
-      } else {
-        responseBox.value = data.response;
-        // Store the record id globally for later use in chat.
-        window.latestRecordId = data.record_id;
-      }
-    })
-    .catch(err => {
-      responseBox.value = "Error: " + err;
-    });
-});
-
-function pollCallDetails(callId, interval = 3000) {
-  fetch("/call-details?call_id=" + callId, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: "Bearer " + apiKey,
-    },
-  })
-    .then(response => {
-      if (!response.ok) {
-        console.error("Error fetching call details:", response.status, response.statusText);
-        if (response.status === 403) {
-          document.getElementById("call-summary").innerHTML =
-            "<h3>Error:</h3><p>Access forbidden. Check credentials.</p>";
+      // Survey Prompt Submission
+      document.getElementById("survey-submit-btn").addEventListener("click", function () {
+        const promptText = document.getElementById("survey-prompt").value;
+        const surveyLength = document.getElementById("survey-length").value;
+        const responseBox = document.getElementById("survey-response");
+        if (!promptText) {
+          alert("Please enter a survey prompt.");
+          return;
         }
-        throw new Error("HTTP error " + response.status);
-      }
-      return response.json();
-    })
-    .then(data => {
-      if (data.error) {
-        console.error("Error in call details response:", data.error);
-        return;
-      }
-      if (data.summary) {
-        document.getElementById("call-summary").innerHTML =
-          "<h3 class='font-semibold mb-2'>Call Summary</h3><p>" + data.summary + "</p>";
-        // Once summary is available, create or show the chat button.
-        let chatBtn = document.getElementById("chat-btn");
-        if (!chatBtn) {
-          chatBtn = document.createElement("button");
-          chatBtn.id = "chat-btn";
-          chatBtn.className = "bg-green-500 hover:bg-green-600 text-white font-semibold rounded-md px-4 py-2 transition-colors mt-4 self-end";
-          chatBtn.textContent = "Chat with User Response";
-          // Append the chat button to the call-section container.
-          document.getElementById("call-section").appendChild(chatBtn);
-          // Set click handler: redirect to /chat with the record id.
-          chatBtn.onclick = function () {
-            if (window.latestRecordId) {
-              window.location.href = "/chat?record_id=" + window.latestRecordId;
+        responseBox.value = "Waiting for response...";
+        fetch("/groq-chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ prompt: promptText, survey_length: surveyLength }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.error) {
+              responseBox.value = "Error: " + data.error;
             } else {
-              alert("Record ID not available yet.");
+              responseBox.value = data.response;
+              // Store the history record id and also create a separate chat record id.
+              window.latestRecordId = data.record_id;
+              window.latestChatRecordId = "chat-" + data.record_id; // new chat record id
+              // Show Chat with Survey button if call summary is available.
+              let chatBtn = document.getElementById("chat-survey-btn");
+              if (chatBtn) {
+                chatBtn.classList.remove("hidden");
+              }
             }
-          };
-        }
-        chatBtn.classList.remove("hidden");
-      } else {
-        console.log("Summary not yet available; retrying in", interval, "ms");
-        setTimeout(() => pollCallDetails(callId, interval), interval);
-      }
-    })
-    .catch(err => {
-      console.error("Error polling call details:", err);
-    });
-}
+          })
+          .catch((err) => {
+            responseBox.value = "Error: " + err;
+          });
+      });
 
       // Send Survey Response to Voice AI
-      document
-        .getElementById("send-voice-btn")
-        .addEventListener("click", function () {
-          const responseText = document.getElementById("survey-response").value;
-          // const surveyStatusEl = document.getElementById("survey-status");
-
-          if (!responseText) {
-            alert("No response text available to send.");
-            return;
-          }
-
-          // Start the call on backend
-          fetch("/start-call", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: "Bearer " + apiKey,
-            },
-            body: JSON.stringify({ text: responseText }),
-          })
-            .then((response) => response.json())
-            .then((callData) => {
-              if (callData.error) {
-                // surveyStatusEl.textContent =
-                //   "Call start error: " + callData.error;
-                return;
-              }
-              const callId = callData.call_id;
-              pollCallDetails(callId);
-            });
-
-          // Start the web call in the browser
-          startWebCall(responseText);
-          setTimeout(() => {
-    document.getElementById("call-section").scrollIntoView({ behavior: "smooth" });
-  }, 300);
-        });
+      document.getElementById("send-voice-btn").addEventListener("click", function () {
+        const responseText = document.getElementById("survey-response").value;
+        if (!responseText) {
+          alert("No response text available to send.");
+          return;
+        }
+        // Hide chat container if visible.
+        document.getElementById("chat-container").classList.add("hidden");
+        // Ensure the Voice AI container is visible.
+        document.getElementById("call-section").classList.remove("hidden");
+        fetch("/start-call", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + apiKey,
+          },
+          body: JSON.stringify({ text: responseText }),
+        })
+          .then((response) => response.json())
+          .then((callData) => {
+            if (callData.error) {
+              return;
+            }
+            const callId = callData.call_id;
+            pollCallDetails(callId);
+          });
+        startWebCall(responseText);
+        setTimeout(() => {
+          document.getElementById("call-section").scrollIntoView({ behavior: "smooth" });
+        }, 300);
+      });
 
       // Stop call
       document.getElementById("stop-btn").addEventListener("click", function () {
         stopWebCall();
       });
+
+      // Chat with Survey button functionality: Hide call section and show chat container.
+      document.getElementById("chat-survey-btn").addEventListener("click", function () {
+        document.getElementById("call-section").classList.add("hidden");
+        document.getElementById("chat-container").classList.remove("hidden");
+        const chatMessages = document.getElementById("chat-messages");
+        // Start with an initial greeting and include the chat record id in the context if needed.
+        chatMessages.innerHTML = "<p class='text-green-600 font-semibold'>Bot: Hi, let's start the survey. Are you ready?</p>";
+      });
+
+      // Back to Voice AI link in chat container
+      document.getElementById("back-to-voice").addEventListener("click", function (e) {
+        e.preventDefault();
+        document.getElementById("chat-container").classList.add("hidden");
+        document.getElementById("call-section").classList.remove("hidden");
+      });
+
+      // Chat send functionality for the Chat with Survey interface.
       document.addEventListener("DOMContentLoaded", function () {
-    const params = new URLSearchParams(window.location.search);
-    const prompt = params.get("prompt");
-    const promptSummary = params.get("prompt_summary");
-    
-    if (prompt) {
-      document.getElementById("survey-prompt").value = prompt;
-    }
-    
-    // Optionally, if you want to also pre-fill the response box with prompt_summary:
-    if (promptSummary) {
-      document.getElementById("survey-response").value = promptSummary;
-    }
-  });
+        document.getElementById("chat-send-btn").addEventListener("click", function () {
+          const chatInput = document.getElementById("chat-input");
+          const question = chatInput.value.trim();
+          if (!question) return;
+          const chatMessages = document.getElementById("chat-messages");
+
+          // Append the user's message.
+          const userMsg = document.createElement("div");
+          userMsg.textContent = "You: " + question;
+          userMsg.className = "text-blue-600 font-semibold my-1";
+          chatMessages.appendChild(userMsg);
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+          const surveyResponseText = document.getElementById("survey-response").value;
+          // Use the latest raw transcript as context.
+          const rawTranscript = window.latestRawTranscript || "";
+          fetch("/chat_with_survey", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              question: question,
+              survey_response: surveyResponseText,
+              record_id: window.latestChatRecordId
+            })
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              const botMsg = document.createElement("div");
+              if (data.error) {
+                botMsg.textContent = "Error: " + data.error;
+                botMsg.className = "text-red-600 font-semibold my-1";
+              } else {
+                botMsg.textContent = "Bot: " + data.response;
+                botMsg.className = "text-green-600 font-semibold my-1";
+                // Optionally update the latest raw transcript with the new context.
+                window.latestRawTranscript += "\n" + data.response;
+              }
+              chatMessages.appendChild(botMsg);
+              chatMessages.scrollTop = chatMessages.scrollHeight;
+            })
+            .catch((error) => {
+              const errorEl = document.createElement("div");
+              errorEl.textContent = "Error: " + error;
+              errorEl.className = "text-red-600 font-semibold my-1";
+              chatMessages.appendChild(errorEl);
+            });
+          chatInput.value = "";
+        });
+      });
+
+      // Prefill fields if URL has parameters.
+      document.addEventListener("DOMContentLoaded", function () {
+        const params = new URLSearchParams(window.location.search);
+        const prompt = params.get("prompt");
+        const promptSummary = params.get("prompt_summary");
+        if (prompt) {
+          document.getElementById("survey-prompt").value = prompt;
+        }
+        if (promptSummary) {
+          document.getElementById("survey-response").value = promptSummary;
+        }
+      });
     </script>
   </body>
 </html>

@@ -196,5 +196,183 @@
         ]
       }
     }
+  },
+  {
+    "id": 5,
+    "prompt": "hello",
+    "prompt_summary": "Here's a short survey that should take around 2 minutes to complete:\n\n**Introduction:**\nThank you for taking the time to participate in this survey. Your responses will help us understand your preferences and opinions on various topics. Please answer the questions honestly, and all responses will be kept anonymous.\n\n**Section 1: Demographics (30 seconds)**\n\n1. What is your age range?\n   a) 18-24\n   b) 25-34\n   c) 35-44\n   d) 45-54\n   e) 55 or older\n\n2. What is your occupation?\n   a) Student\n   b) Working professional\n   c) Retired\n   d) Other (please specify)\n\n**Section 2: Technology and Social Media (45 seconds)**\n\n1. How often do you use social media?\n   a) Daily\n   b) Several times a week\n   c) About once a week\n   d) Less than once a week\n\n2. Which of the following social media platforms do you use most frequently? (Select one)\n   a) Facebook\n   b) Instagram\n   c) Twitter\n   d) TikTok\n   e) Other (please specify)\n\n**Section 3: Interests and Preferences (45 seconds)**\n\n1. What type of music do you enjoy listening to? (Select one or more)\n   a) Pop\n   b) Rock\n   c) Hip-Hop\n   d) Classical\n   e) Other (please specify)\n\n2. How important is sustainability and environmentalism to you?\n   a) Very important\n   b) Somewhat important\n   c) Not very important\n   d) Not at all important\n\n**Conclusion:**\nThank you for taking the time to complete this survey. Your input is valuable to us, and we appreciate your participation. If you have any additional comments or suggestions, please feel free to include them below.\n\n(Note: This survey is for sample purposes only and is not intended to be a scientifically valid or comprehensive survey.)",
+    "call_summary": "",
+    "created_at": "2025-03-17T16:09:34.178839"
+  },
+  {
+    "id": 6,
+    "prompt": "hello",
+    "prompt_summary": "Hello! I'd be happy to help you with a short survey. Here's a sample survey that should take around 2 minutes to complete:\n\n**Introduction:**\nThank you for participating in this survey. Your responses will help us understand your opinions and preferences. Please answer the questions honestly, and all responses will be kept confidential.\n\n**Section 1: Demographics**\n\n1. What is your age?\n   a) 18-24\n   b) 25-34\n   c) 35-44\n   d) 45-54\n   e) 55 or older\n\n2. What is your gender?\n   a) Male\n   b) Female\n   c) Non-binary\n   d) Prefer not to say\n\n**Section 2: Interests**\n\n3. What do you like to do in your free time? (Select up to 2)\n   a) Reading\n   b) Watching movies/TV shows\n   c) Listening to music\n   d) Playing sports/exercising\n   e) Other (please specify)\n\n4. How often do you use social media?\n   a) Daily\n   b) Several times a week\n   c) About once a week\n   d) Less than once a week\n\n**Section 3: Preferences**\n\n5. What type of music do you enjoy listening to? (Select up to 2)\n   a) Pop\n   b) Rock\n   c) Hip-hop/Rap\n   d) Classical\n   e) Other (please specify)\n\n6. How important is sustainability to you when making purchasing decisions?\n   a) Very important\n   b) Somewhat important\n   c) Not very important\n   d) Not at all important\n\n**Conclusion:**\nThank you for taking the time to complete this survey. Your responses are greatly appreciated, and will help us better understand your opinions and preferences.\n\nThis survey should take around 2 minutes to complete, and it covers basic demographics, interests, and preferences. Feel free to adjust or add questions to suit your specific needs.",
+    "call_summary": "{\n  \"summary\": \"Brief survey call with a 19-year-old male who enjoys playing sports in his spare time. The user gave minimal responses throughout the conversation.\",\n  \"ratings\": {\n    \"Engagement\": { \"rating\": 2, \"comment\": \"User provided very short answers, showing minimal engagement\" },\n    \"Information Sharing\": { \"rating\": 3, \"comment\": \"Shared basic demographic info but with limited elaboration\" }\n  },\n  \"overall\": \"The call was brief with the user providing only essential information. Their tone appeared neutral to slightly disinterested.\",\n  \"next_steps\": \"Consider more engaging questions or a different format that might encourage more detailed responses from this demographic.\"\n}",
+    "created_at": "2025-03-17T16:30:03.851762",
+    "structured_data": {
+      "overall": "Brief demographic survey with a 19-year-old male who enjoys sports. User provided minimal responses with little elaboration.",
+      "ratings": {
+        "enps": {
+          "rating": 3,
+          "comment": "No indication of recommendation likelihood"
+        },
+        "happiness": {
+          "rating": 3,
+          "comment": "Neutral responses with no indication of happiness level"
+        },
+        "communication": {
+          "rating": 2,
+          "comment": "Very brief, minimal responses throughout the conversation"
+        },
+        "mental_health": {
+          "rating": 3,
+          "comment": "No clear indicators of mental health status in the brief exchange"
+        },
+        "job_satisfaction": {
+          "rating": 3,
+          "comment": "No job-related information provided"
+        }
+      },
+      "summary": "19-year-old male who enjoys playing sports in his spare time. The conversation was brief with minimal elaboration from the user.",
+      "next_steps": "Follow up with more engaging questions to encourage detailed responses. Consider focusing on sports interests to build rapport.",
+      "raw_transcript": "AI: 8. How are you? I want to take some some of time for a short survey.\nUser: Go ahead.\nAI: Great. Let's start with a couple of questions about demographics. It's always helpful to have a bit of background. Could you share the age group you belong to? Knowing this helps us understand perspectives from different life stages.\nUser: I'm 19 years old.\nAI: Thanks for sharing that.\nUser: I'm 19.\nAI: Got it? Thank you. So you're in that exciting and exploratory phase of life. Now you don't mind, could you let me know how you identify in terms of gender? This just helps us ensure we are capturing perspectives from everyone.\nUser: I'm a male.\nAI: Thank you for sharing. Let's shift gears a bit and talk about what you enjoy doing in your spare time. I'm curious. What are a couple of activities or hobbies that you find yourself drawn to when you have some free moments?\nUser: Playing sports.\nAI: That sounds like a great way to stay active and healthy.",
+      "transcript_summary": {
+        "concerns": [
+          "Minimal engagement in conversation",
+          "Short, non-descriptive answers"
+        ],
+        "feedback": [
+          "User was willing to participate but provided limited information"
+        ],
+        "highlights": [
+          "19-year-old male",
+          "Enjoys playing sports"
+        ]
+      }
+    }
+  },
+  {
+    "id": 7,
+    "prompt": "internal survey for table tennis team",
+    "prompt_summary": "Here's a sample internal survey for a table tennis team:\n\n**Table Tennis Team Survey**\n\nWe value your feedback and would like to hear your thoughts on our team's performance and dynamics. Please take 2 minutes to complete this survey.\n\n**Section 1: Team Performance**\n\n1. How would you rate the team's overall performance this season?\n   a) Excellent\n   b) Good\n   c) Fair\n   d) Needs Improvement\n\n2. What do you think are the team's strengths? (Check all that apply)\n   a) Communication and teamwork\n   b) Technical skills (e.g. serves, loops, smashes)\n   c) Physical conditioning and endurance\n   d) Strategic planning and game tactics\n   e) Other (please specify)\n\n3. What areas do you think the team needs to improve on? (Check all that apply)\n   a) Communication and teamwork\n   b) Technical skills (e.g. serves, loops, smashes)\n   c) Physical conditioning and endurance\n   d) Strategic planning and game tactics\n   e) Other (please specify)\n\n**Section 2: Team Dynamics**\n\n1. How would you rate the team's overall morale and camaraderie?\n   a) Excellent\n   b) Good\n   c) Fair\n   d) Needs Improvement\n\n2. How often do you feel supported by your teammates during matches and practices?\n   a) Always\n   b) Most of the time\n   c) Sometimes\n   d) Rarely\n\n3. Are there any suggestions you have for improving team bonding and camaraderie?\n   (Open-ended question for respondents to provide feedback)\n\n**Section 3: Practice and Training**\n\n1. How satisfied are you with the current practice schedule and format?\n   a) Very satisfied\n   b) Somewhat satisfied\n   c) Neutral\n   d) Somewhat dissatisfied\n   e) Very dissatisfied\n\n2. What changes would you like to see in our practice schedule or format? (Open-ended question for respondents to provide feedback)\n\n**Section 4: Additional Comments**\n\nIs there anything else you'd like to share about your experience on the table tennis team? (Open-ended question for respondents to provide feedback)\n\nThank you for taking the time to complete this survey! Your feedback is valuable to us.",
+    "call_summary": "",
+    "created_at": "2025-03-17T16:39:11.506183"
+  },
+  {
+    "id": 8,
+    "prompt": "internal survey for table tennis team",
+    "prompt_summary": "**Internal Survey for Table Tennis Team**\n\nWe value your opinions and would like to hear your thoughts on our team's performance, dynamics, and overall experience. Please take a few minutes to complete this survey. Your responses will be kept confidential and used to improve our team.\n\n**Section 1: Team Performance**\n\n1. How would you rate the team's overall performance this season?\n   (Scale: 1 - Poor, 2 - Fair, 3 - Good, 4 - Excellent, 5 - Outstanding)\n\n2. What do you think are the team's strengths and weaknesses? (Check all that apply)\n   a) Communication\n   b) Strategy\n   c) Skill level\n   d) Teamwork\n   e) Other (please specify) _______________________\n\n**Section 2: Team Dynamics**\n\n1. How would you describe the team's atmosphere and morale?\n   (Scale: 1 - Low, 2 - Neutral, 3 - High, 4 - Very High, 5 - Excellent)\n\n2. How often do you communicate with your teammates outside of practice and competition?\n   (Scale: 1 - Never, 2 - Rarely, 3 - Occasionally, 4 - Often, 5 - Almost always)\n\n**Section 3: Practice and Competition**\n\n1. How would you rate the quality of our practice sessions?\n   (Scale: 1 - Poor, 2 - Fair, 3 - Good, 4 - Excellent, 5 - Outstanding)\n\n2. What do you think is the most challenging aspect of our competition schedule?\n   (Check all that apply)\n   a) Frequency of matches\n   b) Strength of opponents\n   c) Travel requirements\n   d) Other (please specify) _______________________\n\n**Section 4: Feedback and Suggestions**\n\n1. What do you think the team can improve on in the upcoming season?\n   (Open-ended question for your feedback and suggestions)\n\n2. Are there any changes or initiatives you would like to see implemented to enhance your experience as a team member?\n   (Open-ended question for your feedback and suggestions)\n\n**Conclusion**\n\nThank you for taking the time to complete this survey. Your input is valuable to us, and we will use it to make informed decisions about our team's future. If you have any additional comments or suggestions, please feel free to include them below.\n\n(Open-ended question for any additional comments or suggestions)\n\n**Estimated completion time: 2 minutes**",
+    "call_summary": "",
+    "created_at": "2025-03-17T16:41:51.017709"
+  },
+  {
+    "id": 9,
+    "prompt": "internal survey for table tennis team",
+    "prompt_summary": "**Table Tennis Team Internal Survey**\n\n**Introduction:**\nThe purpose of this survey is to gather feedback from team members to improve our overall performance, communication, and team dynamics. Your input will help us identify areas of strength and weakness, and make informed decisions to enhance our team experience. Please answer the questions honestly, and all responses will be kept confidential.\n\n**Section 1: Team Experience (1 minute)**\n\n1. How would you rate your overall satisfaction with the team?\n   a) Very satisfied\n   b) Satisfied\n   c) Neutral\n   d) Dissatisfied\n   e) Very dissatisfied\n\n2. What do you enjoy most about being part of the table tennis team? (Open-ended text field)\n\n3. What do you think is the biggest challenge facing our team right now? (Open-ended text field)\n\n**Section 2: Communication and Support (30 seconds)**\n\n1. How would you rate the communication between team members and coaches?\n   a) Excellent\n   b) Good\n   c) Fair\n   d) Poor\n\n2. Do you feel supported by your teammates and coaches?\n   a) Strongly agree\n   b) Agree\n   c) Neutral\n   d) Disagree\n   e) Strongly disagree\n\n**Section 3: Improvement and Suggestions (30 seconds)**\n\n1. What changes or improvements would you like to see in the team's training sessions or practices? (Open-ended text field)\n\n2. Do you have any suggestions for team-building activities or social events? (Open-ended text field)\n\n**Conclusion:**\nThank you for taking the time to complete this survey. Your feedback is invaluable to us, and we will use it to make positive changes to the team. If you have any additional comments or suggestions, please feel free to include them below. (Open-ended text field)",
+    "call_summary": "",
+    "created_at": "2025-03-17T16:47:03.584388"
+  },
+  {
+    "id": 10,
+    "prompt": "internal survey for table tennis team with only options",
+    "prompt_summary": "**Table Tennis Team Internal Survey**\n\nPlease select the options that best fit your opinions. This survey is anonymous.\n\n**Section 1: Team Performance**\n\n1. How would you rate the team's overall performance this season?\n   a) Excellent\n   b) Good\n   c) Fair\n   d) Poor\n\n2. What do you think is the team's strongest aspect?\n   a) Technical skills\n   b) Physical conditioning\n   c) Strategy and tactics\n   d) Teamwork and communication\n\n**Section 2: Practice and Training**\n\n3. How often do you think the team should practice together?\n   a) Daily\n   b) 3 times a week\n   c) 2 times a week\n   d) 1 time a week\n\n4. What type of training do you think would be most beneficial for the team?\n   a) Technical drills\n   b) Physical conditioning exercises\n   c) Mental preparation and strategy sessions\n   d) Scrimmages and match practice\n\n**Section 3: Team Dynamics**\n\n5. How would you rate the team's morale and enthusiasm?\n   a) High\n   b) Average\n   c) Low\n   d) Very low\n\n6. How do you think the team can improve communication and teamwork?\n   a) More team-building activities\n   b) Regular team meetings\n   c) Improved feedback and constructive criticism\n   d) Social events outside of practice\n\n**Section 4: Goals and Expectations**\n\n7. What is your goal for the team's performance in the next tournament?\n   a) Win the championship\n   b) Reach the semifinals\n   c) Reach the quarterfinals\n   d) Improve our ranking\n\n8. How confident are you in the team's ability to achieve its goals?\n   a) Very confident\n   b) Somewhat confident\n   c) Not very confident\n   d) Not at all confident\n\nThank you for taking the time to complete this survey! Your feedback is valuable to the team.",
+    "call_summary": "",
+    "created_at": "2025-03-17T16:47:40.199966"
+  },
+  {
+    "id": 11,
+    "prompt": "internal feedback for table tennis",
+    "prompt_summary": "Here's a short survey to gather internal feedback for table tennis:\n\n**Table Tennis Internal Feedback Survey**\n\nWe value your opinion and would like to hear about your experiences with our table tennis program. Your feedback will help us improve and provide better services for our members. Please answer the questions honestly, and all responses will be kept confidential.\n\n**Section 1: Overall Experience**\n\n1. How often do you play table tennis with us?\n   a) Daily\n   b) Several times a week\n   c) About once a week\n   d) Less than once a week\n\n2. How would you rate your overall satisfaction with our table tennis program?\n   a) Very Satisfied\n   b) Satisfied\n   c) Neutral\n   d) Dissatisfied\n   e) Very Dissatisfied\n\n**Section 2: Facilities and Equipment**\n\n3. How would you rate the condition and quality of our table tennis facilities?\n   a) Excellent\n   b) Good\n   c) Fair\n   d) Poor\n\n4. Are our table tennis equipment (e.g., tables, balls, paddles) well-maintained and available when you need them?\n   a) Yes, always\n   b) Most of the time\n   c) Sometimes\n   d) Rarely\n\n**Section 3: Coaching and Support**\n\n5. Have you received coaching or training from our staff?\n   a) Yes\n   b) No\n\n6. If yes, how would you rate the quality of coaching or training you received?\n   a) Excellent\n   b) Good\n   c) Fair\n   d) Poor\n\n**Section 4: Suggestions and Improvements**\n\n7. What do you think we could do to improve your table tennis experience with us? (Open-ended question)\n\n8. Are there any new services or programs you would like to see us offer (e.g., leagues, tournaments, social events)?\n   a) Yes, please specify: _______________________\n   b) No\n\n**Conclusion**\n\nThank you for taking the time to provide your feedback! Your input is invaluable in helping us improve our table tennis program. If you have any additional comments or suggestions, please feel free to include them below.\n\n(Open-ended question for any additional comments)\n\nThis survey should take around 2 minutes to complete, and your feedback will be used to enhance our table tennis program.",
+    "call_summary": "",
+    "created_at": "2025-03-17T16:49:17.087901"
+  },
+  {
+    "id": 12,
+    "prompt": "internal feedback for table tennis",
+    "prompt_summary": "Here's a short survey for internal feedback on table tennis:\n\n**Table Tennis Feedback Survey**\n\n**Introduction:** We value your opinion and would like to hear about your experience with table tennis. Your feedback will help us improve our programs and services. This survey should take approximately 2 minutes to complete.\n\n**Section 1: General Information**\n\n1. How often do you play table tennis?\n   a) Daily\n   b) Weekly\n   c) Monthly\n   d) Rarely\n\n2. What is your current level of play?\n   a) Beginner\n   b) Intermediate\n   c) Advanced\n   d) Professional\n\n**Section 2: Facilities and Equipment**\n\n3. How would you rate the condition of our table tennis facilities?\n   a) Excellent\n   b) Good\n   c) Fair\n   d) Poor\n\n4. How would you rate the quality of our table tennis equipment?\n   a) Excellent\n   b) Good\n   c) Fair\n   d) Poor\n\n**Section 3: Programs and Services**\n\n5. What type of table tennis programs or services would you like to see offered? (Select all that apply)\n   a) Group lessons\n   b) Private coaching\n   c) Tournaments\n   d) Social events\n   e) Other (please specify)\n\n6. How satisfied are you with the current table tennis programs and services?\n   a) Very satisfied\n   b) Satisfied\n   c) Neutral\n   d) Dissatisfied\n   e) Very dissatisfied\n\n**Section 4: Suggestions and Comments**\n\n7. Do you have any suggestions for improving our table tennis programs and services?\n   (Open-ended text field for respondents to provide feedback)\n\n8. Any additional comments or feedback about your table tennis experience?\n   (Open-ended text field for respondents to provide feedback)\n\n**Conclusion:** Thank you for taking the time to provide your feedback. Your input is invaluable in helping us improve our table tennis programs and services. If you have any questions or concerns, please don't hesitate to contact us.",
+    "call_summary": "",
+    "created_at": "2025-03-17T16:49:43.858372"
+  },
+  {
+    "id": 13,
+    "prompt": "internal feedback for table tennis",
+    "prompt_summary": "Here's a short survey to gather internal feedback for table tennis:\n\n**Table Tennis Internal Feedback Survey**\n\n**Introduction:**\nWe value your opinions and would like to hear your thoughts on our table tennis program. Your feedback will help us improve and provide a better experience for all players. Please answer the questions honestly, and all responses will be kept confidential.\n\n**Section 1: Overall Experience**\n\n1. How would you rate your overall experience with our table tennis program?\n   (Scale: 1 = Poor, 2 = Fair, 3 = Good, 4 = Very Good, 5 = Excellent)\n\n2. What do you like most about our table tennis program? (Open-ended text field)\n\n3. What do you like least about our table tennis program? (Open-ended text field)\n\n**Section 2: Facilities and Equipment**\n\n4. How would you rate the condition of our table tennis facilities?\n   (Scale: 1 = Poor, 2 = Fair, 3 = Good, 4 = Very Good, 5 = Excellent)\n\n5. How would you rate the quality of our table tennis equipment?\n   (Scale: 1 = Poor, 2 = Fair, 3 = Good, 4 = Very Good, 5 = Excellent)\n\n**Section 3: Coaching and Development**\n\n6. How would you rate the quality of our table tennis coaching?\n   (Scale: 1 = Poor, 2 = Fair, 3 = Good, 4 = Very Good, 5 = Excellent)\n\n7. Have you seen improvement in your table tennis skills since joining our program?\n   (Scale: 1 = No Improvement, 2 = Some Improvement, 3 = Significant Improvement)\n\n**Section 4: Community and Social**\n\n8. How would you rate the sense of community among our table tennis players?\n   (Scale: 1 = Poor, 2 = Fair, 3 = Good, 4 = Very Good, 5 = Excellent)\n\n9. Would you recommend our table tennis program to friends and family?\n   (Scale: 1 = No, 2 = Maybe, 3 = Yes)\n\n**Conclusion:**\nThank you for taking the time to provide your feedback. If you have any additional comments or suggestions, please feel free to include them below. (Open-ended text field)\n\nThis survey should take around 2 minutes to complete. Your feedback is greatly appreciated, and we look forward to using it to improve our table tennis program.",
+    "call_summary": "",
+    "created_at": "2025-03-17T17:38:57.197800"
+  },
+  {
+    "id": 14,
+    "prompt": "internal feedback for table tennis",
+    "prompt_summary": "Here's a short survey to gather internal feedback for table tennis:\n\n**Introduction:**\nWe value your opinion and would like to hear about your experiences with our table tennis activities. Your feedback will help us improve and provide better services for our players. Please take a few minutes to complete this survey.\n\n**Section 1: General Feedback (1 minute)**\n\n1. How often do you play table tennis with us?\n   a) Daily\n   b) Weekly\n   c) Monthly\n   d) Occasionally\n\n2. What do you like most about our table tennis activities?\n   (Open-ended text field for respondents to share their thoughts)\n\n3. What do you think we could improve on?\n   (Open-ended text field for respondents to share their thoughts)\n\n**Section 2: Facilities and Equipment (30 seconds)**\n\n1. How would you rate the condition of our table tennis tables?\n   a) Excellent\n   b) Good\n   c) Fair\n   d) Poor\n\n2. How would you rate the quality of our table tennis equipment (e.g., balls, paddles)?\n   a) Excellent\n   b) Good\n   c) Fair\n   d) Poor\n\n**Section 3: Programs and Events (30 seconds)**\n\n1. Have you participated in any of our table tennis tournaments or events?\n   a) Yes\n   b) No\n\n2. If yes, how would you rate your experience?\n   a) Excellent\n   b) Good\n   c) Fair\n   d) Poor\n\n**Conclusion:**\nThank you for taking the time to share your feedback with us! Your input is invaluable in helping us improve our table tennis activities. If you have any additional comments or suggestions, please feel free to share them below.\n   (Open-ended text field for respondents to provide additional feedback)\n\nThis survey should take around 2 minutes to complete and will provide valuable insights into our table tennis activities.",
+    "call_summary": "{\n  \"summary\": \"Brief survey call about table tennis habits. User was willing but not very forthcoming with details, only mentioning they enjoy playing with friends.\",\n  \"ratings\": {\n    \"Frequency\": { \"rating\": null, \"comment\": \"User declined to specify how often they play\" },\n    \"Social Aspect\": { \"rating\": 5, \"comment\": \"User indicated playing with friends is their 'major thing'\" }\n  },\n  \"overall\": \"User seems positive about the social aspects of table tennis but was reserved in sharing specific details about usage patterns.\",\n  \"next_steps\": \"Follow up on what could enhance the social experience with friends; explore why user was hesitant to share frequency information.\"\n}",
+    "created_at": "2025-03-17T17:46:09.092083",
+    "structured_data": {
+      "overall": "The conversation reveals a user who values the social aspects of table tennis but provided limited information overall. The interaction was brief but cordial.",
+      "ratings": {
+        "enps": {
+          "rating": 3,
+          "comment": "Neutral response, not enough information"
+        },
+        "happiness": {
+          "rating": 4,
+          "comment": "User seems positive about playing with friends"
+        },
+        "communication": {
+          "rating": 3,
+          "comment": "User provides brief responses"
+        },
+        "mental_health": {
+          "rating": 3,
+          "comment": "Insufficient data to fully assess"
+        },
+        "job_satisfaction": {
+          "rating": 3,
+          "comment": "Not applicable to this conversation"
+        }
+      },
+      "summary": "Brief survey interaction where the user indicates they enjoy playing table tennis with friends, though they were unable or unwilling to specify how frequently they play.",
+      "next_steps": "Follow up with more specific questions about what aspects of playing with friends they enjoy and what could enhance their experience.",
+      "raw_transcript": "AI: 8. How are you? I want to take some some of time for a short survey.\nUser: Yeah. Go ahead.\nAI: Great. Thank you for participating. Let's start by talking about how often you find yourself playing table tennis with us. Do you play frequently, like daily or weekly, or is it more of a monthly or occasional activity for you?\nUser: We can't say\nAI: No worries. I appreciate your honesty. Let's move on. When you do participate in our table tennis activities, what stands out as something you really enjoy or appreciate about them? Feel free to share any thoughts you have.\nUser: Playing with my friends is major thing for me.\nAI: Playing with friends does add a fun and social element to the game.",
+      "transcript_summary": {
+        "concerns": [
+          "User was unwilling or unable to specify frequency of play"
+        ],
+        "feedback": [
+          "Social aspect appears to be the primary motivation for participation"
+        ],
+        "highlights": [
+          "Playing with friends is the major enjoyment factor"
+        ]
+      }
+    }
+  },
+  {
+    "id": 15,
+    "prompt": "internal feedback for table tennis",
+    "prompt_summary": "Here's a sample internal feedback survey for table tennis:\n\n**Table Tennis Internal Feedback Survey**\n\n**Introduction:**\nWe value your opinion and would like to hear about your experiences with our table tennis program. Your feedback will help us improve our services and provide a better experience for all players. This survey should only take about 2 minutes to complete.\n\n**Section 1: Overall Experience**\n\n1. How would you rate your overall experience with our table tennis program?\n   (Scale: 1 = Poor, 2 = Fair, 3 = Good, 4 = Very Good, 5 = Excellent)\n\n2. What do you like most about our table tennis program? (Open-ended text field)\n\n**Section 2: Facilities and Equipment**\n\n3. How would you rate the condition and quality of our table tennis facilities?\n   (Scale: 1 = Poor, 2 = Fair, 3 = Good, 4 = Very Good, 5 = Excellent)\n\n4. Are our table tennis equipment (tables, balls, paddles, etc.) well-maintained and in good condition?\n   (Scale: 1 = Strongly Disagree, 2 = Somewhat Disagree, 3 = Neutral, 4 = Somewhat Agree, 5 = Strongly Agree)\n\n**Section 3: Coaching and Instruction**\n\n5. How would you rate the quality of our table tennis coaching and instruction?\n   (Scale: 1 = Poor, 2 = Fair, 3 = Good, 4 = Very Good, 5 = Excellent)\n\n6. What areas of your table tennis game would you like to see more coaching or instruction on? (Open-ended text field)\n\n**Section 4: Scheduling and Organization**\n\n7. How would you rate the organization and scheduling of our table tennis programs and events?\n   (Scale: 1 = Poor, 2 = Fair, 3 = Good, 4 = Very Good, 5 = Excellent)\n\n8. Are there any changes you would like to see to our scheduling or organization? (Open-ended text field)\n\n**Conclusion:**\nThank you for taking the time to provide your feedback. Your input is invaluable to us, and we will use it to make improvements to our table tennis program. If you have any additional comments or suggestions, please feel free to include them below.\n\n(Open-ended text field for any additional comments)\n\nThis survey should take around 2 minutes to complete, and it covers various aspects of the table tennis program, including overall experience, facilities and equipment, coaching and instruction, and scheduling and organization.",
+    "call_summary": "",
+    "created_at": "2025-03-17T17:49:55.539663"
+  },
+  {
+    "id": 16,
+    "prompt": "internal feedback for football with only options",
+    "prompt_summary": "Here's a short survey for internal feedback on football with multiple-choice options:\n\n**Introduction:** \nWe value your opinion and would like to hear about your experience with our football program. Your feedback will help us improve and provide a better experience for everyone involved. Please answer the questions honestly, and all responses will be kept confidential.\n\n**Section 1: Overall Experience**\n\n1. How would you rate your overall experience with our football program?\n   a) Excellent\n   b) Good\n   c) Fair\n   d) Poor\n\n2. How likely are you to recommend our football program to others?\n   a) Very Likely\n   b) Likely\n   c) Neutral\n   d) Unlikely\n   e) Very Unlikely\n\n**Section 2: Coaching and Training**\n\n3. How would you rate the quality of coaching and training provided?\n   a) Excellent\n   b) Good\n   c) Fair\n   d) Poor\n\n4. Which aspect of coaching and training do you think needs improvement? (Select one)\n   a) Tactical strategies\n   b) Fitness and conditioning\n   c) Player development\n   d) Game preparation\n   e) Other (please specify)\n\n**Section 3: Facilities and Equipment**\n\n5. How would you rate the quality of our facilities (fields, locker rooms, etc.)?\n   a) Excellent\n   b) Good\n   c) Fair\n   d) Poor\n\n6. How would you rate the quality of our equipment (balls, cones, etc.)?\n   a) Excellent\n   b) Good\n   c) Fair\n   d) Poor\n\n**Section 4: Communication and Support**\n\n7. How would you rate the level of communication between coaches, players, and staff?\n   a) Excellent\n   b) Good\n   c) Fair\n   d) Poor\n\n8. How would you rate the level of support provided to players (medical, academic, etc.)?\n   a) Excellent\n   b) Good\n   c) Fair\n   d) Poor\n\n**Conclusion:** \nThank you for taking the time to provide your feedback. Your input is invaluable to us, and we will use it to make improvements to our football program. If you have any additional comments or suggestions, please feel free to include them below.\n\n(Open-ended text box for additional comments)",
+    "call_summary": "",
+    "created_at": "2025-03-17T18:03:25.031624"
+  },
+  {
+    "id": 17,
+    "prompt": "internal feedback for football with only options",
+    "prompt_summary": "**Internal Feedback for Football Survey**\n\nWe value your opinion and would like to hear your thoughts on our football program. Please take a few minutes to complete this survey. Your feedback will help us improve and provide a better experience for everyone involved.\n\n**Section 1: Overall Experience**\n\n1. How would you rate your overall experience with our football program?\n   a) Excellent\n   b) Good\n   c) Fair\n   d) Poor\n\n2. How likely are you to recommend our football program to others?\n   a) Very Likely\n   b) Likely\n   c) Neutral\n   d) Unlikely\n   e) Very Unlikely\n\n**Section 2: Coaching and Training**\n\n3. How would you rate the quality of coaching and training provided?\n   a) Excellent\n   b) Good\n   c) Fair\n   d) Poor\n\n4. How would you rate the effectiveness of our training sessions?\n   a) Very Effective\n   b) Somewhat Effective\n   c) Not Very Effective\n   d) Not at All Effective\n\n**Section 3: Team Dynamics and Communication**\n\n5. How would you rate the team's overall dynamics and camaraderie?\n   a) Excellent\n   b) Good\n   c) Fair\n   d) Poor\n\n6. How would you rate the communication between coaches, players, and staff?\n   a) Excellent\n   b) Good\n   c) Fair\n   d) Poor\n\n**Section 4: Facilities and Equipment**\n\n7. How would you rate the quality of our football facilities?\n   a) Excellent\n   b) Good\n   c) Fair\n   d) Poor\n\n8. How would you rate the condition and availability of our equipment?\n   a) Excellent\n   b) Good\n   c) Fair\n   d) Poor\n\n**Section 5: Suggestions and Comments**\n\n9. What do you think we do well in our football program? (Select all that apply)\n   a) Coaching and training\n   b) Team dynamics and communication\n   c) Facilities and equipment\n   d) Other (please specify)\n\n10. What areas do you think we need to improve in our football program? (Select all that apply)\n   a) Coaching and training\n   b) Team dynamics and communication\n   c) Facilities and equipment\n   d) Other (please specify)\n\nThank you for taking the time to provide your internal feedback! Your input is valuable to us, and we will use it to make improvements to our football program.",
+    "call_summary": "",
+    "created_at": "2025-03-17T18:04:27.092082"
+  },
+  {
+    "id": 18,
+    "prompt": "internal feedback for football with only options",
+    "prompt_summary": "Here's a short internal feedback survey for football with only options:\n\n**Introduction:**\nWe value your opinion and would like to hear about your experience with our football team. Please take a few minutes to complete this survey and help us improve.\n\n**Section 1: Overall Experience**\n\n1. How would you rate your overall experience with our football team?\n   a) Very Satisfied\n   b) Satisfied\n   c) Neutral\n   d) Dissatisfied\n   e) Very Dissatisfied\n\n2. How likely are you to recommend our football team to others?\n   a) Very Likely\n   b) Likely\n   c) Neutral\n   d) Unlikely\n   e) Very Unlikely\n\n**Section 2: Coaching and Training**\n\n3. How would you rate the quality of coaching and training provided by our team?\n   a) Excellent\n   b) Good\n   c) Fair\n   d) Poor\n   e) Very Poor\n\n4. Which aspect of coaching and training do you think needs improvement? (Select one)\n   a) Technical skills\n   b) Tactical awareness\n   c) Fitness and conditioning\n   d) Mental preparation\n   e) Other (please specify)\n\n**Section 3: Team Dynamics and Communication**\n\n5. How would you rate the team's dynamics and communication?\n   a) Very Good\n   b) Good\n   c) Fair\n   d) Poor\n   e) Very Poor\n\n6. How often do you receive updates and feedback from the coaching staff?\n   a) Regularly\n   b) Occasionally\n   c) Rarely\n   d) Never\n\n**Section 4: Facilities and Equipment**\n\n7. How would you rate the quality of our facilities and equipment?\n   a) Excellent\n   b) Good\n   c) Fair\n   d) Poor\n   e) Very Poor\n\n8. Which facility or equipment do you think needs improvement? (Select one)\n   a) Training pitches\n   b) Gym and fitness facilities\n   c) Locker rooms and showers\n   d) Medical and rehabilitation facilities\n   e) Other (please specify)\n\n**Conclusion:**\nThank you for taking the time to complete this survey. Your feedback is invaluable to us, and we will use it to make improvements to our football team. If you have any additional comments or suggestions, please feel free to include them below.",
+    "call_summary": "",
+    "created_at": "2025-03-17T18:05:11.319336"
   }
 ]

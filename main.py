@@ -291,5 +291,171 @@ def chat():
     return render_template("chat.html", raw_transcript=raw_transcript)
 
 
+# --- New Chat with Survey JSON Helper Functions ---
+CHAT_SURVEY_FILE = "chat_with_survey.json"
+
+def read_chat_survey():
+    if not os.path.exists(CHAT_SURVEY_FILE):
+        return []
+    try:
+        with open(CHAT_SURVEY_FILE, 'r') as file:
+            return json.load(file)
+    except (json.JSONDecodeError, FileNotFoundError):
+        return []
+
+def write_chat_survey(data):
+    with open(CHAT_SURVEY_FILE, 'w') as file:
+        json.dump(data, file, indent=2, default=str)
+
+def add_chat_survey_record(survey_prompt, survey_response):
+    records = read_chat_survey()
+    new_record = {
+        "id": len(records) + 1,
+        "survey_prompt": survey_prompt,
+        "survey_response": survey_response,
+        "summary": "",
+        "chat_with_survey": [  # start with initial bot response (the survey response)
+            {"role": "bot", "message": survey_response}
+        ],
+        "raw_transcript": "Bot: " + survey_response,
+        "created_at": datetime.utcnow().isoformat()
+    }
+    records.append(new_record)
+    write_chat_survey(records)
+    return new_record
+
+def update_chat_survey_record(record_id, updated_record):
+    records = read_chat_survey()
+    for i, rec in enumerate(records):
+        if rec.get("id") == record_id:
+            records[i] = updated_record
+            break
+    write_chat_survey(records)
+
+# --- New Endpoint for Chat with Survey ---
+# New endpoint to handle chat with survey interactions and update chat_with_survey.json
+@app.route("/chat_with_survey", methods=["POST"])
+def chat_with_survey():
+    data = request.get_json()
+    question = data.get("question")
+    survey_response = data.get("survey_response", "")
+    record_id = data.get("record_id")
+    if not question:
+        return jsonify({"error": "Missing question"}), 400
+
+    CHAT_FILE = "chat_with_survey.json"
+
+    # Load existing chat history or initialize an empty dict
+    if os.path.exists(CHAT_FILE):
+        try:
+            with open(CHAT_FILE, "r") as f:
+                chat_history = json.load(f)
+        except Exception:
+            chat_history = {}
+    else:
+        chat_history = {}
+
+    # If no chat record exists for this record_id, create one using the survey_response as the initial context.
+    if record_id not in chat_history:
+        chat_history[record_id] = {
+            "survey_response": survey_response,  # This remains constant
+            "survey_prompt": "",  # Optionally store the original prompt if available
+            "summary": "",
+            "chat_with_survey": [
+                {"sender": "bot", "message": survey_response, "timestamp": datetime.utcnow().isoformat()}
+            ],
+            "raw_transcript": "Bot: " + survey_response,
+            "created_at": datetime.utcnow().isoformat()
+        }
+
+    # Retrieve the current chat record and conversation.
+    record = chat_history[record_id]
+    conversation = record["chat_with_survey"]
+
+    # Append user's message to the conversation.
+    conversation.append({
+        "sender": "user",
+        "message": question,
+        "timestamp": datetime.utcnow().isoformat()
+    })
+
+    # Build the raw transcript: start with the original survey response and then append conversation messages.
+    raw_transcript = record["survey_response"] + "\n" + "\n".join(
+        [f"{msg['sender']}: {msg['message']}" for msg in conversation]
+    )
+
+    # Build the prompt for Groq API using the original survey response as context
+    prompt = (
+        f"Based on the following survey response and conversation context:\n\n"
+        f"Survey Response:\n{record['survey_response']}\n\n"
+        f"Conversation:\n{raw_transcript}\n\n"
+        "Generate the next question to continue the survey in a friendly and conversational manner. Do not answer the survey directly."
+    )
+
+    try:
+        client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
+        chat_completion = client.chat.completions.create(
+            messages=[{"role": "user", "content": prompt}],
+            model="llama-3.3-70b-versatile",
+        )
+        response_text = chat_completion.choices[0].message.content
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+    # Append the AI's response to the conversation.
+    conversation.append({
+        "sender": "bot",
+        "message": response_text,
+        "timestamp": datetime.utcnow().isoformat()
+    })
+
+    # Update the raw transcript.
+    record["raw_transcript"] = record["survey_response"] + "\n" + "\n".join(
+        [f"{msg['sender']}: {msg['message']}" for msg in conversation]
+    )
+
+    # Generate a summary using the Groq API with the defined JSON schema.
+    summary_prompt = (
+        "Summarize the following survey conversation into the JSON schema below:\n\n"
+        """{
+  "summary": "",
+  "ratings": {
+    "happiness": { "rating": 5, "comment": "" },
+    "mental_health": { "rating": 4, "comment": "" },
+    "job_satisfaction": { "rating": 3, "comment": "" },
+    "enps": { "rating": 5, "comment": "" },
+    "communication": { "rating": 4, "comment": "" }
+  },
+  "next_steps": "",
+  "transcript_summary": {
+    "highlights": ["", ""],
+    "concerns": ["", ""],
+    "feedback": ["", ""]
+  },
+  "raw_transcript": "",
+  "overall": ""
+}
+"""
+        f"\nConversation:\n{raw_transcript}"
+    )
+
+    try:
+        summary_completion = client.chat.completions.create(
+            messages=[{"role": "user", "content": summary_prompt}],
+            model="llama-3.3-70b-versatile",
+        )
+        summary_text = summary_completion.choices[0].message.content
+        record["summary"] = summary_text
+    except Exception as e:
+        # On error, leave the summary empty.
+        record["summary"] = ""
+
+    # Save the updated chat history back to chat_with_survey.json.
+    with open(CHAT_FILE, "w") as f:
+        json.dump(chat_history, f, indent=2, default=str)
+
+    return jsonify({"response": response_text})
+
+
 if __name__ == "__main__":
     app.run(debug=True)
