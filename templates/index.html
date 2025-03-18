@@ -172,21 +172,27 @@
           <div id="call-summary" class="mt-4 text-sm text-gray-600"></div>
         </div>
         <!-- Chat Container (hidden by default) -->
-        <div id="chat-container" class="hidden max-w-3xl mx-auto my-8 p-6 bg-white rounded-lg shadow-lg">
-          <h2 class="text-xl font-semibold text-gray-700 mb-4">Chat Interface</h2>
-          <div id="chat-messages" class="mb-4 overflow-auto max-h-64">
-            <!-- Initial message will be inserted here -->
-          </div>
-          <div class="flex space-x-4">
-            <input type="text" id="chat-input" class="flex-1 p-2 border rounded-md" placeholder="Type your question..." />
-            <button id="chat-send-btn" class="bg-green-500 hover:bg-green-600 text-white font-semibold rounded-md px-4 py-2 transition-colors">
-              Send
-            </button>
-          </div>
-          <div class="mt-4 text-right">
-            <a href="#" id="back-to-voice" class="text-blue-500 hover:underline">Back to Voice AI</a>
-          </div>
-        </div>
+<!-- Chat Container (hidden by default) -->
+<div id="chat-container" class="hidden max-w-3xl mx-auto my-8 p-6 bg-white rounded-lg shadow-lg">
+  <h2 class="text-xl font-semibold text-gray-700 mb-4">Chat Interface</h2>
+  <div id="chat-messages" class="mb-4 overflow-auto max-h-64">
+    <!-- Initial message will be inserted here -->
+  </div>
+  <div class="flex space-x-4">
+    <input type="text" id="chat-input" class="flex-1 p-2 border rounded-md" placeholder="Type your question..." />
+    <button id="chat-send-btn" class="bg-green-500 hover:bg-green-600 text-white font-semibold rounded-md px-4 py-2 transition-colors">
+      Send
+    </button>
+  </div>
+  <div class="mt-4 flex justify-between items-center">
+    <a href="#" id="back-to-voice" class="text-blue-500 hover:underline">Back to Voice AI</a>
+    <!-- New Stop Survey button -->
+    <button id="stop-survey-btn" class="bg-red-500 hover:bg-red-600 text-white font-semibold rounded-md px-4 py-2 transition-colors">
+      Stop Survey
+    </button>
+  </div>
+</div>
+
       </div>
     </div>
 
@@ -234,6 +240,13 @@
       window.latestRecordId = null;
       window.latestChatRecordId = null;
       window.latestRawTranscript = null;
+     
+//       if (!window.chatRecordCounter) {
+//   window.chatRecordCounter = 1;
+// }
+if (!localStorage.getItem("chatRecordCounter")) {
+  localStorage.setItem("chatRecordCounter", "1");
+}
 
       // Start the assistant call using the Web SDK
       function startWebCall(extractedText) {
@@ -413,40 +426,49 @@ Closing:
       });
 
       // Survey Prompt Submission
-      document.getElementById("survey-submit-btn").addEventListener("click", function () {
-        const promptText = document.getElementById("survey-prompt").value;
-        const surveyLength = document.getElementById("survey-length").value;
-        const responseBox = document.getElementById("survey-response");
-        if (!promptText) {
-          alert("Please enter a survey prompt.");
-          return;
+      // Survey Prompt Submission - updated snippet
+
+
+// In the survey submission event listener, replace the assignment for window.latestChatRecordId:
+document.getElementById("survey-submit-btn").addEventListener("click", function () {
+  const promptText = document.getElementById("survey-prompt").value;
+  const surveyLength = document.getElementById("survey-length").value;
+  const responseBox = document.getElementById("survey-response");
+  if (!promptText) {
+    alert("Please enter a survey prompt.");
+    return;
+  }
+  responseBox.value = "Waiting for response...";
+  fetch("/groq-chat", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ prompt: promptText, survey_length: surveyLength }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.error) {
+        responseBox.value = "Error: " + data.error;
+      } else {
+        responseBox.value = data.response;
+        // Store the history record id as a number.
+        window.latestRecordId = parseInt(data.record_id);
+        // Get the current chat record counter from localStorage
+        let counter = parseInt(localStorage.getItem("chatRecordCounter"));
+        window.latestChatRecordId = counter;  // Use this as the chat record id.
+        // Increment and store back to localStorage for next chat record.
+        localStorage.setItem("chatRecordCounter", (counter + 1).toString());
+        // Show Chat with Survey button if call summary is available.
+        let chatBtn = document.getElementById("chat-survey-btn");
+        if (chatBtn) {
+          chatBtn.classList.remove("hidden");
         }
-        responseBox.value = "Waiting for response...";
-        fetch("/groq-chat", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ prompt: promptText, survey_length: surveyLength }),
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            if (data.error) {
-              responseBox.value = "Error: " + data.error;
-            } else {
-              responseBox.value = data.response;
-              // Store the history record id and also create a separate chat record id.
-              window.latestRecordId = data.record_id;
-              window.latestChatRecordId = "chat-" + data.record_id; // new chat record id
-              // Show Chat with Survey button if call summary is available.
-              let chatBtn = document.getElementById("chat-survey-btn");
-              if (chatBtn) {
-                chatBtn.classList.remove("hidden");
-              }
-            }
-          })
-          .catch((err) => {
-            responseBox.value = "Error: " + err;
-          });
-      });
+      }
+    })
+    .catch((err) => {
+      responseBox.value = "Error: " + err;
+    });
+});
+
 
       // Send Survey Response to Voice AI
       document.getElementById("send-voice-btn").addEventListener("click", function () {
@@ -565,6 +587,35 @@ Closing:
           document.getElementById("survey-response").value = promptSummary;
         }
       });
+      // Stop Survey button functionality
+document.getElementById("stop-survey-btn").addEventListener("click", function () {
+  if (!window.latestChatRecordId) {
+    alert("No chat record available.");
+    return;
+  }
+  // Send a POST request to /stop-survey with the chat record id.
+  fetch("/stop-survey", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ record_id: window.latestChatRecordId })
+  })
+    .then(response => response.json())
+    .then(data => {
+      if (data.error) {
+        alert("Error stopping survey: " + data.error);
+      } else {
+        // Optionally, show the summary to the user
+        alert("Survey stopped");
+        // You can also disable further chat input if needed:
+        document.getElementById("chat-input").disabled = true;
+        document.getElementById("chat-send-btn").disabled = true;
+      }
+    })
+    .catch(err => {
+      alert("Error: " + err);
+    });
+});
+
     </script>
   </body>
 </html>

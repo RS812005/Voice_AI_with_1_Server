@@ -333,15 +333,102 @@ def update_chat_survey_record(record_id, updated_record):
     write_chat_survey(records)
 
 # --- New Endpoint for Chat with Survey ---
-# New endpoint to handle chat with survey interactions and update chat_with_survey.json
 @app.route("/chat_with_survey", methods=["POST"])
 def chat_with_survey():
     data = request.get_json()
     question = data.get("question")
     survey_response = data.get("survey_response", "")
-    record_id = data.get("record_id")
+    # print(survey_response);
+    # Convert record_id to a string to ensure type consistency
+    record_id = str(data.get("record_id"))
     if not question:
         return jsonify({"error": "Missing question"}), 400
+
+    CHAT_FILE = "chat_with_survey.json"
+    if os.path.exists(CHAT_FILE):
+        try:
+            with open(CHAT_FILE, "r") as f:
+                chat_history = json.load(f)
+        except Exception:
+            chat_history = {}
+    else:
+        chat_history = {}
+
+    # Ensure we have a chat record for this record_id; if not, create one.
+    if record_id not in chat_history:
+        chat_history[record_id] = {
+            "survey_response": survey_response,
+            "survey_prompt": "",  # Optionally store the original prompt if available
+            "summary": "",
+            "chat_with_survey": [],
+            "created_at": datetime.utcnow().isoformat()
+        }
+
+    conversation = chat_history[record_id]["chat_with_survey"]
+
+    # Append user's message to the conversation
+    conversation.append({
+        "sender": "user",
+        "message": question,
+        "timestamp": datetime.utcnow().isoformat()
+    })
+
+    # Build the conversation context as a raw transcript
+     # Build the conversation context as a raw transcript, including the survey_response.
+    raw_transcript = chat_history[record_id]["survey_response"] + "\n" + "\n".join(
+    [f"{msg['sender']}: {msg['message']}" for msg in conversation]
+    )
+
+
+    # Build the prompt for the Groq API to ask the next question
+    # Build the prompt for the Groq API to ask the next question
+   # Build the prompt for the Groq API to ask the next question
+    prompt = (
+    f"Based on the following survey conversation:\n\n{raw_transcript}\n\n"
+    "You are provided with a survey that must be followed in its entirety and in order. "
+    "Do not skip any questions. Begin with the first unanswered question. "
+    "If the first question (for ex from Section 1: Communication) has not been answered, ask that question exactly as it appears. "
+    "Only move to the next question once the previous one has been answered. "
+    "Do not create any new questions or alter the order. "
+    "Respond only with the next question in the exact wording provided in the survey." \
+    " Strictly If all survey questions have been answered, simply thank the user for their time and indicate that the survey is complete."
+)
+
+
+    # print(prompt)
+    try:
+        client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
+        chat_completion = client.chat.completions.create(
+            messages=[{"role": "user", "content": prompt}],
+            model="llama-3.3-70b-versatile",
+        )
+        response_text = chat_completion.choices[0].message.content
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+    # Append the AI's response to the conversation
+    conversation.append({
+        "sender": "bot",
+        "message": response_text,
+        "timestamp": datetime.utcnow().isoformat()
+    })
+
+    # (Optional) Generate summary using the conversation context...
+    # [Your summary generation code here]
+
+    with open(CHAT_FILE, "w") as f:
+        json.dump(chat_history, f, indent=2, default=str)
+
+    return jsonify({"response": response_text})
+
+# New endpoint to stop the survey and generate a summary.
+@app.route("/stop-survey", methods=["POST"])
+def stop_survey():
+    data = request.get_json()
+    record_id = str(data.get("record_id"))
+    print("record_id", record_id)
+    if not record_id:
+        return jsonify({"error": "Missing record id"}), 400
 
     CHAT_FILE = "chat_with_survey.json"
 
@@ -355,66 +442,16 @@ def chat_with_survey():
     else:
         chat_history = {}
 
-    # If no chat record exists for this record_id, create one using the survey_response as the initial context.
     if record_id not in chat_history:
-        chat_history[record_id] = {
-            "survey_response": survey_response,  # This remains constant
-            "survey_prompt": "",  # Optionally store the original prompt if available
-            "summary": "",
-            "chat_with_survey": [
-                {"sender": "bot", "message": survey_response, "timestamp": datetime.utcnow().isoformat()}
-            ],
-            "raw_transcript": "Bot: " + survey_response,
-            "created_at": datetime.utcnow().isoformat()
-        }
+        return jsonify({"error": "Chat record not found"}), 404
 
-    # Retrieve the current chat record and conversation.
     record = chat_history[record_id]
-    conversation = record["chat_with_survey"]
-
-    # Append user's message to the conversation.
-    conversation.append({
-        "sender": "user",
-        "message": question,
-        "timestamp": datetime.utcnow().isoformat()
-    })
-
-    # Build the raw transcript: start with the original survey response and then append conversation messages.
-    raw_transcript = record["survey_response"] + "\n" + "\n".join(
+    # Build the raw transcript using the stored survey_response and chat conversation.
+    conversation = record.get("chat_with_survey", [])
+    raw_transcript = record.get("survey_response", "") + "\n" + "\n".join(
         [f"{msg['sender']}: {msg['message']}" for msg in conversation]
     )
 
-    # Build the prompt for Groq API using the original survey response as context
-    prompt = (
-        f"Based on the following survey response and conversation context:\n\n"
-        f"Survey Response:\n{record['survey_response']}\n\n"
-        f"Conversation:\n{raw_transcript}\n\n"
-        "Generate the next question to continue the survey in a friendly and conversational manner. Do not answer the survey directly."
-    )
-
-    try:
-        client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
-        chat_completion = client.chat.completions.create(
-            messages=[{"role": "user", "content": prompt}],
-            model="llama-3.3-70b-versatile",
-        )
-        response_text = chat_completion.choices[0].message.content
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
-
-    # Append the AI's response to the conversation.
-    conversation.append({
-        "sender": "bot",
-        "message": response_text,
-        "timestamp": datetime.utcnow().isoformat()
-    })
-
-    # Update the raw transcript.
-    record["raw_transcript"] = record["survey_response"] + "\n" + "\n".join(
-        [f"{msg['sender']}: {msg['message']}" for msg in conversation]
-    )
-
-    # Generate a summary using the Groq API with the defined JSON schema.
     summary_prompt = (
         "Summarize the following survey conversation into the JSON schema below:\n\n"
         """{
@@ -440,21 +477,19 @@ def chat_with_survey():
     )
 
     try:
+        client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
         summary_completion = client.chat.completions.create(
             messages=[{"role": "user", "content": summary_prompt}],
             model="llama-3.3-70b-versatile",
         )
         summary_text = summary_completion.choices[0].message.content
         record["summary"] = summary_text
+        chat_history[record_id] = record
+        with open(CHAT_FILE, "w") as f:
+            json.dump(chat_history, f, indent=2, default=str)
+        return jsonify({"message": "Survey has been stopped."})
     except Exception as e:
-        # On error, leave the summary empty.
-        record["summary"] = ""
-
-    # Save the updated chat history back to chat_with_survey.json.
-    with open(CHAT_FILE, "w") as f:
-        json.dump(chat_history, f, indent=2, default=str)
-
-    return jsonify({"response": response_text})
+        return jsonify({"error": str(e)}), 500
 
 
 if __name__ == "__main__":
