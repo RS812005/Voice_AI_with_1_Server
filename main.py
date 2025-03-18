@@ -202,28 +202,46 @@ def groq_chat():
         else:
             length_instruction = ""
 
-        # Combine the prompt with the survey length instruction.
+        # Combine the prompt with the survey length instruction for the survey response.
         full_prompt = f"{prompt}\n\n{length_instruction}"
-
+        
         # Initialize Groq client using the API key from environment variables.
         client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
-        # Create chat completion using the provided full prompt.
-        chat_completion = client.chat.completions.create(
+        
+        # First Groq API call to generate the survey response.
+        survey_response_completion = client.chat.completions.create(
             messages=[{"role": "user", "content": full_prompt}],
             model="llama-3.3-70b-versatile",
         )
+        survey_response_text = survey_response_completion.choices[0].message.content
 
-        # Extract the generated message.
-        response_text = chat_completion.choices[0].message.content
+        # Extract the first sentence from the prompt to build the heading.
+        first_sentence = prompt
+        # Create a heading prompt instructing Groq to output a short heading.
+        heading_prompt = (
+            f"Based on the following survey prompt:\n\n{prompt}\n\n"
+            f"Generate a short heading for this survey. The heading should start with something like 'short suvey about' and end with a colon."
+        )
+        
+        # Second Groq API call to generate the survey heading.
+        heading_completion = client.chat.completions.create(
+            messages=[{"role": "user", "content": heading_prompt}],
+            model="llama-3.3-70b-versatile",
+        )
+        survey_heading = heading_completion.choices[0].message.content.strip()
 
         # Add a new record to our JSON history and capture the new record.
-        new_record = add_history_record(prompt, response_text)
+        new_record = add_history_record(prompt, survey_response_text)
 
-        # Return the response along with the new record id so that the frontend
-        # can use this id to open the chat interface (after summary appears).
-        return jsonify({"response": response_text, "record_id": new_record["id"]})
+        # Return both the survey response and the heading along with the new record id.
+        return jsonify({
+            "response": survey_response_text,
+            "survey_heading": survey_heading,
+            "record_id": new_record["id"]
+        })
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
 
     
 # Endpoint to fetch history and send it to index.html.

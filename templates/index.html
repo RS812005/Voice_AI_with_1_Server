@@ -23,7 +23,7 @@
       select,
       textarea,
       input {
-        background-color: #FFFDFB;
+        background-color: #fffdfb;
         border: 1px solid #e5e7eb;
         border-radius: 4px;
         width: 100%;
@@ -57,15 +57,33 @@
   <body class="bg-[#F6F6F6]">
     <div class="flex min-h-screen">
       <!-- Sidebar -->
-      <aside class="w-16 bg-[#210803] text-white flex flex-col items-center p-4">
+      <aside
+        class="w-16 bg-[#210803] text-white flex flex-col items-center p-4"
+      >
         <!-- History Icon -->
-        <a href="/history" class="mt-8 mb-4 hover:text-gray-400 text-2xl text-center" title="View History">
-          <img src="{{ url_for('static', filename='images/history.png') }}" alt="History Icon" class="w-8 h-8 transform translate-x-2">
+        <a
+          href="/history"
+          class="mt-8 mb-4 hover:text-gray-400 text-2xl text-center"
+          title="View History"
+        >
+          <img
+            src="{{ url_for('static', filename='images/history.png') }}"
+            alt="History Icon"
+            class="w-8 h-8 transform translate-x-2"
+          />
           <span class="text-sm mt-2 block font-bold">History</span>
         </a>
         <!-- Analysis Icon -->
-        <a href="/analysis" class="mb-4 hover:text-gray-400 text-2xl text-center" title="View Analysis">
-          <img src="{{ url_for('static', filename='images/graph.png') }}" alt="Analysis Icon" class="w-8 h-8 transform translate-x-2">
+        <a
+          href="/analysis"
+          class="mb-4 hover:text-gray-400 text-2xl text-center"
+          title="View Analysis"
+        >
+          <img
+            src="{{ url_for('static', filename='images/graph.png') }}"
+            alt="Analysis Icon"
+            class="w-8 h-8 transform translate-x-2"
+          />
           <span class="text-sm mt-2 block font-bold">Analysis</span>
         </a>
       </aside>
@@ -74,29 +92,54 @@
         <div class="max-w-7xl mx-auto px-4 py-6 grid grid-cols-4 gap-6">
           <!-- Survey Prompt Section -->
           <div class="bg-white p-6 rounded-lg shadow-sm space-y-6 h-full">
-            <h2 class="text-2xl font-semibold text-gray-700 mb-4">Create a Survey Prompt</h2>
+            <h2 class="text-2xl font-semibold text-gray-700 mb-4">
+              Create a Survey Prompt
+            </h2>
             <!-- Prompt Input -->
             <div class="mb-4">
-              <label class="block text-sm text-gray-600 mb-1">Enter Prompt:</label>
-              <textarea id="survey-prompt" rows="4" placeholder="Enter your survey prompt here..." class="w-full text-sm border border-gray-300 rounded-xl px-3 py-2"></textarea>
+              <label class="block text-sm text-gray-600 mb-1"
+                >Enter Prompt:</label
+              >
+              <textarea
+                id="survey-prompt"
+                rows="4"
+                placeholder="Enter your survey prompt here..."
+                class="w-full text-sm border border-gray-300 rounded-xl px-3 py-2"
+              ></textarea>
             </div>
             <!-- Dropdowns -->
             <div class="grid grid-cols-2 gap-4 mb-4">
               <div>
                 <label class="block text-sm text-gray-600 mb-1">Accent:</label>
-                <select id="accent" class="w-full text-sm border border-gray-300 rounded-xl px-3 py-2">
+                <select
+                  id="accent"
+                  class="w-full text-sm border border-gray-300 rounded-xl px-3 py-2"
+                >
                   <option value="indian_lady">Indian Lady</option>
                   <option value="indian_man">Indian Man</option>
                   <option value="british_lady">British Female</option>
                   <option value="british_man">British Man</option>
                   <option value="anime_girl">Anime Girl</option>
-                  <option value="middle_east_women">Middle Eastern Women</option>
+                  <option value="middle_east_women">
+                    Middle Eastern Women
+                  </option>
                   <option value="australian_women">Australian Women</option>
+                  <option value="california_girl">California Girl</option>
+                  <option value="new_york_man">New York Man</option>
+                  <option value="new_york_women">New York Women</option>
+                  <option value="savannah">American Southern Accent</option>
+                  <option value="kentucky_man">Kentucky Man</option>
+                  <option value="kentucky_woman">Kentucky Woman</option>
                 </select>
               </div>
               <div>
-                <label class="block text-sm text-gray-600 mb-1">Survey Length:</label>
-                <select id="survey-length" class="w-full text-sm border border-gray-300 rounded-xl px-3 py-2">
+                <label class="block text-sm text-gray-600 mb-1"
+                  >Survey Length:</label
+                >
+                <select
+                  id="survey-length"
+                  class="w-full text-sm border border-gray-300 rounded-xl px-3 py-2"
+                >
                   <option value="short">Short (2 mins)</option>
                   <option value="medium">Medium (3-5 mins)</option>
                   <option value="long">Long (5+ mins)</option>
@@ -106,7 +149,10 @@
             <div class="grid grid-cols-2 gap-4 mb-4">
               <div>
                 <label class="block text-sm text-gray-600 mb-1">Tone:</label>
-                <select id="tone" class="w-full text-sm border border-gray-300 rounded-xl px-3 py-2">
+                <select
+                  id="tone"
+                  class="w-full text-sm border border-gray-300 rounded-xl px-3 py-2"
+                >
                   <option value="neutral">Neutral</option>
                   <option value="friendly">Friendly</option>
                   <option value="professional">Professional</option>
@@ -114,7 +160,10 @@
               </div>
               <div>
                 <label class="block text-sm text-gray-600 mb-1">Extras:</label>
-                <select id="extras" class="w-full text-sm border border-gray-300 rounded-xl px-3 py-2">
+                <select
+                  id="extras"
+                  class="w-full text-sm border border-gray-300 rounded-xl px-3 py-2"
+                >
                   <option value="none">None</option>
                   <option value="anger">Anger</option>
                   <option value="positivity">Positivity</option>
@@ -126,7 +175,10 @@
             </div>
             <!-- Survey Submission Button -->
             <div class="flex space-x-4 mt-4">
-              <button id="survey-submit-btn" class="bg-[#FF714C] hover:bg-[#f2613c] text-white py-2 px-4 rounded-full transition-colors font-bold">
+              <button
+                id="survey-submit-btn"
+                class="bg-[#FF714C] hover:bg-[#f2613c] text-white py-2 px-4 rounded-full transition-colors font-bold"
+              >
                 Submit Survey Prompt
               </button>
             </div>
@@ -134,8 +186,16 @@
             <div id="pdf-upload-section" class="mt-6 border-t pt-6">
               <h3 class="text-xl font-semibold text-gray-700">Or Upload PDF</h3>
               <div class="flex items-center gap-4">
-                <input type="file" id="pdf-file" accept="application/pdf" class="flex-1 px-3 py-2 text-sm text-gray-700" />
-                <button id="upload-btn" class="bg-[#FF714C] text-white py-2 px-4 rounded-full hover:bg-[#f2613c] transition-colors font-bold">
+                <input
+                  type="file"
+                  id="pdf-file"
+                  accept="application/pdf"
+                  class="flex-1 px-3 py-2 text-sm text-gray-700"
+                />
+                <button
+                  id="upload-btn"
+                  class="bg-[#FF714C] text-white py-2 px-4 rounded-full hover:bg-[#f2613c] transition-colors font-bold"
+                >
                   Extract
                 </button>
               </div>
@@ -145,36 +205,53 @@
           <!-- Main Content Area (Survey Response) -->
           <div class="col-span-3 h-screen flex flex-col p-6 pt-0">
             <div class="flex-1 flex flex-col">
-              <label class="mb-2 text-sm font-medium text-gray-700" for="survey-response">
+              <label
+                class="mb-2 text-sm font-medium text-gray-700"
+                for="survey-response"
+              >
                 Response:
               </label>
-              <textarea id="survey-response" class="w-full flex-1 text-sm border border-gray-300 rounded-md resize-none p-2" placeholder="Response will appear here..."></textarea>
+              <textarea
+                id="survey-response"
+                class="w-full flex-1 text-sm border border-gray-300 rounded-md resize-none p-2"
+                placeholder="Response will appear here..."
+              ></textarea>
             </div>
             <!-- Buttons for Voice AI and Chat with Survey -->
             <div class="flex space-x-4 mt-4 self-end">
-              <button id="send-voice-btn" class="bg-[#FF714C] hover:bg-[#f2613c] text-white py-2 px-4 rounded-md transition-colors font-semibold">
+              <button
+                id="send-voice-btn"
+                class="bg-[#FF714C] hover:bg-[#f2613c] text-white py-2 px-4 rounded-md transition-colors font-semibold"
+              >
                 Send to Voice AI
               </button>
-              <button id="chat-survey-btn" class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-md transition-colors font-semibold hidden">
+              <button
+                id="chat-survey-btn"
+                class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-md transition-colors font-semibold hidden"
+              >
                 Chat with Survey
               </button>
             </div>
           </div>
         </div>
         <!-- Call Section -->
-        <div id="call-section" class="w-full max-w-3xl mx-auto my-8 p-6 bg-white rounded-lg shadow-lg">
-          <h2 class="text-xl font-semibold text-gray-700 mb-4">Call in Progress</h2>
-          <p id="assistant-status" class="text-sm text-gray-600 mb-4">Assistant Status: Not Speaking</p>
-          <div id="volume-level" class="flex space-x-2 mb-4"></div>
-          <button id="stop-btn" class="bg-red-500 text-white py-1 px-3 rounded-md hover:bg-red-600 transition-colors">
-            Stop Call
-          </button>
-          <div id="call-summary" class="mt-4 text-sm text-gray-600"></div>
-        </div>
+        <!-- Call Section -->
+<div id="call-section" class="w-full max-w-3xl mx-auto my-8 p-6 bg-white rounded-lg shadow-lg">
+  <!-- New heading element for survey heading -->
+  <h2 id="call-heading" class="text-xl font-semibold text-gray-700 mb-4">Call in Progress</h2>
+  <p id="assistant-status" class="text-sm text-gray-600 mb-4">Assistant Status: Not Speaking</p>
+  <div id="volume-level" class="flex space-x-2 mb-4"></div>
+  <button id="stop-btn" class="bg-red-500 text-white py-1 px-3 rounded-md hover:bg-red-600 transition-colors">
+    Stop Call
+  </button>
+  <div id="call-summary" class="mt-4 text-sm text-gray-600"></div>
+</div>
+
         <!-- Chat Container (hidden by default) -->
-<!-- Chat Container (hidden by default) -->
+        <!-- Chat Container (hidden by default) -->
 <div id="chat-container" class="hidden max-w-3xl mx-auto my-8 p-6 bg-white rounded-lg shadow-lg">
-  <h2 class="text-xl font-semibold text-gray-700 mb-4">Chat Interface</h2>
+  <!-- New heading element for survey heading in chat -->
+  <h2 id="chat-heading" class="text-xl font-semibold text-gray-700 mb-4">Chat Interface</h2>
   <div id="chat-messages" class="mb-4 overflow-auto max-h-64">
     <!-- Initial message will be inserted here -->
   </div>
@@ -205,7 +282,8 @@
       (function (d, t) {
         var g = document.createElement(t),
           s = d.getElementsByTagName(t)[0];
-        g.src = "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
+        g.src =
+          "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
         g.defer = true;
         g.async = true;
         s.parentNode.insertBefore(g, s);
@@ -217,10 +295,12 @@
           });
 
           vapiInstance.on("speech-start", () => {
-            document.getElementById("assistant-status").textContent = "Assistant Status: Speaking";
+            document.getElementById("assistant-status").textContent =
+              "Assistant Status: Speaking";
           });
           vapiInstance.on("speech-end", () => {
-            document.getElementById("assistant-status").textContent = "Assistant Status: Not Speaking";
+            document.getElementById("assistant-status").textContent =
+              "Assistant Status: Not Speaking";
           });
           vapiInstance.on("volume-level", (level) => {
             const volumeEl = document.getElementById("volume-level");
@@ -228,7 +308,8 @@
             const numBars = 10;
             for (let i = 0; i < numBars; i++) {
               let bar = document.createElement("div");
-              bar.className = "volume-bar" + (i / numBars < level ? " active" : "");
+              bar.className =
+                "volume-bar" + (i / numBars < level ? " active" : "");
               volumeEl.appendChild(bar);
             }
           });
@@ -240,13 +321,13 @@
       window.latestRecordId = null;
       window.latestChatRecordId = null;
       window.latestRawTranscript = null;
-     
-//       if (!window.chatRecordCounter) {
-//   window.chatRecordCounter = 1;
-// }
-if (!localStorage.getItem("chatRecordCounter")) {
-  localStorage.setItem("chatRecordCounter", "1");
-}
+
+      //       if (!window.chatRecordCounter) {
+      //   window.chatRecordCounter = 1;
+      // }
+      if (!localStorage.getItem("chatRecordCounter")) {
+        localStorage.setItem("chatRecordCounter", "1");
+      }
 
       // Start the assistant call using the Web SDK
       function startWebCall(extractedText) {
@@ -256,32 +337,76 @@ if (!localStorage.getItem("chatRecordCounter")) {
         let voiceConfig = {};
         switch (accentValue) {
           case "indian_lady":
-            voiceConfig = { provider: "cartesia", voiceId: "3b554273-4299-48b9-9aaf-eefd438e3941" };
+            voiceConfig = {
+              provider: "cartesia",
+              voiceId: "3b554273-4299-48b9-9aaf-eefd438e3941",
+            };
             break;
           case "indian_man":
-            voiceConfig = { provider: "cartesia", voiceId: "638efaaa-4d0c-442e-b701-3fae16aad012" };
+            voiceConfig = {
+              provider: "cartesia",
+              voiceId: "638efaaa-4d0c-442e-b701-3fae16aad012",
+            };
             break;
           case "british_lady":
-            voiceConfig = { provider: "cartesia", voiceId: "79a125e8-cd45-4c13-8a67-188112f4dd22" };
+            voiceConfig = {
+              provider: "cartesia",
+              voiceId: "79a125e8-cd45-4c13-8a67-188112f4dd22",
+            };
             break;
           case "anime_girl":
-            voiceConfig = { provider: "cartesia", voiceId: "1001d611-b1a8-46bd-a5ca-551b23505334" };
+            voiceConfig = {
+              provider: "cartesia",
+              voiceId: "1001d611-b1a8-46bd-a5ca-551b23505334",
+            };
             break;
           case "british_man":
-            voiceConfig = { provider: "cartesia", voiceId: "63ff761f-c1e8-414b-b969-d1833d1c870c" };
+            voiceConfig = {
+              provider: "cartesia",
+              voiceId: "63ff761f-c1e8-414b-b969-d1833d1c870c",
+            };
             break;
           case "middle_east_women":
-            voiceConfig = { provider: "cartesia", voiceId: "daf747c6-6bc2-4083-bd59-aa94dce23f5d" };
+            voiceConfig = {
+              provider: "cartesia",
+              voiceId: "daf747c6-6bc2-4083-bd59-aa94dce23f5d",
+            };
             break;
           case "australian_women":
-            voiceConfig = { provider: "cartesia", voiceId: "043cfc81-d69f-4bee-ae1e-7862cb358650" };
+            voiceConfig = {
+              provider: "cartesia",
+              voiceId: "043cfc81-d69f-4bee-ae1e-7862cb358650",
+            };
+            break;
+          case "california_girl":
+            voiceConfig = { provider: "cartesia", voiceId: "b7d50908-b17c-442d-ad8d-810c63997ed9" };
+            break;
+          case "new_york_man":
+            voiceConfig = { provider: "cartesia", voiceId: "34575e71-908f-4ab6-ab54-b08c95d6597d" };
+            break;
+          case "new_york_women":
+            voiceConfig = { provider: "cartesia", voiceId: "34bde396-9fde-4ebf-ad03-e3a1d1155205" };
+            break;
+          case "savannah":
+            voiceConfig = { provider: "vapi", voiceId: "Savannah" };
+            break;
+          case "kentucky_man":
+            voiceConfig = { provider: "cartesia", voiceId: "726d5ae5-055f-4c3d-8355-d9677de68937" };
+            break;
+          case "kentucky_woman":
+            voiceConfig = { provider: "cartesia", voiceId: "4f8651b0-bbbd-46ac-8b37-5168c5923303" };
             break;
           default:
-            voiceConfig = { provider: "cartesia", voiceId: "3b554273-4299-48b9-9aaf-eefd438e3941" };
+            voiceConfig = {
+              provider: "cartesia",
+              voiceId: "3b554273-4299-48b9-9aaf-eefd438e3941",
+            };
             break;
         }
         if (extrasValue !== "none") {
-          voiceConfig.experimentalControls = { emotion: [`${extrasValue}:highest`] };
+          voiceConfig.experimentalControls = {
+            emotion: [`${extrasValue}:highest`],
+          };
         }
         console.log(toneValue);
         const assistantOverrides = {
@@ -306,7 +431,7 @@ If the answer is not satisfactory, include a follow-up like: "What did you find 
 Open Feedback:
 "Is there anything else you'd like to add or clarify?"
 Closing:
-"Thank you! We will carefully review your input and make improvements. If you think of anything else, feel free to share!"`
+"Thank you! We will carefully review your input and make improvements. If you think of anything else, feel free to share!"`,
               },
             ],
           },
@@ -314,7 +439,8 @@ Closing:
             'You will be given a transcript of a call. Extract key information, including the user’s tone, and structure it into a concise JSON-like format. Keep it short:\n\n{\n  "summary": "",\n  "ratings": {\n    "TopicA": { "rating": 5, "comment": "" },\n    "TopicB": { "rating": 2, "comment": "" }\n  },\n  "overall": "",\n  "next_steps": ""\n}',
           voice: voiceConfig,
         };
-        return vapiInstance.start(assistant, assistantOverrides)
+        return vapiInstance
+          .start(assistant, assistantOverrides)
           .then((response) => {
             console.log("VAPI Web call started:", response);
             globalCallId = response.id;
@@ -342,7 +468,11 @@ Closing:
         })
           .then((response) => {
             if (!response.ok) {
-              console.error("Error fetching call details:", response.status, response.statusText);
+              console.error(
+                "Error fetching call details:",
+                response.status,
+                response.statusText
+              );
               if (response.status === 403) {
                 document.getElementById("call-summary").innerHTML =
                   "<h3>Error:</h3><p>Access forbidden. Check credentials.</p>";
@@ -358,14 +488,20 @@ Closing:
             }
             if (data.summary) {
               document.getElementById("call-summary").innerHTML =
-                "<h3 class='font-semibold mb-2'>Call Summary</h3><p>" + data.summary + "</p>";
+                "<h3 class='font-semibold mb-2'>Call Summary</h3><p>" +
+                data.summary +
+                "</p>";
               // Once summary is available, show the Chat with Survey button
               let chatBtn = document.getElementById("chat-survey-btn");
               if (chatBtn) {
                 chatBtn.classList.remove("hidden");
               }
             } else {
-              console.log("Summary not yet available; retrying in", interval, "ms");
+              console.log(
+                "Summary not yet available; retrying in",
+                interval,
+                "ms"
+              );
               setTimeout(() => pollCallDetails(callId, interval), interval);
             }
           })
@@ -375,62 +511,64 @@ Closing:
       }
 
       // PDF Upload & Extraction
-      document.getElementById("upload-btn").addEventListener("click", function () {
-        const fileInput = document.getElementById("pdf-file");
-        const file = fileInput.files[0];
-        const statusEl = document.getElementById("upload-status");
-        if (!file) {
-          alert("Please select a PDF file.");
-          return;
-        }
-        const formData = new FormData();
-        formData.append("file", file);
-        statusEl.textContent = "Uploading and extracting PDF...";
-        fetch("/extract", {
-          method: "POST",
-          headers: { Authorization: "Bearer " + apiKey },
-          body: formData,
-        })
-          .then((response) => response.json())
-          .then((data) => {
-            if (data.error) {
-              statusEl.textContent = "Error: " + data.error;
-              return;
-            }
-            statusEl.textContent = "Extraction complete.";
-            const extractedText = data.text;
-            document.getElementById("pdf-upload-section").style.display = "none";
-            document.getElementById("call-section").style.display = "block";
-            fetch("/start-call", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: "Bearer " + apiKey,
-              },
-              body: JSON.stringify({ text: extractedText }),
-            })
-              .then((response) => response.json())
-              .then((callData) => {
-                if (callData.error) {
-                  statusEl.textContent = "Call start error: " + callData.error;
-                  return;
-                }
-                const callId = callData.call_id;
-                pollCallDetails(callId);
-              });
-            startWebCall(extractedText);
+      document
+        .getElementById("upload-btn")
+        .addEventListener("click", function () {
+          const fileInput = document.getElementById("pdf-file");
+          const file = fileInput.files[0];
+          const statusEl = document.getElementById("upload-status");
+          if (!file) {
+            alert("Please select a PDF file.");
+            return;
+          }
+          const formData = new FormData();
+          formData.append("file", file);
+          statusEl.textContent = "Uploading and extracting PDF...";
+          fetch("/extract", {
+            method: "POST",
+            headers: { Authorization: "Bearer " + apiKey },
+            body: formData,
           })
-          .catch((err) => {
-            statusEl.textContent = "Error during upload: " + err;
-          });
-      });
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.error) {
+                statusEl.textContent = "Error: " + data.error;
+                return;
+              }
+              statusEl.textContent = "Extraction complete.";
+              const extractedText = data.text;
+              document.getElementById("pdf-upload-section").style.display =
+                "none";
+              document.getElementById("call-section").style.display = "block";
+              fetch("/start-call", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: "Bearer " + apiKey,
+                },
+                body: JSON.stringify({ text: extractedText }),
+              })
+                .then((response) => response.json())
+                .then((callData) => {
+                  if (callData.error) {
+                    statusEl.textContent =
+                      "Call start error: " + callData.error;
+                    return;
+                  }
+                  const callId = callData.call_id;
+                  pollCallDetails(callId);
+                });
+              startWebCall(extractedText);
+            })
+            .catch((err) => {
+              statusEl.textContent = "Error during upload: " + err;
+            });
+        });
 
-      // Survey Prompt Submission
-      // Survey Prompt Submission - updated snippet
+      
 
-
-// In the survey submission event listener, replace the assignment for window.latestChatRecordId:
-document.getElementById("survey-submit-btn").addEventListener("click", function () {
+      // In the survey submission event listener, replace the assignment for window.latestChatRecordId:
+      document.getElementById("survey-submit-btn").addEventListener("click", function () {
   const promptText = document.getElementById("survey-prompt").value;
   const surveyLength = document.getElementById("survey-length").value;
   const responseBox = document.getElementById("survey-response");
@@ -442,7 +580,10 @@ document.getElementById("survey-submit-btn").addEventListener("click", function 
   fetch("/groq-chat", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ prompt: promptText, survey_length: surveyLength }),
+    body: JSON.stringify({
+      prompt: promptText,
+      survey_length: surveyLength,
+    }),
   })
     .then((response) => response.json())
     .then((data) => {
@@ -450,11 +591,15 @@ document.getElementById("survey-submit-btn").addEventListener("click", function 
         responseBox.value = "Error: " + data.error;
       } else {
         responseBox.value = data.response;
+        // Update the Call Section heading with the survey heading.
+        document.getElementById("call-heading").textContent = `Call in Progress: ${data.survey_heading}`;
+        // Update the Chat Container heading with the survey heading.
+        document.getElementById("chat-heading").textContent = data.survey_heading;
         // Store the history record id as a number.
         window.latestRecordId = parseInt(data.record_id);
-        // Get the current chat record counter from localStorage
+        // Get the current chat record counter from localStorage.
         let counter = parseInt(localStorage.getItem("chatRecordCounter"));
-        window.latestChatRecordId = counter;  // Use this as the chat record id.
+        window.latestChatRecordId = counter; // Use this as the chat record id.
         // Increment and store back to localStorage for next chat record.
         localStorage.setItem("chatRecordCounter", (counter + 1).toString());
         // Show Chat with Survey button if call summary is available.
@@ -471,108 +616,122 @@ document.getElementById("survey-submit-btn").addEventListener("click", function 
 
 
       // Send Survey Response to Voice AI
-      document.getElementById("send-voice-btn").addEventListener("click", function () {
-        const responseText = document.getElementById("survey-response").value;
-        if (!responseText) {
-          alert("No response text available to send.");
-          return;
-        }
-        // Hide chat container if visible.
-        document.getElementById("chat-container").classList.add("hidden");
-        // Ensure the Voice AI container is visible.
-        document.getElementById("call-section").classList.remove("hidden");
-        fetch("/start-call", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + apiKey,
-          },
-          body: JSON.stringify({ text: responseText }),
-        })
-          .then((response) => response.json())
-          .then((callData) => {
-            if (callData.error) {
-              return;
-            }
-            const callId = callData.call_id;
-            pollCallDetails(callId);
-          });
-        startWebCall(responseText);
-        setTimeout(() => {
-          document.getElementById("call-section").scrollIntoView({ behavior: "smooth" });
-        }, 300);
-      });
+      document
+        .getElementById("send-voice-btn")
+        .addEventListener("click", function () {
+          const responseText = document.getElementById("survey-response").value;
+          if (!responseText) {
+            alert("No response text available to send.");
+            return;
+          }
+          // Hide chat container if visible.
+          document.getElementById("chat-container").classList.add("hidden");
+          // Ensure the Voice AI container is visible.
+          document.getElementById("call-section").classList.remove("hidden");
+          fetch("/start-call", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + apiKey,
+            },
+            body: JSON.stringify({ text: responseText }),
+          })
+            .then((response) => response.json())
+            .then((callData) => {
+              if (callData.error) {
+                return;
+              }
+              const callId = callData.call_id;
+              pollCallDetails(callId);
+            });
+          startWebCall(responseText);
+          setTimeout(() => {
+            document
+              .getElementById("call-section")
+              .scrollIntoView({ behavior: "smooth" });
+          }, 300);
+        });
 
       // Stop call
-      document.getElementById("stop-btn").addEventListener("click", function () {
-        stopWebCall();
-      });
+      document
+        .getElementById("stop-btn")
+        .addEventListener("click", function () {
+          stopWebCall();
+        });
 
       // Chat with Survey button functionality: Hide call section and show chat container.
-      document.getElementById("chat-survey-btn").addEventListener("click", function () {
-        document.getElementById("call-section").classList.add("hidden");
-        document.getElementById("chat-container").classList.remove("hidden");
-        const chatMessages = document.getElementById("chat-messages");
-        // Start with an initial greeting and include the chat record id in the context if needed.
-        chatMessages.innerHTML = "<p class='text-green-600 font-semibold'>Bot: Hi, let's start the survey. Are you ready?</p>";
-      });
+      document
+        .getElementById("chat-survey-btn")
+        .addEventListener("click", function () {
+          document.getElementById("call-section").classList.add("hidden");
+          document.getElementById("chat-container").classList.remove("hidden");
+          const chatMessages = document.getElementById("chat-messages");
+          // Start with an initial greeting and include the chat record id in the context if needed.
+          chatMessages.innerHTML =
+            "<p class='text-green-600 font-semibold'>Bot: Hi, let's start the survey. Are you ready?</p>";
+        });
 
       // Back to Voice AI link in chat container
-      document.getElementById("back-to-voice").addEventListener("click", function (e) {
-        e.preventDefault();
-        document.getElementById("chat-container").classList.add("hidden");
-        document.getElementById("call-section").classList.remove("hidden");
-      });
+      document
+        .getElementById("back-to-voice")
+        .addEventListener("click", function (e) {
+          e.preventDefault();
+          document.getElementById("chat-container").classList.add("hidden");
+          document.getElementById("call-section").classList.remove("hidden");
+        });
 
       // Chat send functionality for the Chat with Survey interface.
       document.addEventListener("DOMContentLoaded", function () {
-        document.getElementById("chat-send-btn").addEventListener("click", function () {
-          const chatInput = document.getElementById("chat-input");
-          const question = chatInput.value.trim();
-          if (!question) return;
-          const chatMessages = document.getElementById("chat-messages");
+        document
+          .getElementById("chat-send-btn")
+          .addEventListener("click", function () {
+            const chatInput = document.getElementById("chat-input");
+            const question = chatInput.value.trim();
+            if (!question) return;
+            const chatMessages = document.getElementById("chat-messages");
 
-          // Append the user's message.
-          const userMsg = document.createElement("div");
-          userMsg.textContent = "You: " + question;
-          userMsg.className = "text-blue-600 font-semibold my-1";
-          chatMessages.appendChild(userMsg);
-          chatMessages.scrollTop = chatMessages.scrollHeight;
-          const surveyResponseText = document.getElementById("survey-response").value;
-          // Use the latest raw transcript as context.
-          const rawTranscript = window.latestRawTranscript || "";
-          fetch("/chat_with_survey", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              question: question,
-              survey_response: surveyResponseText,
-              record_id: window.latestChatRecordId
+            // Append the user's message.
+            const userMsg = document.createElement("div");
+            userMsg.textContent = "You: " + question;
+            userMsg.className = "text-blue-600 font-semibold my-1";
+            chatMessages.appendChild(userMsg);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            const surveyResponseText =
+              document.getElementById("survey-response").value;
+            // Use the latest raw transcript as context.
+            const rawTranscript = window.latestRawTranscript || "";
+            fetch("/chat_with_survey", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                question: question,
+                survey_response: surveyResponseText,
+                record_id: window.latestChatRecordId,
+              }),
             })
-          })
-            .then((response) => response.json())
-            .then((data) => {
-              const botMsg = document.createElement("div");
-              if (data.error) {
-                botMsg.textContent = "Error: " + data.error;
-                botMsg.className = "text-red-600 font-semibold my-1";
-              } else {
-                botMsg.textContent = "Bot: " + data.response;
-                botMsg.className = "text-green-600 font-semibold my-1";
-                // Optionally update the latest raw transcript with the new context.
-                window.latestRawTranscript += "\n" + data.response;
-              }
-              chatMessages.appendChild(botMsg);
-              chatMessages.scrollTop = chatMessages.scrollHeight;
-            })
-            .catch((error) => {
-              const errorEl = document.createElement("div");
-              errorEl.textContent = "Error: " + error;
-              errorEl.className = "text-red-600 font-semibold my-1";
-              chatMessages.appendChild(errorEl);
-            });
-          chatInput.value = "";
-        });
+              .then((response) => response.json())
+              .then((data) => {
+                const botMsg = document.createElement("div");
+                if (data.error) {
+                  botMsg.textContent = "Error: " + data.error;
+                  botMsg.className = "text-red-600 font-semibold my-1";
+                } else {
+                  botMsg.textContent = "Bot: " + data.response;
+                  botMsg.className = "text-green-600 font-semibold my-1";
+                  // Optionally update the latest raw transcript with the new context.
+                  window.latestRawTranscript += "\n" + data.response;
+                }
+                chatMessages.appendChild(botMsg);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+              })
+              .catch((error) => {
+                const errorEl = document.createElement("div");
+                errorEl.textContent = "Error: " + error;
+                errorEl.className = "text-red-600 font-semibold my-1";
+                chatMessages.appendChild(errorEl);
+              });
+            chatInput.value = "";
+          });
       });
 
       // Prefill fields if URL has parameters.
@@ -588,34 +747,35 @@ document.getElementById("survey-submit-btn").addEventListener("click", function 
         }
       });
       // Stop Survey button functionality
-document.getElementById("stop-survey-btn").addEventListener("click", function () {
-  if (!window.latestChatRecordId) {
-    alert("No chat record available.");
-    return;
-  }
-  // Send a POST request to /stop-survey with the chat record id.
-  fetch("/stop-survey", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ record_id: window.latestChatRecordId })
-  })
-    .then(response => response.json())
-    .then(data => {
-      if (data.error) {
-        alert("Error stopping survey: " + data.error);
-      } else {
-        // Optionally, show the summary to the user
-        alert("Survey stopped");
-        // You can also disable further chat input if needed:
-        document.getElementById("chat-input").disabled = true;
-        document.getElementById("chat-send-btn").disabled = true;
-      }
-    })
-    .catch(err => {
-      alert("Error: " + err);
-    });
-});
-
+      document
+        .getElementById("stop-survey-btn")
+        .addEventListener("click", function () {
+          if (!window.latestChatRecordId) {
+            alert("No chat record available.");
+            return;
+          }
+          // Send a POST request to /stop-survey with the chat record id.
+          fetch("/stop-survey", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ record_id: window.latestChatRecordId }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.error) {
+                alert("Error stopping survey: " + data.error);
+              } else {
+                // Optionally, show the summary to the user
+                alert("Survey stopped");
+                // You can also disable further chat input if needed:
+                document.getElementById("chat-input").disabled = true;
+                document.getElementById("chat-send-btn").disabled = true;
+              }
+            })
+            .catch((err) => {
+              alert("Error: " + err);
+            });
+        });
     </script>
   </body>
 </html>

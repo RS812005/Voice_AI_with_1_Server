@@ -576,5 +576,61 @@
       }
     ],
     "created_at": "2025-03-18T04:53:04.219844"
+  },
+  "15": {
+    "survey_response": "Here's a short survey that should take around 2 minutes to complete:\n\n**Survey: Lifestyle and Interests**\n\nWe value your opinions and would love to hear from you. Please take a few minutes to complete this survey. All responses are anonymous.\n\n**Section 1: Demographics**\n\n1. What is your age range?\n   a) 18-24\n   b) 25-34\n   c) 35-44\n   d) 45-54\n   e) 55 or older\n\n2. What is your highest level of education?\n   a) High school or equivalent\n   b) Some college or university\n   c) Bachelor's degree\n   d) Master's degree or higher\n\n**Section 2: Lifestyle**\n\n3. How often do you exercise or engage in physical activity?\n   a) Daily\n   b) 3-4 times a week\n   c) 1-2 times a week\n   d) Rarely\n\n4. How many hours do you spend watching TV or streaming content per day?\n   a) Less than 1 hour\n   b) 1-2 hours\n   c) 2-3 hours\n   d) More than 3 hours\n\n**Section 3: Interests**\n\n5. What type of music do you enjoy listening to? (Select up to 2 options)\n   a) Pop\n   b) Rock\n   c) Hip-hop/Rap\n   d) Classical\n   e) Other (please specify)\n\n6. How often do you travel for leisure?\n   a) Frequently (more than 2 times a year)\n   b) Occasionally (1-2 times a year)\n   c) Rarely\n\n**Section 4: Technology**\n\n7. What type of device do you use most often to access the internet?\n   a) Smartphone\n   b) Laptop/computer\n   c) Tablet\n   d) Other (please specify)\n\n8. How concerned are you about online privacy?\n   a) Very concerned\n   b) Somewhat concerned\n   c) Not very concerned\n   d) Not at all concerned\n\nThank you for taking the time to complete this survey! Your responses are appreciated.",
+    "survey_prompt": "",
+    "summary": "",
+    "chat_with_survey": [
+      {
+        "sender": "user",
+        "message": "ya",
+        "timestamp": "2025-03-18T05:17:54.980109"
+      },
+      {
+        "sender": "bot",
+        "message": "What is your age range?\n   a) 18-24\n   b) 25-34\n   c) 35-44\n   d) 45-54\n   e) 55 or older",
+        "timestamp": "2025-03-18T05:17:55.519163"
+      }
+    ],
+    "created_at": "2025-03-18T05:17:54.980109"
+  },
+  "18": {
+    "survey_response": "Here's a sample survey for Odisha:\n\n**Odisha Survey**\n\n**Introduction:** \nWe value your opinion and would like to hear about your experiences and perceptions about Odisha. This survey should take around 2 minutes to complete. All responses will be kept confidential.\n\n**Section 1: Demographics**\n\n1. What is your age?\n   a) 18-24\n   b) 25-34\n   c) 35-44\n   d) 45-54\n   e) 55 or above\n\n2. What is your gender?\n   a) Male\n   b) Female\n   c) Other (please specify)\n\n3. Which district of Odisha do you reside in? (Select one)\n   a) Angul\n   b) Balasore\n   c) Bargarh\n   d) Bhadrak\n   e) Other (please specify)\n\n**Section 2: Perception of Odisha**\n\n1. How would you rate the overall quality of life in Odisha?\n   a) Excellent\n   b) Good\n   c) Fair\n   d) Poor\n\n2. What do you think is the most significant challenge facing Odisha today? (Select one)\n   a) Poverty\n   b) Unemployment\n   c) Lack of infrastructure\n   d) Healthcare\n   e) Other (please specify)\n\n3. How satisfied are you with the current state of tourism in Odisha?\n   a) Very satisfied\n   b) Somewhat satisfied\n   c) Neutral\n   d) Somewhat dissatisfied\n   e) Very dissatisfied\n\n**Section 3: Infrastructure and Development**\n\n1. How would you rate the condition of roads in your area?\n   a) Excellent\n   b) Good\n   c) Fair\n   d) Poor\n\n2. Do you have access to reliable internet and electricity in your area?\n   a) Yes\n   b) No\n\n3. How important is it for the government to invest in renewable energy sources in Odisha? (Scale of 1-5, where 1 is \"not important at all\" and 5 is \"very important\")\n   a) 1\n   b) 2\n   c) 3\n   d) 4\n   e) 5\n\n**Conclusion:**\nThank you for taking the time to participate in this survey. Your responses are valuable to us, and we appreciate your honesty. If you have any additional comments or suggestions, please feel free to include them below.",
+    "survey_prompt": "",
+    "summary": "",
+    "chat_with_survey": [
+      {
+        "sender": "user",
+        "message": "ya go ahead",
+        "timestamp": "2025-03-18T07:03:13.301070"
+      },
+      {
+        "sender": "bot",
+        "message": "What is your age?\n   a) 18-24\n   b) 25-34\n   c) 35-44\n   d) 45-54\n   e) 55 or above",
+        "timestamp": "2025-03-18T07:03:13.767634"
+      },
+      {
+        "sender": "user",
+        "message": "19",
+        "timestamp": "2025-03-18T07:03:19.522841"
+      },
+      {
+        "sender": "bot",
+        "message": "What is your gender?\n   a) Male\n   b) Female\n   c) Other (please specify)",
+        "timestamp": "2025-03-18T07:03:19.871343"
+      },
+      {
+        "sender": "user",
+        "message": "male",
+        "timestamp": "2025-03-18T07:03:28.864023"
+      },
+      {
+        "sender": "bot",
+        "message": "Which district of Odisha do you reside in? (Select one)\n   a) Angul\n   b) Balasore\n   c) Bargarh\n   d) Bhadrak\n   e) Other (please specify)",
+        "timestamp": "2025-03-18T07:03:29.384257"
+      }
+    ],
+    "created_at": "2025-03-18T07:03:13.301070"
   }
 }
