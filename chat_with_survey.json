@@ -632,5 +632,147 @@
       }
     ],
     "created_at": "2025-03-18T07:03:13.301070"
+  },
+  "None": {
+    "survey_response": "",
+    "survey_prompt": "",
+    "summary": "",
+    "chat_with_survey": [
+      {
+        "sender": "user",
+        "message": "ya go ahead",
+        "timestamp": "2025-03-18T20:52:01.016773"
+      },
+      {
+        "sender": "bot",
+        "message": "Section 1: Communication. How would you rate the overall quality of your internet connection?",
+        "timestamp": "2025-03-18T20:52:01.560738"
+      },
+      {
+        "sender": "user",
+        "message": "ya",
+        "timestamp": "2025-03-18T20:55:29.157113"
+      },
+      {
+        "sender": "bot",
+        "message": "How would you rate the overall quality of your internet connection?",
+        "timestamp": "2025-03-18T20:55:29.490538"
+      },
+      {
+        "sender": "user",
+        "message": "ya",
+        "timestamp": "2025-03-18T20:58:35.460066"
+      },
+      {
+        "sender": "bot",
+        "message": "How would you rate the overall quality of your internet connection?",
+        "timestamp": "2025-03-18T20:58:35.782496"
+      }
+    ],
+    "created_at": "2025-03-18T20:52:01.016773"
+  },
+  "33": {
+    "survey_response": "Delhi Resident SurveyWhat is your primary mode of transportation in Delhi?MetroBusCarAuto-RickshawWhat do you like most about living in Delhi?How would you rate the overall quality of life in Delhi?Select rating1 (Poor)2 (Fair)3 (Good)4 (Very Good)5 (Excellent)Please describe your favorite tourist destination in Delhi and why you like it.How satisfied are you with the public services in Delhi?Select rating1 (Very Dissatisfied)2 (Dissatisfied)3 (Neutral)4 (Satisfied)5 (Very Satisfied)What changes would you like to see in Delhi to improve the quality of life?",
+    "survey_prompt": "",
+    "summary": "Based on the conversation, the JSON schema can be filled as follows:\n\n```\n{\n  \"summary\": \"The user is a Delhi resident who primarily uses auto-rickshaws for transportation and likes the food in Delhi. However, they rate the overall quality of life in Delhi as poor.\",\n  \"ratings\": {\n    \"happiness\": { \"rating\": 1, \"comment\": \"The user likes the food in Delhi, but rates the overall quality of life as poor.\" },\n    \"mental_health\": { \"rating\": 0, \"comment\": \"No information provided\" },\n    \"job_satisfaction\": { \"rating\": 0, \"comment\": \"No information provided\" },\n    \"enps\": { \"rating\": 0, \"comment\": \"No information provided\" },\n    \"communication\": { \"rating\": 0, \"comment\": \"No information provided\" }\n  },\n  \"next_steps\": \"The user may be asked about their concerns and suggestions for improving the quality of life in Delhi.\",\n  \"transcript_summary\": {\n    \"highlights\": [\"The user likes the food in Delhi\", \"The user primarily uses auto-rickshaws for transportation\"],\n    \"concerns\": [\"The user rates the overall quality of life in Delhi as poor\"],\n    \"feedback\": [\"The user may provide feedback on their favorite tourist destination in Delhi\"]\n  },\n  \"raw_transcript\": \"Delhi Resident Survey... (entire conversation)\",\n  \"overall\": \"The user seems dissatisfied with the overall quality of life in Delhi, despite enjoying the food.\"\n}\n```\n\nNote: Since the conversation is incomplete and some questions are not answered, the ratings for mental health, job satisfaction, ENPS, and communication are not provided. The next steps and feedback sections are also not fully filled. The transcript summary and overall sections are based on the available information.",
+    "chat_with_survey": [
+      {
+        "sender": "user",
+        "message": "ya",
+        "timestamp": "2025-03-18T21:03:11.706088"
+      },
+      {
+        "sender": "bot",
+        "message": "What is your primary mode of transportation in Delhi?",
+        "timestamp": "2025-03-18T21:03:11.998188"
+      },
+      {
+        "sender": "user",
+        "message": "umm auto",
+        "timestamp": "2025-03-18T21:03:23.767382"
+      },
+      {
+        "sender": "bot",
+        "message": "What do you like most about living in Delhi?",
+        "timestamp": "2025-03-18T21:03:24.101545"
+      },
+      {
+        "sender": "user",
+        "message": "food",
+        "timestamp": "2025-03-18T21:03:33.676868"
+      },
+      {
+        "sender": "bot",
+        "message": "How would you rate the overall quality of life in Delhi? \nSelect rating \n1 (Poor) \n2 (Fair) \n3 (Good) \n4 (Very Good) \n5 (Excellent)",
+        "timestamp": "2025-03-18T21:03:34.052566"
+      },
+      {
+        "sender": "user",
+        "message": "1",
+        "timestamp": "2025-03-18T21:04:04.903625"
+      },
+      {
+        "sender": "bot",
+        "message": "Please describe your favorite tourist destination in Delhi and why you like it.",
+        "timestamp": "2025-03-18T21:04:05.323848"
+      }
+    ],
+    "created_at": "2025-03-18T21:03:11.706088"
+  },
+  "40": {
+    "survey_response": "Delhi Survey: Understanding Resident Experiences and PerceptionsHow long have you been living in Delhi?Less than 6 months6 months to 1 year1-2 yearsMore than 2 yearsWhat do you like most about living in Delhi?How would you rate the overall quality of life in Delhi?Select ratingPoorFairGoodExcellentPlease describe your experience with public transportation in Delhi.What are the biggest challenges you face while living in Delhi?Traffic and congestionPollutionCrime and safetyOther (please specify)How satisfied are you with the amenities and services provided by your local government?Select ratingVery dissatisfiedSomewhat dissatisfiedNeutralSomewhat satisfiedVery satisfiedDo you have any suggestions for improving the overall livability of Delhi?",
+    "survey_prompt": "",
+    "summary": "",
+    "chat_with_survey": [
+      {
+        "sender": "user",
+        "message": "ya go ahead",
+        "timestamp": "2025-03-18T21:09:32.879950"
+      },
+      {
+        "sender": "bot",
+        "message": "How long have you been living in Delhi? \nLess than 6 months\n6 months to 1 year\n1-2 years\nMore than 2 years",
+        "timestamp": "2025-03-18T21:09:33.287184"
+      },
+      {
+        "sender": "user",
+        "message": "6 months",
+        "timestamp": "2025-03-18T21:09:40.618067"
+      },
+      {
+        "sender": "bot",
+        "message": "What do you like most about living in Delhi?",
+        "timestamp": "2025-03-18T21:09:40.958938"
+      }
+    ],
+    "created_at": "2025-03-18T21:09:32.879950"
+  },
+  "44": {
+    "survey_response": "Kolkata City SurveyHow often do you visit Kolkata?DailyWeeklyMonthlyRarelyWhat do you like most about Kolkata?How would you rate the overall cleanliness of Kolkata?Select rating1 (Poor)2 (Fair)3 (Good)4 (Very Good)5 (Excellent)What are some of the challenges you face while traveling in Kolkata?How would you rate the quality of street food in Kolkata?Select rating1 (Poor)2 (Fair)3 (Good)4 (Very Good)5 (Excellent)What are your favorite places to visit in Kolkata?How would you rate your overall experience in Kolkata?Select rating1 (Poor)2 (Fair)3 (Good)4 (Very Good)5 (Excellent)Do you think Kolkata is a safe city?YesNoNeutral",
+    "survey_prompt": "",
+    "summary": "",
+    "chat_with_survey": [
+      {
+        "sender": "user",
+        "message": "ya",
+        "timestamp": "2025-03-18T21:42:06.769535"
+      },
+      {
+        "sender": "bot",
+        "message": "How often do you visit Kolkata?\nDaily\nWeekly\nMonthly\nRarely",
+        "timestamp": "2025-03-18T21:42:07.061347"
+      },
+      {
+        "sender": "user",
+        "message": "daily",
+        "timestamp": "2025-03-18T21:42:33.134313"
+      },
+      {
+        "sender": "bot",
+        "message": "What do you like most about Kolkata?",
+        "timestamp": "2025-03-18T21:42:33.549320"
+      }
+    ],
+    "created_at": "2025-03-18T21:42:06.769535"
   }
 }

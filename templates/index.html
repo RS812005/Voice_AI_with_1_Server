@@ -15,11 +15,42 @@
       #survey-section textarea {
         margin-bottom: 10px;
       }
-      #survey-response {
-        width: 100%;
-        height: 300px;
-        resize: vertical;
-      }
+      /* Updated survey-response styling */
+#survey-response {
+  width: 100%;
+  max-height: 500px; /* Prevent container from growing too tall */
+  overflow-y: auto;  /* Add vertical scrollbar if content overflows */
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem; /* Extra space to avoid overlapping with call section */
+}
+/* Styling for multiple-choice options */
+/* Multiple-choice option container */
+/* Container for each radio button + label pair */
+.mcq-option {
+  display: flex;               /* Put the radio button + label in a row */
+  align-items: center;         /* Vertically center them */
+  justify-content: flex-start; /* Keep them on the left side */
+  margin-bottom: 0.5rem;       /* Spacing between each option */
+  width: auto;                 /* Don’t force 100% width for each option */
+}
+
+/* Radio input spacing */
+.mcq-option input[type="radio"] {
+  margin-right: 0.5rem;
+  width: auto; 
+}
+
+/* Ensure labels don’t take up 100% width */
+.mcq-option label {
+  width: auto;
+  display: inline-block; 
+}
+
+
+
       select,
       textarea,
       input {
@@ -101,11 +132,13 @@
                 >Enter Prompt:</label
               >
               <textarea
-                id="survey-prompt"
-                rows="4"
-                placeholder="Enter your survey prompt here..."
-                class="w-full text-sm border border-gray-300 rounded-xl px-3 py-2"
-              ></textarea>
+                  id="survey-prompt"
+                  rows="4"
+                  placeholder="Enter your survey prompt here..."
+                  class="w-full border  text-sm border-gray-300 rounded-xl px-3 py-2"
+                ></textarea>
+
+             
             </div>
             <!-- Dropdowns -->
             <div class="grid grid-cols-2 gap-4 mb-4">
@@ -204,18 +237,14 @@
           </div>
           <!-- Main Content Area (Survey Response) -->
           <div class="col-span-3 h-screen flex flex-col p-6 pt-0">
-            <div class="flex-1 flex flex-col">
+            <div class="flex-1 flex flex-col ">
               <label
                 class="mb-2 text-sm font-medium text-gray-700"
                 for="survey-response"
               >
                 Response:
               </label>
-              <textarea
-                id="survey-response"
-                class="w-full flex-1 text-sm border border-gray-300 rounded-md resize-none p-2"
-                placeholder="Response will appear here..."
-              ></textarea>
+              <div id="survey-response" class=" flex-1 bg-white p-6 rounded-lg shadow-md mb-0"></div>
             </div>
             <!-- Buttons for Voice AI and Chat with Survey -->
             <div class="flex space-x-4 mt-4 self-end">
@@ -227,7 +256,7 @@
               </button>
               <button
                 id="chat-survey-btn"
-                class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-md transition-colors font-semibold hidden"
+                class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-md transition-colors font-semibold "
               >
                 Chat with Survey
               </button>
@@ -568,15 +597,66 @@ Closing:
       
 
       // In the survey submission event listener, replace the assignment for window.latestChatRecordId:
-      document.getElementById("survey-submit-btn").addEventListener("click", function () {
+//       document.getElementById("survey-submit-btn").addEventListener("click", function () {
+//   const promptText = document.getElementById("survey-prompt").value;
+//   const surveyLength = document.getElementById("survey-length").value;
+//   const responseBox = document.getElementById("survey-response");
+//   if (!promptText) {
+//     alert("Please enter a survey prompt.");
+//     return;
+//   }
+//   responseBox.value = "Waiting for response...";
+//   fetch("/groq-chat", {
+//     method: "POST",
+//     headers: { "Content-Type": "application/json" },
+//     body: JSON.stringify({
+//       prompt: promptText,
+//       survey_length: surveyLength,
+//     }),
+//   })
+//     .then((response) => response.json())
+//     .then((data) => {
+//       if (data.error) {
+//         responseBox.value = "Error: " + data.error;
+//       } else {
+//         responseBox.value = data.response;
+//         // Update the Call Section heading with the survey heading.
+//         document.getElementById("call-heading").textContent = `Call in Progress: ${data.survey_heading}`;
+//         // Update the Chat Container heading with the survey heading.
+//         document.getElementById("chat-heading").textContent = data.survey_heading;
+//         // Store the history record id as a number.
+//         window.latestRecordId = parseInt(data.record_id);
+//         // Get the current chat record counter from localStorage.
+//         let counter = parseInt(localStorage.getItem("chatRecordCounter"));
+//         window.latestChatRecordId = counter; // Use this as the chat record id.
+//         // Increment and store back to localStorage for next chat record.
+//         localStorage.setItem("chatRecordCounter", (counter + 1).toString());
+//         // Show Chat with Survey button if call summary is available.
+//         let chatBtn = document.getElementById("chat-survey-btn");
+//         if (chatBtn) {
+//           chatBtn.classList.remove("hidden");
+//         }
+//       }
+//     })
+//     .catch((err) => {
+//       responseBox.value = "Error: " + err;
+//     });
+// });
+document.getElementById('survey-submit-btn').addEventListener('click', () => {
+  // Clear any previous survey form content
+  const surveyContainer = document.getElementById('survey-response');
+  surveyContainer.innerHTML = '<p class="text-gray-600 mb-4">Loading survey...</p>';
+  
   const promptText = document.getElementById("survey-prompt").value;
   const surveyLength = document.getElementById("survey-length").value;
-  const responseBox = document.getElementById("survey-response");
+  
+  // Validate prompt
   if (!promptText) {
     alert("Please enter a survey prompt.");
     return;
   }
-  responseBox.value = "Waiting for response...";
+  
+  // Fetch survey JSON data from the "groq-chat" route
   fetch("/groq-chat", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -585,32 +665,134 @@ Closing:
       survey_length: surveyLength,
     }),
   })
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.error) {
-        responseBox.value = "Error: " + data.error;
-      } else {
-        responseBox.value = data.response;
-        // Update the Call Section heading with the survey heading.
-        document.getElementById("call-heading").textContent = `Call in Progress: ${data.survey_heading}`;
-        // Update the Chat Container heading with the survey heading.
-        document.getElementById("chat-heading").textContent = data.survey_heading;
-        // Store the history record id as a number.
+    .then(response => response.json())
+    .then(data => {
+      // Clear the container before rendering new content
+      surveyContainer.innerHTML = '';
+      
+      // Check if the survey data exists
+      if (data && data.survey) {
+        // Update headings using the survey heading from the response
+        document.getElementById("call-heading").textContent = `Call in Progress: ${data.survey.survey_title}`;
+        document.getElementById("chat-heading").textContent = data.survey.survey_title;
+        
+        // Store the history record id and update the chat record counter
         window.latestRecordId = parseInt(data.record_id);
-        // Get the current chat record counter from localStorage.
         let counter = parseInt(localStorage.getItem("chatRecordCounter"));
-        window.latestChatRecordId = counter; // Use this as the chat record id.
-        // Increment and store back to localStorage for next chat record.
+        window.latestChatRecordId = counter; // Use this as the chat record id
         localStorage.setItem("chatRecordCounter", (counter + 1).toString());
-        // Show Chat with Survey button if call summary is available.
         let chatBtn = document.getElementById("chat-survey-btn");
         if (chatBtn) {
           chatBtn.classList.remove("hidden");
         }
+        
+        // Create and append the survey title
+        const titleEl = document.createElement('h1');
+        titleEl.textContent = data.survey.survey_title;
+        titleEl.className = 'text-2xl font-bold mb-6';
+        surveyContainer.appendChild(titleEl);
+        
+        // Create a form element to contain all questions
+        const formEl = document.createElement('form');
+        formEl.className = 'space-y-6';
+        
+        // Iterate over each question and render based on its type
+        data.survey.questions.forEach(question => {
+          // Container for an individual question
+          const questionContainer = document.createElement('div');
+          questionContainer.className = 'border p-4 rounded-lg bg-gray-50';
+          
+          // Display the question text
+          const questionText = document.createElement('p');
+          questionText.textContent = question.question;
+          questionText.className = 'mb-3 font-semibold text-gray-800';
+          questionContainer.appendChild(questionText);
+          
+          // Render elements based on question type
+          if (question.type === 'multiple_choice') {
+            // Create radio buttons for each option
+            question.options.forEach((option, index) => {
+              const optionContainer = document.createElement('div');
+              optionContainer.className = 'mcq-option';
+              
+              const radioInput = document.createElement('input');
+              radioInput.type = 'radio';
+              radioInput.name = 'question_' + question.id;
+              radioInput.value = option;
+              radioInput.id = `q${question.id}_option${index}`;
+              radioInput.className = 'mr-2';
+              
+              const label = document.createElement('label');
+              label.htmlFor = radioInput.id;
+              label.textContent = option;
+              label.className = 'text-gray-700';
+              
+              optionContainer.appendChild(radioInput);
+              optionContainer.appendChild(label);
+              questionContainer.appendChild(optionContainer);
+            });
+          } else if (question.type === 'short_answer') {
+            // Create a single-line text input
+            const inputEl = document.createElement('input');
+            inputEl.type = 'text';
+            inputEl.name = 'question_' + question.id;
+            inputEl.className = 'w-full p-2 border rounded focus:outline-none focus:ring';
+            questionContainer.appendChild(inputEl);
+          } else if (question.type === 'rating') {
+            // If options are provided, render as a dropdown
+            if (question.options && question.options.length > 0) {
+              const selectEl = document.createElement('select');
+              selectEl.name = 'question_' + question.id;
+              selectEl.className = 'w-full p-2 border rounded focus:outline-none focus:ring';
+              
+              // Default placeholder option
+              const defaultOption = document.createElement('option');
+              defaultOption.value = '';
+              defaultOption.textContent = 'Select rating';
+              selectEl.appendChild(defaultOption);
+              
+              question.options.forEach(option => {
+                const optionEl = document.createElement('option');
+                optionEl.value = option;
+                optionEl.textContent = option;
+                selectEl.appendChild(optionEl);
+              });
+              questionContainer.appendChild(selectEl);
+            } else {
+              // Alternatively, render a series of buttons (e.g., 1-5)
+              const ratingContainer = document.createElement('div');
+              ratingContainer.className = 'flex space-x-2';
+              for (let i = 1; i <= 5; i++) {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.textContent = i;
+                btn.className = 'px-3 py-1 border rounded hover:bg-gray-200';
+                ratingContainer.appendChild(btn);
+              }
+              questionContainer.appendChild(ratingContainer);
+            }
+          } else if (question.type === 'paragraph') {
+            // Render a multi-line textarea
+            const textareaEl = document.createElement('textarea');
+            textareaEl.name = 'question_' + question.id;
+            textareaEl.rows = 4;
+            textareaEl.className = 'w-full p-2 border rounded focus:outline-none focus:ring';
+            questionContainer.appendChild(textareaEl);
+          }
+          
+          // Append the question container to the form
+          formEl.appendChild(questionContainer);
+        });
+        
+        // Append the completed form to the survey container
+        surveyContainer.appendChild(formEl);
+      } else {
+        surveyContainer.innerHTML = '<p class="text-red-600">Survey data not found.</p>';
       }
     })
-    .catch((err) => {
-      responseBox.value = "Error: " + err;
+    .catch(error => {
+      console.error('Error fetching survey data:', error);
+      surveyContainer.innerHTML = '<p class="text-red-600">Error loading survey.</p>';
     });
 });
 
@@ -619,7 +801,7 @@ Closing:
       document
         .getElementById("send-voice-btn")
         .addEventListener("click", function () {
-          const responseText = document.getElementById("survey-response").value;
+          const responseText = document.getElementById("survey-response").textContent;
           if (!responseText) {
             alert("No response text available to send.");
             return;
@@ -669,6 +851,8 @@ Closing:
           // Start with an initial greeting and include the chat record id in the context if needed.
           chatMessages.innerHTML =
             "<p class='text-green-600 font-semibold'>Bot: Hi, let's start the survey. Are you ready?</p>";
+            document.getElementById("chat-container").scrollIntoView({ behavior: "smooth" });
+
         });
 
       // Back to Voice AI link in chat container
@@ -697,7 +881,7 @@ Closing:
             chatMessages.appendChild(userMsg);
             chatMessages.scrollTop = chatMessages.scrollHeight;
             const surveyResponseText =
-              document.getElementById("survey-response").value;
+              document.getElementById("survey-response").textContent;
             // Use the latest raw transcript as context.
             const rawTranscript = window.latestRawTranscript || "";
             fetch("/chat_with_survey", {

@@ -182,6 +182,9 @@ def analysis_route():
     return render_template("analysis.html", aggregated=aggregated, total_users=total_users)
 
 
+import re
+import json
+
 @app.route("/groq-chat", methods=["POST"])
 def groq_chat():
     try:
@@ -202,45 +205,81 @@ def groq_chat():
         else:
             length_instruction = ""
 
-        # Combine the prompt with the survey length instruction for the survey response.
-        full_prompt = f"{prompt}\n\n{length_instruction}"
+        # Define the JSON schema instruction.
+        json_schema_instruction = (
+            "Please generate a structured survey in JSON format using the following schema:\n\n"
+            "json:\n"
+            "{\n"
+            "  \"survey_title\": \"\",\n"
+            "  \"questions\": [\n"
+            "    {\n"
+            "      \"id\": 1,\n"
+            "      \"question\": \"\",\n"
+            "      \"type\": \"multiple_choice\", // Can be 'multiple_choice', 'short_answer', 'paragraph', 'rating'\n"
+            "      \"options\": [\"\", \"\", \"\", \"\"], // Only for multiple_choice or rating type\n"
+            "      \"answer\": \"\"\n"
+            "    },\n"
+            "    {\n"
+            "      \"id\": 2,\n"
+            "      \"question\": \"\",\n"
+            "      \"type\": \"short_answer\",\n"
+            "      \"answer\": \"\"\n"
+            "    }\n"
+            "  ]\n"
+            "}\n\n"
+            "Include a mix of multiple-choice, short-answer, paragraph, and rating questions. "
+            "Ensure that the survey_title is informative and derived from the initial prompt."
+            "Ensure that the model returns only the JSON content without any additional explanation or commentary."
+
+
+        )
+
+        # Combine the prompt, length instruction, and JSON schema instruction.
+        full_prompt = f"{prompt}\n\n{length_instruction}\n\n{json_schema_instruction}"
         
         # Initialize Groq client using the API key from environment variables.
         client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
         
-        # First Groq API call to generate the survey response.
+        # Groq API call to generate the structured survey.
         survey_response_completion = client.chat.completions.create(
             messages=[{"role": "user", "content": full_prompt}],
             model="llama-3.3-70b-versatile",
         )
-        survey_response_text = survey_response_completion.choices[0].message.content
+        survey_response_text = survey_response_completion.choices[0].message.content.strip()
 
-        # Extract the first sentence from the prompt to build the heading.
-        first_sentence = prompt
-        # Create a heading prompt instructing Groq to output a short heading.
-        heading_prompt = (
-            f"Based on the following survey prompt:\n\n{prompt}\n\n"
-            f"Generate a short heading for this survey. The heading should start with something like 'short suvey about' and end with a colon."
-        )
-        
-        # Second Groq API call to generate the survey heading.
-        heading_completion = client.chat.completions.create(
-            messages=[{"role": "user", "content": heading_prompt}],
-            model="llama-3.3-70b-versatile",
-        )
-        survey_heading = heading_completion.choices[0].message.content.strip()
+        # Remove Markdown code fences if present.
+        survey_response_text = re.sub(r"^```(?:json)?\n", "", survey_response_text)
+        survey_response_text = re.sub(r"\n```$", "", survey_response_text)
 
-        # Add a new record to our JSON history and capture the new record.
-        new_record = add_history_record(prompt, survey_response_text)
+        # NEW: Extract only the JSON block from the response.
+        json_match = re.search(r'(\{.*\})', survey_response_text, re.DOTALL)
+        if json_match:
+            json_content = json_match.group(1)
+        else:
+            return jsonify({"error": "No valid JSON found in response", "raw_response": survey_response_text}), 500
 
-        # Return both the survey response and the heading along with the new record id.
+        # Parse the cleaned survey response text into a JSON object.
+        try:
+            structured_survey = json.loads(json_content)
+        except Exception as parse_error:
+            return jsonify({
+                "error": f"Failed to parse survey JSON: {parse_error}",
+                "raw_response": json_content
+            }), 500
+
+        # Optionally, add a new record to our JSON history and capture the new record.
+        new_record = add_history_record(prompt, json_content)
+
+        # Return the structured survey response along with the record id.
         return jsonify({
-            "response": survey_response_text,
-            "survey_heading": survey_heading,
+            "survey": structured_survey,
             "record_id": new_record["id"]
         })
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+
+
 
 
     
