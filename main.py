@@ -269,7 +269,7 @@ def groq_chat():
 
         # Optionally, add a new record to our JSON history and capture the new record.
         new_record = add_history_record(prompt, json_content)
-
+        
         # Return the structured survey response along with the record id.
         return jsonify({
             "survey": structured_survey,
@@ -547,6 +547,46 @@ def stop_survey():
         return jsonify({"message": "Survey has been stopped."})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+@app.route("/public_survey")
+def public_survey():
+    return render_template("public_survey.html")
+
+
+@app.route("/public-survey-voice-ai", methods=["POST"])
+def public_survey_voice_ai():
+    data = request.get_json()
+    recordid = data.get("recordid")
+    if not recordid:
+        return jsonify({"error": "Missing recordid"}), 400
+
+    # Read history records from the JSON file.
+    history = read_history()
+    # Search for the record with matching ID.
+    record = next((rec for rec in history if str(rec.get("id")) == str(recordid)), None)
+    if not record:
+        return jsonify({"error": "Record not found"}), 404
+
+    # Return the prompt_summary for that record.
+    return jsonify({"prompt_summary": record.get("prompt_summary", "")})
+
+
+@app.route("/public-survey-chat-survey", methods=["POST"])
+def public_survey_chat_survey():
+    data = request.get_json()
+    recordid = data.get("recordid")
+    chatrecordid = data.get("chatrecordid")
+    if not recordid or not chatrecordid:
+        return jsonify({"error": "Missing recordid or chatrecordid"}), 400
+
+    # Read history records from the JSON file.
+    history = read_history()
+    # Search for the record with matching ID.
+    record = next((rec for rec in history if str(rec.get("id")) == str(recordid)), None)
+    if not record:
+        return jsonify({"error": "Record not found"}), 404
+
+    # Return the prompt_summary for that record.
+    return jsonify({"prompt_summary": record.get("prompt_summary", "")})
 
 
 if __name__ == "__main__":

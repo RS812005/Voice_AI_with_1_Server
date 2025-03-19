@@ -774,5 +774,195 @@
       }
     ],
     "created_at": "2025-03-18T21:42:06.769535"
+  },
+  "55": {
+    "survey_response": "{\n  \"survey_title\": \"Anime Preferences and Viewing Habits Survey\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"What type of anime genre do you enjoy the most?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Action\", \"Comedy\", \"Drama\", \"Romance\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"How often do you watch anime?\",\n      \"type\": \"rating\",\n      \"options\": [\"Daily\", \"Weekly\", \"Monthly\", \"Rarely\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"What is your favorite anime series and why do you like it?\",\n      \"type\": \"paragraph\",\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"How do you usually watch anime?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Streaming services\", \"DVD/Blu-ray\", \"TV broadcast\", \"Online downloads\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"What do you think makes a good anime character?\",\n      \"type\": \"short_answer\",\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"How important is dubbed vs. subtitled anime to you?\",\n      \"type\": \"rating\",\n      \"options\": [\"Very important\", \"Somewhat important\", \"Not very important\", \"Not at all important\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 7,\n      \"question\": \"Have you ever attended an anime convention or event? If so, what was your experience like?\",\n      \"type\": \"paragraph\",\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 8,\n      \"question\": \"How do you typically find out about new anime series?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Social media\", \"Online forums\", \"Friends/family recommendations\", \"Anime news websites\"],\n      \"answer\": \"\"\n    }\n  ]\n}",
+    "survey_prompt": "",
+    "summary": "",
+    "chat_with_survey": [
+      {
+        "sender": "user",
+        "message": "HELLO",
+        "timestamp": "2025-03-19T00:51:29.460628"
+      },
+      {
+        "sender": "bot",
+        "message": "What type of anime genre do you enjoy the most?",
+        "timestamp": "2025-03-19T00:51:30.088504"
+      },
+      {
+        "sender": "user",
+        "message": "I like action",
+        "timestamp": "2025-03-19T00:51:44.292310"
+      },
+      {
+        "sender": "bot",
+        "message": "How often do you watch anime?",
+        "timestamp": "2025-03-19T00:51:44.714392"
+      },
+      {
+        "sender": "user",
+        "message": "daily",
+        "timestamp": "2025-03-19T00:51:49.513161"
+      },
+      {
+        "sender": "bot",
+        "message": "What is your favorite anime series and why do you like it?",
+        "timestamp": "2025-03-19T00:51:49.960346"
+      },
+      {
+        "sender": "user",
+        "message": "ya",
+        "timestamp": "2025-03-19T00:53:45.517932"
+      },
+      {
+        "sender": "bot",
+        "message": "What is your favorite anime series and why do you like it?",
+        "timestamp": "2025-03-19T00:53:45.851893"
+      }
+    ],
+    "created_at": "2025-03-19T00:51:29.460628"
+  },
+  "56": {
+    "survey_response": "{\n  \"survey_title\": \"Mumbai Resident Survey\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"What is your age group?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"18-24\", \"25-34\", \"35-44\", \"45-54\", \"55 or above\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What do you like most about living in Mumbai?\",\n      \"type\": \"short_answer\",\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"How would you rate the overall quality of life in Mumbai?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Poor)\", \"2\", \"3\", \"4\", \"5 (Excellent)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"What are some of the challenges you face while living in Mumbai? Please describe in detail.\",\n      \"type\": \"paragraph\",\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How long have you been living in Mumbai?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Less than 1 year\", \"1-2 years\", \"2-5 years\", \"5-10 years\", \"More than 10 years\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"What do you think is the most significant issue that Mumbai is currently facing?\",\n      \"type\": \"short_answer\",\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 7,\n      \"question\": \"How would you rate the transportation system in Mumbai?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Poor)\", \"2\", \"3\", \"4\", \"5 (Excellent)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 8,\n      \"question\": \"Do you think Mumbai is a good place to start a business? Why or why not?\",\n      \"type\": \"paragraph\",\n      \"answer\": \"\"\n    }\n  ]\n}",
+    "survey_prompt": "",
+    "summary": "",
+    "chat_with_survey": [
+      {
+        "sender": "user",
+        "message": "ya",
+        "timestamp": "2025-03-19T01:01:09.290078"
+      },
+      {
+        "sender": "bot",
+        "message": "What is your age group?",
+        "timestamp": "2025-03-19T01:01:09.597654"
+      },
+      {
+        "sender": "user",
+        "message": "19",
+        "timestamp": "2025-03-19T01:01:12.288930"
+      },
+      {
+        "sender": "bot",
+        "message": "What do you like most about living in Mumbai?",
+        "timestamp": "2025-03-19T01:01:12.587394"
+      },
+      {
+        "sender": "user",
+        "message": "food",
+        "timestamp": "2025-03-19T01:01:16.169848"
+      },
+      {
+        "sender": "bot",
+        "message": "How would you rate the overall quality of life in Mumbai?",
+        "timestamp": "2025-03-19T01:01:16.525413"
+      }
+    ],
+    "created_at": "2025-03-19T01:01:09.290078"
+  },
+  "57": {
+    "survey_response": "{\n  \"survey_title\": \"Guwahati Resident Survey\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How long have you been living in Guwahati?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Less than 1 year\", \"1-3 years\", \"4-7 years\", \"More than 7 years\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What do you like most about living in Guwahati?\",\n      \"type\": \"short_answer\",\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"How would you rate the overall quality of life in Guwahati?\",\n      \"type\": \"rating\",\n      \"options\": [\"Very Poor\", \"Poor\", \"Average\", \"Good\", \"Excellent\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"What are some challenges you face while living in Guwahati? Please provide details.\",\n      \"type\": \"paragraph\",\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How satisfied are you with the public transportation system in Guwahati?\",\n      \"type\": \"rating\",\n      \"options\": [\"Very Dissatisfied\", \"Dissatisfied\", \"Neutral\", \"Satisfied\", \"Very Satisfied\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"What do you think are the most important issues that need to be addressed in Guwahati?\",\n      \"type\": \"short_answer\",\n      \"answer\": \"\"\n    }\n  ]\n}",
+    "survey_prompt": "",
+    "summary": "",
+    "chat_with_survey": [
+      {
+        "sender": "user",
+        "message": "ya",
+        "timestamp": "2025-03-19T01:05:36.054720"
+      },
+      {
+        "sender": "bot",
+        "message": "How long have you been living in Guwahati?",
+        "timestamp": "2025-03-19T01:05:36.650134"
+      },
+      {
+        "sender": "user",
+        "message": "ya",
+        "timestamp": "2025-03-19T01:06:59.472784"
+      },
+      {
+        "sender": "bot",
+        "message": "How long have you been living in Guwahati?",
+        "timestamp": "2025-03-19T01:06:59.891283"
+      }
+    ],
+    "created_at": "2025-03-19T01:05:36.054720"
+  },
+  "58": {
+    "survey_response": "Internal Feedback for Team ImprovementHow would you rate the team's overall performance in the last quarter?Select rating1 (Poor)2 (Fair)3 (Good)4 (Very Good)5 (Excellent)What do you think is the team's greatest strength?Which of the following areas do you think the team needs to improve in?CommunicationTime ManagementTask DistributionOther (please specify)Can you describe a recent challenge you faced while working with the team and how it was resolved?How likely are you to recommend our team to other colleagues or departments?Select rating1 (Not at all likely)2345 (Very likely)What suggestions do you have for improving team meetings and discussions?",
+    "survey_prompt": "",
+    "summary": "",
+    "chat_with_survey": [
+      {
+        "sender": "user",
+        "message": "ya go ahead",
+        "timestamp": "2025-03-19T01:47:51.105368"
+      },
+      {
+        "sender": "bot",
+        "message": "How would you rate the team's overall performance in the last quarter? \nSelect rating \n1 (Poor) \n2 (Fair) \n3 (Good) \n4 (Very Good) \n5 (Excellent)",
+        "timestamp": "2025-03-19T01:47:51.645170"
+      },
+      {
+        "sender": "user",
+        "message": "ya go ahead",
+        "timestamp": "2025-03-19T01:54:04.529869"
+      },
+      {
+        "sender": "bot",
+        "message": "How would you rate the team's overall performance in the last quarter? \nSelect rating \n1 (Poor) \n2 (Fair) \n3 (Good) \n4 (Very Good) \n5 (Excellent)",
+        "timestamp": "2025-03-19T01:54:05.319512"
+      }
+    ],
+    "created_at": "2025-03-19T01:47:51.105368"
+  },
+  "60": {
+    "survey_response": "{\n  \"survey_title\": \"Humor Perception Survey\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"What type of humor do you enjoy the most?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Slapstick\", \"Sarcasm\", \"Wordplay\", \"Dark humor\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"Can you recall a joke or a funny moment that made you laugh out loud recently?\",\n      \"type\": \"short_answer\",\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"How important is humor in your daily life?\",\n      \"type\": \"rating\",\n      \"options\": [\"Not important at all\", \"Somewhat important\", \"Very important\", \"Extremely important\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"Describe a situation where you used humor to diffuse a tense or awkward moment.\",\n      \"type\": \"paragraph\",\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"Do you prefer watching comedy shows or stand-up comedy?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Comedy shows\", \"Stand-up comedy\", \"Both\", \"Neither\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"What do you think is the most challenging aspect of creating humor?\",\n      \"type\": \"short_answer\",\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 7,\n      \"question\": \"How would you rate your sense of humor?\",\n      \"type\": \"rating\",\n      \"options\": [\"Poor\", \"Fair\", \"Good\", \"Excellent\"],\n      \"answer\": \"\"\n    }\n  ]\n}",
+    "survey_prompt": "",
+    "summary": "",
+    "chat_with_survey": [
+      {
+        "sender": "user",
+        "message": "ya",
+        "timestamp": "2025-03-19T09:48:29.951437"
+      },
+      {
+        "sender": "bot",
+        "message": "What type of humor do you enjoy the most?",
+        "timestamp": "2025-03-19T09:48:30.276100"
+      },
+      {
+        "sender": "user",
+        "message": "go ahead",
+        "timestamp": "2025-03-19T09:49:27.886665"
+      },
+      {
+        "sender": "bot",
+        "message": "What type of humor do you enjoy the most?",
+        "timestamp": "2025-03-19T09:49:48.633029"
+      },
+      {
+        "sender": "user",
+        "message": "umm idk",
+        "timestamp": "2025-03-19T09:50:37.752737"
+      },
+      {
+        "sender": "bot",
+        "message": "What type of humor do you enjoy the most?",
+        "timestamp": "2025-03-19T09:50:47.742895"
+      },
+      {
+        "sender": "user",
+        "message": "sarcasm",
+        "timestamp": "2025-03-19T09:51:00.287165"
+      },
+      {
+        "sender": "bot",
+        "message": "Can you recall a joke or a funny moment that made you laugh out loud recently?",
+        "timestamp": "2025-03-19T09:51:00.711162"
+      }
+    ],
+    "created_at": "2025-03-19T09:48:29.951437"
   }
 }

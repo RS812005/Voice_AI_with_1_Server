@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Public Survey</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="bg-white p-6 rounded shadow max-w-md w-full text-center">
+      <h1 class="text-2xl font-bold mb-4">Public Survey</h1>
+      <div class="flex flex-col space-y-4">
+        <button
+          id="public-voice-btn"
+          class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+        >
+          Send to Voice AI
+        </button>
+        <button
+          id="public-chat-btn"
+          class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+        >
+          Chat with Survey
+        </button>
+      </div>
+    </div>
+    <div
+      id="call-section"
+      class="w-full max-w-3xl mx-auto my-8 p-6 bg-white rounded-lg shadow-lg"
+    >
+      <!-- New heading element for survey heading -->
+      <h2 id="call-heading" class="text-xl font-semibold text-gray-700 mb-4">
+        Call in Progress
+      </h2>
+      <p id="assistant-status" class="text-sm text-gray-600 mb-4">
+        Assistant Status: Not Speaking
+      </p>
+      <div id="volume-level" class="flex space-x-2 mb-4"></div>
+      <button
+        id="stop-btn"
+        class="bg-red-500 text-white py-1 px-3 rounded-md hover:bg-red-600 transition-colors"
+      >
+        Stop Call
+      </button>
+      <div id="call-summary" class="mt-4 text-sm text-gray-600"></div>
+    </div>
+    <div
+    id="chat-container"
+    class="hidden max-w-3xl mx-auto my-8 p-6 bg-white rounded-lg shadow-lg"
+  >
+    <!-- Chat Interface heading and elements here -->
+    <h2 id="chat-heading" class="text-xl font-semibold text-gray-700 mb-4">
+      Chat Interface
+    </h2>
+    <div id="chat-messages" class="mb-4 overflow-auto max-h-64">
+      <!-- Chat messages will be inserted here -->
+    </div>
+    <div class="flex space-x-4">
+      <input
+        type="text"
+        id="chat-input"
+        class="flex-1 p-2 border rounded-md"
+        placeholder="Type your question..."
+      />
+      <button
+        id="chat-send-btn"
+        class="bg-green-500 hover:bg-green-600 text-white font-semibold rounded-md px-4 py-2 transition-colors"
+      >
+        Send
+      </button>
+    </div>
+    <div class="mt-4 flex justify-between items-center">
+      <a href="#" id="back-to-voice" class="text-blue-500 hover:underline"
+        >Back to Voice AI</a
+      >
+      <button
+        id="stop-survey-btn"
+        class="bg-red-500 hover:bg-red-600 text-white font-semibold rounded-md px-4 py-2 transition-colors"
+      >
+        Stop Survey
+      </button>
+    </div>
+  </div>
+  
+    <script>
+      var vapiInstance = null;
+      const assistant = "5e7d3a07-f7d5-4975-8bd8-2c32ae092f01";
+      const apiKey = "c2e5d26a-941f-42c7-8bf4-02ebc2844242";
+
+      (function (d, t) {
+        var g = document.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+        g.src =
+          "https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js";
+        g.defer = true;
+        g.async = true;
+        s.parentNode.insertBefore(g, s);
+
+        g.onload = function () {
+          vapiInstance = window.vapiSDK.run({
+            apiKey: apiKey,
+            assistant: assistant,
+          });
+
+          vapiInstance.on("speech-start", () => {
+            document.getElementById("assistant-status").textContent =
+              "Assistant Status: Speaking";
+          });
+          vapiInstance.on("speech-end", () => {
+            document.getElementById("assistant-status").textContent =
+              "Assistant Status: Not Speaking";
+          });
+          vapiInstance.on("volume-level", (level) => {
+            const volumeEl = document.getElementById("volume-level");
+            volumeEl.innerHTML = "";
+            const numBars = 10;
+            for (let i = 0; i < numBars; i++) {
+              let bar = document.createElement("div");
+              bar.className =
+                "volume-bar" + (i / numBars < level ? " active" : "");
+              volumeEl.appendChild(bar);
+            }
+          });
+        };
+      })(document, "script");
+
+      let globalCallId = null;
+      // Use separate variables for history record and chat record IDs.
+      window.latestRecordId = null;
+      window.latestChatRecordId = null;
+      window.latestRawTranscript = null;
+
+      //       if (!window.chatRecordCounter) {
+      //   window.chatRecordCounter = 1;
+      // }
+      if (!localStorage.getItem("chatRecordCounter")) {
+        localStorage.setItem("chatRecordCounter", "1");
+      }
+
+      // Start the assistant call using the Web SDK
+      function startWebCall(extractedText) {
+        // const accentValue = document.getElementById("accent").value;
+        // const extrasValue = document.getElementById("extras").value;
+        // const toneValue = document.getElementById("tone").value;
+        let voiceConfig = {
+          provider: "cartesia",
+          voiceId: "3b554273-4299-48b9-9aaf-eefd438e3941",
+        };
+        // switch (accentValue) {
+        //   case "indian_lady":
+        //     voiceConfig = {
+        //       provider: "cartesia",
+        //       voiceId: "3b554273-4299-48b9-9aaf-eefd438e3941",
+        //     };
+        //     break;
+        //   case "indian_man":
+        //     voiceConfig = {
+        //       provider: "cartesia",
+        //       voiceId: "638efaaa-4d0c-442e-b701-3fae16aad012",
+        //     };
+        //     break;
+        //   case "british_lady":
+        //     voiceConfig = {
+        //       provider: "cartesia",
+        //       voiceId: "79a125e8-cd45-4c13-8a67-188112f4dd22",
+        //     };
+        //     break;
+        //   case "anime_girl":
+        //     voiceConfig = {
+        //       provider: "cartesia",
+        //       voiceId: "1001d611-b1a8-46bd-a5ca-551b23505334",
+        //     };
+        //     break;
+        //   case "british_man":
+        //     voiceConfig = {
+        //       provider: "cartesia",
+        //       voiceId: "63ff761f-c1e8-414b-b969-d1833d1c870c",
+        //     };
+        //     break;
+        //   case "middle_east_women":
+        //     voiceConfig = {
+        //       provider: "cartesia",
+        //       voiceId: "daf747c6-6bc2-4083-bd59-aa94dce23f5d",
+        //     };
+        //     break;
+        //   case "australian_women":
+        //     voiceConfig = {
+        //       provider: "cartesia",
+        //       voiceId: "043cfc81-d69f-4bee-ae1e-7862cb358650",
+        //     };
+        //     break;
+        //   case "california_girl":
+        //     voiceConfig = { provider: "cartesia", voiceId: "b7d50908-b17c-442d-ad8d-810c63997ed9" };
+        //     break;
+        //   case "new_york_man":
+        //     voiceConfig = { provider: "cartesia", voiceId: "34575e71-908f-4ab6-ab54-b08c95d6597d" };
+        //     break;
+        //   case "new_york_women":
+        //     voiceConfig = { provider: "cartesia", voiceId: "34bde396-9fde-4ebf-ad03-e3a1d1155205" };
+        //     break;
+        //   case "savannah":
+        //     voiceConfig = { provider: "vapi", voiceId: "Savannah" };
+        //     break;
+        //   case "kentucky_man":
+        //     voiceConfig = { provider: "cartesia", voiceId: "726d5ae5-055f-4c3d-8355-d9677de68937" };
+        //     break;
+        //   case "kentucky_woman":
+        //     voiceConfig = { provider: "cartesia", voiceId: "4f8651b0-bbbd-46ac-8b37-5168c5923303" };
+        //     break;
+        //   default:
+        //     voiceConfig = {
+        //       provider: "cartesia",
+        //       voiceId: "3b554273-4299-48b9-9aaf-eefd438e3941",
+        //     };
+        //     break;
+        // }
+        // if (extrasValue !== "none") {
+        //   voiceConfig.experimentalControls = {
+        //     emotion: [`${extrasValue}:highest`],
+        //   };
+        // }
+        // console.log(toneValue);
+        const assistantOverrides = {
+          firstMessageMode: "assistant-speaks-first",
+          model: {
+            provider: "openai",
+            model: "gpt-4",
+            messages: [
+              {
+                role: "system",
+                content: `Keep the tone neutral and non-intrusive. Ensure that the conversation flows naturally and dynamically rather than presenting questions as a rigid list. The AI should integrate pre-configured questions fluidly—adapting to context. Encourage honest responses without pressure.
+
+Flow of Questions:
+${extractedText}
+make the questions strictly in a long conversational manner rather than just saying what the actual question is. You can change it to appear more conversational, even expand the question if it's too short, as if talking to a friend or co-worker. Avoid directly asking the question; guide the user towards thoughtful answers. If options are present, do not list them unless asked for.
+Stay on Topic: The conversation must remain strictly within the scope of the survey.
+If unrelated topics are introduced, respond with:
+"I'm here to assist with the survey. Let's stay focused on the questions."
+If persistence occurs, respond with:
+"I’m sorry, but I can only respond to questions related to the survey."
+If the answer is not satisfactory, include a follow-up like: "What did you find challenging about that?"
+Open Feedback:
+"Is there anything else you'd like to add or clarify?"
+Closing:
+"Thank you! We will carefully review your input and make improvements. If you think of anything else, feel free to share!"`,
+              },
+            ],
+          },
+          summaryPrompt:
+            'You will be given a transcript of a call. Extract key information, including the user’s tone, and structure it into a concise JSON-like format. Keep it short:\n\n{\n  "summary": "",\n  "ratings": {\n    "TopicA": { "rating": 5, "comment": "" },\n    "TopicB": { "rating": 2, "comment": "" }\n  },\n  "overall": "",\n  "next_steps": ""\n}',
+          voice: voiceConfig,
+        };
+        return vapiInstance
+          .start(assistant, assistantOverrides)
+          .then((response) => {
+            console.log("VAPI Web call started:", response);
+            globalCallId = response.id;
+            return response;
+          })
+          .catch((error) => {
+            console.error("Error starting web call:", error);
+          });
+      }
+
+      function stopWebCall() {
+        vapiInstance.stop();
+        setTimeout(() => {
+          pollCallDetails(globalCallId);
+        }, 1000);
+      }
+
+      function pollCallDetails(callId, interval = 3000) {
+        fetch("/call-details?call_id=" + callId, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + apiKey,
+          },
+        })
+          .then((response) => {
+            if (!response.ok) {
+              console.error(
+                "Error fetching call details:",
+                response.status,
+                response.statusText
+              );
+              if (response.status === 403) {
+                document.getElementById("call-summary").innerHTML =
+                  "<h3>Error:</h3><p>Access forbidden. Check credentials.</p>";
+              }
+              throw new Error("HTTP error " + response.status);
+            }
+            return response.json();
+          })
+          .then((data) => {
+            if (data.error) {
+              console.error("Error in call details response:", data.error);
+              return;
+            }
+            if (data.summary) {
+              document.getElementById("call-summary").innerHTML =
+                "<h3 class='font-semibold mb-2'>Call Summary</h3><p>" +
+                data.summary +
+                "</p>";
+              // Once summary is available, show the Chat with Survey button
+              // let chatBtn = document.getElementById("chat-survey-btn");
+              // if (chatBtn) {
+              //   chatBtn.classList.remove("hidden");
+              // }
+            } else {
+              console.log(
+                "Summary not yet available; retrying in",
+                interval,
+                "ms"
+              );
+              setTimeout(() => pollCallDetails(callId, interval), interval);
+            }
+          })
+          .catch((err) => {
+            console.error("Error polling call details:", err);
+          });
+      }
+
+      // Parse URL parameters to get recordid and chatrecordid
+      const params = new URLSearchParams(window.location.search);
+      const recordid = params.get("recordid");
+      const chatrecordid = params.get("chatrecordid");
+
+      // If recordid is missing, alert the user.
+      if (!recordid) {
+        alert("Error: Missing 'recordid' in URL parameters.");
+      }
+
+      // Send to Voice AI button handler
+      document
+        .getElementById("public-voice-btn")
+        .addEventListener("click", () => {
+          if (!recordid) {
+            alert("Record ID is missing. Please check your URL.");
+            return;
+          }
+          fetch("/public-survey-voice-ai", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ recordid: recordid }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              let responseText = JSON.stringify(data);
+              fetch("/start-call", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: "Bearer " + apiKey,
+                },
+                body: JSON.stringify({ text: responseText }),
+              })
+                .then((response) => response.json())
+                .then((callData) => {
+                  if (callData.error) {
+                    return;
+                  }
+                  const callId = callData.call_id;
+                  pollCallDetails(callId);
+                });
+              startWebCall(responseText);
+              setTimeout(() => {
+                document
+                  .getElementById("call-section")
+                  .scrollIntoView({ behavior: "smooth" });
+              }, 300);
+            })
+            .catch((error) => {
+              alert("Error sending to Voice AI: " + error);
+            });
+        });
+
+      // Chat with Survey button handler
+      document.getElementById("public-chat-btn").addEventListener("click", () => {
+  if (!recordid || !chatrecordid) {
+    alert("Record ID or Chat Record ID is missing. Please check your URL.");
+    return;
+  }
+  fetch("/public-survey-chat-survey", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      recordid: recordid,
+      chatrecordid: chatrecordid,
+    }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (!data.prompt_summary) {
+        alert("No response text available to send.");
+        return;
+      }
+      // Store the survey response globally for use in chat messages.
+      window.surveyResponseText = data.prompt_summary;
+      // Also store the chat record id for later use.
+      window.latestChatRecordId = chatrecordid;
+      // Hide the call section and show the chat container.
+      document.getElementById("call-section").classList.add("hidden");
+      document.getElementById("chat-container").classList.remove("hidden");
+
+      // Automatically insert the first bot message.
+      const chatMessages = document.getElementById("chat-messages");
+      const initialBotMsg = document.createElement("div");
+      initialBotMsg.textContent = "Bot: Hi, let's start the survey. Are you ready?";
+      initialBotMsg.className = "text-green-600 font-semibold my-1";
+      chatMessages.appendChild(initialBotMsg);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    })
+    .catch((error) => {
+      alert("Error initiating chat with survey: " + error);
+    });
+});
+
+
+
+      // Stop call
+      document
+        .getElementById("stop-btn")
+        .addEventListener("click", function () {
+          stopWebCall();
+        });
+
+      // document
+      // .getElementById("chat-survey-btn")
+      // .addEventListener("click", function () {
+      //   // document.getElementById("call-section").classList.add("hidden");
+      //   // document.getElementById("chat-container").classList.remove("hidden");
+      //   const chatMessages = document.getElementById("chat-messages");
+      //   // Start with an initial greeting and include the chat record id in the context if needed.
+      //   chatMessages.innerHTML =
+      //     "<p class='text-green-600 font-semibold'>Bot: Hi, let's start the survey. Are you ready?</p>";
+      //     document.getElementById("chat-container").scrollIntoView({ behavior: "smooth" });
+
+      // });
+
+      document
+        .getElementById("back-to-voice")
+        .addEventListener("click", function (e) {
+          e.preventDefault();
+          document.getElementById("chat-container").classList.add("hidden");
+          document.getElementById("call-section").classList.remove("hidden");
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("chat-send-btn").addEventListener("click", function () {
+    const chatInput = document.getElementById("chat-input");
+    const question = chatInput.value.trim();
+    if (!question) return;
+    const chatMessages = document.getElementById("chat-messages");
+
+    // Append the user's message.
+    const userMsg = document.createElement("div");
+    userMsg.textContent = "You: " + question;
+    userMsg.className = "text-blue-600 font-semibold my-1";
+    chatMessages.appendChild(userMsg);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+    // Retrieve the survey response stored earlier.
+    const surveyResponseText = window.surveyResponseText || "";
+
+    fetch("/chat_with_survey", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        question: question,
+        survey_response: surveyResponseText,
+        record_id: window.latestChatRecordId,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        const botMsg = document.createElement("div");
+        if (data.error) {
+          botMsg.textContent = "Error: " + data.error;
+          botMsg.className = "text-red-600 font-semibold my-1";
+        } else {
+          botMsg.textContent = "Bot: " + data.response;
+          botMsg.className = "text-green-600 font-semibold my-1";
+          // Optionally, update the global raw transcript if needed.
+          window.latestRawTranscript = (window.latestRawTranscript || "") + "\n" + data.response;
+        }
+        chatMessages.appendChild(botMsg);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      })
+      .catch((error) => {
+        const errorEl = document.createElement("div");
+        errorEl.textContent = "Error: " + error;
+        errorEl.className = "text-red-600 font-semibold my-1";
+        chatMessages.appendChild(errorEl);
+      });
+    chatInput.value = "";
+  });
+});
+
+    </script>
+  </body>
+</html>

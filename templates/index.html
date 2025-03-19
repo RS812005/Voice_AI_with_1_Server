@@ -117,6 +117,11 @@
           />
           <span class="text-sm mt-2 block font-bold">Analysis</span>
         </a>
+        <!-- New Public Survey Link element -->
+<a id="public-survey-link" href="#" class="mt-2 text-xs hover:text-gray-400 text-center" title="Public Survey Link">
+  Public Survey Link
+</a>
+
       </aside>
       <!-- Main Container -->
       <div class="flex-1">
@@ -960,6 +965,34 @@ document.getElementById('survey-submit-btn').addEventListener('click', () => {
               alert("Error: " + err);
             });
         });
+
+        
+        document.getElementById("public-survey-link").addEventListener("click", function(e) {
+  e.preventDefault();
+  
+  // Check if survey response has been generated.
+  if (!window.latestRecordId || !window.latestChatRecordId) {
+    alert("Please complete the survey before copying the public survey link.");
+    return;
+  }
+  
+  // Retrieve the record IDs from the global variables.
+  let recordid = window.latestRecordId;
+  let chatrecordid = window.latestChatRecordId;
+  
+  // Construct the public survey URL with the record IDs as query parameters.
+  let publicUrl = `${window.location.origin}/public_survey?recordid=${recordid}&chatrecordid=${chatrecordid}`;
+  
+  // Copy the URL to clipboard using the Clipboard API.
+  navigator.clipboard.writeText(publicUrl)
+    .then(function() {
+      alert("Public survey link copied to clipboard:\n" + publicUrl);
+    })
+    .catch(function(err) {
+      alert("Error copying public survey link: " + err);
+    });
+});
+
     </script>
   </body>
 </html>
