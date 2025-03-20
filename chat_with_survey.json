@@ -667,6 +667,26 @@
         "sender": "bot",
         "message": "How would you rate the overall quality of your internet connection?",
         "timestamp": "2025-03-18T20:58:35.782496"
+      },
+      {
+        "sender": "user",
+        "message": "ya",
+        "timestamp": "2025-03-20T05:02:59.078862"
+      },
+      {
+        "sender": "bot",
+        "message": "How would you rate the overall quality of your internet connection?",
+        "timestamp": "2025-03-20T05:02:59.437517"
+      },
+      {
+        "sender": "user",
+        "message": "ya",
+        "timestamp": "2025-03-20T05:12:19.621123"
+      },
+      {
+        "sender": "bot",
+        "message": "How would you rate the overall quality of your internet connection?",
+        "timestamp": "2025-03-20T05:12:20.558625"
       }
     ],
     "created_at": "2025-03-18T20:52:01.016773"
@@ -964,5 +984,164 @@
       }
     ],
     "created_at": "2025-03-19T09:48:29.951437"
+  },
+  "75": {
+    "survey_response": "User Satisfaction and Experience SurveyHow would you rate your overall satisfaction with our service?Select ratingVery SatisfiedSatisfiedNeutralDissatisfiedVery DissatisfiedWhat do you like most about our service?How likely are you to recommend our service to a friend or colleague?Very LikelyLikelyNot SureUnlikelyVery UnlikelyPlease provide any additional feedback or comments about our service.How would you rate the quality of our support team?Select ratingExcellentGoodFairPoorVery PoorWhat could we do to improve your experience with our service?",
+    "survey_prompt": "",
+    "summary": "",
+    "chat_with_survey": [
+      {
+        "sender": "user",
+        "message": "ya",
+        "timestamp": "2025-03-20T05:14:35.990140"
+      },
+      {
+        "sender": "bot",
+        "message": "How would you rate your overall satisfaction with our service? \nSelect rating \nVery Satisfied \nSatisfied \nNeutral \nDissatisfied \nVery Dissatisfied",
+        "timestamp": "2025-03-20T05:14:36.405263"
+      },
+      {
+        "sender": "user",
+        "message": "satisfied",
+        "timestamp": "2025-03-20T05:14:46.166056"
+      },
+      {
+        "sender": "bot",
+        "message": "What do you like most about our service?",
+        "timestamp": "2025-03-20T05:14:46.643498"
+      }
+    ],
+    "created_at": "2025-03-20T05:14:35.990140"
+  },
+  "82": {
+    "survey_response": "Mumbai City Experience SurveyDo you like Mumbai?\u270eWhat do you like most about Mumbai?\u270ePlease describe your overall experience with the food in Mumbai.\u270eHow would you rate the traffic situation in Mumbai?\u270eSelect rating1 (Very Bad)2345 (Excellent)What is your favorite place to visit in Mumbai?\u270eHow likely are you to recommend Mumbai as a tourist destination?\u270eSelect rating1 (Not Likely)2345 (Very Likely)",
+    "survey_prompt": "",
+    "summary": "",
+    "chat_with_survey": [
+      {
+        "sender": "user",
+        "message": "ya",
+        "timestamp": "2025-03-20T05:48:49.885547"
+      },
+      {
+        "sender": "bot",
+        "message": "Do you like Mumbai?",
+        "timestamp": "2025-03-20T05:48:50.161777"
+      },
+      {
+        "sender": "user",
+        "message": "yes",
+        "timestamp": "2025-03-20T05:48:54.078482"
+      },
+      {
+        "sender": "bot",
+        "message": "What do you like most about Mumbai?",
+        "timestamp": "2025-03-20T05:48:54.393960"
+      },
+      {
+        "sender": "user",
+        "message": "idk",
+        "timestamp": "2025-03-20T05:49:00.015598"
+      },
+      {
+        "sender": "bot",
+        "message": "What do you like most about Mumbai?",
+        "timestamp": "2025-03-20T05:49:00.338432"
+      },
+      {
+        "sender": "user",
+        "message": "chembur",
+        "timestamp": "2025-03-20T05:49:05.229578"
+      },
+      {
+        "sender": "bot",
+        "message": "Please describe your overall experience with the food in Mumbai.",
+        "timestamp": "2025-03-20T05:49:05.626230"
+      }
+    ],
+    "created_at": "2025-03-20T05:48:49.885547"
+  },
+  "83": {
+    "survey_response": "User Feedback and Experience SurveyHow would you rate your overall experience with our platform?\u270eSelect ratingExcellentGoodFairPoorWhat do you like most about our platform?\u270eHow likely are you to recommend our platform to a friend or colleague?\u270eVery LikelySomewhat LikelyNot Very LikelyNot at All LikelyPlease provide any additional feedback or suggestions for improving our platform.\u270eHow would you rate the ease of use of our platform?\u270eSelect ratingVery EasySomewhat EasyNeutralSomewhat DifficultVery DifficultWhat features or functionalities would you like to see added to our platform?\u270e",
+    "survey_prompt": "",
+    "summary": "",
+    "chat_with_survey": [
+      {
+        "sender": "user",
+        "message": "go ahead",
+        "timestamp": "2025-03-20T07:52:01.083106"
+      },
+      {
+        "sender": "bot",
+        "message": "How would you rate your overall experience with our platform? \nSelect rating\nExcellent\nGood\nFair\nPoor",
+        "timestamp": "2025-03-20T07:52:01.510663"
+      }
+    ],
+    "created_at": "2025-03-20T07:52:01.083106"
+  },
+  "84": {
+    "employee_id": null,
+    "survey_response": "Mumbai Resident Feedback SurveyWhat do you like most about living in Mumbai?\u270eCultural diversityCareer opportunitiesFood and nightlifeOtherHow would you rate the overall quality of life in Mumbai?\u270eSelect rating1 (Poor)2 (Fair)3 (Good)4 (Very Good)5 (Excellent)What are some challenges you face while commuting in Mumbai?\u270eHow satisfied are you with the municipal services in Mumbai?\u270eSelect rating1 (Very Dissatisfied)2 (Dissatisfied)3 (Neutral)4 (Satisfied)5 (Very Satisfied)Do you think Mumbai is a good city for startups and entrepreneurs?\u270eYesNoUndecidedWhat changes would you like to see in Mumbai to make it a better city?\u270e",
+    "survey_prompt": "",
+    "summary": "",
+    "chat_with_survey": [
+      {
+        "sender": "user",
+        "message": "ya",
+        "timestamp": "2025-03-20T08:01:36.685899"
+      },
+      {
+        "sender": "bot",
+        "message": "What do you like most about living in Mumbai?\n\u270eCultural diversity\nCareer opportunities\nFood and nightlife\nOther",
+        "timestamp": "2025-03-20T08:01:37.132550"
+      }
+    ],
+    "created_at": "2025-03-20T08:01:36.685899"
+  },
+  "85": {
+    "survey_response": "Mumbai Resident SurveyHow long have you been living in Mumbai?\u270eLess than 1 year1-5 years5-10 yearsMore than 10 yearsWhat do you like most about living in Mumbai?\u270eHow would you rate the overall quality of life in Mumbai?\u270eSelect rating1 (Poor)2 (Fair)3 (Good)4 (Very Good)5 (Excellent)What are some of the challenges you face while living in Mumbai? Please describe in detail.\u270eHow satisfied are you with the public transportation system in Mumbai?\u270eSelect rating1 (Very Dissatisfied)2 (Dissatisfied)3 (Neutral)4 (Satisfied)5 (Very Satisfied)What changes would you like to see in Mumbai to improve your living experience?\u270e",
+    "survey_prompt": "",
+    "summary": "",
+    "chat_with_survey": [
+      {
+        "sender": "user",
+        "message": "ya",
+        "timestamp": "2025-03-20T08:03:05.936858"
+      },
+      {
+        "sender": "bot",
+        "message": "How long have you been living in Mumbai? \nLess than 1 year\n1-5 years\n5-10 years\nMore than 10 years",
+        "timestamp": "2025-03-20T08:03:06.488674"
+      }
+    ],
+    "created_at": "2025-03-20T08:03:05.936858"
+  },
+  "86": {
+    "survey_response": "Delhi Resident Satisfaction SurveyHow long have you been living in Delhi?\u270eLess than 1 year1-3 years4-6 yearsMore than 6 yearsWhat do you like most about living in Delhi?\u270eHow would you rate the overall quality of life in Delhi?\u270eSelect rating1 (Poor)2 (Fair)3 (Good)4 (Very Good)5 (Excellent)What are some challenges you face while living in Delhi? Please describe in detail.\u270eHow satisfied are you with the public transportation system in Delhi?\u270eSelect rating1 (Very Dissatisfied)2 (Dissatisfied)3 (Neutral)4 (Satisfied)5 (Very Satisfied)What changes would you like to see in Delhi to improve your living experience?\u270e",
+    "survey_prompt": "",
+    "summary": "",
+    "chat_with_survey": [
+      {
+        "sender": "user",
+        "message": "ya",
+        "timestamp": "2025-03-20T08:04:18.661335"
+      },
+      {
+        "sender": "bot",
+        "message": "How long have you been living in Delhi?\nLess than 1 year\n1-3 years\n4-6 years\nMore than 6 years",
+        "timestamp": "2025-03-20T08:04:19.090554"
+      },
+      {
+        "sender": "user",
+        "message": "1 year",
+        "timestamp": "2025-03-20T08:04:24.917431"
+      },
+      {
+        "sender": "bot",
+        "message": "What do you like most about living in Delhi?",
+        "timestamp": "2025-03-20T08:04:25.642495"
+      }
+    ],
+    "created_at": "2025-03-20T08:04:18.661335"
   }
 }

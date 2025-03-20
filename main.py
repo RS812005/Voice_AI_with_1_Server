@@ -269,7 +269,7 @@ def groq_chat():
 
         # Optionally, add a new record to our JSON history and capture the new record.
         new_record = add_history_record(prompt, json_content)
-        
+
         # Return the structured survey response along with the record id.
         return jsonify({
             "survey": structured_survey,
@@ -414,6 +414,7 @@ def chat_with_survey():
     # Ensure we have a chat record for this record_id; if not, create one.
     if record_id not in chat_history:
         chat_history[record_id] = {
+            
             "survey_response": survey_response,
             "survey_prompt": "",  # Optionally store the original prompt if available
             "summary": "",
@@ -435,7 +436,7 @@ def chat_with_survey():
     raw_transcript = chat_history[record_id]["survey_response"] + "\n" + "\n".join(
     [f"{msg['sender']}: {msg['message']}" for msg in conversation]
     )
-
+    
 
     # Build the prompt for the Groq API to ask the next question
     # Build the prompt for the Groq API to ask the next question
@@ -449,6 +450,7 @@ def chat_with_survey():
     "Do not create any new questions or alter the order. "
     "Respond only with the next question in the exact wording provided in the survey." \
     " Strictly If all survey questions have been answered, simply thank the user for their time and indicate that the survey is complete."
+    "dont inculde ✎, if mcq provide option"
 )
 
 
@@ -547,6 +549,10 @@ def stop_survey():
         return jsonify({"message": "Survey has been stopped."})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+    
+
+
+
 @app.route("/public_survey")
 def public_survey():
     return render_template("public_survey.html")
