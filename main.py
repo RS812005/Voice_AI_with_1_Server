@@ -389,15 +389,14 @@ def update_chat_survey_record(record_id, updated_record):
             break
     write_chat_survey(records)
 
-# --- New Endpoint for Chat with Survey ---
 @app.route("/chat_with_survey", methods=["POST"])
 def chat_with_survey():
     data = request.get_json()
     question = data.get("question")
     survey_response = data.get("survey_response", "")
-    # print(survey_response);
-    # Convert record_id to a string to ensure type consistency
-    record_id = str(data.get("record_id"))
+    # Get record_id from request or initialize as None if this is a new conversation
+    record_id = str(data.get("record_id", ""))
+    
     if not question:
         return jsonify({"error": "Missing question"}), 400
 
@@ -411,18 +410,29 @@ def chat_with_survey():
     else:
         chat_history = {}
 
-    # Ensure we have a chat record for this record_id; if not, create one.
-    if record_id not in chat_history:
-        chat_history[record_id] = {
+    # Check if this is a new conversation or an existing one
+    is_new_conversation = not record_id or record_id not in chat_history
+    
+    # For new conversations, we'll start by asking for the employee ID
+    if is_new_conversation:
+        # Generate a temporary record_id if none provided
+        # if not record_id:
+        #     record_id = str(uuid.uuid4())
             
+        # Initialize a new conversation record
+        chat_history[record_id] = {
+            "employee_id": None,  # Will be filled in later
             "survey_response": survey_response,
-            "survey_prompt": "",  # Optionally store the original prompt if available
+            "survey_prompt": "",
             "summary": "",
             "chat_with_survey": [],
-            "created_at": datetime.utcnow().isoformat()
+            "created_at": datetime.utcnow().isoformat(),
+            "waiting_for_employee_id": True  # Flag to track if we're waiting for employee ID
         }
-
+    
     conversation = chat_history[record_id]["chat_with_survey"]
+    employee_id = chat_history[record_id].get("employee_id")
+    waiting_for_employee_id = chat_history[record_id].get("waiting_for_employee_id", False)
 
     # Append user's message to the conversation
     conversation.append({
@@ -431,39 +441,148 @@ def chat_with_survey():
         "timestamp": datetime.utcnow().isoformat()
     })
 
-    # Build the conversation context as a raw transcript
-     # Build the conversation context as a raw transcript, including the survey_response.
-    raw_transcript = chat_history[record_id]["survey_response"] + "\n" + "\n".join(
-    [f"{msg['sender']}: {msg['message']}" for msg in conversation]
-    )
+    # Initialize Groq client
+    client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
     
-
-    # Build the prompt for the Groq API to ask the next question
-    # Build the prompt for the Groq API to ask the next question
-   # Build the prompt for the Groq API to ask the next question
-    prompt = (
-    f"Based on the following survey conversation:\n\n{raw_transcript}\n\n"
-    "You are provided with a survey that must be followed in its entirety and in order. "
-    "Do not skip any questions. Begin with the first unanswered question. "
-    "If the first question (for ex from Section 1: Communication) has not been answered, ask that question exactly as it appears. "
-    "Only move to the next question once the previous one has been answered. "
-    "Do not create any new questions or alter the order. "
-    "Respond only with the next question in the exact wording provided in the survey." \
-    " Strictly If all survey questions have been answered, simply thank the user for their time and indicate that the survey is complete."
-    "dont inculde ✎, if mcq provide option"
-)
-
-
-    # print(prompt)
-    try:
-        client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
-        chat_completion = client.chat.completions.create(
-            messages=[{"role": "user", "content": prompt}],
-            model="llama-3.3-70b-versatile",
+    # If we don't have an employee ID yet or we're waiting for one, try to extract it
+    if not employee_id or waiting_for_employee_id:
+        # Define the tool for extracting employee ID
+        tools = [
+            {
+                "type": "function",
+                "function": {
+                    "name": "extract_employee_id",
+                    "description": "Extract the employee ID from the user's message. Employee IDs are typically alphanumeric strings.",
+                    "parameters": {
+                        "type": "object",
+                        "properties": {
+                            "employee_id": {
+                                "type": "string",
+                                "description": "The employee ID mentioned by the user"
+                            },
+                            "found": {
+                                "type": "boolean",
+                                "description": "Whether an employee ID was found in the message"
+                            }
+                        },
+                        "required": ["employee_id", "found"]
+                    }
+                }
+            }
+        ]
+        
+        # Build prompt to check if employee ID is in the message
+        raw_transcript = "\n".join([f"{msg['sender']}: {msg['message']}" for msg in conversation])
+        prompt = (
+            f"Based on the following conversation, extract the employee ID if mentioned:\n\n{raw_transcript}\n\n"
+            "If the user has provided an employee ID (typically an alphanumeric code or number), extract it accurately. "
+            "Otherwise, indicate that no employee ID was found with 'found': false."
         )
-        response_text = chat_completion.choices[0].message.content
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        
+        try:
+            # Call Groq API with function calling enabled
+            chat_completion = client.chat.completions.create(
+                messages=[{"role": "user", "content": prompt}],
+                model="llama-3.3-70b-versatile",
+                tools=tools,
+                tool_choice="auto",
+            )
+            
+            response_message = chat_completion.choices[0].message
+            
+            # Check if the model decided to call the function
+            if hasattr(response_message, 'tool_calls') and response_message.tool_calls:
+                # Extract the employee ID from the function call
+                tool_call = response_message.tool_calls[0]
+                function_args = json.loads(tool_call.function.arguments)
+                extracted_employee_id = function_args.get("employee_id", "")
+                found = function_args.get("found", False)
+                
+                # If we got a valid employee ID
+                if found and extracted_employee_id and extracted_employee_id.strip():
+                    # Save the employee ID
+                    chat_history[record_id]["employee_id"] = extracted_employee_id
+                    chat_history[record_id]["waiting_for_employee_id"] = False  # No longer waiting
+                    
+                    # Confirm the employee ID and proceed to first survey question
+                    response_text = (
+                        f"Thank you! I've recorded your employee ID: {extracted_employee_id}.\n\n"
+                        "Now, let's begin with the first question of our survey:"
+                    )
+                    
+                    # Get the first survey question
+                    survey_prompt = (
+                        f"Based on the following survey:\n\n{survey_response}\n\n"
+                        "Provide only the first question of the survey . "
+                        "Strcitly Make the question more conversational with warm and empathy "
+                    )
+                    
+                    first_question_response = client.chat.completions.create(
+                        messages=[{"role": "user", "content": survey_prompt}],
+                        model="llama-3.3-70b-versatile",
+                    )
+                    
+                    first_question = first_question_response.choices[0].message.content
+                    response_text += f"\n\n{first_question}"
+                else:
+                    # If we couldn't extract an employee ID, ask for it again with clearer instructions
+                    chat_history[record_id]["waiting_for_employee_id"] = True  # Still waiting
+                    
+                    # Determine if this is the first time asking or a repeat request
+                    is_repeat = any(msg["sender"] == "bot" and "provide your employee ID" in msg["message"] for msg in conversation)
+                    
+                    if is_repeat:
+                        response_text = (
+                            "I still need your employee ID to continue with the survey. "
+                            "Please provide just your employee ID number or code. "
+                            "For example, it might look like 'EMP1234' or '5678'."
+                        )
+                    else:
+                        response_text = (
+                            "Before we begin the survey, could you please provide your employee ID? "
+                            "This helps us associate your responses with your records."
+                        )
+            else:
+                # Model chose not to use the function, so ask for employee ID explicitly
+                chat_history[record_id]["waiting_for_employee_id"] = True  # Still waiting
+                response_text = (
+                    "Welcome to our survey! To get started, please provide your employee ID number. "
+                    "This helps us keep track of your responses."
+                )
+                
+        except Exception as e:
+            return jsonify({"error": str(e)}), 500
+            
+    else:
+        # We already have an employee ID, so continue with the survey
+        # Build the conversation context as a raw transcript
+        raw_transcript = chat_history[record_id]["survey_response"] + "\n" + "\n".join(
+            [f"{msg['sender']}: {msg['message']}" for msg in conversation]
+        )
+        
+        # Build the prompt for the Groq API to ask the next question
+        prompt = (
+            f"Based on the following survey conversation:\n\n{raw_transcript}\n\n"
+            "You are provided with a survey that must be followed in its entirety and in order. "
+            "Do not skip any questions. Begin with the first unanswered question. "
+            "If the first question (for ex from Section 1: Communication) has not been answered, ask that question . "
+            "Only move to the next question once the previous one has been answered. "
+            "Do not create any new questions or alter the order. "
+            "Respond only with the next question provided in the survey. "
+            "Strictly if all survey questions have been answered, simply thank the user for their time and indicate that the survey is complete."
+            "Don't include ✎ symbols, You can change question so that it to appear more conversational, even expand the question if it's too short, as if talking to a friend or co-worker. Avoid directly asking the question; guide the user towards thoughtful answers. Strictly If options are present, do not list them unless asked for."
+            "If unrelated topics are introduced, respond with: I'm here to assist with the survey. Let's stay focused on the questions. If persistence occurs, respond with: I’m sorry, but I can only respond to questions related to the survey. If the answer is not satisfactory, include a follow-up like: What did you find challenging about that?"
+            "Strcitly Make the question more conversational with warm and empathy"
+        )
+        
+        try:
+            chat_completion = client.chat.completions.create(
+                messages=[{"role": "user", "content": prompt}],
+                model="llama-3.3-70b-versatile",
+            )
+            response_text = chat_completion.choices[0].message.content
+        except Exception as e:
+            return jsonify({"error": str(e)}), 500
 
     # Append the AI's response to the conversation
     conversation.append({
@@ -472,13 +591,11 @@ def chat_with_survey():
         "timestamp": datetime.utcnow().isoformat()
     })
 
-    # (Optional) Generate summary using the conversation context...
-    # [Your summary generation code here]
-
+    # Save the updated chat history
     with open(CHAT_FILE, "w") as f:
         json.dump(chat_history, f, indent=2, default=str)
 
-    return jsonify({"response": response_text})
+    return jsonify({"response": response_text, "record_id": record_id})
 
 # New endpoint to stop the survey and generate a summary.
 @app.route("/stop-survey", methods=["POST"])

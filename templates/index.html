@@ -118,9 +118,22 @@
           <span class="text-sm mt-2 block font-bold">Analysis</span>
         </a>
         <!-- New Public Survey Link element -->
-<a id="public-survey-link" href="#" class="mt-2 text-xs hover:text-gray-400 text-center" title="Public Survey Link">
+<!-- <a id="public-survey-link" href="#" class="mt-2 text-xs hover:text-gray-400 text-center" title="Public Survey Link">
   Public Survey Link
-</a>
+</a> -->
+<a
+          href="#"
+          id="public-survey-link",
+          class="mb-4 hover:text-gray-400 text-2xl text-center"
+          title="Public Survey Link"
+        >
+          <img
+            src="{{ url_for('static', filename='images/people.png') }}"
+            alt="Survey Icon"
+            class="w-8 h-8 transform translate-x-2"
+          />
+          <span class="text-sm mt-2 block font-bold">Public Survey Link</span>
+        </a>
 
       </aside>
       <!-- Main Container -->
@@ -954,7 +967,7 @@ document.getElementById("survey-submit-btn").addEventListener("click", () => {
         // Save button to exit edit mode (positioned at top-right)
         const saveBtn = document.createElement("button");
         saveBtn.textContent = "Save";
-        saveBtn.className = "bg-blue-500 text-white px-3 py-1 rounded absolute top-4 right-4";
+        saveBtn.className = "bg-blue-500 text-white px-3 py-1 rounded absolute top-2 right-2";
         saveBtn.addEventListener("click", () => {
           question.editMode = false;
           container.replaceWith(renderQuestion(question));

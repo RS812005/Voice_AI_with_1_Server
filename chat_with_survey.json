@@ -1143,5 +1143,469 @@
       }
     ],
     "created_at": "2025-03-20T08:04:18.661335"
+  },
+  "90": {
+    "survey_response": "Mumbai Resident SurveyHow often do you use public transportation in Mumbai?\u270eDailyWeeklyMonthlyRarelyWhat do you like most about living in Mumbai?\u270eHow would you rate the overall quality of life in Mumbai?\u270eSelect ratingPoorFairGoodExcellentWhat are some challenges you face while living in Mumbai? Please describe in detail.\u270eHow satisfied are you with the local amenities and services in your area?\u270eSelect ratingVery DissatisfiedSomewhat DissatisfiedNeutralSomewhat SatisfiedVery SatisfiedWhat changes would you like to see in Mumbai to improve your living experience?\u270e",
+    "survey_prompt": "",
+    "employee_id": "88979",
+    "summary": "",
+    "chat_with_survey": [
+      {
+        "sender": "user",
+        "message": "ya",
+        "timestamp": "2025-03-20T10:50:54.557049"
+      },
+      {
+        "sender": "bot",
+        "message": null,
+        "timestamp": "2025-03-20T10:50:55.321155"
+      },
+      {
+        "sender": "user",
+        "message": "88979",
+        "timestamp": "2025-03-20T10:51:01.834442"
+      },
+      {
+        "sender": "tool",
+        "message": "Extracted employee id: 88979",
+        "timestamp": "2025-03-20T10:51:02.765702"
+      },
+      {
+        "sender": "bot",
+        "message": null,
+        "timestamp": "2025-03-20T10:51:02.765702"
+      },
+      {
+        "sender": "user",
+        "message": "999900",
+        "timestamp": "2025-03-20T10:51:16.697728"
+      },
+      {
+        "sender": "tool",
+        "message": "Extracted employee id: 88979",
+        "timestamp": "2025-03-20T10:51:17.307336"
+      },
+      {
+        "sender": "bot",
+        "message": null,
+        "timestamp": "2025-03-20T10:51:17.307336"
+      }
+    ],
+    "created_at": "2025-03-20T10:50:54.557049"
+  },
+  "91": {
+    "survey_response": "User Experience and Feedback SurveyHow did you hear about our service?\u270eSocial MediaSearch EngineWord of MouthOtherWhat do you think about our website's user interface?\u270eSelect ratingVery SatisfiedSatisfiedNeutralDissatisfiedVery DissatisfiedCan you describe your experience with our customer support team?\u270eHow likely are you to recommend our service to a friend or colleague?\u270eSelect ratingVery LikelyLikelyNeutralUnlikelyVery UnlikelyWhat features or services would you like to see us add in the future?\u270eHow would you rate the overall quality of our service?\u270eSelect ratingExcellentGoodFairPoorVery Poor",
+    "survey_prompt": "",
+    "summary": "",
+    "chat_with_survey": [
+      {
+        "sender": "user",
+        "message": "ya",
+        "timestamp": "2025-03-20T11:04:21.011034"
+      },
+      {
+        "sender": "bot",
+        "message": "How did you hear about our service?\n1. Social Media\n2. Search Engine\n3. Word of Mouth\n4. Other",
+        "timestamp": "2025-03-20T11:04:21.530723"
+      },
+      {
+        "sender": "user",
+        "message": "social media",
+        "timestamp": "2025-03-20T11:04:28.411187"
+      },
+      {
+        "sender": "bot",
+        "message": "What do you think about our website's user interface?\n1. Very Satisfied\n2. Satisfied\n3. Neutral\n4. Dissatisfied\n5. Very Dissatisfied",
+        "timestamp": "2025-03-20T11:04:29.067325"
+      }
+    ],
+    "created_at": "2025-03-20T11:04:21.011034"
+  },
+  "93": {
+    "employee_id": "12AB980",
+    "survey_response": "Mumbai Resident SurveyHow long have you been living in Mumbai?\u270eLess than 1 year1-5 years5-10 yearsMore than 10 yearsWhat do you like most about living in Mumbai?\u270eHow would you rate the quality of life in Mumbai?\u270eSelect rating1 (Poor)2 (Fair)3 (Good)4 (Very Good)5 (Excellent)What are some challenges you face while living in Mumbai?\u270eHow satisfied are you with the public transportation in Mumbai?\u270eSelect rating1 (Very Dissatisfied)2 (Dissatisfied)3 (Neutral)4 (Satisfied)5 (Very Satisfied)What changes would you like to see in Mumbai to improve your living experience?\u270eHow likely are you to recommend Mumbai as a place to live?\u270eVery LikelyLikelyNeutralUnlikelyVery Unlikely",
+    "survey_prompt": "",
+    "summary": "Here is a summary of the conversation in the provided JSON schema:\n\n```\n{\n  \"summary\": \"The user has been living in Mumbai for 1 year and likes the people. They have not yet rated the quality of life in Mumbai.\",\n  \"ratings\": {\n    \"happiness\": { \"rating\": null, \"comment\": \"\" },\n    \"mental_health\": { \"rating\": null, \"comment\": \"\" },\n    \"job_satisfaction\": { \"rating\": null, \"comment\": \"\" },\n    \"enps\": { \"rating\": null, \"comment\": \"\" },\n    \"communication\": { \"rating\": null, \"comment\": \"\" }\n  },\n  \"next_steps\": \"Wait for the user to rate the quality of life in Mumbai and answer the remaining survey questions.\",\n  \"transcript_summary\": {\n    \"highlights\": [\"The user likes the people in Mumbai\", \"The user has been living in Mumbai for 1 year\"],\n    \"concerns\": [],\n    \"feedback\": []\n  },\n  \"raw_transcript\": \"User: ya\\nBot: Welcome to our survey! ... \\nBot: How would you rate the quality of life in Mumbai?\",\n  \"overall\": \"The survey has just begun, and the user has only answered the first two questions.\"\n}\n```\n\nNote that most of the fields are currently null or empty, as the survey has just begun and the user has only answered the first two questions. As the survey progresses, these fields can be filled in accordingly.",
+    "chat_with_survey": [
+      {
+        "sender": "user",
+        "message": "ya",
+        "timestamp": "2025-03-20T17:29:35.788401"
+      },
+      {
+        "sender": "bot",
+        "message": "Welcome to our survey! To get started, please provide your employee ID number. This helps us keep track of your responses.",
+        "timestamp": "2025-03-20T17:29:36.235794"
+      },
+      {
+        "sender": "user",
+        "message": "12AB980",
+        "timestamp": "2025-03-20T17:29:48.399230"
+      },
+      {
+        "sender": "bot",
+        "message": "Thank you! I've recorded your employee ID: 12AB980.\n\nNow, let's begin with the first question of our survey:\n\nHow long have you been living in Mumbai?\n\u270e\nLess than 1 year\n1-5 years\n5-10 years\nMore than 10 years",
+        "timestamp": "2025-03-20T17:29:51.658378"
+      },
+      {
+        "sender": "user",
+        "message": "1 year",
+        "timestamp": "2025-03-20T17:30:04.392405"
+      },
+      {
+        "sender": "bot",
+        "message": "What do you like most about living in Mumbai?",
+        "timestamp": "2025-03-20T17:30:06.481873"
+      },
+      {
+        "sender": "user",
+        "message": "Its people",
+        "timestamp": "2025-03-20T17:30:40.048485"
+      },
+      {
+        "sender": "bot",
+        "message": "How would you rate the quality of life in Mumbai?\nSelect rating\n1 (Poor)\n2 (Fair)\n3 (Good)\n4 (Very Good)\n5 (Excellent)",
+        "timestamp": "2025-03-20T17:30:40.469987"
+      }
+    ],
+    "created_at": "2025-03-20T17:29:35.788401"
+  },
+  "95": {
+    "employee_id": "190894BC5",
+    "survey_response": "Anime Survey: Exploring Viewer Preferences and OpinionsWhat type of anime genre do you usually watch?\u270eActionComedyRomanceHorrorWhat is your favorite anime series and why do you like it?\u270eHow often do you watch anime?\u270eDailyWeeklyMonthlyRarelyPlease rate the importance of subtitles in anime\u270eSelect rating1 (Not important at all)2345 (Very important)What motivated you to start watching anime?\u270eHow do you usually find new anime to watch?\u270eSocial MediaOnline ForumsFriend RecommendationsStreaming PlatformsPlease rate your overall satisfaction with the current anime selection available\u270eSelect rating1 (Very dissatisfied)2345 (Very satisfied)Do you prefer watching anime dubbed or subbed?\u270eDubbedSubbedBothNo preference",
+    "survey_prompt": "",
+    "summary": "",
+    "chat_with_survey": [
+      {
+        "sender": "user",
+        "message": "ya",
+        "timestamp": "2025-03-20T17:32:25.662833"
+      },
+      {
+        "sender": "bot",
+        "message": "Welcome to our survey! To get started, please provide your employee ID number. This helps us keep track of your responses.",
+        "timestamp": "2025-03-20T17:32:26.044091"
+      },
+      {
+        "sender": "user",
+        "message": "190894BC5",
+        "timestamp": "2025-03-20T17:32:36.629747"
+      },
+      {
+        "sender": "bot",
+        "message": "Thank you! I've recorded your employee ID: 190894BC5.\n\nNow, let's begin with the first question of our survey:\n\nWhat type of anime genre do you usually watch?\u270eActionComedyRomanceHorror",
+        "timestamp": "2025-03-20T17:32:37.155304"
+      }
+    ],
+    "created_at": "2025-03-20T17:32:25.662833"
+  },
+  "96": {
+    "employee_id": "None",
+    "survey_response": "Anime Preferences and Viewing Habits SurveyWhat type of anime genre do you usually watch?\u270eActionComedyDramaRomanceWhat is your favorite anime series and why?\u270eHow often do you watch anime?\u270eDailyWeeklyMonthlyRarelyWhat is the most important factor when choosing an anime series to watch?\u270eStorylineCharactersAnimation qualityMusicRate the importance of subtitles when watching anime (1-5, where 1 is 'not important' and 5 is 'very important')\u270eSelect rating12345Have you ever attended an anime convention or event? If yes, what was it?\u270e",
+    "survey_prompt": "",
+    "summary": "",
+    "chat_with_survey": [
+      {
+        "sender": "user",
+        "message": "ya",
+        "timestamp": "2025-03-20T17:33:24.411707"
+      },
+      {
+        "sender": "bot",
+        "message": "Welcome to our survey! To get started, please provide your employee ID number. This helps us keep track of your responses.",
+        "timestamp": "2025-03-20T17:33:24.761866"
+      },
+      {
+        "sender": "user",
+        "message": "I like vada pav of mumbai",
+        "timestamp": "2025-03-20T17:33:31.735727"
+      },
+      {
+        "sender": "bot",
+        "message": "Thank you! I've recorded your employee ID: None.\n\nNow, let's begin with the first question of our survey:\n\nWhat type of anime genre do you usually watch?\u270eActionComedyDramaRomance",
+        "timestamp": "2025-03-20T17:33:32.470086"
+      }
+    ],
+    "created_at": "2025-03-20T17:33:24.411707"
+  },
+  "98": {
+    "employee_id": "A4564B5",
+    "survey_response": "Anime Preferences and Viewing Habits SurveyWhat type of anime do you usually watch?\u270eActionComedyDramaRomanceWhat is your favorite anime series and why do you like it?\u270eHow often do you watch anime?\u270eDailyWeeklyMonthlyRarelyWhat is your preferred platform for watching anime?\u270eHow would you rate the importance of subtitles in your anime viewing experience?\u270eSelect rating1 (Not important at all)2345 (Very important)Can you describe a recent anime series you watched and your thoughts on it?\u270eHow likely are you to recommend anime to your friends and family?\u270eSelect rating1 (Not likely at all)2345 (Very likely)",
+    "survey_prompt": "",
+    "summary": "",
+    "chat_with_survey": [
+      {
+        "sender": "user",
+        "message": "ya go ahead",
+        "timestamp": "2025-03-20T17:36:47.076398"
+      },
+      {
+        "sender": "bot",
+        "message": "Before we begin the survey, could you please provide your employee ID? This helps us associate your responses with your records.",
+        "timestamp": "2025-03-20T17:36:47.415817"
+      },
+      {
+        "sender": "user",
+        "message": "I like vadapav of mumbai",
+        "timestamp": "2025-03-20T17:36:59.253757"
+      },
+      {
+        "sender": "bot",
+        "message": "I still need your employee ID to continue with the survey. Please provide just your employee ID number or code. For example, it might look like 'EMP1234' or '5678'.",
+        "timestamp": "2025-03-20T17:36:59.567757"
+      },
+      {
+        "sender": "user",
+        "message": "i like anime",
+        "timestamp": "2025-03-20T17:37:09.470069"
+      },
+      {
+        "sender": "bot",
+        "message": "I still need your employee ID to continue with the survey. Please provide just your employee ID number or code. For example, it might look like 'EMP1234' or '5678'.",
+        "timestamp": "2025-03-20T17:37:09.876288"
+      },
+      {
+        "sender": "user",
+        "message": "A4564B5",
+        "timestamp": "2025-03-20T17:37:23.737000"
+      },
+      {
+        "sender": "bot",
+        "message": "Thank you! I've recorded your employee ID: A4564B5.\n\nNow, let's begin with the first question of our survey:\n\nWhat type of anime do you usually watch?\u270eActionComedyDramaRomance",
+        "timestamp": "2025-03-20T17:37:24.298890"
+      }
+    ],
+    "created_at": "2025-03-20T17:36:47.076398",
+    "waiting_for_employee_id": false
+  },
+  "99": {
+    "employee_id": "123dFEFR3",
+    "survey_response": "Anime Preferences and Viewing Habits SurveyWhat type of anime do you usually watch?\u270eAction/AdventureComedyDrama/RomanceFantasy/Science FictionHorror/MysteryHow often do you watch anime?\u270eSelect ratingDailyWeeklyMonthlyRarelyNeverWhat motivates you to watch a particular anime series?\u270eCan you describe your favorite anime series and why you enjoy it?\u270eHow do you typically find out about new anime series?\u270eSocial mediaOnline anime communitiesFriend recommendationsAnime streaming platformsOtherOn a scale of 1-5, how important is subtitles or dubbing when watching anime?\u270eSelect rating1 (Not important at all)2345 (Very important)",
+    "survey_prompt": "",
+    "summary": "",
+    "chat_with_survey": [
+      {
+        "sender": "user",
+        "message": "ya",
+        "timestamp": "2025-03-20T17:58:44.900744"
+      },
+      {
+        "sender": "bot",
+        "message": "Before we begin the survey, could you please provide your employee ID? This helps us associate your responses with your records.",
+        "timestamp": "2025-03-20T17:58:45.256567"
+      },
+      {
+        "sender": "user",
+        "message": "123dFEFR3",
+        "timestamp": "2025-03-20T17:58:54.258573"
+      },
+      {
+        "sender": "bot",
+        "message": "Thank you! I've recorded your employee ID: 123dFEFR3.\n\nNow, let's begin with the first question of our survey:\n\nWe're excited to hear about your anime preferences. So, what kind of anime do you usually find yourself getting lost in - is it Action/Adventure, Comedy, Drama/Romance, Fantasy/Science Fiction, or Horror/Mystery?",
+        "timestamp": "2025-03-20T17:58:54.897997"
+      },
+      {
+        "sender": "user",
+        "message": "umm action",
+        "timestamp": "2025-03-20T17:59:22.789562"
+      },
+      {
+        "sender": "bot",
+        "message": "I'm so glad you enjoy action anime. Now, I'm curious to know how often you get to indulge in your favorite shows. Can you tell me, how frequently do you watch anime? \n\nIs it:\nDaily\nWeekly\nMonthly\nRarely\nNever",
+        "timestamp": "2025-03-20T17:59:23.239853"
+      }
+    ],
+    "created_at": "2025-03-20T17:58:44.900744",
+    "waiting_for_employee_id": false
+  },
+  "101": {
+    "employee_id": "asde5efre",
+    "survey_response": "Anime Preferences and Viewing Habits SurveyWhat type of anime do you usually watch?\u270eActionComedyDramaRomanceWhat is your favorite anime series?\u270eHow often do you watch anime?\u270eDailyWeeklyMonthlyRarelyPlease describe your favorite anime character and why you like them.\u270eHow would you rate the importance of subtitles in your anime viewing experience?\u270eSelect ratingNot ImportantSomewhat ImportantImportantVery ImportantWhat platform do you usually use to watch anime?\u270eNetflixCrunchyrollFunimationOtherPlease tell us about a memorable anime experience you've had.\u270eHow would you rate your overall satisfaction with the current anime offerings?\u270eSelect ratingVery DissatisfiedSomewhat DissatisfiedNeutralSomewhat SatisfiedVery Satisfied",
+    "survey_prompt": "",
+    "summary": "",
+    "chat_with_survey": [
+      {
+        "sender": "user",
+        "message": "ya",
+        "timestamp": "2025-03-20T18:00:54.629570"
+      },
+      {
+        "sender": "bot",
+        "message": "Before we begin the survey, could you please provide your employee ID? This helps us associate your responses with your records.",
+        "timestamp": "2025-03-20T18:00:54.958999"
+      },
+      {
+        "sender": "user",
+        "message": "asde5efre",
+        "timestamp": "2025-03-20T18:01:02.245563"
+      },
+      {
+        "sender": "bot",
+        "message": "Thank you! I've recorded your employee ID: asde5efre.\n\nNow, let's begin with the first question of our survey:\n\nWe're curious to know: What type of anime usually captures your heart and draws you in - is it action-packed adventures, laugh-out-loud comedies, emotional dramas, or sweet romances?",
+        "timestamp": "2025-03-20T18:01:02.886344"
+      },
+      {
+        "sender": "user",
+        "message": "action",
+        "timestamp": "2025-03-20T18:01:16.705576"
+      },
+      {
+        "sender": "bot",
+        "message": "Now that we have a sense of the type of anime you enjoy, could you tell us about your all-time favorite anime series? What's the one that really stands out to you and has left a lasting impression?",
+        "timestamp": "2025-03-20T18:01:18.672061"
+      },
+      {
+        "sender": "user",
+        "message": "naruto",
+        "timestamp": "2025-03-20T18:01:29.115580"
+      },
+      {
+        "sender": "bot",
+        "message": "How often do you usually find time to watch anime - is it something you do daily, weekly, monthly, or more sporadically?",
+        "timestamp": "2025-03-20T18:01:29.543558"
+      }
+    ],
+    "created_at": "2025-03-20T18:00:54.629570",
+    "waiting_for_employee_id": false
+  },
+  "103": {
+    "employee_id": null,
+    "survey_response": "Anime SurveyWhat type of anime do you usually watch?\u270eActionComedyRomanceHorrorWhat do you like about anime?\u270eCan you tell us about your favorite anime and why you like it?\u270eHow would you rate the quality of the anime you've watched recently?\u270eSelect rating1 (Poor)2 (Fair)3 (Good)4 (Very Good)5 (Excellent)How often do you watch anime?\u270eDailyWeeklyMonthlyRarelyWhat do you think about the anime community?\u270e",
+    "survey_prompt": "",
+    "summary": "",
+    "chat_with_survey": [
+      {
+        "sender": "user",
+        "message": "ya",
+        "timestamp": "2025-03-20T18:05:37.911378"
+      },
+      {
+        "sender": "bot",
+        "message": "Before we begin the survey, could you please provide your employee ID? This helps us associate your responses with your records.",
+        "timestamp": "2025-03-20T18:06:03.006358"
+      }
+    ],
+    "created_at": "2025-03-20T18:05:37.911378",
+    "waiting_for_employee_id": true
+  },
+  "104": {
+    "employee_id": "fggfdf44grt",
+    "survey_response": "Anime SurveyWhat is your favorite anime genre?\u270eActionComedyDramaFantasyWhat do you like about anime?\u270eHow often do you watch anime?\u270eDailyWeeklyMonthlyRarelyWhat is your favorite anime series?\u270eHow would you rate the quality of anime in recent years?\u270eSelect rating1 (Poor)2 (Fair)3 (Good)4 (Very Good)5 (Excellent)Do you prefer subtitles or dubbed anime?\u270eSubtitlesDubbedEitherWhat do you think about the anime community?\u270eHow likely are you to recommend anime to a friend?\u270eSelect rating1 (Not Likely)2 (Somewhat Likely)3 (Neutral)4 (Likely)5 (Very Likely)",
+    "survey_prompt": "",
+    "summary": "",
+    "chat_with_survey": [
+      {
+        "sender": "user",
+        "message": "fggfdf44grt",
+        "timestamp": "2025-03-20T18:06:50.652651"
+      },
+      {
+        "sender": "bot",
+        "message": "Thank you! I've recorded your employee ID: fggfdf44grt.\n\nNow, let's begin with the first question of our survey:\n\nWe're curious to know: What type of anime genre really speaks to you and draws you in - is it Action, Comedy, Drama, or Fantasy?",
+        "timestamp": "2025-03-20T18:06:51.458504"
+      }
+    ],
+    "created_at": "2025-03-20T18:06:50.652651",
+    "waiting_for_employee_id": false
+  },
+  "105": {
+    "employee_id": "A45FT6",
+    "survey_response": "Anime Preferences and Viewing Habits SurveyWhat type of anime do you usually watch?\u270eActionComedyDramaRomanceWhat is your favorite anime series and why do you like it?\u270eHow often do you watch anime?\u270eDailyWeeklyMonthlyRarelyWhat is your preferred platform for watching anime?\u270eHow would you rate the quality of anime in recent years?\u270eSelect rating1 (Poor)2345 (Excellent)What draws you to a particular anime series? (Check all that apply)\u270eInteresting storylineRelatable charactersBeautiful animationEngaging musicPlease share any additional thoughts or comments you have about anime or this survey.\u270e",
+    "survey_prompt": "",
+    "summary": "",
+    "chat_with_survey": [
+      {
+        "sender": "user",
+        "message": "ya",
+        "timestamp": "2025-03-20T18:09:39.495698"
+      },
+      {
+        "sender": "bot",
+        "message": "Before we begin the survey, could you please provide your employee ID? This helps us associate your responses with your records.",
+        "timestamp": "2025-03-20T18:09:39.867273"
+      },
+      {
+        "sender": "user",
+        "message": "A45FT6",
+        "timestamp": "2025-03-20T18:09:45.622323"
+      },
+      {
+        "sender": "bot",
+        "message": "Thank you! I've recorded your employee ID: A45FT6.\n\nNow, let's begin with the first question of our survey:\n\nWe're curious to know: What kind of anime really speaks to you - is it action-packed, comedic, dramatic, or romantic?",
+        "timestamp": "2025-03-20T18:09:46.327577"
+      },
+      {
+        "sender": "user",
+        "message": "I like vada pav of mumbai",
+        "timestamp": "2025-03-20T18:10:03.444685"
+      },
+      {
+        "sender": "bot",
+        "message": "I think there might be a little confusion. You mentioned \"vada pav of Mumbai,\" which sounds like a delicious food, but it doesn't quite answer the question about the type of anime you usually watch. Let's try again. When it comes to anime, what genre really resonates with you? Is it something with a lot of action, comedy that makes you laugh, drama that tugs at your heartstrings, or romance that sweeps you off your feet?",
+        "timestamp": "2025-03-20T18:10:04.114083"
+      },
+      {
+        "sender": "user",
+        "message": "MODI IS THE PM OF INDIA",
+        "timestamp": "2025-03-20T18:10:20.409976"
+      },
+      {
+        "sender": "bot",
+        "message": "I think there might be a little confusion again. You mentioned something about the Prime Minister of India, which is a great topic, but it doesn't quite answer the question about the type of anime you usually watch. Let's try to get back on track. When you're browsing through anime shows, what is it that really draws you in? Is it the excitement of an action-packed story, the humor of a comedic series, the emotional depth of a drama, or the sweetness of a romance?",
+        "timestamp": "2025-03-20T18:10:26.613392"
+      }
+    ],
+    "created_at": "2025-03-20T18:09:39.495698",
+    "waiting_for_employee_id": false
+  },
+  "109": {
+    "employee_id": "AGR56D",
+    "survey_response": "{\n  \"survey_title\": \"Anime Preferences and Viewing Habits\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"What type of anime do you usually watch?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Action\", \"Comedy\", \"Drama\", \"Romance\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What is your favorite anime series and why do you like it?\",\n      \"type\": \"paragraph\",\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"How often do you watch anime?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Daily\", \"Weekly\", \"Monthly\", \"Rarely\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"What is your preferred platform for watching anime?\",\n      \"type\": \"short_answer\",\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How would you rate the importance of subtitles in anime?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Not Important)\", \"2\", \"3\", \"4\", \"5 (Very Important)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"Have you ever attended an anime convention or event? If so, what was your experience like?\",\n      \"type\": \"paragraph\",\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 7,\n      \"question\": \"How many hours of anime do you watch per week?\",\n      \"type\": \"short_answer\",\n      \"answer\": \"\"\n    }\n  ]\n}",
+    "survey_prompt": "",
+    "summary": "",
+    "chat_with_survey": [
+      {
+        "sender": "user",
+        "message": "ya",
+        "timestamp": "2025-03-20T18:25:54.146704"
+      },
+      {
+        "sender": "bot",
+        "message": "Before we begin the survey, could you please provide your employee ID? This helps us associate your responses with your records.",
+        "timestamp": "2025-03-20T18:25:54.463195"
+      },
+      {
+        "sender": "user",
+        "message": "AGR56D",
+        "timestamp": "2025-03-20T18:25:59.952800"
+      },
+      {
+        "sender": "bot",
+        "message": "Thank you! I've recorded your employee ID: AGR56D.\n\nNow, let's begin with the first question of our survey:\n\nWe're curious to know what kind of anime really speaks to you. So, when you're in the mood for something new, what type of anime do you usually find yourself drawn to - is it Action, Comedy, Drama, or Romance?",
+        "timestamp": "2025-03-20T18:26:00.631415"
+      }
+    ],
+    "created_at": "2025-03-20T18:25:54.146704",
+    "waiting_for_employee_id": false
+  },
+  "110": {
+    "employee_id": null,
+    "survey_response": "Delhi Resident Satisfaction SurveyHow would you rate the overall quality of life in Delhi?\u270eSelect rating1 (Poor)2 (Fair)3 (Good)4 (Very Good)5 (Excellent)What do you think is the biggest challenge facing Delhi today?\u270eHow satisfied are you with the public transportation options in Delhi?\u270eSelect rating1 (Very Dissatisfied)2 (Somewhat Dissatisfied)3 (Neutral)4 (Somewhat Satisfied)5 (Very Satisfied)What are some potential solutions to the traffic congestion problem in Delhi? Please provide a detailed response.\u270eWhich of the following amenities is most important to you when choosing a neighborhooddef33 in Delhi?\u270eProximity to workAccess to good schoolsAvailability of healthcare facilitiesParks and recreational spacesHave you experienced any instances of pollution in Delhi? If yes, please describe.\u270e",
+    "survey_prompt": "",
+    "summary": "",
+    "chat_with_survey": [
+      {
+        "sender": "user",
+        "message": "ya",
+        "timestamp": "2025-03-20T18:36:16.189040"
+      },
+      {
+        "sender": "bot",
+        "message": "Before we begin the survey, could you please provide your employee ID? This helps us associate your responses with your records.",
+        "timestamp": "2025-03-20T18:36:58.775068"
+      }
+    ],
+    "created_at": "2025-03-20T18:36:16.189040",
+    "waiting_for_employee_id": true
   }
 }

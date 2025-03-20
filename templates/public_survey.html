@@ -5,6 +5,13 @@
     <title>Public Survey</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+       /* Hide the Vapi call button injected from the CDN */
+       #vapi-icon-container,
+      #vapi-support-btn {
+        display: none !important;
+      }
+    </style>
   </head>
   <body class="bg-gray-100 flex items-center justify-center min-h-screen">
     <div class="bg-white p-6 rounded shadow max-w-md w-full text-center">
