@@ -708,29 +708,259 @@ document.getElementById("survey-submit-btn").addEventListener("click", () => {
           });
       });
 
+
+
+// Function to render an editable survey heading.
+function renderEditableHeading(surveyData, container) {
+  // Create a container for the heading and its edit controls.
+  const headingContainer = document.createElement("div");
+  headingContainer.className = "relative mb-6";
+
+  // Create the heading element for preview mode.
+  const headingEl = document.createElement("h2");
+  headingEl.textContent = surveyData.survey_title;
+  headingEl.className = "text-2xl font-bold";
+  headingContainer.appendChild(headingEl);
+
+  // Create the edit icon button (✎) positioned at the top-right.
+  const editIcon = document.createElement("button");
+  editIcon.innerHTML = "&#9998;"; // ✎ icon
+  editIcon.className = "absolute top-0 right-0 text-blue-500";
+  headingContainer.appendChild(editIcon);
+
+  // When the edit icon is clicked, switch to edit mode.
+  editIcon.addEventListener("click", () => {
+    // Clear the heading container.
+    headingContainer.innerHTML = "";
+
+    // Create an input field pre-filled with the current heading.
+    const inputField = document.createElement("input");
+    inputField.type = "text";
+    inputField.value = surveyData.survey_title;
+    inputField.className = "text-2xl font-bold p-2 border rounded w-full";
+    headingContainer.appendChild(inputField);
+
+    // Create the "Save" button.
+    const saveBtn = document.createElement("button");
+    saveBtn.textContent = "Save";
+    saveBtn.className = "absolute top-2 right-2 bg-blue-500 text-white px-3 py-1 rounded";
+    headingContainer.appendChild(saveBtn);
+
+    // Save the new heading and revert to preview mode when "Save" is clicked.
+    saveBtn.addEventListener("click", () => {
+      const newHeading = inputField.value.trim();
+      if (newHeading !== "") {
+        surveyData.survey_title = newHeading;
+      }
+      // Re-render preview mode.
+      headingContainer.innerHTML = "";
+      headingEl.textContent = surveyData.survey_title;
+      headingContainer.appendChild(headingEl);
+      headingContainer.appendChild(editIcon);
+    });
+  });
+
+  // Append the editable heading container to the provided container.
+  container.appendChild(headingContainer);
+}
+
       // -----------------------------
       // RENDERING FUNCTIONS
       // -----------------------------
 
-      // Render the entire survey in Preview Mode
-      function renderPreviewSurvey(surveyData, container) {
-        container.innerHTML = "";
-        // Survey Title (non-editable)
-        const titleEl = document.createElement("h2");
-        titleEl.textContent = surveyData.survey_title;
-        titleEl.className = "text-2xl font-bold mb-6";
-        container.appendChild(titleEl);
+      // Update the renderPreviewSurvey function to append the "Add Question" button and form container
+function renderPreviewSurvey(surveyData, container) {
+  container.innerHTML = "";
+  // Render the editable survey heading.
+  renderEditableHeading(surveyData, container);
 
-        // Render each question with inline edit capability
-        surveyData.questions.forEach(question => {
-          // Ensure each question has an "editMode" property (default false)
-          if (question.editMode === undefined) {
-            question.editMode = false;
-          }
-          const questionElem = renderQuestion(question);
-          container.appendChild(questionElem);
-        });
+  // Render each question with inline edit capability
+  surveyData.questions.forEach(question => {
+    // Ensure each question has an "editMode" property (default false)
+    if (question.editMode === undefined) {
+      question.editMode = false;
+    }
+    const questionElem = renderQuestion(question);
+    container.appendChild(questionElem);
+  });
+
+  // "Add Question" button
+  const addQuestionBtn = document.createElement("button");
+  addQuestionBtn.textContent = "Add Question";
+  addQuestionBtn.className = "bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 mt-4";
+  container.appendChild(addQuestionBtn);
+
+  // Container for the add question form (hidden by default)
+  const addQuestionFormContainer = document.createElement("div");
+  addQuestionFormContainer.className = "mt-4 p-4 border rounded bg-gray-100";
+  addQuestionFormContainer.style.display = "none"; // hidden initially
+  container.appendChild(addQuestionFormContainer);
+
+  // When the add question button is clicked, show the form
+  addQuestionBtn.addEventListener("click", () => {
+    addQuestionFormContainer.style.display = "block";
+    renderAddQuestionForm(surveyData, addQuestionFormContainer, container);
+  });
+}
+
+// Render the inline Add Question form
+function renderAddQuestionForm(surveyData, formContainer, surveyContainer) {
+  formContainer.innerHTML = ""; // clear any previous content
+
+  // Question Title Input
+  const titleLabel = document.createElement("label");
+  titleLabel.textContent = "Question Title:";
+  titleLabel.className = "block text-sm font-medium text-gray-700";
+  formContainer.appendChild(titleLabel);
+  const titleInput = document.createElement("input");
+  titleInput.type = "text";
+  titleInput.className = "w-full p-2 border rounded mt-1 mb-4";
+  formContainer.appendChild(titleInput);
+
+  // Question Type Dropdown
+  const typeLabel = document.createElement("label");
+  typeLabel.textContent = "Question Type:";
+  typeLabel.className = "block text-sm font-medium text-gray-700";
+  formContainer.appendChild(typeLabel);
+  const typeSelect = document.createElement("select");
+  typeSelect.className = "w-full p-2 border rounded mt-1 mb-4";
+  const types = ["multiple_choice", "short_answer", "paragraph", "rating"];
+  types.forEach(t => {
+    const option = document.createElement("option");
+    option.value = t;
+    // Display with spaces and uppercase for readability
+    option.textContent = t
+    typeSelect.appendChild(option);
+  });
+  formContainer.appendChild(typeSelect);
+
+  // Container for options inputs (only visible for multiple_choice or rating)
+  const optionsContainer = document.createElement("div");
+  optionsContainer.style.display = "none";
+  formContainer.appendChild(optionsContainer);
+
+  // Function to render the options input fields
+  function renderOptionsInputs() {
+  optionsContainer.innerHTML = "";
+
+  // Create the "Add Option" button
+  const addOptionBtn = document.createElement("button");
+  addOptionBtn.textContent = "Add Option";
+  addOptionBtn.className = "bg-blue-500 text-white px-3 py-1 rounded mt-2";
+  addOptionBtn.type = "button";
+
+  // Append the button to the container first
+  optionsContainer.appendChild(addOptionBtn);
+
+  // Helper: how many options currently in the container?
+  function getCurrentOptionCount() {
+    return optionsContainer.querySelectorAll("div.flex.items-center").length;
+  }
+
+  // Function to add an option input field
+  function addOptionInput(value = "") {
+    // If no value given, label it "Option X" based on the current count
+    if (!value) {
+      const nextIndex = getCurrentOptionCount() + 1;
+      value = `Option ${nextIndex}`;
+    }
+
+    // Create a row for the option
+    const optionDiv = document.createElement("div");
+    optionDiv.className = "flex items-center mt-2";
+
+    // The text input for the option
+    const optionInput = document.createElement("input");
+    optionInput.type = "text";
+    optionInput.value = value;
+    optionInput.className = "flex-1 p-2 border rounded";
+    optionDiv.appendChild(optionInput);
+
+    // Remove button
+    const removeBtn = document.createElement("button");
+    removeBtn.textContent = "X";
+    removeBtn.className = "bg-red-500 text-white px-2 py-1 rounded ml-2";
+    removeBtn.type = "button";
+    removeBtn.addEventListener("click", () => {
+      optionDiv.remove();
+      // Now, if you add another option, it will re-check getCurrentOptionCount()
+      // and give the new one a lower number if an option was removed.
+    });
+    optionDiv.appendChild(removeBtn);
+
+    // Insert the new option above the "Add Option" button
+    optionsContainer.insertBefore(optionDiv, addOptionBtn);
+  }
+
+  // Add an initial option field
+  addOptionInput();
+
+  // Each time "Add Option" is clicked, re-check the count
+  addOptionBtn.addEventListener("click", () => {
+    addOptionInput();
+  });
+}
+
+
+
+
+  // Toggle options container visibility based on selected question type
+  typeSelect.addEventListener("change", () => {
+    if (typeSelect.value === "multiple_choice" || typeSelect.value === "rating") {
+      optionsContainer.style.display = "block";
+      renderOptionsInputs();
+    } else {
+      optionsContainer.style.display = "none";
+    }
+  });
+  // Trigger change to initialize the proper state
+  typeSelect.dispatchEvent(new Event("change"));
+
+  // "Done" button to save the new question and close the form
+  const doneBtn = document.createElement("button");
+  doneBtn.textContent = "Done";
+  doneBtn.className = "bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 mt-4";
+  doneBtn.type = "button";
+  formContainer.appendChild(doneBtn);
+
+  doneBtn.addEventListener("click", () => {
+    // Validate question title input
+    if (!titleInput.value.trim()) {
+      alert("Please enter a question title.");
+      return;
+    }
+    // Gather option values if applicable
+    let options = [];
+    if (typeSelect.value === "multiple_choice" || typeSelect.value === "rating") {
+      const optionInputs = optionsContainer.querySelectorAll("input[type='text']");
+      optionInputs.forEach(input => {
+        if (input.value.trim()) {
+          options.push(input.value.trim());
+        }
+      });
+      if (options.length === 0) {
+        alert("Please add at least one option.");
+        return;
       }
+    }
+    // Create a new question object
+    const newQuestion = {
+      id: Date.now(), // use timestamp as a unique id
+      question: titleInput.value.trim(),
+      type: typeSelect.value,
+      options: options,
+      answer: "",
+      editMode: false
+    };
+
+    // Update the surveyData.questions array
+    surveyData.questions.push(newQuestion);
+
+    // Re-render the survey form to include the new question and hide the form
+    renderPreviewSurvey(surveyData, surveyContainer);
+  });
+}
+
 
       // Main render function for a question.
       // It will call either the preview or edit renderer based on question.editMode.

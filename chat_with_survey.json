@@ -1607,5 +1607,125 @@
     ],
     "created_at": "2025-03-20T18:36:16.189040",
     "waiting_for_employee_id": true
+  },
+  "114": {
+    "employee_id": "67ty7",
+    "survey_response": "{\n  \"survey_title\": \"Anime Preferences and Viewing Habits Survey\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"What type of anime do you usually watch?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\n        \"Action\",\n        \"Comedy\",\n        \"Drama\",\n        \"Romance\"\n      ],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"How often do you watch anime?\",\n      \"type\": \"rating\",\n      \"options\": [\n        \"Daily\",\n        \"Weekly\",\n        \"Monthly\",\n        \"Rarely\"\n      ],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"What is your favorite anime series and why do you like it?\",\n      \"type\": \"paragraph\",\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"How do you usually find out about new anime series?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\n        \"Social media\",\n        \"Online forums\",\n        \"Friends' recommendations\",\n        \"Anime streaming platforms\"\n      ],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"What do you value most when choosing an anime series to watch?\",\n      \"type\": \"short_answer\",\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"How important is the quality of animation when watching anime?\",\n      \"type\": \"rating\",\n      \"options\": [\n        \"Very important\",\n        \"Somewhat important\",\n        \"Not very important\",\n        \"Not at all important\"\n      ],\n      \"answer\": \"\"\n    }\n  ]\n}",
+    "survey_prompt": "",
+    "summary": "",
+    "chat_with_survey": [
+      {
+        "sender": "user",
+        "message": "ya",
+        "timestamp": "2025-03-20T19:17:39.928528"
+      },
+      {
+        "sender": "bot",
+        "message": "Before we begin the survey, could you please provide your employee ID? This helps us associate your responses with your records.",
+        "timestamp": "2025-03-20T19:17:56.872891"
+      },
+      {
+        "sender": "user",
+        "message": "67ty7",
+        "timestamp": "2025-03-20T19:18:24.566858"
+      },
+      {
+        "sender": "bot",
+        "message": "Thank you! I've recorded your employee ID: 67ty7.\n\nNow, let's begin with the first question of our survey:\n\nWe're curious to know what kind of anime really speaks to you. What type of anime do you usually find yourself getting lost in - is it Action, Comedy, Drama, or Romance?",
+        "timestamp": "2025-03-20T19:18:26.195545"
+      }
+    ],
+    "created_at": "2025-03-20T19:17:39.928528",
+    "waiting_for_employee_id": false
+  },
+  "115": {
+    "employee_id": "T6747GR",
+    "survey_response": "Anime Preferences and Viewing Habits SurveyLOLOLOL\u270eWhat is your favorite anime series and why do you like it?\u270eHow often do you watch anime?\u270eDailyWeeklyMonthlyRarelyWhat is your preferred platform for watching anime?\u270eHow would you rate the importance of subtitles in your anime viewing experience?\u270eSelect rating1 (Not important at all)2345 (Very important)Have you ever attended an anime convention or event? If so, what was your experience like?\u270eHow likely are you to recommend anime to your friends or family?\u270eSelect rating1 (Not likely at all)2345 (Very likely)",
+    "survey_prompt": "",
+    "summary": "Here is a summary of the conversation in the JSON schema:\n\n```\n{\n  \"summary\": \"The user did not provide any meaningful responses to the survey questions and instead gave unrelated answers. They did provide their employee ID as T6747GR.\",\n  \"ratings\": {\n    \"happiness\": { \"rating\": null, \"comment\": \"\" },\n    \"mental_health\": { \"rating\": null, \"comment\": \"\" },\n    \"job_satisfaction\": { \"rating\": null, \"comment\": \"\" },\n    \"enps\": { \"rating\": null, \"comment\": \"\" },\n    \"communication\": { \"rating\": null, \"comment\": \"\" }\n  },\n  \"next_steps\": \"The survey was not completed due to the user's unrelated responses. It may be necessary to follow up with the user to collect their survey responses.\",\n  \"transcript_summary\": {\n    \"highlights\": [],\n    \"concerns\": [\"The user did not respond to the survey questions as expected.\"],\n    \"feedback\": [\"The user seemed distracted or uninterested in the survey.\"]\n  },\n  \"raw_transcript\": \"The conversation transcript is available, but it does not contain any meaningful survey responses.\",\n  \"overall\": \"The survey was not completed successfully due to the user's unrelated responses.\"\n}\n```",
+    "chat_with_survey": [
+      {
+        "sender": "user",
+        "message": "ya",
+        "timestamp": "2025-03-21T01:31:23.151194"
+      },
+      {
+        "sender": "bot",
+        "message": "Before we begin the survey, could you please provide your employee ID? This helps us associate your responses with your records.",
+        "timestamp": "2025-03-21T01:31:23.476726"
+      },
+      {
+        "sender": "user",
+        "message": "I like vada pva in mumbai",
+        "timestamp": "2025-03-21T01:31:56.862279"
+      },
+      {
+        "sender": "bot",
+        "message": "I still need your employee ID to continue with the survey. Please provide just your employee ID number or code. For example, it might look like 'EMP1234' or '5678'.",
+        "timestamp": "2025-03-21T01:31:57.210822"
+      },
+      {
+        "sender": "user",
+        "message": "T6747GR",
+        "timestamp": "2025-03-21T01:32:02.565819"
+      },
+      {
+        "sender": "bot",
+        "message": "Thank you! I've recorded your employee ID: T6747GR.\n\nNow, let's begin with the first question of our survey:\n\nWe're so curious to know - what's your all-time favorite anime series, and what is it about that show that just captures your heart and draws you in?",
+        "timestamp": "2025-03-21T01:32:03.311565"
+      },
+      {
+        "sender": "user",
+        "message": "whats weather in kharapgur",
+        "timestamp": "2025-03-21T01:32:28.053869"
+      },
+      {
+        "sender": "bot",
+        "message": "I'm here to assist with the survey. Let's stay focused on the questions. I'd love to hear about your favorite anime series. Can you tell me, what's the one anime series that really stands out to you, and what is it about that show that you just can't get enough of?",
+        "timestamp": "2025-03-21T01:32:28.607633"
+      },
+      {
+        "sender": "user",
+        "message": "ya go ahead",
+        "timestamp": "2025-03-21T01:34:05.691483"
+      },
+      {
+        "sender": "bot",
+        "message": "I'd love to hear about the anime series that has really captured your heart. What's the one show that you just can't get enough of, and what is it about that series that draws you in and keeps you engaged? Is it the characters, the storyline, the animation, or something else entirely?",
+        "timestamp": "2025-03-21T01:34:07.427585"
+      }
+    ],
+    "created_at": "2025-03-21T01:31:23.151194",
+    "waiting_for_employee_id": false
+  },
+  "116": {
+    "employee_id": "8664prngrj",
+    "survey_response": "{\n  \"survey_title\": \"Anime Preferences and Viewing Habits Survey\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"What type of anime genre do you enjoy the most?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Action\", \"Romance\", \"Comedy\", \"Horror\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What is your favorite anime series and why do you like it?\",\n      \"type\": \"paragraph\",\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"How often do you watch anime?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Daily\", \"Weekly\", \"Monthly\", \"Rarely\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"What platform do you use to watch anime?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Crunchyroll\", \"Funimation\", \"Netflix\", \"Other\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"Please rate your satisfaction with the anime you have watched recently (1-5).\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Very Dissatisfied)\", \"2\", \"3\", \"4\", \"5 (Very Satisfied)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"Have you attended any anime conventions or events? If so, which one?\",\n      \"type\": \"short_answer\",\n      \"answer\": \"\"\n    }\n  ]\n}",
+    "survey_prompt": "",
+    "summary": "",
+    "chat_with_survey": [
+      {
+        "sender": "user",
+        "message": "ya",
+        "timestamp": "2025-03-21T01:34:52.144114"
+      },
+      {
+        "sender": "bot",
+        "message": "Before we begin the survey, could you please provide your employee ID? This helps us associate your responses with your records.",
+        "timestamp": "2025-03-21T01:34:52.470983"
+      },
+      {
+        "sender": "user",
+        "message": "8664prngrj",
+        "timestamp": "2025-03-21T01:35:28.554996"
+      },
+      {
+        "sender": "bot",
+        "message": "Thank you! I've recorded your employee ID: 8664prngrj.\n\nNow, let's begin with the first question of our survey:\n\nWe're curious to know what type of anime really speaks to you. What's your go-to anime genre that always leaves you feeling excited and eager for more - is it Action, Romance, Comedy, or Horror?",
+        "timestamp": "2025-03-21T01:35:29.224790"
+      }
+    ],
+    "created_at": "2025-03-21T01:34:52.144114",
+    "waiting_for_employee_id": false
   }
 }
