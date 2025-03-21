@@ -770,46 +770,67 @@ function renderEditableHeading(surveyData, container) {
 
 // Render an editable section for "intro" or "outro" (using a paragraph tag).
 function renderEditableSection(fieldName, surveyData, container, tagName, extraClass) {
+  // Make the top-level container a flex row (so text is on the left, icon on the right).
   const sectionContainer = document.createElement("div");
-  sectionContainer.className = "relative mb-4";
-  
+  sectionContainer.className = "flex justify-between items-start mb-4";
+
+  // Put your text in a separate div to allow multiline text to wrap nicely.
+  const textWrapper = document.createElement("div");
   const sectionEl = document.createElement(tagName);
   sectionEl.textContent = surveyData[fieldName];
   sectionEl.className = extraClass || "";
-  sectionContainer.appendChild(sectionEl);
-  
+  textWrapper.appendChild(sectionEl);
+
+  // Create your edit icon, but remove all absolute positioning.
   const editIcon = document.createElement("button");
-  editIcon.innerHTML = "&#9998;";
-  editIcon.className = "absolute top-0 right-0 text-blue-500";
+  editIcon.innerHTML = "&#9998;"; // ✎ icon
+  editIcon.className = "text-blue-500 hover:text-blue-600 px-2";
+
+  // Append both textWrapper and editIcon to the sectionContainer.
+  sectionContainer.appendChild(textWrapper);
   sectionContainer.appendChild(editIcon);
-  
+
+  // When edit is clicked, swap to the textarea version:
   editIcon.addEventListener("click", () => {
+    // Clear the container first
     sectionContainer.innerHTML = "";
+
+    // Rebuild as a column for editing
+    sectionContainer.className = "mb-4"; // e.g., no flex while editing
     const textarea = document.createElement("textarea");
     textarea.value = surveyData[fieldName];
     textarea.className = "w-full p-2 border rounded";
     sectionContainer.appendChild(textarea);
-    
-    // Save button positioned at the top-right
+
+    // Add a save button below the textarea
+    const buttonContainer = document.createElement("div");
+    buttonContainer.className = "mt-2";
     const saveBtn = document.createElement("button");
     saveBtn.textContent = "Save";
-    saveBtn.className = "absolute top-2 right-2 bg-blue-500 text-white px-3 py-1 rounded";
-    sectionContainer.appendChild(saveBtn);
-    
+    saveBtn.className = "bg-blue-500 text-white px-3 py-1 rounded";
+    buttonContainer.appendChild(saveBtn);
+    sectionContainer.appendChild(buttonContainer);
+
+    // Save logic
     saveBtn.addEventListener("click", () => {
       const newText = textarea.value.trim();
       if (newText !== "") {
         surveyData[fieldName] = newText;
       }
+      // Re-render the preview mode
       sectionContainer.innerHTML = "";
+      sectionContainer.className = "flex justify-between items-start mb-4";
+      textWrapper.innerHTML = "";
       sectionEl.textContent = surveyData[fieldName];
-      sectionContainer.appendChild(sectionEl);
+      textWrapper.appendChild(sectionEl);
+      sectionContainer.appendChild(textWrapper);
       sectionContainer.appendChild(editIcon);
     });
   });
-  
+
   container.appendChild(sectionContainer);
 }
+
       // -----------------------------
       // RENDERING FUNCTIONS
       // -----------------------------
@@ -850,6 +871,11 @@ function renderPreviewSurvey(surveyData, container) {
     addQuestionFormContainer.style.display = "block";
     renderAddQuestionForm(surveyData, addQuestionFormContainer, container);
   });
+  // Add a spacer element for extra spacing
+const spacer = document.createElement("div");
+spacer.className = "mt-6"; // Adjust this class for more/less spacing
+container.appendChild(spacer);
+
   // Render the editable Outro.
   renderEditableSection("outro", surveyData, container, "p", "text-base text-gray-700");
 }

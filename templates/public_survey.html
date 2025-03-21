@@ -13,12 +13,20 @@
       #vapi-support-btn {
         display: none !important;
       }
+      .volume-bar {
+        width: 4px;
+        height: 30px;
+        background-color: #d1d5db;
+      }
+      .volume-bar.active {
+        background-color: #3b82f6;
+      }
     </style>
   </head>
   <body class="bg-gray-100 flex items-center justify-center min-h-screen">
-    <div class="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4 w-auto">
+    <div class="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4 w-4/5">
       <!-- Survey Selection Card -->
-      <div class="bg-white p-6 rounded shadow w-full max-w-md text-center mb-8">
+      <div class="bg-white p-6 rounded shadow w-full text-center mb-8">
         <h1 class="text-2xl font-bold mb-4">Public Survey</h1>
         <div class="flex flex-col space-y-4">
           <button
@@ -35,11 +43,11 @@
           </button>
         </div>
       </div>
-    
+  
       <!-- Call Section -->
       <div
         id="call-section"
-        class="w-full max-w-4xl mx-auto mb-8 p-6 bg-white rounded-lg shadow-lg"
+        class="w-full mb-8 p-6 bg-white rounded-lg shadow-lg"
       >
         <h2 id="call-heading" class="text-xl font-semibold text-gray-700 mb-4">
           Call in Progress
@@ -56,11 +64,11 @@
         </button>
         <div id="call-summary" class="mt-4 text-sm text-gray-600"></div>
       </div>
-    
+  
       <!-- Chat Container -->
       <div
         id="chat-container"
-        class="hidden w-full max-w-4xl mx-auto mb-8 p-6 bg-white rounded-lg shadow-lg"
+        class="hidden w-full mb-8 p-6 bg-white rounded-lg shadow-lg"
       >
         <h2 id="chat-heading" class="text-xl font-semibold text-gray-700 mb-4">
           Chat Interface
@@ -83,9 +91,9 @@
           </button>
         </div>
         <div class="mt-4 flex justify-between items-center">
-          <a href="#" id="back-to-voice" class="text-blue-500 hover:underline"
-            >Back to Voice AI</a
-          >
+          <a href="#" id="back-to-voice" class="text-blue-500 hover:underline">
+            Back to Voice AI
+          </a>
           <button
             id="stop-survey-btn"
             class="bg-red-500 hover:bg-red-600 text-white font-semibold rounded-md px-4 py-2 transition-colors"
@@ -94,13 +102,21 @@
           </button>
         </div>
       </div>
-    
+  
       <!-- Analysis Section -->
-      <div id="analysis-section" class="w-full max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-lg hidden">
+      <div id="analysis-section" class="w-full p-6 bg-white rounded-lg shadow-lg hidden">
         <h2 class="text-xl font-semibold text-gray-700 mb-4">Survey Analysis</h2>
         <canvas id="ratingsChart" width="800" height="400"></canvas>
       </div>
+  
+      <!-- Go Back Button -->
+      <div class="w-full text-center mt-8">
+        <button id="go-back-btn" class="bg-gray-500 hover:bg-gray-600 text-white font-semibold rounded-md px-4 py-2 transition-colors">
+          Go Back
+        </button>
+      </div>
     </div>
+  
     <script>
       var vapiInstance = null;
       const assistant = "5e7d3a07-f7d5-4975-8bd8-2c32ae092f01";
@@ -359,63 +375,65 @@ Closing:
 }
 
       // Send to Voice AI button handler
-      document
-        .getElementById("public-voice-btn")
-        .addEventListener("click", () => {
-          if (!recordid) {
-            alert("Record ID is missing. Please check your URL.");
+      document.getElementById("public-voice-btn").addEventListener("click", () => {
+  if (!recordid) {
+    alert("Record ID is missing. Please check your URL.");
+    return;
+  }
+  // Ensure the call container is visible and chat container is hidden
+  document.getElementById("call-section").classList.remove("hidden");
+  document.getElementById("chat-container").classList.add("hidden");
+
+  fetch("/public-survey-voice-ai", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ recordid: recordid, public_survey_id: window.publicSurveyId }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      let responseText = JSON.stringify(data);
+      window.latestRecordId = data.record_id;
+      fetch("/start-call", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + apiKey,
+        },
+        body: JSON.stringify({ text: responseText }),
+      })
+        .then((response) => response.json())
+        .then((callData) => {
+          if (callData.error) {
             return;
           }
-          fetch("/public-survey-voice-ai", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ recordid: recordid, public_survey_id:window.publicSurveyId }),
-          })
-            .then((response) => response.json())
-            .then((data) => {
-              let responseText = JSON.stringify(data);
-              window.latestRecordId = data.record_id;
-              fetch("/start-call", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                  Authorization: "Bearer " + apiKey,
-                },
-                body: JSON.stringify({ text: responseText }),
-              })
-                .then((response) => response.json())
-                .then((callData) => {
-                  if (callData.error) {
-                    return;
-                  }
-                  const callId = callData.call_id;
-                  pollCallDetails(callId);
-                });
-              startWebCall(responseText);
-              setTimeout(() => {
-                document
-                  .getElementById("call-section")
-                  .scrollIntoView({ behavior: "smooth" });
-              }, 300);
-            })
-            .catch((error) => {
-              alert("Error sending to Voice AI: " + error);
-            });
+          const callId = callData.call_id;
+          pollCallDetails(callId);
         });
+      startWebCall(responseText);
+      setTimeout(() => {
+        document.getElementById("call-section").scrollIntoView({ behavior: "smooth" });
+      }, 300);
+    })
+    .catch((error) => {
+      alert("Error sending to Voice AI: " + error);
+    });
+});
+
 
       // Chat with Survey button handler
       document.getElementById("public-chat-btn").addEventListener("click", () => {
-  if (!recordid ) {
+        // If call container is visible, stop the active call.
+  if (!document.getElementById("call-section").classList.contains("hidden")) {
+    stopWebCall();
+  }
+  if (!recordid) {
     alert("Record ID or Chat Record ID is missing. Please check your URL.");
     return;
   }
   fetch("/public-survey-chat-survey", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      recordid: recordid,
-      // chatrecordid: chatrecordid,
-    }),
+    body: JSON.stringify({ recordid: recordid }),
   })
     .then((response) => response.json())
     .then((data) => {
@@ -426,13 +444,14 @@ Closing:
       // Store the survey response globally for use in chat messages.
       window.surveyResponseText = data.prompt_summary;
       // Also store the chat record id for later use.
-      window.latestChatRecordId = data.chatrecordid
+      window.latestChatRecordId = data.chatrecordid;
       // Hide the call section and show the chat container.
       document.getElementById("call-section").classList.add("hidden");
       document.getElementById("chat-container").classList.remove("hidden");
-
+      
       // Automatically insert the first bot message.
       const chatMessages = document.getElementById("chat-messages");
+      chatMessages.innerHTML = ""; // Optional: clear existing messages
       const initialBotMsg = document.createElement("div");
       initialBotMsg.textContent = "Bot: Hi, let's start the survey. Are you ready?";
       initialBotMsg.className = "text-green-600 font-semibold my-1";
@@ -443,7 +462,6 @@ Closing:
       alert("Error initiating chat with survey: " + error);
     });
 });
-
 
 
       // Stop call
@@ -645,6 +663,19 @@ function getUrlParameter(name) {
             console.error("Error fetching rating distribution:", error);
           })}, 1000);
       }
+      function setupGoBackButton() {
+  const goBackBtn = document.getElementById("go-back-btn");
+  if (goBackBtn) {
+    goBackBtn.addEventListener("click", () => {
+      window.location.href = "/";
+    });
+  } else {
+    console.error("Go Back button not found!");
+  }
+}
+
+// Call this function on page load or after the button is rendered.
+setupGoBackButton();
     </script>
   </body>
 </html>
