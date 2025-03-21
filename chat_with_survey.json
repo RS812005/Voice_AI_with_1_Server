@@ -1727,5 +1727,317 @@
     ],
     "created_at": "2025-03-21T01:34:52.144114",
     "waiting_for_employee_id": false
+  },
+  "132": {
+    "employee_id": "554TY54T",
+    "survey_response": "Death Note Popularity Survey\u270eThis survey aims to understand the factors contributing to the popularity of the Death Note series. Your responses will help us gain insights into the show's appeal and its impact on audiences. Please answer the questions honestly, and feel free to elaborate on your responses whenever possible. The survey should take approximately 2 minutes to complete.\u270eHow did you first hear about Death Note?\u270eSocial mediaFriend or family recommendationOnline streaming platformsOtherWhat do you think is the most compelling aspect of the Death Note series?\u270eHow would you rate the overall quality of the Death Note anime series?\u270eSelect rating1 (Low)2345 (High)Can you describe a moment or scene from Death Note that had a significant impact on you? What made it so memorable?\u270eHow likely are you to recommend Death Note to others?\u270eSelect rating1 (Not likely)2345 (Very likely)What do you think sets Death Note apart from other anime series or manga?\u270eAdd QuestionThank you for taking the time to participate in this survey! Your input is invaluable in helping us understand the enduring popularity of Death Note. If you have any additional comments or thoughts, please feel free to share them. Your responses will be kept confidential and anonymous.\u270e",
+    "survey_prompt": "",
+    "summary": "",
+    "chat_with_survey": [
+      {
+        "sender": "user",
+        "message": "ya",
+        "timestamp": "2025-03-21T05:12:04.324356"
+      },
+      {
+        "sender": "bot",
+        "message": "Before we begin the survey, could you please provide your employee ID? This helps us associate your responses with your records.",
+        "timestamp": "2025-03-21T05:12:04.670155"
+      },
+      {
+        "sender": "user",
+        "message": "554TY54T",
+        "timestamp": "2025-03-21T05:12:12.591427"
+      },
+      {
+        "sender": "bot",
+        "message": "Thank you! I've recorded your employee ID: 554TY54T.\n\nNow, let's begin with the first question of our survey:\n\nWe're so glad you're here to share your thoughts about Death Note. To get started, could you tell us: How did you first discover the amazing world of Death Note - was it through social media, a friend or family member, online streaming, or somewhere else entirely?",
+        "timestamp": "2025-03-21T05:12:13.277295"
+      }
+    ],
+    "created_at": "2025-03-21T05:12:04.324356",
+    "waiting_for_employee_id": false
+  },
+  "133": {
+    "employee_id": "4556tf",
+    "survey_response": "Anime Viewing Habits and Preferences Survey\u270eThis survey aims to gather information about anime viewers' habits and preferences. Your input will help us better understand the anime community and provide insights for future anime productions. Please answer the questions honestly, and thank you for participating!\u270eHow often do you watch anime?\u270eDailyWeeklyMonthlyRarelyWhat is your favorite anime genre?\u270ePlease rate the importance of subtitles in your anime viewing experience.\u270eSelect rating1 (Not important at all)2345 (Very important)Can you tell us about your favorite anime series and why you enjoy it?\u270eHow do you typically find new anime to watch?\u270eSocial mediaOnline forumsFriends' recommendationsStreaming platformsPlease rate your overall satisfaction with the current anime streaming services.\u270eSelect rating1 (Very dissatisfied)2345 (Very satisfied)Add QuestionThank you for taking the time to complete this survey! Your input is invaluable to us, and we appreciate your participation. If you have any additional comments or suggestions, please feel free to share them with us.\u270e",
+    "survey_prompt": "",
+    "summary": "",
+    "chat_with_survey": [
+      {
+        "sender": "user",
+        "message": "ya",
+        "timestamp": "2025-03-21T05:24:07.748711"
+      },
+      {
+        "sender": "bot",
+        "message": "Before we begin the survey, could you please provide your employee ID? This helps us associate your responses with your records.",
+        "timestamp": "2025-03-21T05:24:08.070705"
+      },
+      {
+        "sender": "user",
+        "message": "4556tf",
+        "timestamp": "2025-03-21T05:24:12.920711"
+      },
+      {
+        "sender": "bot",
+        "message": "Thank you! I've recorded your employee ID: 4556tf.\n\nExplain the survey in a short intro format in a friendly conversation type. Are you ready to begin the survey? .\n\nWe're so excited to hear about your anime viewing habits. To get started, can you tell us: How often do you get to cozy up and watch anime - is it a daily ritual, something you enjoy on a weekly basis, or more of a monthly treat?",
+        "timestamp": "2025-03-21T05:24:13.665522"
+      }
+    ],
+    "created_at": "2025-03-21T05:24:07.748711",
+    "waiting_for_employee_id": false
+  },
+  "134": {
+    "employee_id": "67574F4",
+    "survey_response": "Death Note Fan Survey\u270eWelcome to the Death Note fan survey! This survey aims to gather information about your opinions and preferences regarding the Death Note series. Your responses will help us better understand the fan community and provide valuable insights. Please answer the questions honestly, and thank you for participating!\u270eHow did you first discover the Death Note series?\u270eAnimeMangaLive-Action MovieFriend RecommendationWhat do you think is the most intriguing aspect of the Death Note series?\u270eOn a scale of 1-5, how would you rate the character development of Light Yagami throughout the series?\u270eSelect rating1 (Poor)2 (Fair)3 (Good)4 (Very Good)5 (Excellent)How does the themes of morality and justice presented in Death Note relate to your own views on these topics?\u270eWhich character do you think has the most complex personality in the Death Note series?\u270eLight YagamiLNearMisa AmaneOn a scale of 1-5, how likely are you to recommend the Death Note series to a friend?\u270eSelect rating1 (Not Likely)2 (Somewhat Likely)3 (Neutral)4 (Likely)5 (Very Likely)Add QuestionThank you for taking the time to participate in this survey! Your feedback is greatly appreciated, and we hope you enjoyed sharing your thoughts about the Death Note series.\u270e",
+    "survey_prompt": "",
+    "summary": "",
+    "chat_with_survey": [
+      {
+        "sender": "user",
+        "message": "ya",
+        "timestamp": "2025-03-21T05:44:17.837799"
+      },
+      {
+        "sender": "bot",
+        "message": "Before we begin the survey, could you please provide your employee ID? This helps us associate your responses with your records.",
+        "timestamp": "2025-03-21T05:44:18.168735"
+      },
+      {
+        "sender": "user",
+        "message": "67574F4",
+        "timestamp": "2025-03-21T05:44:25.695298"
+      },
+      {
+        "sender": "bot",
+        "message": "Thank you! I've recorded your employee ID: 67574F4.\n\nOur survey is designed to gather your insights in a friendly and conversational manner. We'd love to know your thoughts about our services. Are you ready to begin? (Please reply 'yes' to start.)",
+        "timestamp": "2025-03-21T05:44:26.150003"
+      },
+      {
+        "sender": "user",
+        "message": "yes",
+        "timestamp": "2025-03-21T05:44:33.547637"
+      },
+      {
+        "sender": "bot",
+        "message": "Great! Let's begin:\n\nWe're so excited to hear about your journey with the Death Note series. Can you tell us, how did you first discover this amazing world - was it through the anime, manga, a live-action movie, or perhaps a friend's enthusiastic recommendation?",
+        "timestamp": "2025-03-21T05:44:34.003832"
+      }
+    ],
+    "created_at": "2025-03-21T05:44:17.837799",
+    "waiting_for_employee_id": false
+  },
+  "135": {
+    "employee_id": "453",
+    "survey_response": "Death Note Fan Survey\u270eThis survey aims to gather information about your opinions and preferences regarding the popular anime and manga series, Death Note. Your input will help us better understand the fanbase and provide valuable insights. Please answer the questions honestly, and thank you for participating!\u270eWhat is your favorite character in the Death Note series?\u270eLight YagamiLMisa AmaneOtherWhat do you think is the most intriguing aspect of the Death Note series?\u270eHow would you rate the overall storyline of Death Note?\u270eSelect rating1 (Poor)2345 (Excellent)If you could change one aspect of the Death Note series, what would it be and why?\u270eHow does the themes of morality and justice in Death Note relate to your own views on the subject?\u270eWould you recommend the Death Note series to others?\u270eYesNoMaybeAdd QuestionThank you for taking the time to complete this survey! Your input is greatly appreciated, and we hope you enjoyed sharing your thoughts about the Death Note series.\u270e",
+    "survey_prompt": "",
+    "summary": "",
+    "chat_with_survey": [
+      {
+        "sender": "user",
+        "message": "ya",
+        "timestamp": "2025-03-21T05:49:39.655490"
+      },
+      {
+        "sender": "bot",
+        "message": "Before we begin the survey, could you please provide your employee ID? This helps us associate your responses with your records.",
+        "timestamp": "2025-03-21T05:49:39.979150"
+      },
+      {
+        "sender": "user",
+        "message": "453",
+        "timestamp": "2025-03-21T05:49:43.611812"
+      },
+      {
+        "sender": "bot",
+        "message": "Thank you! I've recorded your employee ID: 453.\n\nWe're excited to hear from fellow Death Note fans like you. This survey is all about gathering your thoughts and opinions on the popular anime and manga series. We want to know what you love about Death Note, what keeps you hooked, and even what you might change if you had the chance. Your feedback will help us better understand what makes this series so compelling to fans like you. So, take a few minutes to share your thoughts, and let's dive into the world of Light Yagami, L, and the Death Note together.\n\nAre you ready to begin? (Please reply 'yes' to start.)",
+        "timestamp": "2025-03-21T05:49:44.583217"
+      },
+      {
+        "sender": "user",
+        "message": "yes",
+        "timestamp": "2025-03-21T05:50:05.618135"
+      },
+      {
+        "sender": "bot",
+        "message": "Great! Let's begin:\n\nWe're so excited to hear from you and learn more about what makes the Death Note series so special to its fans. To get started, can you tell us: who's your absolute favorite character in the series - is it the brilliant and complex Light Yagami, the fascinating and devoted Misa Amane, or perhaps someone else entirely?",
+        "timestamp": "2025-03-21T05:50:06.199338"
+      },
+      {
+        "sender": "user",
+        "message": "L",
+        "timestamp": "2025-03-21T05:50:25.997176"
+      },
+      {
+        "sender": "bot",
+        "message": "Our survey is designed to gather your insights in a friendly, conversational manner. When you're ready to begin, please reply with 'yes'.",
+        "timestamp": "2025-03-21T05:50:26.007175"
+      },
+      {
+        "sender": "user",
+        "message": "Light Yagami",
+        "timestamp": "2025-03-21T05:50:37.364138"
+      },
+      {
+        "sender": "bot",
+        "message": "Our survey is designed to gather your insights in a friendly, conversational manner. When you're ready to begin, please reply with 'yes'.",
+        "timestamp": "2025-03-21T05:50:37.371062"
+      }
+    ],
+    "created_at": "2025-03-21T05:49:39.655490",
+    "waiting_for_employee_id": false
+  },
+  "136": {
+    "employee_id": "45GR",
+    "survey_response": "Death Note Fan Survey\u270eWelcome to the Death Note fan survey. This survey aims to gather information about your preferences and opinions regarding the Death Note series. Your responses will help us better understand the fan base and provide valuable insights. Please answer the questions honestly, and thank you for participating.\u270eWhat is your favorite character in the Death Note series?\u270eLight YagamiLMisa AmaneOtherWhat do you like most about the Death Note series?\u270eHow would you rate the intensity of the plot twists in Death Note?\u270eSelect rating1 (Low)2345 (High)What themes or messages do you think the Death Note series conveys, and how do they resonate with you?\u270eHow does the series' exploration of morality and justice impact your perspective on these topics?\u270eWould you recommend the Death Note series to others, and why or why not?\u270eYes, definitelyYes, but with some reservationsNo, not reallyNo, definitely notAdd QuestionThank you for taking the time to participate in this survey. Your input is invaluable to us, and we appreciate your thoughts and opinions about the Death Note series.\u270e",
+    "survey_prompt": "",
+    "summary": "",
+    "chat_with_survey": [
+      {
+        "sender": "user",
+        "message": "ya",
+        "timestamp": "2025-03-21T05:52:06.956263"
+      },
+      {
+        "sender": "bot",
+        "message": "Before we begin the survey, could you please provide your employee ID? This helps us associate your responses with your records.",
+        "timestamp": "2025-03-21T05:52:07.286341"
+      },
+      {
+        "sender": "user",
+        "message": "45GR",
+        "timestamp": "2025-03-21T05:52:10.731579"
+      },
+      {
+        "sender": "bot",
+        "message": "Thank you! I've recorded your employee ID: 45GR.\n\nHey there, Death Note fans. We're excited to hear your thoughts about this awesome series. This survey is all about gathering your opinions and preferences to get a better understanding of what makes Death Note so special to you. We'll be asking you about your favorite characters, what draws you to the series, and how it makes you think about big topics like morality and justice. Your input will help us get a deeper understanding of the fan base, so please be honest and share your thoughts with us. It'll only take a few minutes, and we really appreciate your time and feedback. Let's get started!\n\nAre you ready to begin? (Please reply 'yes' to start.)",
+        "timestamp": "2025-03-21T05:52:11.711096"
+      },
+      {
+        "sender": "user",
+        "message": "yes",
+        "timestamp": "2025-03-21T05:52:20.206640"
+      },
+      {
+        "sender": "bot",
+        "message": "Great! Let's begin:\n\nWe're so excited to hear from you and learn more about what makes the Death Note series so special to you. To get started, could you tell us: Who is your favorite character in the Death Note series - is it the ingenious Light Yagami, the charismatic Misa Amane, or perhaps someone else entirely?",
+        "timestamp": "2025-03-21T05:52:20.805224"
+      },
+      {
+        "sender": "user",
+        "message": "Light Yagami",
+        "timestamp": "2025-03-21T05:52:28.625867"
+      },
+      {
+        "sender": "bot",
+        "message": "Now that we've talked about your favorite character, I'm curious to know what draws you to the Death Note series. What is it about the series that resonates with you, and what do you like most about it?",
+        "timestamp": "2025-03-21T05:52:29.091281"
+      },
+      {
+        "sender": "user",
+        "message": "the thrilling scenes",
+        "timestamp": "2025-03-21T05:52:44.487347"
+      },
+      {
+        "sender": "bot",
+        "message": "Now that we've discussed what you like most about the Death Note series, I'm curious to know how you feel about the plot twists. The series is known for its unexpected turns and surprises. How would you rate the intensity of the plot twists in Death Note?",
+        "timestamp": "2025-03-21T05:52:45.011503"
+      },
+      {
+        "sender": "user",
+        "message": "3",
+        "timestamp": "2025-03-21T05:52:53.061581"
+      },
+      {
+        "sender": "bot",
+        "message": "Now that we've talked about the intensity of the plot twists, I'd love to dive deeper into the themes and messages that resonate with you in the Death Note series. What themes or messages do you think the series conveys, and how do they resonate with you?",
+        "timestamp": "2025-03-21T05:52:53.599230"
+      }
+    ],
+    "created_at": "2025-03-21T05:52:06.956263",
+    "waiting_for_employee_id": false,
+    "survey_started": true
+  },
+  "137": {
+    "employee_id": "45fr4",
+    "survey_response": "Anime Preferences and Viewing Habits Survey\u270eWe appreciate you taking the time to participate in this survey. The purpose of this survey is to gather information about your anime preferences and viewing habits. Your responses will help us better understand the anime community and their interests. Please answer the questions honestly, and feel free to elaborate on your responses when necessary.\u270eWhat type of anime genre do you enjoy the most?\u270eActionComedyDramaRomanceHow often do you watch anime?\u270eSelect ratingDailyWeeklyMonthlyRarelyWhat is your favorite anime series and why do you enjoy it?\u270eHow do you typically watch anime?\u270eStreaming servicesDVD/Blu-rayTV broadcastsOtherWhat do you think is missing from the current anime landscape?\u270eHow likely are you to recommend anime to your friends and family?\u270eSelect ratingVery likelySomewhat likelyNeutralSomewhat unlikelyVery unlikelyAdd QuestionThank you for taking the time to complete this survey. Your input is invaluable to us, and we appreciate your participation. If you have any additional comments or suggestions, please feel free to include them below.\u270e",
+    "survey_prompt": "",
+    "summary": "",
+    "chat_with_survey": [
+      {
+        "sender": "user",
+        "message": "ya",
+        "timestamp": "2025-03-21T05:55:03.407456"
+      },
+      {
+        "sender": "bot",
+        "message": "Before we begin the survey, could you please provide your employee ID? This helps us associate your responses with your records.",
+        "timestamp": "2025-03-21T05:55:03.728199"
+      },
+      {
+        "sender": "user",
+        "message": "45fr4",
+        "timestamp": "2025-03-21T05:55:07.010677"
+      },
+      {
+        "sender": "bot",
+        "message": "Thank you! I've recorded your employee ID: 45fr4.\n\nWe're super excited to hear about your anime preferences and viewing habits. This quick survey is all about getting to know what you love about anime, from your favorite genres to how you like to watch. Your thoughts and opinions will help us better understand the anime community and what makes it tick. So, grab a snack, get cozy, and let's dive in - we can't wait to hear your thoughts!\n\nAre you ready to begin? (Please reply 'yes' to start.)",
+        "timestamp": "2025-03-21T05:55:07.789731"
+      },
+      {
+        "sender": "user",
+        "message": "yes",
+        "timestamp": "2025-03-21T05:55:15.597041"
+      },
+      {
+        "sender": "bot",
+        "message": "Great! Let's begin:\n\nWe're so excited to hear about your anime preferences. To get started, could you tell us: what type of anime genre really resonates with you - is it Action, Comedy, Drama, or Romance that gets you most excited?",
+        "timestamp": "2025-03-21T05:55:16.113617"
+      },
+      {
+        "sender": "user",
+        "message": "action",
+        "timestamp": "2025-03-21T05:55:24.667898"
+      },
+      {
+        "sender": "bot",
+        "message": "Now that we've talked about your favorite anime genre, I'm curious to know more about your viewing habits. How often do you watch anime?",
+        "timestamp": "2025-03-21T05:55:25.063405"
+      },
+      {
+        "sender": "user",
+        "message": "daily",
+        "timestamp": "2025-03-21T05:55:32.131234"
+      },
+      {
+        "sender": "bot",
+        "message": "You've shared that action is your favorite anime genre and that you watch anime daily. That's really exciting. Now, I'm curious to know more about your favorite anime series. Could you tell me, what's your favorite anime series and what is it about that series that resonates with you?",
+        "timestamp": "2025-03-21T05:55:32.631671"
+      },
+      {
+        "sender": "user",
+        "message": "naruto",
+        "timestamp": "2025-03-21T05:55:44.591473"
+      },
+      {
+        "sender": "bot",
+        "message": "You've shared that your favorite anime series is Naruto. That's really exciting. Now, I'd like to know more about how you enjoy watching anime. How do you typically watch anime?",
+        "timestamp": "2025-03-21T05:55:45.098591"
+      },
+      {
+        "sender": "user",
+        "message": "through my laptop",
+        "timestamp": "2025-03-21T05:55:58.451297"
+      },
+      {
+        "sender": "bot",
+        "message": "I'm so glad we've got your favorite anime series, Naruto, and that you enjoy watching it through your laptop. That's really helpful to know. Now, I'm curious to know more about what you think is missing from the current anime landscape. What do you think could be added or improved to make the anime community an even better place for fans like you?",
+        "timestamp": "2025-03-21T05:55:59.064051"
+      }
+    ],
+    "created_at": "2025-03-21T05:55:03.407456",
+    "waiting_for_employee_id": false,
+    "survey_started": true
   }
 }

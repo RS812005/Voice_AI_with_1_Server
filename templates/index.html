@@ -764,6 +764,48 @@ function renderEditableHeading(surveyData, container) {
   container.appendChild(headingContainer);
 }
 
+// Render an editable section for "intro" or "outro" (using a paragraph tag).
+function renderEditableSection(fieldName, surveyData, container, tagName, extraClass) {
+  const sectionContainer = document.createElement("div");
+  sectionContainer.className = "relative mb-4";
+  
+  const sectionEl = document.createElement(tagName);
+  sectionEl.textContent = surveyData[fieldName];
+  sectionEl.className = extraClass || "";
+  sectionContainer.appendChild(sectionEl);
+  
+  const editIcon = document.createElement("button");
+  editIcon.innerHTML = "&#9998;";
+  editIcon.className = "absolute top-0 right-0 text-blue-500";
+  sectionContainer.appendChild(editIcon);
+  
+  editIcon.addEventListener("click", () => {
+    sectionContainer.innerHTML = "";
+    const textarea = document.createElement("textarea");
+    textarea.value = surveyData[fieldName];
+    textarea.className = "w-full p-2 border rounded";
+    sectionContainer.appendChild(textarea);
+    
+    // Save button positioned at the top-right
+    const saveBtn = document.createElement("button");
+    saveBtn.textContent = "Save";
+    saveBtn.className = "absolute top-2 right-2 bg-blue-500 text-white px-3 py-1 rounded";
+    sectionContainer.appendChild(saveBtn);
+    
+    saveBtn.addEventListener("click", () => {
+      const newText = textarea.value.trim();
+      if (newText !== "") {
+        surveyData[fieldName] = newText;
+      }
+      sectionContainer.innerHTML = "";
+      sectionEl.textContent = surveyData[fieldName];
+      sectionContainer.appendChild(sectionEl);
+      sectionContainer.appendChild(editIcon);
+    });
+  });
+  
+  container.appendChild(sectionContainer);
+}
       // -----------------------------
       // RENDERING FUNCTIONS
       // -----------------------------
@@ -773,6 +815,9 @@ function renderPreviewSurvey(surveyData, container) {
   container.innerHTML = "";
   // Render the editable survey heading.
   renderEditableHeading(surveyData, container);
+
+  // Render the editable Intro.
+  renderEditableSection("intro", surveyData, container, "p", "text-base text-gray-700");
 
   // Render each question with inline edit capability
   surveyData.questions.forEach(question => {
@@ -801,6 +846,8 @@ function renderPreviewSurvey(surveyData, container) {
     addQuestionFormContainer.style.display = "block";
     renderAddQuestionForm(surveyData, addQuestionFormContainer, container);
   });
+  // Render the editable Outro.
+  renderEditableSection("outro", surveyData, container, "p", "text-base text-gray-700");
 }
 
 // Render the inline Add Question form
