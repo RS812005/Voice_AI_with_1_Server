@@ -517,11 +517,12 @@ Closing:
 
       function pollCallDetails(callId, interval = 3000) {
         fetch("/call-details?call_id=" + callId, {
-          method: "GET",
+          method: "POST",
           headers: {
             "Content-Type": "application/json",
             Authorization: "Bearer " + apiKey,
           },
+          body: JSON.stringify({ record_id: window.latestRecordId })
         })
           .then((response) => {
             if (!response.ok) {
@@ -691,6 +692,8 @@ document.getElementById("survey-submit-btn").addEventListener("click", () => {
           .then(response => response.json())
           .then(data => {
             if (data && data.survey) {
+              window.publicSurveyId = data.public_survey_id;
+              // console.log("Public survey id:",window.publicSurveyId)
               window.latestRecordId = parseInt(data.record_id); // Get the current chat record counter from localStorage.
                let counter = parseInt(localStorage.getItem("chatRecordCounter"));
                window.latestChatRecordId = counter; // Use this as the chat record id. // Increment and store back to localStorage for next chat record.
@@ -1424,18 +1427,19 @@ function renderAddQuestionForm(surveyData, formContainer, surveyContainer) {
         document.getElementById("public-survey-link").addEventListener("click", function(e) {
   e.preventDefault();
   
-  // Check if survey response has been generated.
-  if (!window.latestRecordId || !window.latestChatRecordId) {
+  // Check if survey response and public survey ID have been generated.
+  if (!window.latestRecordId || !window.latestChatRecordId || !window.publicSurveyId) {
     alert("Please complete the survey before copying the public survey link.");
     return;
   }
   
-  // Retrieve the record IDs from the global variables.
+  // Retrieve the record IDs and public survey id from the global variables.
   let recordid = window.latestRecordId;
   let chatrecordid = window.latestChatRecordId;
+  let publicSurveyId = window.publicSurveyId;
   
-  // Construct the public survey URL with the record IDs as query parameters.
-  let publicUrl = `${window.location.origin}/public_survey?recordid=${recordid}&chatrecordid=${chatrecordid}`;
+  // Construct the public survey URL with the record IDs and public survey id as query parameters.
+  let publicUrl = `${window.location.origin}/public_survey?recordid=${recordid}&chatrecordid=${chatrecordid}&public_survey_id=${publicSurveyId}`;
   
   // Copy the URL to clipboard using the Clipboard API.
   navigator.clipboard.writeText(publicUrl)
@@ -1446,6 +1450,7 @@ function renderAddQuestionForm(surveyData, formContainer, surveyContainer) {
       alert("Error copying public survey link: " + err);
     });
 });
+
 
 
 

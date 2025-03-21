@@ -5,6 +5,8 @@
     <title>Public Survey</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <style>
        /* Hide the Vapi call button injected from the CDN */
        #vapi-icon-container,
@@ -14,81 +16,91 @@
     </style>
   </head>
   <body class="bg-gray-100 flex items-center justify-center min-h-screen">
-    <div class="bg-white p-6 rounded shadow max-w-md w-full text-center">
-      <h1 class="text-2xl font-bold mb-4">Public Survey</h1>
-      <div class="flex flex-col space-y-4">
+    <div class="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4 w-auto">
+      <!-- Survey Selection Card -->
+      <div class="bg-white p-6 rounded shadow w-full max-w-md text-center mb-8">
+        <h1 class="text-2xl font-bold mb-4">Public Survey</h1>
+        <div class="flex flex-col space-y-4">
+          <button
+            id="public-voice-btn"
+            class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          >
+            Send to Voice AI
+          </button>
+          <button
+            id="public-chat-btn"
+            class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+          >
+            Chat with Survey
+          </button>
+        </div>
+      </div>
+    
+      <!-- Call Section -->
+      <div
+        id="call-section"
+        class="w-full max-w-4xl mx-auto mb-8 p-6 bg-white rounded-lg shadow-lg"
+      >
+        <h2 id="call-heading" class="text-xl font-semibold text-gray-700 mb-4">
+          Call in Progress
+        </h2>
+        <p id="assistant-status" class="text-sm text-gray-600 mb-4">
+          Assistant Status: Not Speaking
+        </p>
+        <div id="volume-level" class="flex space-x-2 mb-4"></div>
         <button
-          id="public-voice-btn"
-          class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          id="stop-btn"
+          class="bg-red-500 text-white py-1 px-3 rounded-md hover:bg-red-600 transition-colors"
         >
-          Send to Voice AI
+          Stop Call
         </button>
-        <button
-          id="public-chat-btn"
-          class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
-        >
-          Chat with Survey
-        </button>
+        <div id="call-summary" class="mt-4 text-sm text-gray-600"></div>
+      </div>
+    
+      <!-- Chat Container -->
+      <div
+        id="chat-container"
+        class="hidden w-full max-w-4xl mx-auto mb-8 p-6 bg-white rounded-lg shadow-lg"
+      >
+        <h2 id="chat-heading" class="text-xl font-semibold text-gray-700 mb-4">
+          Chat Interface
+        </h2>
+        <div id="chat-messages" class="mb-4 overflow-auto max-h-64">
+          <!-- Chat messages will be inserted here -->
+        </div>
+        <div class="flex space-x-4">
+          <input
+            type="text"
+            id="chat-input"
+            class="flex-1 p-2 border rounded-md"
+            placeholder="Type your question..."
+          />
+          <button
+            id="chat-send-btn"
+            class="bg-green-500 hover:bg-green-600 text-white font-semibold rounded-md px-4 py-2 transition-colors"
+          >
+            Send
+          </button>
+        </div>
+        <div class="mt-4 flex justify-between items-center">
+          <a href="#" id="back-to-voice" class="text-blue-500 hover:underline"
+            >Back to Voice AI</a
+          >
+          <button
+            id="stop-survey-btn"
+            class="bg-red-500 hover:bg-red-600 text-white font-semibold rounded-md px-4 py-2 transition-colors"
+          >
+            Stop Survey
+          </button>
+        </div>
+      </div>
+    
+      <!-- Analysis Section -->
+      <div id="analysis-section" class="w-full max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-lg hidden">
+        <h2 class="text-xl font-semibold text-gray-700 mb-4">Survey Analysis</h2>
+        <canvas id="ratingsChart" width="800" height="400"></canvas>
       </div>
     </div>
-    <div
-      id="call-section"
-      class="w-full max-w-3xl mx-auto my-8 p-6 bg-white rounded-lg shadow-lg"
-    >
-      <!-- New heading element for survey heading -->
-      <h2 id="call-heading" class="text-xl font-semibold text-gray-700 mb-4">
-        Call in Progress
-      </h2>
-      <p id="assistant-status" class="text-sm text-gray-600 mb-4">
-        Assistant Status: Not Speaking
-      </p>
-      <div id="volume-level" class="flex space-x-2 mb-4"></div>
-      <button
-        id="stop-btn"
-        class="bg-red-500 text-white py-1 px-3 rounded-md hover:bg-red-600 transition-colors"
-      >
-        Stop Call
-      </button>
-      <div id="call-summary" class="mt-4 text-sm text-gray-600"></div>
-    </div>
-    <div
-    id="chat-container"
-    class="hidden max-w-3xl mx-auto my-8 p-6 bg-white rounded-lg shadow-lg"
-  >
-    <!-- Chat Interface heading and elements here -->
-    <h2 id="chat-heading" class="text-xl font-semibold text-gray-700 mb-4">
-      Chat Interface
-    </h2>
-    <div id="chat-messages" class="mb-4 overflow-auto max-h-64">
-      <!-- Chat messages will be inserted here -->
-    </div>
-    <div class="flex space-x-4">
-      <input
-        type="text"
-        id="chat-input"
-        class="flex-1 p-2 border rounded-md"
-        placeholder="Type your question..."
-      />
-      <button
-        id="chat-send-btn"
-        class="bg-green-500 hover:bg-green-600 text-white font-semibold rounded-md px-4 py-2 transition-colors"
-      >
-        Send
-      </button>
-    </div>
-    <div class="mt-4 flex justify-between items-center">
-      <a href="#" id="back-to-voice" class="text-blue-500 hover:underline"
-        >Back to Voice AI</a
-      >
-      <button
-        id="stop-survey-btn"
-        class="bg-red-500 hover:bg-red-600 text-white font-semibold rounded-md px-4 py-2 transition-colors"
-      >
-        Stop Survey
-      </button>
-    </div>
-  </div>
-  
     <script>
       var vapiInstance = null;
       const assistant = "5e7d3a07-f7d5-4975-8bd8-2c32ae092f01";
@@ -235,7 +247,8 @@
             messages: [
               {
                 role: "system",
-                content: `Keep the tone neutral and non-intrusive. Ensure that the conversation flows naturally and dynamically rather than presenting questions as a rigid list. The AI should integrate pre-configured questions fluidly—adapting to context. Encourage honest responses without pressure.
+                content: ` Please start by asking for the employee ID. Once the user provides an ID, confirm it by repeating it back and asking if it is correct.
+If the provided employee ID is valid, give a short, dynamic introduction about the survey based on the survey content below, then proceed with a structured, question-by-question survey flow. Keep the tone neutral and non-intrusive. Ensure that the conversation flows naturally and dynamically rather than presenting questions as a rigid list. The AI should integrate pre-configured questions fluidly—adapting to context. Encourage honest responses without pressure.
 
 Flow of Questions:
 ${extractedText}
@@ -278,11 +291,12 @@ Closing:
 
       function pollCallDetails(callId, interval = 3000) {
         fetch("/call-details?call_id=" + callId, {
-          method: "GET",
+          method: "POST",
           headers: {
             "Content-Type": "application/json",
             Authorization: "Bearer " + apiKey,
           },
+          body: JSON.stringify({ record_id: window.latestRecordId })
         })
           .then((response) => {
             if (!response.ok) {
@@ -332,11 +346,17 @@ Closing:
       const params = new URLSearchParams(window.location.search);
       const recordid = params.get("recordid");
       // const chatrecordid = params.get("chatrecordid");
+       window.publicSurveyId = params.get("public_survey_id");
+      // console.log(publicSurveyId)
 
       // If recordid is missing, alert the user.
       if (!recordid) {
         alert("Error: Missing 'recordid' in URL parameters.");
       }
+      else {
+  // Set the global variable so that it can be used elsewhere (like in pollCallDetails)
+  window.latestRecordId = recordid;
+}
 
       // Send to Voice AI button handler
       document
@@ -349,11 +369,12 @@ Closing:
           fetch("/public-survey-voice-ai", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ recordid: recordid }),
+            body: JSON.stringify({ recordid: recordid, public_survey_id:window.publicSurveyId }),
           })
             .then((response) => response.json())
             .then((data) => {
               let responseText = JSON.stringify(data);
+              window.latestRecordId = data.record_id;
               fetch("/start-call", {
                 method: "POST",
                 headers: {
@@ -477,6 +498,7 @@ Closing:
         question: question,
         survey_response: surveyResponseText,
         record_id: window.latestChatRecordId,
+        public_survey_id: window.publicSurveyId
       }),
     })
       .then((response) => response.json())
@@ -531,8 +553,98 @@ document.getElementById("stop-survey-btn").addEventListener("click", () => {
       alert("Error stopping survey: " + error);
     });
 });
+// Utility to get URL parameters
+function getUrlParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    const results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+  }
+  
+   // Check if the page should display analysis (analysis=true in URL)
+   if (getUrlParameter('analysis') === 'true') {
+        document.getElementById('analysis-section').classList.remove('hidden');
 
+        // Optionally filter by a public survey id
+        const publicSurveyId = getUrlParameter('public_survey_id');
+        let url = '/get_rating_distribution';
+        if (publicSurveyId) {
+          url += '?public_survey_id=' + publicSurveyId;
+        }
 
+        // Fetch the aggregated rating distribution data
+        fetch(url)
+          .then(response => response.json())
+          .then(data => {
+            const distribution = data.distribution || {};
+            // Create a set of all rating values (x-axis labels) from all parameters
+            let ratingSet = new Set();
+            Object.values(distribution).forEach(paramDist => {
+              Object.keys(paramDist).forEach(rating => ratingSet.add(rating));
+            });
+            let ratingLabels = Array.from(ratingSet);
+            // Sort numerically (convert strings to numbers for sorting)
+            ratingLabels.sort((a, b) => parseFloat(a) - parseFloat(b));
+
+            // Create datasets: one for each parameter, with its counts for each rating value.
+            const datasets = [];
+            // Predefined colors for each parameter (extend as needed)
+            const colors = {
+              "HAPPINESS": "rgba(255, 99, 132, 0.6)",
+              "MENTAL_HEALTH": "rgba(54, 162, 235, 0.6)",
+              "JOB_SATISFACTION": "rgba(255, 206, 86, 0.6)",
+              "ENPS": "rgba(75, 192, 192, 0.6)",
+              "COMMUNICATION": "rgba(153, 102, 255, 0.6)"
+            };
+
+            for (const parameter in distribution) {
+              const paramDist = distribution[parameter];
+              // Build an array of counts for each rating label
+              const dataArray = ratingLabels.map(label => paramDist[label] || 0);
+              datasets.push({
+                label: parameter,
+                data: dataArray,
+                backgroundColor: colors[parameter] || 'rgba(0,0,0,0.6)'
+              });
+            }
+
+            setTimeout(() => {
+            const ctx = document.getElementById('ratingsChart').getContext('2d');
+            new Chart(ctx, {
+              type: 'bar',
+              data: {
+                labels: ratingLabels,
+                datasets: datasets
+              },
+              options: {
+                scales: {
+                  y: {
+                    beginAtZero: true,
+                    title: {
+                      display: true,
+                      text: 'Number of Users'
+                    }
+                  },
+                  x: {
+                    title: {
+                      display: true,
+                      text: 'Rating'
+                    }
+                  }
+                },
+                plugins: {
+                  title: {
+                    display: true,
+                    text: 'Number of Users vs. Rating by Parameter'
+                  }
+                }
+              }
+            });
+          })
+          .catch(error => {
+            console.error("Error fetching rating distribution:", error);
+          })}, 1000);
+      }
     </script>
   </body>
 </html>

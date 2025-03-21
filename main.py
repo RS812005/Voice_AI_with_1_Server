@@ -10,6 +10,8 @@ from groq import Groq
 # Import the Vapi Python Library and error class.
 from vapi import Vapi
 from vapi.core.api_error import ApiError
+import uuid
+
 
 # Import for JSON file handling and datetime
 import json
@@ -40,15 +42,25 @@ def write_history(history_data):
         json.dump(history_data, file, indent=2, default=str)
 
 # Helper function to add a new record to history
-def add_history_record(prompt, prompt_summary, call_summary=""):
+def add_history_record(prompt, prompt_summary, public_survey_id="", call_summary=""):
     history = read_history()
+    
+    # Find the highest existing ID
+    max_id = 0
+    for record in history:
+        if record.get("id") and int(record["id"]) > max_id:
+            max_id = int(record["id"])
+    
+    # Create new record with ID one higher than the max
     new_record = {
-        "id": len(history) + 1,
-        "prompt": prompt,
-        "prompt_summary": prompt_summary,
+        "id": max_id + 1,
+        "public_survey_id": public_survey_id ,  # Generates a unique public survey id.
+        "prompt": prompt or "",
+        "prompt_summary": prompt_summary or "",
         "call_summary": call_summary,
         "created_at": datetime.utcnow().isoformat()
     }
+    
     history.append(new_record)
     write_history(history)
     return new_record
@@ -61,6 +73,49 @@ def update_history_record(record_id, updates):
             record.update(updates)
             break
     write_history(history)
+
+
+# --- New Chat with Survey JSON Helper Functions ---
+CHAT_SURVEY_FILE = "chat_with_survey.json"
+
+def read_chat_survey():
+    if not os.path.exists(CHAT_SURVEY_FILE):
+        return []
+    try:
+        with open(CHAT_SURVEY_FILE, 'r') as file:
+            return json.load(file)
+    except (json.JSONDecodeError, FileNotFoundError):
+        return []
+
+def write_chat_survey(data):
+    with open(CHAT_SURVEY_FILE, 'w') as file:
+        json.dump(data, file, indent=2, default=str)
+
+def add_chat_survey_record(survey_prompt, survey_response):
+    records = read_chat_survey()
+    new_record = {
+        "id": len(records) + 1,
+        "public_survey_id": "",  # New field added, initialized to an empty string
+        "survey_prompt": survey_prompt,
+        "survey_response": survey_response,
+        "summary": "",
+        "chat_with_survey": [  # start with initial bot response (the survey response)
+            {"role": "bot", "message": survey_response}
+        ],
+        "raw_transcript": "Bot: " + survey_response,
+        "created_at": datetime.utcnow().isoformat()
+    }
+    records.append(new_record)
+    write_chat_survey(records)
+    return new_record
+
+def update_chat_survey_record(record_id, updated_record):
+    records = read_chat_survey()
+    for i, rec in enumerate(records):
+        if rec.get("id") == record_id:
+            records[i] = updated_record
+            break
+    write_chat_survey(records)
 
 def generate_jwt():
     api_key = os.getenv("VITE_VAPI_API_TOKEN") #API_CHANGE
@@ -127,32 +182,45 @@ def start_call():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-@app.route("/call-details", methods=["GET"])
+@app.route("/call-details", methods=["POST"])
 def get_call_details():
+    # Get call_id from URL query parameters.
     call_id = request.args.get("call_id")
+    # Get record_id from the JSON body.
+    data = request.get_json()
+    record_id = data.get("record_id") if data else None
+
     if not call_id:
         return jsonify({"error": "Call ID is required"}), 400
+    if not record_id:
+        return jsonify({"error": "Record ID is required in the request body"}), 400
+
     try:
         headers = get_auth_headers()
         url = f"https://api.vapi.ai/call/{call_id}"
         response = requests.get(url, headers=headers)
         data = response.json()
         
-        # If the response contains an "analysis" object, update the most recent record
+        # If the response contains an "analysis" object, update the history record for the provided record_id.
         if "analysis" in data:
             analysis = data["analysis"]
             history = read_history()
-            if history:
-                most_recent = history[-1]
-                # Update the call summary if present in analysis
-                if "summary" in analysis:
-                    most_recent["call_summary"] = analysis["summary"]
-                # Update structured data if present in analysis
-                if "structuredData" in analysis:
-                    most_recent["structured_data"] = analysis["structuredData"]
-                    most_recent["employee_id"] = analysis["structuredData"].get("employee_id")
+            try:
+                record_id_int = int(record_id)
+            except ValueError:
+                return jsonify({"error": "Invalid record ID"}), 400
 
+            # Find the matching record by ID.
+            record = next((rec for rec in history if rec.get("id") == record_id_int), None)
+            if record:
+                if "summary" in analysis:
+                    record["call_summary"] = analysis["summary"]
+                if "structuredData" in analysis:
+                    record["structured_data"] = analysis["structuredData"]
+                    record["employee_id"] = analysis["structuredData"].get("employee_id")
                 write_history(history)
+            else:
+                return jsonify({"error": "Record not found in history"}), 404
                 
         return jsonify(data), 200
     except Exception as e:
@@ -263,20 +331,18 @@ def groq_chat():
                 "error": f"Failed to parse survey JSON: {parse_error}",
                 "raw_response": json_content
             }), 500
-
+        public_survey_id= str(uuid.uuid4())
         # Optionally, add a new record to your JSON history and capture the new record.
-        new_record = add_history_record(prompt, json_content)
+        new_record = add_history_record(prompt, json_content,public_survey_id)
 
         # Return the structured survey response, including intro/outro, along with record id.
         return jsonify({
             "survey": structured_survey,
-            "record_id": new_record["id"]
+            "record_id": new_record["id"],
+            "public_survey_id": new_record["public_survey_id"]
         })
     except Exception as e:
         return jsonify({"error": str(e)}), 500
-
-
-
 
     
 # Endpoint to fetch history and send it to index.html.
@@ -344,46 +410,7 @@ def chat():
     return render_template("chat.html", raw_transcript=raw_transcript)
 
 
-# --- New Chat with Survey JSON Helper Functions ---
-CHAT_SURVEY_FILE = "chat_with_survey.json"
 
-def read_chat_survey():
-    if not os.path.exists(CHAT_SURVEY_FILE):
-        return []
-    try:
-        with open(CHAT_SURVEY_FILE, 'r') as file:
-            return json.load(file)
-    except (json.JSONDecodeError, FileNotFoundError):
-        return []
-
-def write_chat_survey(data):
-    with open(CHAT_SURVEY_FILE, 'w') as file:
-        json.dump(data, file, indent=2, default=str)
-
-def add_chat_survey_record(survey_prompt, survey_response):
-    records = read_chat_survey()
-    new_record = {
-        "id": len(records) + 1,
-        "survey_prompt": survey_prompt,
-        "survey_response": survey_response,
-        "summary": "",
-        "chat_with_survey": [  # start with initial bot response (the survey response)
-            {"role": "bot", "message": survey_response}
-        ],
-        "raw_transcript": "Bot: " + survey_response,
-        "created_at": datetime.utcnow().isoformat()
-    }
-    records.append(new_record)
-    write_chat_survey(records)
-    return new_record
-
-def update_chat_survey_record(record_id, updated_record):
-    records = read_chat_survey()
-    for i, rec in enumerate(records):
-        if rec.get("id") == record_id:
-            records[i] = updated_record
-            break
-    write_chat_survey(records)
 
 @app.route("/chat_with_survey", methods=["POST"])
 def chat_with_survey():
@@ -392,7 +419,8 @@ def chat_with_survey():
     survey_response = data.get("survey_response", "")
     # Get record_id from request or initialize as None if this is a new conversation
     record_id = str(data.get("record_id", ""))
-    
+    public_survey_id = data.get("public_survey_id", "")  # New line to extract public_survey_id
+
     if not question:
         return jsonify({"error": "Missing question"}), 400
 
@@ -413,6 +441,7 @@ def chat_with_survey():
     if is_new_conversation:
         chat_history[record_id] = {
             "employee_id": None,  # Will be filled in later
+            "public_survey_id": public_survey_id,  # Populate if sent, else remains empty
             "survey_response": survey_response,
             "survey_prompt": "",
             "summary": "",
@@ -598,7 +627,6 @@ def chat_with_survey():
     return jsonify({"response": response_text, "record_id": record_id})
 
 
-# New endpoint to stop the survey and generate a summary.
 @app.route("/stop-survey", methods=["POST"])
 def stop_survey():
     data = request.get_json()
@@ -629,8 +657,10 @@ def stop_survey():
         [f"{msg['sender']}: {msg['message']}" for msg in conversation]
     )
 
+    # Update the prompt to enforce a JSON-only response.
     summary_prompt = (
-        "Summarize the following survey conversation into the JSON schema below:\n\n"
+        "Summarize the following survey conversation into the JSON schema below. "
+        "Ensure that your entire response is strictly valid JSON with no additional text or explanation.\n\n"
         """{
   "summary": "",
   "ratings": {
@@ -660,14 +690,21 @@ def stop_survey():
             model="llama-3.3-70b-versatile",
         )
         summary_text = summary_completion.choices[0].message.content
-        record["summary"] = summary_text
+        
+        # Validate that the output is strictly valid JSON.
+        try:
+            summary_json = json.loads(summary_text)
+        except Exception as e:
+            return jsonify({"error": f"Invalid JSON generated: {str(e)}"}), 500
+        
+        # Store the JSON summary
+        record["summary"] = summary_json
         chat_history[record_id] = record
         with open(CHAT_FILE, "w") as f:
             json.dump(chat_history, f, indent=2, default=str)
         return jsonify({"message": "Survey has been stopped."})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
-    
 
 
 
@@ -680,6 +717,8 @@ def public_survey():
 def public_survey_voice_ai():
     data = request.get_json()
     recordid = data.get("recordid")
+    public_survey_id = data.get("public_survey_id", "")  # Extract public_survey_id from the request body
+    print("Public survey id:",public_survey_id)
     if not recordid:
         return jsonify({"error": "Missing recordid"}), 400
 
@@ -690,8 +729,13 @@ def public_survey_voice_ai():
     if not record:
         return jsonify({"error": "Record not found"}), 404
 
-    # Return the prompt_summary for that record.
-    return jsonify({"prompt_summary": record.get("prompt_summary", "")})
+    # Create a new history record with the provided public_survey_id.
+    new_record = add_history_record(prompt="", prompt_summary="", public_survey_id=public_survey_id)
+    return jsonify({
+        "prompt_summary": record.get("prompt_summary", ""),
+        "record_id": new_record["id"]
+    })
+
 
 
 @app.route("/public-survey-chat-survey", methods=["POST"])
@@ -723,6 +767,74 @@ def public_survey_chat_survey():
     # Return the prompt_summary for that record.
     return jsonify({"prompt_summary": record.get("prompt_summary", ""), "chatrecordid": new_chatrecordid})
 
+def read_json_file(filepath):
+    """Read JSON file and return its data, or an empty structure if not found."""
+    if not os.path.exists(filepath):
+        return []  # or {} if you expect a dict
+    try:
+        with open(filepath, 'r') as f:
+            return json.load(f)
+    except Exception as e:
+        print("Error reading", filepath, ":", e)
+        return []
+
+@app.route('/get_rating_distribution', methods=['GET'])
+def get_rating_distribution():
+    # Optionally filter responses by public_survey_id if provided
+    public_survey_id = request.args.get('public_survey_id')
+    
+    # Initialize the distribution dictionary.
+    # It will be of the form:
+    # { "HAPPINESS": {"0": count, "3": count, ...}, "MENTAL_HEALTH": { ... }, ... }
+    distribution = {}
+    
+    # Process chat_with_survey.json
+    chat_data = read_json_file(CHAT_SURVEY_FILE)
+    # chat_with_survey.json is stored as a dict; iterate over its values.
+    if isinstance(chat_data, dict):
+        chat_records = chat_data.values()
+    else:
+        chat_records = chat_data
+    
+    for record in chat_records:
+        if not isinstance(record, dict):
+            continue
+        if public_survey_id and record.get("public_survey_id") != public_survey_id:
+            continue
+        summary = record.get("summary")
+        if isinstance(summary, dict):
+            ratings = summary.get("ratings", {})
+            for parameter, info in ratings.items():
+                rating = info.get("rating")
+                if rating is None:
+                    continue
+                param_key = parameter.upper()
+                distribution.setdefault(param_key, {})
+                rating_key = str(rating)
+                distribution[param_key][rating_key] = distribution[param_key].get(rating_key, 0) + 1
+
+    # Process history.json (which is stored as a list)
+    history_data = read_json_file(HISTORY_FILE)
+    for record in history_data:
+        if not isinstance(record, dict):
+            continue
+        if public_survey_id and record.get("public_survey_id") != public_survey_id:
+            continue
+        structured = record.get("structured_data")
+        if isinstance(structured, dict):
+            ratings = structured.get("ratings", {})
+            for parameter, info in ratings.items():
+                rating = info.get("rating")
+                if rating is None:
+                    continue
+                param_key = parameter.upper()
+                distribution.setdefault(param_key, {})
+                rating_key = str(rating)
+                distribution[param_key][rating_key] = distribution[param_key].get(rating_key, 0) + 1
+
+    # Debug print to see the aggregated counts (optional)
+    print("Distribution:", distribution)
+    return jsonify({"distribution": distribution})
 
 if __name__ == "__main__":
     app.run(debug=True)
