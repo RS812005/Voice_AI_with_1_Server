@@ -331,7 +331,7 @@ Closing:
       // Parse URL parameters to get recordid and chatrecordid
       const params = new URLSearchParams(window.location.search);
       const recordid = params.get("recordid");
-      const chatrecordid = params.get("chatrecordid");
+      // const chatrecordid = params.get("chatrecordid");
 
       // If recordid is missing, alert the user.
       if (!recordid) {
@@ -384,7 +384,7 @@ Closing:
 
       // Chat with Survey button handler
       document.getElementById("public-chat-btn").addEventListener("click", () => {
-  if (!recordid || !chatrecordid) {
+  if (!recordid ) {
     alert("Record ID or Chat Record ID is missing. Please check your URL.");
     return;
   }
@@ -393,7 +393,7 @@ Closing:
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       recordid: recordid,
-      chatrecordid: chatrecordid,
+      // chatrecordid: chatrecordid,
     }),
   })
     .then((response) => response.json())
@@ -405,7 +405,7 @@ Closing:
       // Store the survey response globally for use in chat messages.
       window.surveyResponseText = data.prompt_summary;
       // Also store the chat record id for later use.
-      window.latestChatRecordId = chatrecordid;
+      window.latestChatRecordId = data.chatrecordid
       // Hide the call section and show the chat container.
       document.getElementById("call-section").classList.add("hidden");
       document.getElementById("chat-container").classList.remove("hidden");
@@ -503,6 +503,35 @@ Closing:
     chatInput.value = "";
   });
 });
+document.getElementById("stop-survey-btn").addEventListener("click", () => {
+  // Ensure the chat record ID is available.
+  if (!window.latestChatRecordId) {
+    alert("Chat record ID is missing. Please start the survey first.");
+    return;
+  }
+  
+  // Send the record_id to the backend to stop the survey and generate a summary.
+  fetch("/stop-survey", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      record_id: window.latestChatRecordId
+    }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.error) {
+        alert("Error stopping survey: " + data.error);
+        return;
+      }
+      alert("Survey has been stopped and summary generated.");
+      // Optionally, handle further actions, e.g., displaying the summary.
+    })
+    .catch((error) => {
+      alert("Error stopping survey: " + error);
+    });
+});
+
 
     </script>
   </body>

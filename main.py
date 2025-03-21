@@ -150,6 +150,8 @@ def get_call_details():
                 # Update structured data if present in analysis
                 if "structuredData" in analysis:
                     most_recent["structured_data"] = analysis["structuredData"]
+                    most_recent["employee_id"] = analysis["structuredData"].get("employee_id")
+
                 write_history(history)
                 
         return jsonify(data), 200
@@ -696,9 +698,20 @@ def public_survey_voice_ai():
 def public_survey_chat_survey():
     data = request.get_json()
     recordid = data.get("recordid")
-    chatrecordid = data.get("chatrecordid")
-    if not recordid or not chatrecordid:
+    # chatrecordid = data.get("chatrecordid")
+    if not recordid :
         return jsonify({"error": "Missing recordid or chatrecordid"}), 400
+    # Read the chat history file
+    # Read the chat history file
+    chat_history = read_chat_survey()
+
+# Filter keys that are valid integers
+    valid_keys = [int(key) for key in chat_history.keys() if key is not None and key.isdigit()]
+
+# Determine new chatrecordid by incrementing the highest existing key
+    max_chat_id = max(valid_keys) if valid_keys else 0
+    new_chatrecordid = str(max_chat_id + 1)
+
 
     # Read history records from the JSON file.
     history = read_history()
@@ -708,7 +721,7 @@ def public_survey_chat_survey():
         return jsonify({"error": "Record not found"}), 404
 
     # Return the prompt_summary for that record.
-    return jsonify({"prompt_summary": record.get("prompt_summary", "")})
+    return jsonify({"prompt_summary": record.get("prompt_summary", ""), "chatrecordid": new_chatrecordid})
 
 
 if __name__ == "__main__":

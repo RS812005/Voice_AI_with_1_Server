@@ -1712,5 +1712,228 @@
     "prompt_summary": "{\n  \"survey_title\": \"Anime Preferences and Viewing Habits Survey\",\n  \"intro\": \"We appreciate you taking the time to participate in this survey. The purpose of this survey is to gather information about your anime preferences and viewing habits. Your responses will help us better understand the anime community and their interests. Please answer the questions honestly, and feel free to elaborate on your responses when necessary.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"What type of anime genre do you enjoy the most?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Action\", \"Comedy\", \"Drama\", \"Romance\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"How often do you watch anime?\",\n      \"type\": \"rating\",\n      \"options\": [\"Daily\", \"Weekly\", \"Monthly\", \"Rarely\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"What is your favorite anime series and why do you enjoy it?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"How do you typically watch anime?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Streaming services\", \"DVD/Blu-ray\", \"TV broadcasts\", \"Other\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"What do you think is missing from the current anime landscape?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"How likely are you to recommend anime to your friends and family?\",\n      \"type\": \"rating\",\n      \"options\": [\"Very likely\", \"Somewhat likely\", \"Neutral\", \"Somewhat unlikely\", \"Very unlikely\"],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey. Your input is invaluable to us, and we appreciate your participation. If you have any additional comments or suggestions, please feel free to include them below.\"\n}",
     "call_summary": "",
     "created_at": "2025-03-21T05:54:59.364141"
+  },
+  {
+    "id": 175,
+    "prompt": "death note survey",
+    "prompt_summary": "{\n  \"survey_title\": \"Death Note Fan Survey\",\n  \"intro\": \"Welcome to the Death Note Fan Survey. This survey aims to gather information about your opinions and preferences regarding the Death Note series. Your responses will help us better understand the fan base and their perspectives on the series. Please answer the questions honestly, and thank you for participating.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How did you first discover the Death Note series?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Through a friend or family member\", \"Social media\", \"Online forums or discussion boards\", \"Other\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What do you think is the most compelling aspect of the Death Note series?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"How would you rate the overall storyline of Death Note?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Poor)\", \"2\", \"3\", \"4\", \"5 (Excellent)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"Who is your favorite character in the Death Note series and why?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How does the theme of morality in Death Note relate to your own views on justice?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"Would you recommend the Death Note series to others?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Yes\", \"No\", \"Maybe\"],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey. Your input is valuable to us, and we appreciate your participation. If you have any additional comments or suggestions, please feel free to include them below.\"\n}",
+    "call_summary": "",
+    "created_at": "2025-03-21T06:26:46.976862"
+  },
+  {
+    "id": 176,
+    "prompt": "anime survey",
+    "prompt_summary": "{\n  \"survey_title\": \"Anime Preferences and Viewing Habits Survey\",\n  \"intro\": \"This survey aims to gather information about your anime preferences, viewing habits, and opinions. Your responses will help us better understand the anime community and provide insights for future content creation. Please answer the questions honestly, and thank you for participating!\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"What type of anime genres do you usually watch?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Action\", \"Comedy\", \"Drama\", \"Romance\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"How often do you watch anime?\",\n      \"type\": \"rating\",\n      \"options\": [\"Daily\", \"Weekly\", \"Monthly\", \"Rarely\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"What is your favorite anime series and why do you like it?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"How do you usually find new anime to watch?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Social media\", \"Online forums\", \"Friend recommendations\", \"Streaming platforms\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"What do you think is the most important aspect of an anime series (e.g. storyline, characters, animation)?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"How would you rate the overall quality of anime in recent years?\",\n      \"type\": \"rating\",\n      \"options\": [\"Excellent\", \"Good\", \"Fair\", \"Poor\"],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey! Your feedback is greatly appreciated and will help us better understand the anime community. If you have any additional comments or suggestions, please feel free to share them. Enjoy your favorite anime series!\"\n}",
+    "call_summary": "",
+    "created_at": "2025-03-21T06:30:33.118115"
+  },
+  {
+    "id": 177,
+    "prompt": "anime survey",
+    "prompt_summary": "{\n  \"survey_title\": \"Anime Preferences and Viewing Habits Survey\",\n  \"intro\": \"This survey aims to gather information about your anime preferences, viewing habits, and opinions. Your responses will help us better understand the anime community and provide valuable insights for future anime productions. Please answer the questions honestly, and thank you for participating!\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"What type of anime do you enjoy watching the most?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Action\", \"Comedy\", \"Drama\", \" Romance\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"How often do you watch anime?\",\n      \"type\": \"rating\",\n      \"options\": [\"Daily\", \"Weekly\", \"Monthly\", \"Rarely\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"What is your favorite anime series and why do you like it?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"How do you usually watch anime?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Streaming services\", \"TV broadcasts\", \"DVD/Blu-ray\", \"Downloading\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"What do you think is the most important aspect of an anime series?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"How likely are you to recommend anime to your friends and family?\",\n      \"type\": \"rating\",\n      \"options\": [\"Very likely\", \"Somewhat likely\", \"Not very likely\", \"Not at all likely\"],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to participate in this survey! Your input is invaluable to us, and we appreciate your honesty. If you have any additional comments or suggestions, please feel free to share them with us.\"\n}",
+    "call_summary": "{\n  \"employee_id\": \"226\",\n  \"summary\": \"Brief survey about anime preferences. The user provided minimal responses, indicating they watch anime daily and prefer action genres, with Naruto being their favorite series.\",\n  \"ratings\": {\n    \"Engagement\": { \"rating\": 2, \"comment\": \"User gave very short, minimal responses throughout the conversation\" },\n    \"Anime Interest\": { \"rating\": 4, \"comment\": \"Despite brief responses, user confirmed daily anime watching habit and had clear preferences\" }\n  },\n  \"overall\": \"The conversation was very one-sided with the AI asking detailed questions and the user responding with single words or very short phrases. The user seemed willing to participate but not enthusiastic about elaborating.\",\n  \"next_steps\": \"Consider using more direct, closed-ended questions with this user. Their communication style is extremely concise, so future interactions might benefit from a more structured format requiring less elaboration.\"\n}",
+    "created_at": "2025-03-21T06:32:24.730026",
+    "structured_data": {
+      "overall": "The survey focused entirely on anime preferences rather than work-related topics. Employee provided extremely brief responses, suggesting either disinterest in elaborating or a naturally concise communication style. No meaningful professional insights were gathered.",
+      "ratings": {
+        "enps": {
+          "rating": 3,
+          "comment": "No company loyalty or recommendation information was shared"
+        },
+        "happiness": {
+          "rating": 3,
+          "comment": "Employee provided minimal responses, making happiness level difficult to gauge"
+        },
+        "communication": {
+          "rating": 2,
+          "comment": "Employee gave very short, minimal responses throughout the conversation"
+        },
+        "mental_health": {
+          "rating": 3,
+          "comment": "No clear indicators of mental health status in the brief exchange"
+        },
+        "job_satisfaction": {
+          "rating": 3,
+          "comment": "No job-related information was discussed in the transcript"
+        }
+      },
+      "summary": "Brief survey with employee ID 226 who enjoys action anime, watches daily, and favors Naruto.",
+      "next_steps": "Follow up with a more focused work-related survey as this interaction was primarily about anime preferences and provided little professional insight.",
+      "raw_transcript": "AI: Hey. How are you? I want to take some some of time for a short survey.\nUser: Yeah. Go ahead.\nAI: Great. I'm glad you're on board. To get started, could you please provide your employee ID for me?\nUser: 2 26.\nAI: Thank you for sharing your employee ID 226. Could you please confirm if that is correct?\nUser: Yeah.\nAI: Perfect. Thanks for confirming. Let's dive into an interesting topic. Anime. I'm curious when it comes to anime genres, which ones really capture your interest or resonate with you the most? What kind of stories or themes do you find yourself drawn to?\nUser: Action.\nAI: Action packed anime can be really thrilling and keep you on the edge of your seat. When it comes to watching anime, how frequently do you find devin into a new series or catching up on your favorites? Is it more of a daily ritual? Or do you space it out over time?\nUser: Daily Richard.\nAI: That's quite the dedication. Watching anime daily must mean you have a few favorites. Speaking of which, is there a particular anime series that stands out as your favorite? What is it about that series that makes it special to you?\nUser: Naruto.\nAI: Naruto truly has a way of captivating audience with its mix of action.",
+      "transcript_summary": {
+        "concerns": [
+          "Very brief responses may indicate reluctance to engage",
+          "Survey appears to focus on personal interests rather than work-related topics"
+        ],
+        "feedback": [
+          "Consider more work-relevant questions in future surveys",
+          "May need to use different engagement approach with this employee"
+        ],
+        "highlights": [
+          "Employee watches anime daily",
+          "Prefers action genre",
+          "Favorite anime is Naruto"
+        ]
+      }
+    },
+    "employee_id": null
+  },
+  {
+    "id": 178,
+    "prompt": "mumbai survey",
+    "prompt_summary": "{\n  \"survey_title\": \"Mumbai Resident Satisfaction Survey\",\n  \"intro\": \"Thank you for participating in this survey. The purpose of this survey is to gather information about your experiences and opinions about living in Mumbai. Your feedback will help us understand the strengths and weaknesses of the city and identify areas for improvement. Please answer the questions honestly, and to the best of your ability.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How long have you been living in Mumbai?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Less than 6 months\", \"6 months to 1 year\", \"1-2 years\", \"More than 2 years\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What do you like most about living in Mumbai?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"How would you rate the overall quality of life in Mumbai?\",\n      \"type\": \"rating\",\n      \"options\": [\"Very Satisfied\", \"Satisfied\", \"Neutral\", \"Dissatisfied\", \"Very Dissatisfied\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"What are some challenges you face while living in Mumbai? Please provide details.\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How would you rate the public transportation system in Mumbai?\",\n      \"type\": \"rating\",\n      \"options\": [\"Excellent\", \"Good\", \"Fair\", \"Poor\", \"Very Poor\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"What changes would you like to see in Mumbai to improve your quality of life?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey. Your feedback is invaluable to us, and we appreciate your participation. Your responses will help us understand the needs and concerns of Mumbai residents and work towards creating a better future for the city.\"\n}",
+    "call_summary": "{\n  \"employee_id\": \"75\",\n  \"summary\": \"Brief survey with an employee who has been living in Mumbai for 6 months. The respondent was quite brief in their responses, indicating they particularly enjoy the food in Mumbai and generally find the quality of life 'good only'.\",\n  \"ratings\": {\n    \"Mumbai Experience\": { \"rating\": 3, \"comment\": \"Respondent has only lived in Mumbai for 6 months and gave minimal feedback\" },\n    \"Food\": { \"rating\": 4, \"comment\": \"Specifically mentioned food as what they like most about Mumbai\" },\n    \"Quality of Life\": { \"rating\": 3, \"comment\": \"Described as 'good only' with no elaboration\" }\n  },\n  \"overall\": \"The respondent was very brief and somewhat disinterested in the survey, providing minimal responses. Their tone was neutral to slightly impatient.\",\n  \"next_steps\": \"Consider following up with more specific questions about their Mumbai experience. The brevity of responses suggests either disinterest in the survey or possibly a busy schedule.\"\n}",
+    "created_at": "2025-03-21T06:35:14.992687",
+    "structured_data": {
+      "overall": "Employee #75 provided minimal engagement during this brief survey about living in Mumbai. While they expressed positive sentiment about the food and described quality of life as 'good', their short responses make it difficult to form comprehensive insights. A follow-up with more targeted questions is recommended.",
+      "ratings": {
+        "enps": {
+          "rating": 3,
+          "comment": "Neutral response about quality of life"
+        },
+        "happiness": {
+          "rating": 3,
+          "comment": "Employee seems content but not enthusiastic"
+        },
+        "communication": {
+          "rating": 2,
+          "comment": "Very brief responses, minimal engagement"
+        },
+        "mental_health": {
+          "rating": 3,
+          "comment": "Minimal information to assess, appears stable"
+        },
+        "job_satisfaction": {
+          "rating": 3,
+          "comment": "No specific job information provided"
+        }
+      },
+      "summary": "Brief survey with employee #75 who has lived in Mumbai for 6 months. The employee gave short, minimal responses but indicated positive feelings about Mumbai, particularly enjoying the food scene and describing the overall quality of life as 'good only'.",
+      "next_steps": "Follow up with a more comprehensive interview to better understand employee's experience and needs. Consider more engaging questions to elicit detailed responses.",
+      "employee_id": "75",
+      "raw_transcript": "AI: Hey. How are you? I want to take some some of time for a short survey.\nUser: Yes. What?\nAI: Great. Could you please start by providing your employee ID?\nUser: It's 75.\nAI: Thank you for sharing that. Just to confirm, your employee ID is 75. Right? Let me know if that's correct.\nUser: Yeah. It's correct.\nAI: Fantastic. Thanks for confirming. Survey to understand the experiences and opinions of people living in Mumbai. This will help us identify the city's strengths and areas for improvement. Let's dive in, shall we? To start with, how long have you been calling Mumbai your home?\nUser: I only have for at least 6 months.\nAI: Got it. You've been living in Mumbai for around 6 months. That's a decent amount of time to get a feel for the city. So what do you like the most about living here? Any particular thing that stands out for you?\nUser: The food\nAI: Uh-huh. Mumbai's food scene is definitely something to relish. From street food to restaurants, there's so much variety. Moving on, how would you describe the overall quality of life here in the city? How does it feel living in Mumbai day to day?\nUser: Yeah. It's good only.\nAI: That's good to hear.",
+      "transcript_summary": {
+        "concerns": [
+          "Minimal engagement in conversation",
+          "Short, sometimes one-word answers"
+        ],
+        "feedback": [
+          "Survey might benefit from more specific questions",
+          "Consider different approach for employees who are brief communicators"
+        ],
+        "highlights": [
+          "Employee enjoys Mumbai's food scene",
+          "Describes quality of life as 'good only'"
+        ]
+      }
+    },
+    "employee_id": "75"
+  },
+  {
+    "id": 179,
+    "prompt": "anime survey",
+    "prompt_summary": "{\n  \"survey_title\": \"Anime Preferences and Viewing Habits Survey\",\n  \"intro\": \"We are conducting this survey to understand the viewing habits and preferences of anime fans. Your participation will help us gain valuable insights into the world of anime and its audience. Please answer the questions honestly, and thank you for taking the time to participate.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How often do you watch anime?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Daily\", \"Weekly\", \"Monthly\", \"Rarely\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What is your favorite anime genre?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"How do you usually find out about new anime shows?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Social Media\", \"Anime Streaming Platforms\", \"Friends and Family\", \"Online Forums\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"Can you describe your favorite anime character and what makes them appealing to you?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How would you rate the quality of anime shows in recent years?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Poor)\", \"2 (Fair)\", \"3 (Good)\", \"4 (Very Good)\", \"5 (Excellent)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"What factors influence your decision to continue watching an anime series?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to participate in this survey. Your feedback is greatly appreciated, and it will help us better understand the anime community. If you have any additional comments or suggestions, please feel free to include them below.\"\n}",
+    "call_summary": "",
+    "created_at": "2025-03-21T07:11:47.175447"
+  },
+  {
+    "id": 180,
+    "prompt": "hello",
+    "prompt_summary": "{\n  \"survey_title\": \"User Experience and Feedback Survey\",\n  \"intro\": \"We value your opinion and would like to hear about your recent experience. Your feedback will help us improve our services and better meet your needs. Please take a few minutes to complete this survey, and let us know your thoughts.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How did you hear about our services?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Social Media\", \"Word of Mouth\", \"Online Search\", \"Other\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What do you like most about our services?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"Please rate the quality of our customer support.\",\n      \"type\": \"rating\",\n      \"options\": [\"Poor\", \"Fair\", \"Good\", \"Excellent\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"Can you describe a recent experience you had with our services? If so, please provide details.\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How likely are you to recommend our services to a friend or colleague?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Very Likely\", \"Somewhat Likely\", \"Not Very Likely\", \"Not at All Likely\"],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey. Your feedback is greatly appreciated and will help us improve our services. If you have any further comments or suggestions, please feel free to contact us.\"\n}",
+    "call_summary": "{\n  \"employee_id\": \"245\",\n  \"summary\": \"Brief survey call where the user confirmed their employee ID and indicated they discovered the service through social media.\",\n  \"ratings\": {\n    \"Discovery\": { \"rating\": null, \"comment\": \"User found the service through social media\" }\n  },\n  \"overall\": \"The call was very brief and only covered identification and one survey question about service discovery.\",\n  \"next_steps\": \"Continue with the rest of the survey questions as the conversation was cut short.\"\n}",
+    "created_at": "2025-03-21T08:42:29.147064",
+    "structured_data": {
+      "overall": "Incomplete survey with minimal data. Employee provided their ID and indicated finding services through social media, but the conversation ended abruptly with insufficient information to make meaningful assessments.",
+      "ratings": {
+        "enps": {
+          "rating": 3,
+          "comment": "No indication of likelihood to recommend"
+        },
+        "happiness": {
+          "rating": 3,
+          "comment": "Unable to assess - minimal response"
+        },
+        "communication": {
+          "rating": 2,
+          "comment": "Very brief responses, minimal engagement"
+        },
+        "mental_health": {
+          "rating": 3,
+          "comment": "Insufficient data to evaluate"
+        },
+        "job_satisfaction": {
+          "rating": 3,
+          "comment": "No information provided"
+        }
+      },
+      "summary": "Brief survey interaction with minimal responses from employee #245. Employee indicated they found the service through social media but provided very limited information overall.",
+      "next_steps": "Follow up with a more comprehensive survey or direct conversation to gather meaningful feedback. Current data is insufficient for actionable insights.",
+      "employee_id": "245",
+      "raw_transcript": "AI: Hey. How are you? I want to take some some of time for short survey.\nUser: Yeah. Go ahead.\nAI: Great. Thank you. First off, could I get your employee ID just to confirm who we're chatting with?\nUser: 2 4 5.\nAI: Thanks for that. So just to confirm, your employee ID is 245. Right?\nUser: Yeah.\nAI: Perfect. Thanks for confirming. Let's dive into the survey. We really value your opinion and want to hear about your recent experiences with our services. To start off, I'm curious, how did you first come across our services? Was it through social media? Maybe a friend mentioned it, or did you find us through an online search? Or was it something else entirely?\nUser: Social media.\nAI: That's interesting.",
+      "transcript_summary": {
+        "concerns": [
+          "Minimal engagement in survey",
+          "Reluctance to provide detailed responses"
+        ],
+        "feedback": [
+          "Consider more engaging survey format",
+          "May need different approach to gather meaningful feedback"
+        ],
+        "highlights": [
+          "Employee found services through social media"
+        ]
+      }
+    },
+    "employee_id": "245"
+  },
+  {
+    "id": 181,
+    "prompt": "mumbai survey",
+    "prompt_summary": "{\n  \"survey_title\": \"Mumbai Resident Survey\",\n  \"intro\": \"We are conducting this survey to understand the opinions and experiences of Mumbai residents. Your input will help us identify areas for improvement and provide valuable insights for future development. Please answer the questions honestly, and thank you for taking the time to participate.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"What do you like most about living in Mumbai?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"How would you rate the overall quality of life in Mumbai?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Poor)\", \"2 (Fair)\", \"3 (Good)\", \"4 (Very Good)\", \"5 (Excellent)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"What mode of transportation do you use most frequently in Mumbai?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Public Transportation\", \"Private Vehicle\", \"Auto-Rickshaw\", \"Taxi\", \"Other\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"Can you describe your experience with the public transportation system in Mumbai? What are some of the challenges you face, and how do you think it can be improved?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How satisfied are you with the availability of amenities such as parks, restaurants, and shopping centers in your area?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Very Dissatisfied)\", \"2 (Somewhat Dissatisfied)\", \"3 (Neutral)\", \"4 (Somewhat Satisfied)\", \"5 (Very Satisfied)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"What do you think is the most significant challenge facing Mumbai today?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to participate in this survey. Your input is valuable to us, and we appreciate your honesty. Your responses will be kept confidential and used to inform future development and improvement initiatives in Mumbai.\"\n}",
+    "call_summary": "{\n  \"summary\": \"Brief call with a Mumbai resident who enjoys the food but rates quality of life very poorly.\",\n  \"ratings\": {\n    \"Food\": { \"rating\": 5, \"comment\": \"User specifically mentioned food as what they enjoy most about Mumbai\" },\n    \"Quality of Life\": { \"rating\": 1, \"comment\": \"User rated quality of life as 1 out of 5, indicating significant dissatisfaction\" }\n  },\n  \"overall\": \"User was terse in responses, showing minimal engagement. They appreciate Mumbai's food but are highly dissatisfied with overall quality of life.\",\n  \"next_steps\": \"Follow up on specific quality of life concerns; user didn't elaborate on reasons for low rating.\"\n}",
+    "created_at": "2025-03-21T08:45:20.803450",
+    "structured_data": {
+      "overall": "The resident appears highly dissatisfied with life in Mumbai despite appreciating the food. The brevity of responses suggests possible frustration or survey fatigue. The conversation ended before gathering complete insights.",
+      "ratings": {
+        "enps": {
+          "rating": 1,
+          "comment": "Very low quality of life rating suggests resident would not recommend Mumbai"
+        },
+        "happiness": {
+          "rating": 1,
+          "comment": "Resident rated quality of life as 1/5, indicating significant dissatisfaction"
+        },
+        "communication": {
+          "rating": 2,
+          "comment": "Minimal engagement with short answers to questions"
+        },
+        "mental_health": {
+          "rating": 2,
+          "comment": "Brief, terse responses suggest possible frustration or disengagement"
+        },
+        "job_satisfaction": {
+          "rating": 3,
+          "comment": "No job-related information provided in transcript"
+        }
+      },
+      "summary": "Brief survey with a Mumbai resident who enjoys the food but rates overall quality of life very low (1/5). The conversation was cut short before detailed reasons could be provided.",
+      "next_steps": "Follow up to understand specific factors contributing to the low quality of life rating. Explore areas for improvement in Mumbai's livability beyond food options.",
+      "employee_id": "unknown",
+      "raw_transcript": "AI: Hey. How are you? I want to take some some of time for short survey.\nUser: Hello?\nAI: Hi there. Thanks for joining in. We're doing a little survey to gather some insights from residents of Mumbai. Could you share what it is that you enjoy most about living in this vibrant city?\nUser: Yeah. The food.\nAI: It's hard to resist the culinary scene in Mumbai, isn't it? There's always something delicious to try. Shifting gears a bit. If you had think about the overall quality of life in Mumbai, how would you find it? Would you say it's more on the\nUser: 1 out of 5.\nAI: That's quite a low rating. What are some of the factors some of the factors that contribute to that rating for you?",
+      "transcript_summary": {
+        "concerns": [
+          "Very low satisfaction with quality of life in Mumbai",
+          "Conversation ended before getting detailed feedback"
+        ],
+        "feedback": [
+          "Need to investigate factors behind low quality of life rating"
+        ],
+        "highlights": [
+          "Resident enjoys Mumbai's food scene",
+          "Rated quality of life as 1/5"
+        ]
+      }
+    },
+    "employee_id": "unknown"
   }
 ]

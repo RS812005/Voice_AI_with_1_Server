@@ -2039,5 +2039,107 @@
     "created_at": "2025-03-21T05:55:03.407456",
     "waiting_for_employee_id": false,
     "survey_started": true
+  },
+  "138": {
+    "employee_id": "111",
+    "survey_response": "{\n  \"survey_title\": \"Anime Preferences and Viewing Habits Survey\",\n  \"intro\": \"We are conducting this survey to understand the viewing habits and preferences of anime fans. Your participation will help us gain valuable insights into the world of anime and its audience. Please answer the questions honestly, and thank you for taking the time to participate.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How often do you watch anime?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Daily\", \"Weekly\", \"Monthly\", \"Rarely\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What is your favorite anime genre?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"How do you usually find out about new anime shows?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Social Media\", \"Anime Streaming Platforms\", \"Friends and Family\", \"Online Forums\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"Can you describe your favorite anime character and what makes them appealing to you?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How would you rate the quality of anime shows in recent years?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Poor)\", \"2 (Fair)\", \"3 (Good)\", \"4 (Very Good)\", \"5 (Excellent)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"What factors influence your decision to continue watching an anime series?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to participate in this survey. Your feedback is greatly appreciated, and it will help us better understand the anime community. If you have any additional comments or suggestions, please feel free to include them below.\"\n}",
+    "survey_prompt": "",
+    "summary": "",
+    "chat_with_survey": [
+      {
+        "sender": "user",
+        "message": "ya",
+        "timestamp": "2025-03-21T07:43:27.215327"
+      },
+      {
+        "sender": "bot",
+        "message": "Before we begin the survey, could you please provide your employee ID? This helps us associate your responses with your records.",
+        "timestamp": "2025-03-21T07:43:27.929207"
+      },
+      {
+        "sender": "user",
+        "message": "111",
+        "timestamp": "2025-03-21T07:43:38.073086"
+      },
+      {
+        "sender": "bot",
+        "message": "Thank you! I've recorded your employee ID: 111.\n\nWe're excited to hear about your anime preferences and viewing habits. This survey is all about understanding what you love about anime and how you like to watch it. We want to know what makes you tick, from your favorite genres to how you discover new shows. Your input will help us get a better sense of the anime community and what matters most to fans like you. So, grab a snack, get comfy, and let's dive in \u2013 we can't wait to hear your thoughts!\n\nAre you ready to begin? (Please reply 'yes' to start.)",
+        "timestamp": "2025-03-21T07:43:38.960673"
+      },
+      {
+        "sender": "user",
+        "message": "yes",
+        "timestamp": "2025-03-21T07:44:02.996270"
+      },
+      {
+        "sender": "bot",
+        "message": "Great! Let's begin:\n\nWe're curious to know how often you get to enjoy your favorite anime shows. Can you tell us, how often do you find time to watch anime - is it a daily escape, a weekly treat, something you do monthly, or more of a rare indulgence? \n\nDaily\nWeekly\nMonthly\nRarely",
+        "timestamp": "2025-03-21T07:44:03.517507"
+      },
+      {
+        "sender": "user",
+        "message": "daily",
+        "timestamp": "2025-03-21T07:44:11.620203"
+      },
+      {
+        "sender": "bot",
+        "message": "You've shared that you watch anime daily, which is fantastic. Let's talk about the types of anime that really resonate with you. What is your favorite anime genre?",
+        "timestamp": "2025-03-21T07:44:12.067291"
+      }
+    ],
+    "created_at": "2025-03-21T07:43:27.215327",
+    "waiting_for_employee_id": false,
+    "survey_started": true
+  },
+  "139": {
+    "employee_id": "69",
+    "survey_response": "{\n  \"survey_title\": \"Anime Preferences and Viewing Habits Survey\",\n  \"intro\": \"We are conducting this survey to understand the viewing habits and preferences of anime fans. Your participation will help us gain valuable insights into the world of anime and its audience. Please answer the questions honestly, and thank you for taking the time to participate.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How often do you watch anime?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Daily\", \"Weekly\", \"Monthly\", \"Rarely\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What is your favorite anime genre?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"How do you usually find out about new anime shows?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Social Media\", \"Anime Streaming Platforms\", \"Friends and Family\", \"Online Forums\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"Can you describe your favorite anime character and what makes them appealing to you?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How would you rate the quality of anime shows in recent years?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Poor)\", \"2 (Fair)\", \"3 (Good)\", \"4 (Very Good)\", \"5 (Excellent)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"What factors influence your decision to continue watching an anime series?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to participate in this survey. Your feedback is greatly appreciated, and it will help us better understand the anime community. If you have any additional comments or suggestions, please feel free to include them below.\"\n}",
+    "survey_prompt": "",
+    "summary": "Based on the conversation provided, here is a JSON summary of the survey conversation:\n\n```\n{\n  \"summary\": \"The user watches anime daily and is about to share their favorite anime genre.\",\n  \"ratings\": {\n    \"happiness\": { \"rating\": 0, \"comment\": \"\" },\n    \"mental_health\": { \"rating\": 0, \"comment\": \"\" },\n    \"job_satisfaction\": { \"rating\": 0, \"comment\": \"\" },\n    \"enps\": { \"rating\": 0, \"comment\": \"\" },\n    \"communication\": { \"rating\": 0, \"comment\": \"\" }\n  },\n  \"next_steps\": \"Awaiting user's response to favorite anime genre question.\",\n  \"transcript_summary\": {\n    \"highlights\": [\"User watches anime daily\"],\n    \"concerns\": [],\n    \"feedback\": []\n  },\n  \"raw_transcript\": \"User: yes\\nBot: ... (full conversation transcript)\\nUser: Daily\",\n  \"overall\": \"Survey in progress.\"\n}\n```\n\nNote: Since the conversation is still in progress and no explicit ratings or feedback have been provided, the ratings and feedback sections are empty or set to 0. The summary and next steps sections reflect the current state of the conversation.",
+    "chat_with_survey": [
+      {
+        "sender": "user",
+        "message": "yes",
+        "timestamp": "2025-03-21T07:52:05.967513"
+      },
+      {
+        "sender": "bot",
+        "message": "Before we begin the survey, could you please provide your employee ID? This helps us associate your responses with your records.",
+        "timestamp": "2025-03-21T07:52:06.461445"
+      },
+      {
+        "sender": "user",
+        "message": "69",
+        "timestamp": "2025-03-21T07:52:10.447588"
+      },
+      {
+        "sender": "bot",
+        "message": "Thank you! I've recorded your employee ID: 69.\n\nWe're excited to hear about your anime preferences and viewing habits. This survey is all about understanding what makes anime fans tick, from how often you watch and what genres you love, to how you discover new shows and what keeps you coming back for more. Your input will help us get a better sense of the anime community and what matters most to fans like you. So, grab a snack, get comfy, and let's dive in - we can't wait to hear your thoughts!\n\nAre you ready to begin? (Please reply 'yes' to start.)",
+        "timestamp": "2025-03-21T07:52:11.423550"
+      },
+      {
+        "sender": "user",
+        "message": "yes",
+        "timestamp": "2025-03-21T07:52:23.902557"
+      },
+      {
+        "sender": "bot",
+        "message": "Great! Let's begin:\n\nWe're curious to know how often you get to indulge in the amazing world of anime. Can you tell us, how often do you find time to watch anime - is it a daily escape, a weekly treat, something you sneak in once a month, or more of a rare pleasure?",
+        "timestamp": "2025-03-21T07:52:24.380615"
+      },
+      {
+        "sender": "user",
+        "message": "Daily",
+        "timestamp": "2025-03-21T07:52:30.688252"
+      },
+      {
+        "sender": "bot",
+        "message": "You've shared that you watch anime daily, which is really wonderful. Let's talk about the types of anime that really resonate with you. What is your favorite anime genre?",
+        "timestamp": "2025-03-21T07:52:31.156642"
+      }
+    ],
+    "created_at": "2025-03-21T07:52:05.967513",
+    "waiting_for_employee_id": false,
+    "survey_started": true
   }
 }

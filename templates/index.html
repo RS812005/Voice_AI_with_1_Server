@@ -473,7 +473,8 @@
             messages: [
               {
                 role: "system",
-                content: `Keep the tone ${toneValue} and non-intrusive. Ensure that the conversation flows naturally and dynamically rather than presenting questions as a rigid list. The AI should integrate pre-configured questions fluidly—adapting to context. Encourage honest responses without pressure.
+                content: ` Please start by asking for the employee ID. Once the user provides an ID, confirm it by repeating it back and asking if it is correct.
+If the provided employee ID is valid, give a short, dynamic introduction about the survey based on the survey content below, then proceed with a structured, question-by-question survey flow. Keep the tone ${toneValue} and non-intrusive. Ensure that the conversation flows naturally and dynamically rather than presenting questions as a rigid list. The AI should integrate pre-configured questions fluidly—adapting to context. Encourage honest responses without pressure.
 
 Flow of Questions:
 ${extractedText}
@@ -492,7 +493,7 @@ Closing:
             ],
           },
           summaryPrompt:
-            'You will be given a transcript of a call. Extract key information, including the user’s tone, and structure it into a concise JSON-like format. Keep it short:\n\n{\n  "summary": "",\n  "ratings": {\n    "TopicA": { "rating": 5, "comment": "" },\n    "TopicB": { "rating": 2, "comment": "" }\n  },\n  "overall": "",\n  "next_steps": ""\n}',
+            'You will be given a transcript of a call. Extract key information, including the employee ID  and the user’s tone, and structure it into a concise JSON-like format. For example:\n\n{\n  "employee_id": "",\n  "summary": "",\n  "ratings": {\n    "TopicA": { "rating": 5, "comment": "" },\n    "TopicB": { "rating": 2, "comment": "" }\n  },\n  "overall": "",\n  "next_steps": ""\n}',
           voice: voiceConfig,
         };
         return vapiInstance
