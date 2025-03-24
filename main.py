@@ -597,9 +597,9 @@ def chat_with_survey():
     f"Based on the following survey conversation:\n\n{raw_transcript}\n\n"
     "You are provided with a survey that must be followed exactly in order. "
     "Do not skip any questions. Begin with the first unanswered question. "
-    "Ask each question in a conversational, warm, and empathetic tone. "
+    "Strictly Ask each question in a conversational, warm, and empathetic tone. "
     "Adapt the wording as needed to be engaging and friendly, without prefacing the question with phrases like 'Now that we've talked' or 'Now that we've discussed'. "
-    "If options are present, do not list them unless asked for. "
+    "Strictly If options are present, do not list them unless asked for. "
     "If unrelated topics are mentioned, respond: 'I'm here to assist with the survey. Let's stay focused on the questions.' "
     "Gently guide the user back if the conversation drifts."
 )

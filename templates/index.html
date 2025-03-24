@@ -272,6 +272,13 @@
             </div>
             <!-- Buttons for Voice AI and Chat with Survey -->
             <div class="flex space-x-4 mt-4 self-end">
+              <!-- New Copy Public Survey Link Button -->
+  <button
+  id="copy-public-survey-link-btn"
+  class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md transition-colors font-semibold"
+>
+  Copy Public Survey Link
+</button>
               <button
                 id="send-voice-btn"
                 class="bg-[#FF714C] hover:bg-[#f2613c] text-white py-2 px-4 rounded-md transition-colors font-semibold"
@@ -1468,6 +1475,32 @@ function renderAddQuestionForm(surveyData, formContainer, surveyContainer) {
   let publicUrl = `${window.location.origin}/public_survey?recordid=${recordid}&chatrecordid=${chatrecordid}&public_survey_id=${publicSurveyId}`;
   
   // Copy the URL to clipboard using the Clipboard API.
+  navigator.clipboard.writeText(publicUrl)
+    .then(function() {
+      alert("Public survey link copied to clipboard:\n" + publicUrl);
+    })
+    .catch(function(err) {
+      alert("Error copying public survey link: " + err);
+    });
+});
+document.getElementById("copy-public-survey-link-btn").addEventListener("click", function(e) {
+  e.preventDefault();
+  
+  // Ensure the required parameters are available.
+  if (!window.latestRecordId || !window.latestChatRecordId || !window.publicSurveyId) {
+    alert("Please complete the survey before copying the public survey link.");
+    return;
+  }
+  
+  // Retrieve the IDs from global variables.
+  const recordid = window.latestRecordId;
+  const chatrecordid = window.latestChatRecordId;
+  const publicSurveyId = window.publicSurveyId;
+  
+  // Construct the public survey URL with query parameters.
+  const publicUrl = `${window.location.origin}/public_survey?recordid=${recordid}&chatrecordid=${chatrecordid}&public_survey_id=${publicSurveyId}`;
+  
+  // Use the Clipboard API to copy the URL.
   navigator.clipboard.writeText(publicUrl)
     .then(function() {
       alert("Public survey link copied to clipboard:\n" + publicUrl);
