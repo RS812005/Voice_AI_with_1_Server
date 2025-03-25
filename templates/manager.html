@@ -36,12 +36,12 @@
       <div id="voiceAIResponses" class="p-4 bg-white rounded shadow mb-4">
         <!-- JSON responses of the voice AI will be loaded here -->
       </div>
-      <button id="voiceAIChatButton" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
-        Chat with Me
-      </button>
+
     </div>
 
     <script>
+            let globalPromptSummary = null;
+
       // Helper function to read query parameters from the URL
       function getQueryParam(param) {
         const urlParams = new URLSearchParams(window.location.search);
@@ -70,8 +70,8 @@
           }
 
           const data = await response.json();
-          // The survey details are assumed to be in data.prompt_summary as a JSON string.
-          displaySurvey(JSON.parse(data.prompt_summary));
+          globalPromptSummary = JSON.parse(data.prompt_summary);
+          displaySurvey(globalPromptSummary);
         } catch (error) {
           console.error("Fetch error:", error);
           alert("Error fetching survey data.");
@@ -107,35 +107,48 @@
         questionsContainer.className = "hidden mt-4";
         surveyContainer.appendChild(questionsContainer);
 
-        // Populate and reveal questions when the button is clicked
-        viewSurveyBtn.addEventListener("click", () => {
-          questionsContainer.innerHTML = ""; // Clear any previous content
-          survey.questions.forEach((q) => {
-            const questionDiv = document.createElement("div");
-            questionDiv.className = "mb-6";
+        // Function to populate questions (populate only when needed)
+function populateQuestions() {
+  questionsContainer.innerHTML = ""; // Clear any previous content
+  survey.questions.forEach((q) => {
+    const questionDiv = document.createElement("div");
+    questionDiv.className = "mb-6";
 
-            // Display question text
-            const questionText = document.createElement("p");
-            questionText.className = "font-medium";
-            questionText.textContent = q.id + ". " + q.question;
-            questionDiv.appendChild(questionText);
+    // Display question text
+    const questionText = document.createElement("p");
+    questionText.className = "font-medium";
+    questionText.textContent = q.id + ". " + q.question;
+    questionDiv.appendChild(questionText);
 
-            // If the question has options, display them as a list
-            if (q.options && q.options.length > 0) {
-              const optionsList = document.createElement("ul");
-              optionsList.className = "list-disc ml-6 mt-2";
-              q.options.forEach((option) => {
-                const optionItem = document.createElement("li");
-                optionItem.textContent = option;
-                optionsList.appendChild(optionItem);
-              });
-              questionDiv.appendChild(optionsList);
-            }
+    // If the question has options, display them as a list
+    if (q.options && q.options.length > 0) {
+      const optionsList = document.createElement("ul");
+      optionsList.className = "list-disc ml-6 mt-2";
+      q.options.forEach((option) => {
+        const optionItem = document.createElement("li");
+        optionItem.textContent = option;
+        optionsList.appendChild(optionItem);
+      });
+      questionDiv.appendChild(optionsList);
+    }
 
-            questionsContainer.appendChild(questionDiv);
-          });
-          questionsContainer.classList.remove("hidden");
-        });
+    questionsContainer.appendChild(questionDiv);
+  });
+}
+
+// Toggle questions on button click
+viewSurveyBtn.addEventListener("click", () => {
+  if (questionsContainer.classList.contains("hidden")) {
+    // If questions are hidden, populate and show them, and change button text
+    populateQuestions();
+    questionsContainer.classList.remove("hidden");
+    viewSurveyBtn.textContent = "Hide Questions";
+  } else {
+    // If questions are visible, hide them and change button text back
+    questionsContainer.classList.add("hidden");
+    viewSurveyBtn.textContent = "Click to View Survey";
+  }
+});
 
         // Add "Public Link to Survey" button (functionality can be added later)
         const publicLinkBtn = document.createElement("button");
@@ -143,6 +156,33 @@
           "px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 mt-4";
         publicLinkBtn.textContent = "Public Link to Survey";
         surveyContainer.appendChild(publicLinkBtn);
+
+        publicLinkBtn.addEventListener("click", () => {
+          const recordid = getQueryParam("recordid") || "";
+          const chatrecordid = getQueryParam("chatrecordid") || "";
+          const public_survey_id = getQueryParam("public_survey_id") || "";
+          const surveyTitle = survey.survey_title || "";
+          const url =
+            window.location.origin +
+            "/public_survey?recordid=" +
+            encodeURIComponent(recordid) +
+            "&chatrecordid=" +
+            encodeURIComponent(chatrecordid) +
+            "&public_survey_id=" +
+            encodeURIComponent(public_survey_id) +
+            "&heading=" +
+            encodeURIComponent(surveyTitle);
+          
+          navigator.clipboard
+            .writeText(url)
+            .then(() => {
+              alert("Public survey URL copied to clipboard:\n" + url);
+            })
+            .catch((err) => {
+              console.error("Could not copy text: ", err);
+              alert("Error copying public survey URL to clipboard.");
+            });
+        });
 
         // Reveal the survey container
         surveyContainer.classList.remove("hidden");
@@ -243,9 +283,18 @@
     container.innerHTML = ""; // Clear any previous content
 
     chatResponses.forEach((conversation, index) => {
-      // Outer container for each conversation + its button
+       // Outer container for each conversation + its button
       const conversationContainer = document.createElement("div");
-      conversationContainer.className = "mb-8"; // space between conversations
+      conversationContainer.className = "mb-8 p-4 border rounded bg-white";
+
+       // Create an ordered JSON object with summary, ratings, and next_steps
+      const orderedContent = {
+        summary: conversation.jsoncontent.summary || "No summary available",
+        ratings: conversation.jsoncontent.ratings && Object.keys(conversation.jsoncontent.ratings).length > 0
+                  ? conversation.jsoncontent.ratings
+                  : "No ratings available",
+        next_steps: conversation.jsoncontent.next_steps || "No next steps available"
+      };
 
       // Container for conversation details with responsive flex layout
       const convoContainer = document.createElement("div");
@@ -260,9 +309,10 @@
       leftHeader.className = "font-bold mb-2";
       leftColumn.appendChild(leftHeader);
       
+       // Create a pre element to display the JSON formatted conversation details
       const pre = document.createElement("pre");
-      pre.className = "text-sm text-gray-800 bg-gray-50 p-2 rounded border border-gray-200 whitespace-pre-wrap break-words overflow-auto w-full";
-      pre.textContent = JSON.stringify(conversation.jsoncontent, null, 2);
+      pre.className = "text-sm text-gray-800 bg-gray-50 p-2 rounded border border-gray-200 whitespace-pre-wrap break-words overflow-auto";
+      pre.textContent = JSON.stringify(orderedContent, null, 2);
       leftColumn.appendChild(pre);
       
       convoContainer.appendChild(leftColumn);
@@ -322,20 +372,377 @@
       // Append conversation details to the outer container
       conversationContainer.appendChild(convoContainer);
 
-      // Create and append the "Chat with Me" button below the conversation container
+      // Create and append the "Chat with Me" button below the JSON block
+          const chatButton = document.createElement("button");
+          chatButton.className = "px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 mt-4";
+          chatButton.textContent = "Chat with Me";
+          // Add click event listener for this button
+          
+      conversationContainer.appendChild(chatButton);
+      // Variable to hold the chat interface element (if created)
+// Variable to hold the chat interface element (if created)
+let chatInterface = null;
+let isChatVisible = false;
+
+// Add click event listener for the chat button
+chatButton.addEventListener("click", () => {
+  // If chatInterface hasn't been created yet, create it and show it
+  if (!chatInterface) {
+    // Create the main container for the chat interface
+    chatInterface = document.createElement("div");
+    chatInterface.className = "mt-4 p-4 border rounded bg-white w-full";
+    
+    // Create a heading for the chat interface
+    const chatHeader = document.createElement("h2");
+    chatHeader.className = "text-xl font-semibold mb-2 text-green-700";
+    chatHeader.textContent = "Chat Interface";
+    chatInterface.appendChild(chatHeader);
+    
+    // Create a scrollable container for messages
+    const messagesContainer = document.createElement("div");
+    messagesContainer.className = "max-h-64 overflow-y-auto p-2 border border-gray-200 rounded";
+    chatInterface.appendChild(messagesContainer);
+    
+    // Helper function to append new messages to the messagesContainer
+    function addMessage(role, content) {
+      const msgDiv = document.createElement("div");
+      msgDiv.className = "mb-2";
+      if (role === "user") {
+        msgDiv.innerHTML = `<span class="font-bold text-blue-600">You:</span> ${content}`;
+      } else {
+        msgDiv.innerHTML = `<span class="font-bold text-green-600">Bot:</span> ${content}`;
+      }
+      messagesContainer.appendChild(msgDiv);
+      // Auto-scroll to the bottom of the messages container
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+    
+    // Create the input area at the bottom
+    const inputContainer = document.createElement("div");
+    inputContainer.className = "flex mt-4";
+    chatInterface.appendChild(inputContainer);
+    
+    // The text input for the user's message
+    const chatInput = document.createElement("input");
+    chatInput.type = "text";
+    chatInput.className = "border border-gray-300 rounded-l px-2 py-2 w-full";
+    chatInput.placeholder = "Type your question...";
+    inputContainer.appendChild(chatInput);
+    
+    // The send button
+    const sendButton = document.createElement("button");
+    sendButton.className = "bg-green-500 text-white px-4 py-2 rounded-r hover:bg-green-600";
+    sendButton.textContent = "Send";
+    inputContainer.appendChild(sendButton);
+    
+    // Append the entire chat interface below the conversation container
+    conversationContainer.appendChild(chatInterface);
+    isChatVisible = true;
+    chatButton.textContent = "Hide Chat";
+    
+    // When the send button is clicked, send the chat message to your endpoint
+    sendButton.addEventListener("click", () => {
+      const userMessage = chatInput.value.trim();
+      if (!userMessage) return;
+      
+      // Display the user's message
+      addMessage("user", userMessage);
+      
+      const payload = {
+        chat_with_survey: conversation.chat_with_survey,
+        prompt_summary: globalPromptSummary,
+        messages: [{ role: "user", content: userMessage }],
+        summary: conversation.jsoncontent || "No summary available",
+      };
+      
+      fetch("/chat-with-survey-manager", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`Server error: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          // Display the manager's response as a "bot" message
+          addMessage("bot", data.response);
+          chatInput.value = "";
+        })
+        .catch(error => {
+          console.error("Error sending chat with survey manager data:", error);
+          alert("Error sending data to chat-with-survey-manager.");
+        });
+    });
+  } else {
+    // If the chat interface exists, toggle its visibility
+    if (isChatVisible) {
+      chatInterface.style.display = "none";
+      chatButton.textContent = "Chat with Me";
+      isChatVisible = false;
+    } else {
+      chatInterface.style.display = "block";
+      chatButton.textContent = "Hide Chat";
+      isChatVisible = true;
+      // Focus on the input field
+      const inputField = chatInterface.querySelector("input");
+      if (inputField) inputField.focus();
+    }
+  }
+});
+      // Append the complete conversation container to the main container
+      container.appendChild(conversationContainer);
+    });
+  }
+   // New: Fetch voice AI responses from backend (/voice-ai-response endpoint)
+  async function fetchVoiceAIResponses() {
+    const public_survey_id = getQueryParam("public_survey_id") || "";
+    if (!public_survey_id) {
+      alert("Missing public_survey_id in the URL");
+      return;
+    }
+
+    try {
+      const response = await fetch("/voice-ai-response", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ public_survey_id })
+      });
+
+      if (!response.ok) {
+        throw new Error(`Server error: ${response.status}`);
+      }
+
+      const voiceAIResponses = await response.json();
+      displayVoiceAIResponses(voiceAIResponses);
+    } catch (error) {
+      console.error("Voice AI responses fetch error:", error);
+      alert("Error fetching voice AI responses.");
+    }
+  }
+
+  function displayVoiceAIResponses(voiceAIResponses) {
+    const container = document.getElementById("voiceAIResponses");
+    container.innerHTML = ""; // Clear previous content
+
+    voiceAIResponses.forEach((response, index) => {
+      // Outer container for each voice AI response
+      const responseContainer = document.createElement("div");
+      responseContainer.className = "mb-8 p-4 border rounded bg-white";
+
+      // Create a header for the response
+      const header = document.createElement("h3");
+      header.textContent = `Voice AI Response ${index + 1}`;
+      header.className = "font-bold mb-4";
+      responseContainer.appendChild(header);
+
+      // Create a flex container to hold two columns
+      const flexContainer = document.createElement("div");
+      flexContainer.className = "flex flex-col md:flex-row gap-4";
+      
+      // Left Column: Display only summary JSON
+      const leftColumn = document.createElement("div");
+      leftColumn.className = "w-full md:w-1/2 p-2 border rounded bg-gray-50";
+      
+      let summaryText = response.summary || "No summary available";
+      // Try to parse the summary as JSON and pretty-print if possible
+      try {
+        const summaryJson = JSON.parse(summaryText);
+        summaryText = JSON.stringify(summaryJson, null, 2);
+      } catch (e) {
+        // If parsing fails, keep the raw string
+      }
+      
+      const summaryPre = document.createElement("pre");
+      summaryPre.className = "text-sm text-gray-800 whitespace-pre-wrap break-words";
+      summaryPre.textContent = summaryText;
+      leftColumn.appendChild(summaryPre);
+      
+      // Right Column: Create a horizontal bar chart for ratings
+      const rightColumn = document.createElement("div");
+      rightColumn.className = "w-full md:w-1/2 p-2 border rounded bg-gray-50 flex items-center justify-center";
+      
+      const ratings = response.ratings || {};
+      const ratingKeys = Object.keys(ratings);
+      if (ratingKeys.length > 0) {
+        // Create a canvas element for Chart.js
+        const canvas = document.createElement("canvas");
+        // Give the canvas an id to avoid collisions
+        canvas.id = `chart-${index}`;
+        rightColumn.appendChild(canvas);
+        
+        // Prepare labels and data values
+        const labels = ratingKeys;
+        const dataValues = labels.map(key => ratings[key]);
+        
+        // Create the horizontal bar chart using Chart.js
+        new Chart(canvas.getContext('2d'), {
+          type: 'bar',
+          data: {
+            labels: labels,
+            datasets: [{
+              label: 'Rating',
+              data: dataValues,
+              backgroundColor: 'rgba(54, 162, 235, 0.5)',
+              borderColor: 'rgba(54, 162, 235, 1)',
+              borderWidth: 1
+            }]
+          },
+          options: {
+            indexAxis: 'y',
+            scales: {
+              x: {
+                beginAtZero: true,
+                max: 5
+              }
+            }
+          }
+        });
+      } else {
+        // If no ratings data is available, display a message
+        const noDataMsg = document.createElement("p");
+        noDataMsg.textContent = "No ratings available";
+        noDataMsg.className = "text-gray-600 italic";
+        rightColumn.appendChild(noDataMsg);
+      }
+      
+      // Append columns to the flex container
+      flexContainer.appendChild(leftColumn);
+      flexContainer.appendChild(rightColumn);
+      
+      // Append the flex container to the outer container
+      responseContainer.appendChild(flexContainer);
+      
+      // Append a "Chat with Me" button (no functionality added)
       const chatButton = document.createElement("button");
       chatButton.className = "px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 mt-4";
       chatButton.textContent = "Chat with Me";
-      conversationContainer.appendChild(chatButton);
+      responseContainer.appendChild(chatButton);
 
-      // Append the complete conversation container to the main container
-      container.appendChild(conversationContainer);
+      // Variables to hold the chat interface element and its visibility state for this response
+let chatInterfaceVoice = null;
+let isVoiceChatVisible = false;
+
+// Add click event listener for the voice AI chat button
+chatButton.addEventListener("click", () => {
+  // If the chat interface hasn't been created yet, create it and show it
+  if (!chatInterfaceVoice) {
+    // Create the main container for the chat interface
+    chatInterfaceVoice = document.createElement("div");
+    chatInterfaceVoice.className = "mt-4 p-4 border rounded bg-white w-full";
+    
+    // Create a heading for the chat interface
+    const chatHeader = document.createElement("h2");
+    chatHeader.className = "text-xl font-semibold mb-2 text-green-700";
+    chatHeader.textContent = "Voice Chat Interface";
+    chatInterfaceVoice.appendChild(chatHeader);
+    
+    // Create a scrollable container for messages
+    const messagesContainer = document.createElement("div");
+    messagesContainer.className = "max-h-64 overflow-y-auto p-2 border border-gray-200 rounded";
+    chatInterfaceVoice.appendChild(messagesContainer);
+    
+    // Helper function to append new messages to the messages container
+    function addMessage(role, content) {
+      const msgDiv = document.createElement("div");
+      msgDiv.className = "mb-2";
+      if (role === "user") {
+        msgDiv.innerHTML = `<span class="font-bold text-blue-600">You:</span> ${content}`;
+      } else {
+        msgDiv.innerHTML = `<span class="font-bold text-green-600">Bot:</span> ${content}`;
+      }
+      messagesContainer.appendChild(msgDiv);
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+    
+    // Create the input area at the bottom
+    const inputContainer = document.createElement("div");
+    inputContainer.className = "flex mt-4";
+    chatInterfaceVoice.appendChild(inputContainer);
+    
+    // The text input for the user's message
+    const chatInput = document.createElement("input");
+    chatInput.type = "text";
+    chatInput.className = "border border-gray-300 rounded-l px-2 py-2 w-full";
+    chatInput.placeholder = "Type your question...";
+    inputContainer.appendChild(chatInput);
+    
+    // The send button
+    const sendButton = document.createElement("button");
+    sendButton.className = "bg-green-500 text-white px-4 py-2 rounded-r hover:bg-green-600";
+    sendButton.textContent = "Send";
+    inputContainer.appendChild(sendButton);
+    
+    // Append the entire chat interface below the response container
+    responseContainer.appendChild(chatInterfaceVoice);
+    isVoiceChatVisible = true;
+    chatButton.textContent = "Hide Chat";
+    
+    // When the send button is clicked, send the chat message to your backend endpoint
+    sendButton.addEventListener("click", () => {
+      const userMessage = chatInput.value.trim();
+      if (!userMessage) return;
+      
+      // Display the user's message in the chat interface
+      addMessage("user", userMessage);
+      
+      // Prepare the payload. Note: We're sending the entire voice AI response as voice_ai_data.
+      const payload = {
+        voice_ai_data: response, // response is the current voice AI response object
+        prompt_summary: globalPromptSummary,
+        messages: [{ role: "user", content: userMessage }],
+        summary: response.summary || "No summary available"
+      };
+      
+      fetch("/voiceai-manager", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      })
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`Server error: ${res.status}`);
+        }
+        return res.json();
+      })
+      .then(data => {
+        // Display the manager's (or voice AI's) response in the chat interface
+        addMessage("bot", data.response);
+        chatInput.value = "";
+      })
+      .catch(error => {
+        console.error("Error sending voice AI chat data:", error);
+        alert("Error sending data to voiceai-manager.");
+      });
+    });
+  } else {
+    // If the chat interface already exists, toggle its visibility
+    if (isVoiceChatVisible) {
+      chatInterfaceVoice.style.display = "none";
+      chatButton.textContent = "Chat with Me";
+      isVoiceChatVisible = false;
+    } else {
+      chatInterfaceVoice.style.display = "block";
+      chatButton.textContent = "Hide Chat";
+      isVoiceChatVisible = true;
+      // Focus the input field if available
+      const inputField = chatInterfaceVoice.querySelector("input");
+      if (inputField) inputField.focus();
+    }
+  }
+});
+
+      container.appendChild(responseContainer);
     });
   }
 
   // Automatically call the fetch function when the page loads
   window.addEventListener("DOMContentLoaded", () => {
     fetchChatWithSurveyResponses();
+        fetchVoiceAIResponses();
+
   });
     </script>
   </body>

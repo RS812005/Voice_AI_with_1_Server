@@ -1204,5 +1204,208 @@ def chat_with_survey_responses():
     return jsonify(matching_entries)
 
 
+@app.route("/voice-ai-response", methods=["POST"])
+def voice_ai_response():
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "Missing JSON payload"}), 400
+
+    public_survey_id = data.get("public_survey_id")
+    if not public_survey_id:
+        return jsonify({"error": "Missing public_survey_id parameter"}), 400
+
+    try:
+        # Load history.json file (adjust path as needed)
+        with open("history.json", "r") as f:
+            history = json.load(f)
+    except Exception as e:
+        return jsonify({"error": f"Error loading history.json: {str(e)}"}), 500
+
+    # Filter the history for matching conversations
+    matching_conversations = [
+        conv for conv in history if conv.get("public_survey_id") == public_survey_id
+    ]
+
+    if not matching_conversations:
+        return jsonify({"message": "No matching conversations found."}), 404
+
+    results = []
+    for conv in matching_conversations:
+        # Get the summary from the outer conversation object (not from structured_data)
+        summary = conv.get("call_summary") or "No summary available"
+
+        # Extract ratings from the structured_data if present; otherwise, use an empty dict
+        structured = conv.get("structured_data", {})
+        ratings_data = structured.get("ratings") or {}
+
+        extracted_ratings = {}
+        for key, rating_obj in ratings_data.items():
+            rating_value = (
+                rating_obj.get("rating") if isinstance(rating_obj, dict) else None
+            )
+            extracted_ratings[key] = rating_value
+
+        results.append({"summary": summary, "ratings": extracted_ratings})
+
+    return jsonify(results), 200
+
+
+import json
+
+
+@app.route("/chat-with-survey-manager", methods=["POST"])
+def chat_with_survey_manager():
+    try:
+        data = request.get_json()
+        if not data:
+            return jsonify({"error": "No input data provided."}), 400
+
+        chat_with_survey = data.get("chat_with_survey")
+        prompt_summary = data.get("prompt_summary")
+        summary = data.get("summary", "No summary available")
+        messages = data.get("messages", [])
+
+        if not chat_with_survey or not prompt_summary:
+            return (
+                jsonify({"error": "Missing chat_with_survey or prompt_summary."}),
+                400,
+            )
+
+        # Create system message with context including the additional summary field
+        system_context = (
+            "You are a helpful manager analyzing employee survey results. Use this context:\n"
+            f"Survey Summary: {summary}\n"
+            f"Survey Structure: {prompt_summary}\n"
+            f"Survey Responses: {chat_with_survey}"
+        )
+
+        # Start with the system message
+        formatted_messages = [{"role": "system", "content": system_context}]
+
+        # Validate and append messages from the frontend
+        if not isinstance(messages, list):
+            return jsonify({"error": "Messages must be a list."}), 400
+
+        for message in messages:
+            if (
+                not isinstance(message, dict)
+                or "role" not in message
+                or "content" not in message
+            ):
+                return (
+                    jsonify(
+                        {
+                            "error": "Each message must be an object with 'role' and 'content'."
+                        }
+                    ),
+                    400,
+                )
+            formatted_messages.append(message)
+
+        app.logger.info("Formatted messages for Groq API: %s", formatted_messages)
+
+        client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
+        chat_completion = client.chat.completions.create(
+            messages=formatted_messages,
+            model="llama-3.3-70b-versatile",  # Fast model, good for this use case
+            temperature=0.3,
+            max_tokens=1024,
+        )
+
+        response_text = chat_completion.choices[0].message.content
+        usage_info = chat_completion.usage
+
+        # Convert the usage object to a JSON-serializable dict
+        try:
+            usage_info = json.loads(
+                json.dumps(usage_info, default=lambda o: o.__dict__)
+            )
+        except Exception as conv_err:
+            usage_info = str(usage_info)
+
+        return jsonify({"response": response_text, "usage": usage_info})
+
+    except Exception as e:
+        app.logger.error("Error in /chat-with-survey-manager: %s", str(e))
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route("/voiceai-manager", methods=["POST"])
+def voiceai_manager():
+    try:
+        data = request.get_json()
+        if not data:
+            return jsonify({"error": "No input data provided."}), 400
+
+        voice_ai_data = data.get("voice_ai_data")
+        prompt_summary = data.get("prompt_summary")
+        summary = data.get("summary", "No summary available")
+        messages = data.get("messages", [])
+
+        if not voice_ai_data or not prompt_summary:
+            return jsonify({"error": "Missing voice_ai_data or prompt_summary."}), 400
+
+        # Create system message with context for Voice AI responses
+        system_context = (
+            "You are a helpful voice assistant analyzing voice AI responses. Use this context:\n"
+            f"Response Summary: {summary}\n"
+            f"Voice AI Prompt Summary: {prompt_summary}\n"
+            f"Voice AI Data: {voice_ai_data}"
+        )
+
+        # Start with the system message
+        formatted_messages = [{"role": "system", "content": system_context}]
+
+        # Validate and append messages from the frontend
+        if not isinstance(messages, list):
+            return jsonify({"error": "Messages must be a list."}), 400
+
+        for message in messages:
+            if (
+                not isinstance(message, dict)
+                or "role" not in message
+                or "content" not in message
+            ):
+                return (
+                    jsonify(
+                        {
+                            "error": "Each message must be an object with 'role' and 'content'."
+                        }
+                    ),
+                    400,
+                )
+            formatted_messages.append(message)
+
+        app.logger.info(
+            "Formatted messages for Groq API (voice): %s", formatted_messages
+        )
+
+        # Initialize the Groq client and get a response
+        client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
+        chat_completion = client.chat.completions.create(
+            messages=formatted_messages,
+            model="llama-3.3-70b-versatile",  # Fast model, good for this use case
+            temperature=0.3,
+            max_tokens=1024,
+        )
+
+        response_text = chat_completion.choices[0].message.content
+        usage_info = chat_completion.usage
+
+        # Convert the usage object to a JSON-serializable format
+        try:
+            usage_info = json.loads(
+                json.dumps(usage_info, default=lambda o: o.__dict__)
+            )
+        except Exception as conv_err:
+            usage_info = str(usage_info)
+
+        return jsonify({"response": response_text, "usage": usage_info})
+
+    except Exception as e:
+        app.logger.error("Error in /voiceai-manager: %s", str(e))
+        return jsonify({"error": str(e)}), 500
+
+
 if __name__ == "__main__":
     app.run(debug=True)

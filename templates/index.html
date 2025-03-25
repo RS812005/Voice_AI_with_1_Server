@@ -1496,9 +1496,10 @@ document.getElementById("copy-public-survey-link-btn").addEventListener("click",
   const recordid = window.latestRecordId;
   const chatrecordid = window.latestChatRecordId;
   const publicSurveyId = window.publicSurveyId;
+  const surveyHeading = encodeURIComponent(window.currentSurvey.survey_title);
   
   // Construct the public survey URL with query parameters.
-  const publicUrl = `${window.location.origin}/public_survey?recordid=${recordid}&chatrecordid=${chatrecordid}&public_survey_id=${publicSurveyId}`;
+  const publicUrl = `${window.location.origin}/public_survey?recordid=${recordid}&chatrecordid=${chatrecordid}&public_survey_id=${publicSurveyId}&heading=${surveyHeading}`;
   
   // Use the Clipboard API to copy the URL.
   navigator.clipboard.writeText(publicUrl)

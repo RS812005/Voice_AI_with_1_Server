@@ -47,7 +47,7 @@
       <!-- Call Section -->
       <div
         id="call-section"
-        class="w-full mb-8 p-6 bg-white rounded-lg shadow-lg"
+        class="hidden w-full mb-8 p-6 bg-white rounded-lg shadow-lg"
       >
         <h2 id="call-heading" class="text-xl font-semibold text-gray-700 mb-4">
           Call in Progress
@@ -376,6 +376,7 @@ Closing:
 
       // Similarly, modify the "Send to Voice AI" button click handler
   document.getElementById("public-voice-btn").addEventListener("click", () => {
+    hideMainButtons();
     startCountdown(() => {
       if (!recordid) {
         alert("Record ID is missing. Please check your URL.");
@@ -423,6 +424,7 @@ Closing:
 
       // Modify the "Chat with Survey" button click handler
   document.getElementById("public-chat-btn").addEventListener("click", () => {
+    hideMainButtons();
     startCountdown(() => {
       // Original code to initiate chat goes here
       if (!recordid) {
@@ -576,7 +578,15 @@ function getUrlParameter(name) {
     const results = regex.exec(location.search);
     return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
   }
-  
+    // Get the 'heading' parameter from the URL
+  const headingFromUrl = getUrlParameter('heading');
+  if (headingFromUrl) {
+    // Update the main heading on the page
+    const headingEl = document.querySelector('h1');
+    if (headingEl) {
+      headingEl.textContent = headingFromUrl;
+    }
+  }
    // Check if the page should display analysis (analysis=true in URL)
    if (getUrlParameter('analysis') === 'true') {
         document.getElementById('analysis-section').classList.remove('hidden');
@@ -701,6 +711,11 @@ function startCountdown(callback) {
       }
     }, 1000);
   }
+  // Immediately hide the main buttons
+      function hideMainButtons() {
+        document.getElementById("public-voice-btn").style.display = "none";
+        document.getElementById("public-chat-btn").style.display = "none";
+      }
 // Call this function on page load or after the button is rendered.
 setupGoBackButton();
     </script>
