@@ -388,9 +388,9 @@
       //       if (!window.chatRecordCounter) {
       //   window.chatRecordCounter = 1;
       // }
-      if (!localStorage.getItem("chatRecordCounter")) {
-        localStorage.setItem("chatRecordCounter", "1");
-      }
+      // if (!localStorage.getItem("chatRecordCounter")) {
+      //   localStorage.setItem("chatRecordCounter", "1");
+      // }
 
       // Start the assistant call using the Web SDK
       function startWebCall(extractedText) {
@@ -699,12 +699,11 @@ document.getElementById("survey-submit-btn").addEventListener("click", () => {
           .then(response => response.json())
           .then(data => {
             if (data && data.survey) {
-              window.publicSurveyId = data.public_survey_id;
-              // console.log("Public survey id:",window.publicSurveyId)
-              window.latestRecordId = parseInt(data.record_id); // Get the current chat record counter from localStorage.
-               let counter = parseInt(localStorage.getItem("chatRecordCounter"));
-               window.latestChatRecordId = counter; // Use this as the chat record id. // Increment and store back to localStorage for next chat record.
-               localStorage.setItem("chatRecordCounter", (counter + 1).toString()); // Update the Call Section heading with the survey heading.
+             // Directly assign the record_id from the server (a UUID string) to latestRecordId.
+window.latestRecordId = data.record_id;
+// Use the same UUID for chat record since we're now treating IDs as UUID strings.
+window.latestChatRecordId = data.chatRecordId;
+window.publicSurveyId=data.public_survey_id
                 document.getElementById("call-heading").textContent = `Call in Progress: ${data.survey.survey_title}`; // Update the Chat Container heading with the survey heading. 
               document.getElementById("chat-heading").textContent = data.survey.survey_title;
               window.currentSurvey = data.survey;
@@ -1486,6 +1485,7 @@ function renderAddQuestionForm(surveyData, formContainer, surveyContainer) {
 document.getElementById("copy-public-survey-link-btn").addEventListener("click", function(e) {
   e.preventDefault();
   
+  console.log("recordid:",window.latestRecordId, "chatRecordId:",window.latestChatRecordId,"publicid:", window.publicSurveyId)
   // Ensure the required parameters are available.
   if (!window.latestRecordId || !window.latestChatRecordId || !window.publicSurveyId) {
     alert("Please complete the survey before copying the public survey link.");

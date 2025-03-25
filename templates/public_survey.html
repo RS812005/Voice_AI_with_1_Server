@@ -168,9 +168,9 @@
       //       if (!window.chatRecordCounter) {
       //   window.chatRecordCounter = 1;
       // }
-      if (!localStorage.getItem("chatRecordCounter")) {
-        localStorage.setItem("chatRecordCounter", "1");
-      }
+      // if (!localStorage.getItem("chatRecordCounter")) {
+      //   localStorage.setItem("chatRecordCounter", "1");
+      // }
 
       // Start the assistant call using the Web SDK
       function startWebCall(extractedText) {
@@ -374,94 +374,92 @@ Closing:
   window.latestRecordId = recordid;
 }
 
-      // Send to Voice AI button handler
-      document.getElementById("public-voice-btn").addEventListener("click", () => {
-  if (!recordid) {
-    alert("Record ID is missing. Please check your URL.");
-    return;
-  }
-  // Ensure the call container is visible and chat container is hidden
-  document.getElementById("call-section").classList.remove("hidden");
-  document.getElementById("chat-container").classList.add("hidden");
-
-  fetch("/public-survey-voice-ai", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ recordid: recordid, public_survey_id: window.publicSurveyId }),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      let responseText = JSON.stringify(data);
-      window.latestRecordId = data.record_id;
-      fetch("/start-call", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + apiKey,
-        },
-        body: JSON.stringify({ text: responseText }),
-      })
-        .then((response) => response.json())
-        .then((callData) => {
-          if (callData.error) {
-            return;
-          }
-          const callId = callData.call_id;
-          pollCallDetails(callId);
-        });
-      startWebCall(responseText);
-      setTimeout(() => {
-        document.getElementById("call-section").scrollIntoView({ behavior: "smooth" });
-      }, 300);
-    })
-    .catch((error) => {
-      alert("Error sending to Voice AI: " + error);
-    });
-});
-
-
-      // Chat with Survey button handler
-      document.getElementById("public-chat-btn").addEventListener("click", () => {
-        // If call container is visible, stop the active call.
-  if (!document.getElementById("call-section").classList.contains("hidden")) {
-    stopWebCall();
-  }
-  if (!recordid) {
-    alert("Record ID or Chat Record ID is missing. Please check your URL.");
-    return;
-  }
-  fetch("/public-survey-chat-survey", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ recordid: recordid }),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      if (!data.prompt_summary) {
-        alert("No response text available to send.");
+      // Similarly, modify the "Send to Voice AI" button click handler
+  document.getElementById("public-voice-btn").addEventListener("click", () => {
+    startCountdown(() => {
+      if (!recordid) {
+        alert("Record ID is missing. Please check your URL.");
         return;
       }
-      // Store the survey response globally for use in chat messages.
-      window.surveyResponseText = data.prompt_summary;
-      // Also store the chat record id for later use.
-      window.latestChatRecordId = data.chatrecordid;
-      // Hide the call section and show the chat container.
-      document.getElementById("call-section").classList.add("hidden");
-      document.getElementById("chat-container").classList.remove("hidden");
-      
-      // Automatically insert the first bot message.
-      const chatMessages = document.getElementById("chat-messages");
-      chatMessages.innerHTML = ""; // Optional: clear existing messages
-      const initialBotMsg = document.createElement("div");
-      initialBotMsg.textContent = "Bot: Hi, let's start the survey. Are you ready?";
-      initialBotMsg.className = "text-green-600 font-semibold my-1";
-      chatMessages.appendChild(initialBotMsg);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-    })
-    .catch((error) => {
-      alert("Error initiating chat with survey: " + error);
+      document.getElementById("call-section").classList.remove("hidden");
+      document.getElementById("chat-container").classList.add("hidden");
+  
+      fetch("/public-survey-voice-ai", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ recordid: recordid, public_survey_id: window.publicSurveyId }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          let responseText = JSON.stringify(data);
+          window.latestRecordId = data.record_id;
+          fetch("/start-call", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + apiKey,
+            },
+            body: JSON.stringify({ text: responseText }),
+          })
+            .then((response) => response.json())
+            .then((callData) => {
+              if (callData.error) {
+                return;
+              }
+              const callId = callData.call_id;
+              pollCallDetails(callId);
+            });
+          startWebCall(responseText);
+          setTimeout(() => {
+            document.getElementById("call-section").scrollIntoView({ behavior: "smooth" });
+          }, 300);
+        })
+        .catch((error) => {
+          alert("Error sending to Voice AI: " + error);
+        });
     });
-});
+  });
+
+
+      // Modify the "Chat with Survey" button click handler
+  document.getElementById("public-chat-btn").addEventListener("click", () => {
+    startCountdown(() => {
+      // Original code to initiate chat goes here
+      if (!recordid) {
+        alert("Record ID or Chat Record ID is missing. Please check your URL.");
+        return;
+      }
+      fetch("/public-survey-chat-survey", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ recordid: recordid }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (!data.prompt_summary) {
+            alert("No response text available to send.");
+            return;
+          }
+          // Store survey response text and chat record ID globally
+          window.surveyResponseText = data.prompt_summary;
+          window.latestChatRecordId = data.chatrecordid;
+          // Switch UI from call to chat
+          document.getElementById("call-section").classList.add("hidden");
+          document.getElementById("chat-container").classList.remove("hidden");
+          // Insert an initial bot message into the chat area
+          const chatMessages = document.getElementById("chat-messages");
+          chatMessages.innerHTML = "";
+          const initialBotMsg = document.createElement("div");
+          initialBotMsg.textContent = "Bot: Hi, let's start the survey. Are you ready?";
+          initialBotMsg.className = "text-green-600 font-semibold my-1";
+          chatMessages.appendChild(initialBotMsg);
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+        })
+        .catch((error) => {
+          alert("Error initiating chat with survey: " + error);
+        });
+    });
+  });
 
 
       // Stop call
@@ -673,7 +671,36 @@ function getUrlParameter(name) {
     console.error("Go Back button not found!");
   }
 }
-
+function startCountdown(callback) {
+    // Create a countdown container and insert it at the top of your main container
+    const countdownContainer = document.createElement('div');
+    countdownContainer.id = 'countdown-container';
+    countdownContainer.className = 'text-6xl font-bold text-center mb-4';
+    
+    // For example, insert into the main container (adjust the selector as needed)
+    const mainContainer = document.querySelector('.flex.flex-col.items-center');
+    mainContainer.prepend(countdownContainer);
+  
+    let count = 3;
+    countdownContainer.textContent = count;
+  
+    // Use setInterval to update the count every second
+    const intervalId = setInterval(() => {
+      count--;
+      if (count > 0) {
+        countdownContainer.textContent = count;
+      } else {
+        clearInterval(intervalId);
+        // Remove the countdown element
+        countdownContainer.remove();
+        // Hide the two main buttons
+        document.getElementById("public-chat-btn").style.display = "none";
+        document.getElementById("public-voice-btn").style.display = "none";
+        // Execute the callback (proceed with the original process)
+        callback();
+      }
+    }, 1000);
+  }
 // Call this function on page load or after the button is rendered.
 setupGoBackButton();
     </script>

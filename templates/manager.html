@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Manager Page</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body class="bg-gray-100 p-6">
+    <!-- Section 1: Survey Details -->
+    <div class="max-w-3xl mx-auto mb-8">
+      <h1 class="text-2xl font-semibold mb-4">Manager Page</h1>
+      <!-- Container to display survey details -->
+      <div id="surveyContainer" class="p-4 bg-white rounded shadow hidden"></div>
+    </div>
+
+    <!-- Section 2: Graph from Analysis Data -->
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-2xl font-semibold mb-4">Analysis Graph</h2>
+      <canvas id="analysisChart" class="bg-white rounded shadow"></canvas>
+    </div>
+
+     <!-- Section 3: Chat and Voice AI Responses -->
+    <div class="max-w-3xl mx-auto mt-8">
+      <!-- Chat with Survey Responses -->
+      <h2 class="text-2xl font-semibold mb-4">Chat with Survey Responses</h2>
+      <div id="surveyChatResponses" class="p-4 bg-white rounded shadow mb-4">
+        <!-- JSON responses of the survey chat will be loaded here -->
+      </div>
+       
+
+      <!-- Voice AI Responses -->
+      <h2 class="text-2xl font-semibold mt-8 mb-4">Voice AI Responses</h2>
+      <div id="voiceAIResponses" class="p-4 bg-white rounded shadow mb-4">
+        <!-- JSON responses of the voice AI will be loaded here -->
+      </div>
+      <button id="voiceAIChatButton" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+        Chat with Me
+      </button>
+    </div>
+
+    <script>
+      // Helper function to read query parameters from the URL
+      function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+      }
+
+      // Fetch survey data from backend (/manager endpoint)
+      async function fetchSurveyData() {
+        const public_survey_id = getQueryParam("public_survey_id") || "";
+        const record_id = getQueryParam("recordid") || "";
+
+        if (!public_survey_id || !record_id) {
+          alert("Missing public_survey_id or record_id in the URL");
+          return;
+        }
+
+        try {
+          const response = await fetch("/manager", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ public_survey_id, record_id }),
+          });
+
+          if (!response.ok) {
+            throw new Error(`Server error: ${response.status}`);
+          }
+
+          const data = await response.json();
+          // The survey details are assumed to be in data.prompt_summary as a JSON string.
+          displaySurvey(JSON.parse(data.prompt_summary));
+        } catch (error) {
+          console.error("Fetch error:", error);
+          alert("Error fetching survey data.");
+        }
+      }
+
+      // Display survey details on the page
+      function displaySurvey(survey) {
+        const surveyContainer = document.getElementById("surveyContainer");
+        surveyContainer.innerHTML = ""; // Clear previous content
+
+        // Display the survey title
+        const titleHeading = document.createElement("h2");
+        titleHeading.className = "text-xl font-bold mb-2";
+        titleHeading.textContent = "Survey Title: " + survey.survey_title;
+        surveyContainer.appendChild(titleHeading);
+
+        // Display the introduction/summary
+        const introPara = document.createElement("p");
+        introPara.className = "mb-4 text-gray-700";
+        introPara.textContent = survey.intro;
+        surveyContainer.appendChild(introPara);
+
+        // Button to reveal survey questions
+        const viewSurveyBtn = document.createElement("button");
+        viewSurveyBtn.className =
+          "px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 mb-4";
+        viewSurveyBtn.textContent = "Click to View Survey";
+        surveyContainer.appendChild(viewSurveyBtn);
+
+        // Container for survey questions; hidden initially
+        const questionsContainer = document.createElement("div");
+        questionsContainer.className = "hidden mt-4";
+        surveyContainer.appendChild(questionsContainer);
+
+        // Populate and reveal questions when the button is clicked
+        viewSurveyBtn.addEventListener("click", () => {
+          questionsContainer.innerHTML = ""; // Clear any previous content
+          survey.questions.forEach((q) => {
+            const questionDiv = document.createElement("div");
+            questionDiv.className = "mb-6";
+
+            // Display question text
+            const questionText = document.createElement("p");
+            questionText.className = "font-medium";
+            questionText.textContent = q.id + ". " + q.question;
+            questionDiv.appendChild(questionText);
+
+            // If the question has options, display them as a list
+            if (q.options && q.options.length > 0) {
+              const optionsList = document.createElement("ul");
+              optionsList.className = "list-disc ml-6 mt-2";
+              q.options.forEach((option) => {
+                const optionItem = document.createElement("li");
+                optionItem.textContent = option;
+                optionsList.appendChild(optionItem);
+              });
+              questionDiv.appendChild(optionsList);
+            }
+
+            questionsContainer.appendChild(questionDiv);
+          });
+          questionsContainer.classList.remove("hidden");
+        });
+
+        // Add "Public Link to Survey" button (functionality can be added later)
+        const publicLinkBtn = document.createElement("button");
+        publicLinkBtn.className =
+          "px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 mt-4";
+        publicLinkBtn.textContent = "Public Link to Survey";
+        surveyContainer.appendChild(publicLinkBtn);
+
+        // Reveal the survey container
+        surveyContainer.classList.remove("hidden");
+      }
+
+      // Fetch analysis data from backend (/manager_analysis endpoint)
+      async function fetchAnalysisData() {
+        const public_survey_id = getQueryParam("public_survey_id") || "";
+        if (!public_survey_id) {
+          alert("Missing public_survey_id in the URL");
+          return;
+        }
+
+        try {
+          const response = await fetch("/manager_analysis", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ public_survey_id }),
+          });
+
+          if (!response.ok) {
+            throw new Error(`Server error: ${response.status}`);
+          }
+
+          const analysisData = await response.json();
+          // analysisData should be in the format:
+          // { "happiness": 1.5, "mental_health": 1.5, "job_satisfaction": 1.5, "enps": 1.5, "communication": 1 }
+          drawChart(analysisData);
+        } catch (error) {
+          console.error("Analysis fetch error:", error);
+          alert("Error fetching analysis data.");
+        }
+      }
+
+      // Draw chart using Chart.js
+      function drawChart(data) {
+        const ctx = document.getElementById('analysisChart').getContext('2d');
+        const labels = Object.keys(data);
+        const values = Object.values(data);
+
+        new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: labels,
+            datasets: [{
+              label: 'Average Ratings',
+              data: values,
+              backgroundColor: 'rgba(54, 162, 235, 0.5)',
+              borderColor: 'rgba(54, 162, 235, 1)',
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true,
+                max: 5
+              }
+            }
+          }
+        });
+      }
+
+      // Automatically fetch survey and analysis data when the page loads
+      window.addEventListener("DOMContentLoaded", () => {
+        fetchSurveyData();
+        fetchAnalysisData();
+      });
+       // Fetch chat with survey responses from backend
+  async function fetchChatWithSurveyResponses() {
+    const public_survey_id = getQueryParam("public_survey_id") || "";
+    if (!public_survey_id) {
+      alert("Missing public_survey_id in the URL");
+      return;
+    }
+
+    try {
+      const response = await fetch("/chat-with-survey-responses", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ public_survey_id })
+      });
+
+      if (!response.ok) {
+        throw new Error(`Server error: ${response.status}`);
+      }
+
+      const chatResponses = await response.json();
+      displayChatResponses(chatResponses);
+    } catch (error) {
+      console.error("Chat responses fetch error:", error);
+      alert("Error fetching chat responses.");
+    }
+  }
+
+  function displayChatResponses(chatResponses) {
+    const container = document.getElementById("surveyChatResponses");
+    container.innerHTML = ""; // Clear any previous content
+
+    chatResponses.forEach((conversation, index) => {
+      // Outer container for each conversation + its button
+      const conversationContainer = document.createElement("div");
+      conversationContainer.className = "mb-8"; // space between conversations
+
+      // Container for conversation details with responsive flex layout
+      const convoContainer = document.createElement("div");
+      convoContainer.className = "flex flex-col md:flex-row gap-4 p-4 border rounded bg-white";
+
+      // Left Column: Display jsoncontent in JSON Format
+      const leftColumn = document.createElement("div");
+      leftColumn.className = "w-full md:w-1/2";
+      
+      const leftHeader = document.createElement("h3");
+      leftHeader.textContent = `Conversation ${index + 1} - JSON Content`;
+      leftHeader.className = "font-bold mb-2";
+      leftColumn.appendChild(leftHeader);
+      
+      const pre = document.createElement("pre");
+      pre.className = "text-sm text-gray-800 bg-gray-50 p-2 rounded border border-gray-200 whitespace-pre-wrap break-words overflow-auto w-full";
+      pre.textContent = JSON.stringify(conversation.jsoncontent, null, 2);
+      leftColumn.appendChild(pre);
+      
+      convoContainer.appendChild(leftColumn);
+
+      // Right Column: Ratings Chart or "No data" message
+      const rightColumn = document.createElement("div");
+      rightColumn.className = "w-full md:w-1/2";
+      
+      const rightHeader = document.createElement("h3");
+      rightHeader.textContent = `Conversation ${index + 1} - Ratings Chart`;
+      rightHeader.className = "font-bold mb-2";
+      rightColumn.appendChild(rightHeader);
+      
+      const ratings = conversation.ratings;
+      if (ratings && Object.keys(ratings).length > 0) {
+        // Create a canvas element for the chart
+        const canvas = document.createElement("canvas");
+        rightColumn.appendChild(canvas);
+        
+        // Extract labels and data values from ratings
+        const labels = Object.keys(ratings);
+        const dataValues = labels.map(label => ratings[label].rating);
+        
+        // Create a horizontal bar chart using Chart.js (using indexAxis: 'y')
+        new Chart(canvas, {
+          type: 'bar',
+          data: {
+            labels: labels,
+            datasets: [{
+              label: 'Rating',
+              data: dataValues,
+              backgroundColor: 'rgba(54, 162, 235, 0.5)',
+              borderColor: 'rgba(54, 162, 235, 1)',
+              borderWidth: 1
+            }]
+          },
+          options: {
+            indexAxis: 'y',
+            scales: {
+              x: {
+                beginAtZero: true,
+                max: 5
+              }
+            }
+          }
+        });
+      } else {
+        // If no ratings data is available, display a message
+        const noDataMsg = document.createElement("p");
+        noDataMsg.textContent = "No data for this convo";
+        noDataMsg.className = "text-gray-600 italic";
+        rightColumn.appendChild(noDataMsg);
+      }
+      
+      convoContainer.appendChild(rightColumn);
+
+      // Append conversation details to the outer container
+      conversationContainer.appendChild(convoContainer);
+
+      // Create and append the "Chat with Me" button below the conversation container
+      const chatButton = document.createElement("button");
+      chatButton.className = "px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 mt-4";
+      chatButton.textContent = "Chat with Me";
+      conversationContainer.appendChild(chatButton);
+
+      // Append the complete conversation container to the main container
+      container.appendChild(conversationContainer);
+    });
+  }
+
+  // Automatically call the fetch function when the page loads
+  window.addEventListener("DOMContentLoaded", () => {
+    fetchChatWithSurveyResponses();
+  });
+    </script>
+  </body>
+</html>

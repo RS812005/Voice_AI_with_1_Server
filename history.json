@@ -1,285 +1,209 @@
 [
   {
-    "id": 1,
-    "public_survey_id": "f557c08c-1cca-49df-847b-8e8a4b29ecd1",
-    "prompt": "anime survey",
-    "prompt_summary": "{\n  \"survey_title\": \"Anime Viewing Habits and Preferences Survey\",\n  \"intro\": \"We are conducting this survey to understand anime viewing habits and preferences. Your responses will help us better understand the anime community and improve the overall viewing experience. Please answer the questions honestly, and feel free to elaborate on your responses when possible. The survey should take approximately 2 minutes to complete.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How often do you watch anime?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Daily\", \"Several times a week\", \"About once a week\", \"Less than once a week\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What type of anime do you usually watch? (e.g., action, comedy, drama, etc.)\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"How do you typically find new anime to watch?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Social media\", \"Online reviews and ratings\", \"Friend recommendations\", \"Streaming platform suggestions\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"Please describe your favorite anime series and what made it stand out to you.\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How would you rate the overall quality of anime you've watched in the past year?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Poor)\", \"2\", \"3\", \"4\", \"5 (Excellent)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"What factors influence your decision to continue watching an anime series? (Select all that apply)\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Engaging storyline\", \"Relatable characters\", \"Animation quality\", \"Music and soundtrack\"],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to participate in this survey. Your input is invaluable in helping us understand the anime community and improve the viewing experience. If you have any additional comments or suggestions, please feel free to include them below.\"\n}",
+    "id": "9762b97a-9dee-49e1-ae80-0c36a75e78dc",
+    "public_survey_id": "8de5d5d3-93ae-4275-97d3-7c847f4bc10a",
+    "prompt": "hello",
+    "prompt_summary": "{\n  \"survey_title\": \"User Experience and Feedback Survey\",\n  \"intro\": \"We value your opinion and would like to hear about your experiences. This survey aims to gather information about your preferences, satisfaction, and suggestions for improvement. Your input will help us understand your needs better and make necessary adjustments to provide you with a more enjoyable experience. Please answer the questions honestly, and thank you for taking the time to participate.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How did you hear about our service?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Social Media\", \"Friend/Family Recommendation\", \"Online Search\", \"Other\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What do you like most about our service?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"How would you rate the quality of our service?\",\n      \"type\": \"rating\",\n      \"options\": [\"Excellent\", \"Good\", \"Fair\", \"Poor\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"Have you encountered any issues while using our service? If yes, please describe.\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How likely are you to recommend our service to a friend or colleague?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Very Likely\", \"Likely\", \"Not Very Likely\", \"Not at All Likely\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"Do you have any suggestions for improving our service?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey. Your feedback is greatly appreciated, and we will use it to improve our services. If you have any further comments or suggestions, please do not hesitate to contact us.\"\n}",
     "call_summary": "",
-    "created_at": "2025-03-21T11:54:44.508747"
+    "created_at": "2025-03-24T17:48:55.631807"
   },
   {
-    "id": 2,
-    "public_survey_id": "58cf852d-697c-4c84-adc2-94dcd94205b8",
-    "prompt": "anime survey",
-    "prompt_summary": "{\n  \"survey_title\": \"Anime Viewing Habits and Preferences Survey\",\n  \"intro\": \"This survey aims to gather information about your anime viewing habits and preferences. Your input will help us better understand the anime community and provide insights for future anime productions. Please answer the questions honestly, and thank you for participating!\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How often do you watch anime?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Daily\", \"Weekly\", \"Monthly\", \"Rarely\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What is your favorite anime genre?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"How do you typically watch anime?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Streaming services\", \"DVD/Blu-ray\", \"TV broadcast\", \"Other\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"Please describe your favorite anime series and why you enjoy it.\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How important is subtitles or dubbing when watching anime?\",\n      \"type\": \"rating\",\n      \"options\": [\"Not important at all\", \"Somewhat important\", \"Very important\", \"Extremely important\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"What do you think is missing from the current anime landscape?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to participate in this survey! Your input is valuable to us, and we appreciate your honesty. If you have any additional comments or suggestions, feel free to include them below.\"\n}",
+    "id": "175532d3-f063-4e8f-9e9a-c401e6060a60",
+    "public_survey_id": "67bf1e62-89de-43e9-a377-63cbce8f2efd",
+    "prompt": "hello",
+    "prompt_summary": "{\n  \"survey_title\": \"User Experience and Feedback Survey\",\n  \"intro\": \"Thank you for taking the time to participate in this survey. Your feedback is essential in helping us understand your needs and improve our services. This survey should take approximately 2 minutes to complete, and all responses will be kept confidential.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How did you hear about our service?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Social Media\", \"Search Engine\", \"Friend or Family\", \"Other\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What do you like most about our service?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"Please describe your experience with our customer support team.\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"How would you rate the overall quality of our service?\",\n      \"type\": \"rating\",\n      \"options\": [\"Poor\", \"Fair\", \"Good\", \"Excellent\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"What changes or improvements would you suggest we make to our service?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey. Your feedback is greatly appreciated, and we will use it to improve our services. If you have any further comments or suggestions, please don't hesitate to contact us.\"\n}",
     "call_summary": "",
-    "created_at": "2025-03-21T11:57:52.264425"
+    "created_at": "2025-03-24T19:01:43.954110"
   },
   {
-    "id": 3,
-    "public_survey_id": "58cf852d-697c-4c84-adc2-94dcd94205b8",
-    "prompt": "",
-    "prompt_summary": "",
-    "call_summary": "{\n  \"summary\": \"Brief survey about anime viewing habits. User provided employee ID 994 and gave minimal responses.\",\n  \"ratings\": {\n    \"Viewing Frequency\": { \"rating\": 5, \"comment\": \"User watches anime daily\" },\n    \"Genre Preference\": { \"rating\": 4, \"comment\": \"User prefers action anime\" }\n  },\n  \"overall\": \"User was very brief in responses, giving one-word answers. Seemed somewhat disinterested or in a hurry.\",\n  \"next_steps\": \"Consider following up with more engaging questions or a different format that might encourage more detailed responses.\"\n}",
-    "created_at": "2025-03-21T12:11:22.143196",
+    "id": "d1feef0a-2dd4-4216-981d-dce04a53be9d",
+    "public_survey_id": "34fa0957-842b-4468-943d-68076af7a177",
+    "prompt": "iop",
+    "prompt_summary": "{\n  \"survey_title\": \"IOP Survey: Understanding User Perspectives\",\n  \"intro\": \"Thank you for participating in this survey. The purpose of this survey is to gather information about your opinions and experiences related to the given prompt 'iop'. Your input will help us better understand your needs and improve our services. Please answer the questions honestly, and to the best of your ability. The survey should take approximately 2 minutes to complete.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"What does the term 'iop' mean to you?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"How often do you encounter the term 'iop' in your daily life?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Daily\", \"Weekly\", \"Monthly\", \"Rarely\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"Can you describe a situation where you had to deal with 'iop'?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"How would you rate your overall satisfaction with the information available about 'iop'?\",\n      \"type\": \"rating\",\n      \"options\": [\"Very Satisfied\", \"Satisfied\", \"Neutral\", \"Dissatisfied\", \"Very Dissatisfied\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"Do you have any suggestions for improving the availability or quality of information related to 'iop'?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to participate in this survey. Your input is valuable to us, and we appreciate your honesty. If you have any further comments or suggestions, please feel free to include them below. We will use the information collected to improve our services and better meet your needs in the future.\"\n}",
+    "call_summary": "",
+    "created_at": "2025-03-24T19:04:21.973427"
+  },
+  {
+    "id": "fa22a45a-5e52-413d-8a19-4a32eceabdc5",
+    "public_survey_id": "7614fc5e-e560-4b2c-95ab-4b04d22c95a0",
+    "prompt": "reddit sruvey",
+    "prompt_summary": "{\n  \"survey_title\": \"Reddit User Experience Survey\",\n  \"intro\": \"We appreciate you taking the time to participate in this survey. The purpose of this survey is to gather information about your experiences and opinions on using Reddit. Your input will help us better understand the needs and preferences of our users, and improve the overall Reddit experience. Please answer the questions honestly, and to the best of your ability.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How often do you visit Reddit?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Daily\", \"Weekly\", \"Monthly\", \"Rarely\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What do you primarily use Reddit for?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"How would you rate the overall quality of content on Reddit?\",\n      \"type\": \"rating\",\n      \"options\": [\"Excellent\", \"Good\", \"Fair\", \"Poor\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"Can you describe a particularly positive experience you've had on Reddit?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"Which of the following features do you think would improve your Reddit experience? (Select all that apply)\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Improved moderation\", \"Enhanced search functionality\", \"More personalized content recommendations\", \"Other (please specify)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"On a scale of 1-5, how satisfied are you with the current state of Reddit?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Very dissatisfied)\", \"2\", \"3\", \"4\", \"5 (Very satisfied)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 7,\n      \"question\": \"Do you have any suggestions for new features or improvements that would make Reddit more enjoyable for you?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey! Your input is invaluable to us, and will help shape the future of Reddit. If you have any further comments or suggestions, please don't hesitate to share them with us.\"\n}",
+    "call_summary": "",
+    "created_at": "2025-03-25T04:41:27.617562"
+  },
+  {
+    "id": "2ac20f86-a5a2-4673-ad79-8944ba188528",
+    "public_survey_id": "21eaa1f4-68dc-4e25-8346-faeca1b53e3a",
+    "prompt": "family survey",
+    "prompt_summary": "{\n  \"survey_title\": \"Family Dynamics and Interactions Survey\",\n  \"intro\": \"This survey aims to understand the dynamics and interactions within families. Your responses will help us better comprehend the values, relationships, and activities that shape family life. Please answer the questions honestly, and all responses will be kept confidential. The survey should take approximately 2 minutes to complete.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"What is your marital status?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Married\", \"Single\", \"Divorced\", \"Widowed\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"How many children do you have?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"How would you rate the quality of communication within your family?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Poor)\", \"2\", \"3\", \"4\", \"5 (Excellent)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"Can you describe a recent family activity or tradition that you enjoyed? Please explain why it was significant to you.\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How often do you have family dinners or meals together?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Daily\", \"Several times a week\", \"About once a week\", \"Less than once a week\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"What activities do you enjoy doing with your family? (Check all that apply)\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Outdoor activities\", \"Indoor games\", \"Watching movies\", \"Volunteering\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 7,\n      \"question\": \"On a scale of 1-5, how would you rate your overall family satisfaction?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Low)\", \"2\", \"3\", \"4\", \"5 (High)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 8,\n      \"question\": \"Is there anything you'd like to change or improve about your family dynamics? If so, please describe.\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey. Your responses are valuable to us, and we appreciate your honesty. If you have any additional comments or suggestions, please feel free to include them below.\"\n}",
+    "call_summary": "",
+    "created_at": "2025-03-25T04:44:58.026584"
+  },
+  {
+    "id": "6277ab80-860b-4ed9-8790-3bbd1c75c2a2",
+    "public_survey_id": "d3f48957-c221-4f49-836a-688d455feef5",
+    "prompt": "friends survey",
+    "prompt_summary": "{\n  \"survey_title\": \"Friends Survey: Understanding Social Connections\",\n  \"intro\": \"This survey aims to gather information about your friendships and social connections. Your responses will help us better understand the dynamics of friendships and how they impact our lives. Please answer the questions honestly, and feel free to elaborate on your responses whenever possible.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How many close friends do you have?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Less than 3\", \"3-5\", \"6-10\", \"More than 10\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What do you value most in a friendship?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"Can you describe a particularly meaningful experience you've had with a friend?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"How would you rate the overall quality of your friendships?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Poor)\", \"2\", \"3\", \"4\", \"5 (Excellent)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How often do you stay in touch with your friends who live far away?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Daily\", \"Weekly\", \"Monthly\", \"Rarely\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"What activities do you usually do with your friends?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey! Your responses are invaluable to us, and we appreciate your honesty. If you have any further comments or suggestions, please feel free to share them with us.\"\n}",
+    "call_summary": "",
+    "created_at": "2025-03-25T04:50:13.224119"
+  },
+  {
+    "id": "6d3fa83b-cec0-4678-8dcb-319f041d3cd4",
+    "public_survey_id": "69650d10-8c6d-48b1-a6ff-ee5cbb27adbd",
+    "prompt": "iitkgp ms hall survey",
+    "prompt_summary": "{\n  \"survey_title\": \"IIT KGP MS Hall Survey\",\n  \"intro\": \"We appreciate your participation in this survey, which aims to gather feedback and opinions about the MS Hall at IIT Kharagpur. Your input will help us understand the strengths and weaknesses of the hall and make improvements to enhance the overall living experience. Please answer the questions honestly, and feel free to provide any additional comments or suggestions. The survey should take approximately 2 minutes to complete.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How would you rate the overall cleanliness and maintenance of MS Hall?\",\n      \"type\": \"rating\",\n      \"options\": [\"Excellent\", \"Good\", \"Fair\", \"Poor\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What do you think is the biggest advantage of living in MS Hall?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"How would you describe the quality of food in the MS Hall mess?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Very Satisfactory\", \"Satisfactory\", \"Neutral\", \"Dissatisfactory\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"Have you experienced any issues with the infrastructure or facilities in MS Hall? If yes, please describe.\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How likely are you to recommend MS Hall to a friend or colleague?\",\n      \"type\": \"rating\",\n      \"options\": [\"Very Likely\", \"Likely\", \"Neutral\", \"Unlikely\", \"Very Unlikely\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"Do you have any suggestions for improving the living experience in MS Hall?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to participate in this survey. Your feedback is valuable to us, and we will consider your suggestions for future improvements. If you have any additional comments or concerns, please do not hesitate to contact us.\"\n}",
+    "call_summary": "",
+    "created_at": "2025-03-25T05:07:22.356601"
+  },
+  {
+    "id": "d8452e04-56a1-438c-a366-409c21eac2c5",
+    "public_survey_id": "971ceb0c-c6f7-4ab5-8994-655598a6cc7c",
+    "prompt": "iit survey",
+    "prompt_summary": "{\n  \"survey_title\": \"IIT Survey: Understanding Student Preferences and Experiences\",\n  \"intro\": \"Welcome to the IIT survey. The purpose of this survey is to gather information about your experiences, preferences, and opinions as a student at IIT. Your feedback will help us to better understand your needs and make improvements to our programs and services. The survey should take approximately 2 minutes to complete, and all responses will be kept confidential.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"What is your current academic level?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Undergraduate\", \"Postgraduate\", \"Ph.D.\", \"Other\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What do you like most about your program?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"Please rate the quality of instruction you have received so far.\",\n      \"type\": \"rating\",\n      \"options\": [\"Excellent\", \"Good\", \"Fair\", \"Poor\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"Can you describe any challenges you have faced as a student at IIT?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How would you rate your overall satisfaction with your experience at IIT?\",\n      \"type\": \"rating\",\n      \"options\": [\"Very Satisfied\", \"Satisfied\", \"Neutral\", \"Dissatisfied\", \"Very Dissatisfied\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"What changes or improvements would you suggest to enhance student life at IIT?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to participate in this survey. Your feedback is invaluable to us, and we appreciate your honesty. If you have any further comments or suggestions, please feel free to include them below. Once again, thank you for your participation.\"\n}",
+    "call_summary": "",
+    "created_at": "2025-03-25T05:40:18.436733"
+  },
+  {
+    "id": "e8093685-12d5-480d-9c82-f57f9c45e435",
+    "public_survey_id": "ba23fb51-b9b4-4d0f-9c79-bed9d3b29e01",
+    "prompt": "anime survey",
+    "prompt_summary": "{\n  \"survey_title\": \"Anime Preferences and Viewing Habits Survey\",\n  \"intro\": \"Welcome to our anime survey. We're interested in learning more about your anime preferences and viewing habits. Your responses will help us better understand the anime community and provide valuable insights for content creators and distributors. Please answer the questions honestly, and feel free to elaborate on your responses when necessary. The survey should take around 2 minutes to complete.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"What type of anime do you enjoy watching the most?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Action\", \"Comedy\", \"Drama\", \"Romance\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"How often do you watch anime?\",\n      \"type\": \"rating\",\n      \"options\": [\"Daily\", \"Weekly\", \"Monthly\", \"Rarely\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"What is your favorite anime series and why do you enjoy it?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"How do you typically watch anime?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Streaming services\", \"DVD/Blu-ray\", \"TV broadcast\", \"Online downloads\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"What do you think is missing from the current anime landscape?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"How important is subtitles or dubbing to your anime viewing experience?\",\n      \"type\": \"rating\",\n      \"options\": [\"Very important\", \"Somewhat important\", \"Not very important\", \"Not at all important\"],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete our anime survey. Your input is valuable to us, and we appreciate your participation. If you have any additional comments or suggestions, please feel free to share them with us.\"\n}",
+    "call_summary": "",
+    "created_at": "2025-03-25T05:42:04.967350"
+  },
+  {
+    "id": "477de939-874a-484e-8284-f56354aa5597",
+    "public_survey_id": "f186ad8d-a8d2-4652-aeb5-9b9720df56a4",
+    "prompt": "fat people survey",
+    "prompt_summary": "{\n  \"survey_title\": \"Perspectives and Experiences of Individuals with Excess Weight\",\n  \"intro\": \"This survey aims to understand the challenges, perceptions, and experiences of individuals with excess weight. Your responses will help us better comprehend the social, emotional, and physical aspects of being overweight and inform strategies to promote inclusivity, support, and health. All responses are anonymous and confidential. Please answer the questions honestly, and thank you for participating.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"What is your current weight status?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Underweight\", \"Normal weight\", \"Overweight\", \"Obese\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"How do you think society perceives individuals who are overweight?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"How often do you engage in physical activity?\",\n      \"type\": \"rating\",\n      \"options\": [\"Daily\", \"Several times a week\", \"About once a week\", \"Less than once a week\", \"Never\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"What are some challenges you face due to your weight?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How supportive is your social environment (family, friends) regarding your weight and health?\",\n      \"type\": \"rating\",\n      \"options\": [\"Very supportive\", \"Somewhat supportive\", \"Neutral\", \"Somewhat unsupportive\", \"Not supportive at all\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"Have you ever experienced discrimination or negative comments because of your weight?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Yes\", \"No\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 7,\n      \"question\": \"What changes would you like to see in public places (e.g., seating, transportation) to make them more accommodating for individuals with excess weight?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 8,\n      \"question\": \"How satisfied are you with your current weight?\",\n      \"type\": \"rating\",\n      \"options\": [\"Very satisfied\", \"Somewhat satisfied\", \"Neutral\", \"Somewhat dissatisfied\", \"Very dissatisfied\"],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to participate in this survey. Your input is invaluable to us, and we appreciate your honesty. Your responses will contribute to a better understanding of the experiences of individuals with excess weight and help inform initiatives to support health, inclusivity, and respect for all individuals, regardless of their weight.\"\n}",
+    "call_summary": "",
+    "created_at": "2025-03-25T05:47:44.006585"
+  },
+  {
+    "id": "b34a2710-0f51-4c60-8f0b-1255a2291f57",
+    "public_survey_id": "f35ca4c1-89a9-40f5-a342-624475f279a5",
+    "prompt": "hydreabad survey",
+    "prompt_summary": "{\n  \"survey_title\": \"Hyderabad Resident Survey\",\n  \"intro\": \"We appreciate your time in participating in this survey. The purpose of this survey is to gather information about the experiences and perceptions of residents in Hyderabad. Your input will help us to better understand the needs and concerns of the community, and to identify areas for improvement. Please answer the questions honestly, and to the best of your ability.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How long have you been living in Hyderabad?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Less than 1 year\", \"1-3 years\", \"4-6 years\", \"More than 6 years\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What do you like most about living in Hyderabad?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"How would you rate the overall quality of life in Hyderabad?\",\n      \"type\": \"rating\",\n      \"options\": [\"Excellent\", \"Good\", \"Fair\", \"Poor\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"What are some of the challenges you face while living in Hyderabad? Please elaborate.\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How satisfied are you with the public transportation in Hyderabad?\",\n      \"type\": \"rating\",\n      \"options\": [\"Very Satisfied\", \"Satisfied\", \"Neutral\", \"Dissatisfied\", \"Very Dissatisfied\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"What changes would you like to see in Hyderabad to make it a better place to live?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to participate in this survey. Your feedback is valuable to us, and will help us to create a better Hyderabad for everyone. We appreciate your honesty and insight, and look forward to using this information to make positive changes in the community.\"\n}",
+    "call_summary": "",
+    "created_at": "2025-03-25T06:12:23.790321"
+  },
+  {
+    "id": "a4562b5d-c9e5-45cb-9087-2b69d87f0acd",
+    "public_survey_id": "0677f608-8f2d-48c5-8b81-a0c45832f030",
+    "prompt": "aime survey",
+    "prompt_summary": "{\n  \"survey_title\": \"AIME Survey: Understanding Your Needs and Expectations\",\n  \"intro\": \"Dear Respondent, we appreciate your time and participation in this survey. The purpose of this survey is to gather information about your needs, expectations, and experiences. Your input will help us improve our services and provide better support to our community. Please answer the questions honestly, and to the best of your ability. The survey should take approximately 2 minutes to complete.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"What is your primary reason for participating in this survey?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\n        \"To provide feedback on our services\",\n        \"To learn more about our community\",\n        \"To influence future improvements\",\n        \"Other (please specify)\"\n      ],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"Can you briefly describe your current role or profession?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"How would you rate the overall quality of our services?\",\n      \"type\": \"rating\",\n      \"options\": [\n        \"Excellent\",\n        \"Good\",\n        \"Fair\",\n        \"Poor\"\n      ],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"What do you think are the most significant challenges facing our community, and how can we address them?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How likely are you to recommend our services to a friend or colleague?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\n        \"Very likely\",\n        \"Somewhat likely\",\n        \"Not very likely\",\n        \"Not at all likely\"\n      ],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to participate in this survey. Your input is invaluable to us, and we appreciate your feedback. If you have any additional comments or suggestions, please feel free to include them below. We will review all responses and use them to improve our services and support to the community.\"\n}",
+    "call_summary": "{\n  \"employee_id\": \"224\",\n  \"summary\": \"Brief call where the user agreed to participate in a survey. The user confirmed their employee ID and indicated they wanted to provide feedback.\",\n  \"ratings\": {\n    \"Engagement\": { \"rating\": 2, \"comment\": \"User gave minimal responses, showing low engagement\" },\n    \"Cooperation\": { \"rating\": 3, \"comment\": \"User was willing to participate but with very short answers\" }\n  },\n  \"overall\": \"The call was very short with the user providing only minimal responses. The user seemed neutral or slightly disinterested but willing to proceed with the survey.\",\n  \"next_steps\": \"Follow up with more engaging questions that might encourage more detailed responses. Consider a different approach for this employee to gather meaningful feedback.\"\n}",
+    "created_at": "2025-03-25T06:33:30.321932",
     "structured_data": {
-      "overall": "The survey focused on anime preferences rather than employee satisfaction or workplace factors. Employee provided minimal responses, showing limited engagement.",
+      "overall": "The conversation was too brief to draw meaningful conclusions. The employee was willing to participate but provided minimal responses. Further engagement is needed for actionable insights.",
       "ratings": {
         "enps": {
           "rating": 3,
-          "comment": "No promotion or detraction indicators"
+          "comment": "Willing to provide feedback but enthusiasm level unclear"
         },
         "happiness": {
           "rating": 3,
-          "comment": "Neutral responses, minimal engagement"
+          "comment": "Neutral tone, insufficient data to determine happiness level"
         },
         "communication": {
           "rating": 2,
-          "comment": "Very brief, one-word responses"
+          "comment": "Very brief responses, minimal engagement"
         },
         "mental_health": {
           "rating": 3,
-          "comment": "No indicators to assess mental health"
+          "comment": "No indicators of mental health status in the brief exchange"
         },
         "job_satisfaction": {
           "rating": 3,
-          "comment": "No job-related information provided"
+          "comment": "No specific job satisfaction information shared"
         }
       },
-      "summary": "Brief survey about anime viewing habits. Employee watches anime daily and prefers action genre.",
-      "next_steps": "Follow up with a more job-focused survey as this one was about anime preferences. Consider using more engaging questions to elicit detailed responses.",
-      "employee_id": "994",
-      "raw_transcript": "AI: Hey. How are you? I want to take some some of time for short survey. User: But AI: Before we get started, could you please provide your employee ID? User: 9 9 4. AI: Thank you for providing your employee ID 994. Is that correct? User: Yeah. AI: Great. Let's dive into the survey. This survey is about understanding your anime viewing habits and preferences. Your input will help us better understand the anime community and might even influence future anime productions. Please feel free to share your thoughts honestly. To start off, I'm curious about how often anime fits into your routine. Is it something you enjoy daily or perhaps it's more of a weekly treat for you? User: Daily. AI: That's awesome. Watching anime daily must mean it's a big part of your routine. It's great to have something you enjoy so much. Out of curiosity, when it comes to anime, is there a particular genre that really grabs your attention? Maybe something you always find yourself coming back to. User: Action. AI: Action. Got it.",
+      "summary": "Brief interaction with an employee who agreed to participate in a survey to provide feedback. The conversation was minimal with short responses.",
+      "next_steps": "Follow up with a more comprehensive survey as this interaction was too brief to gather meaningful insights",
+      "employee_id": "224",
+      "raw_transcript": "AI: Hey. How are you? I want to take some some of time for a short survey.\nUser: Yeah. Go ahead.\nAI: Great. First, could you please provide your employee ID?\nUser: 2 24.\nAI: Got it. Your employee ID is 224. Correct?\nUser: Yeah.\nAI: Thanks for confirming that. To start off, let me give you a brief idea about this survey. We are gathering feedback to understand your needs, expectations, and experiences. Your insights will help us enhance our services and support for the community. It should only take a couple of minutes. So what motivated you to participate in this survey today? Are you looking to share feedback on our services, learn more about our community, influence future improvements, or something else?\nUser: Yeah. Feedback.\nAI: That's great to hear.",
       "transcript_summary": {
         "concerns": [
-          "Minimal engagement with survey",
-          "Very brief responses"
+          "Minimal engagement might indicate time constraints or low interest"
         ],
         "feedback": [
-          "Survey appears to be about anime rather than work-related topics"
+          "Responses were very brief, suggesting possible survey fatigue or disinterest"
         ],
         "highlights": [
-          "Daily anime viewing",
-          "Preference for action genre"
+          "Employee agreed to participate in the survey",
+          "Employee confirmed ID as 224"
         ]
       }
     },
-    "employee_id": "994"
+    "employee_id": "224"
   },
   {
-    "id": 4,
-    "public_survey_id": "58cf852d-697c-4c84-adc2-94dcd94205b8",
+    "id": "ac4c0ba5-a66f-469b-83fc-1135fc3397b4",
+    "public_survey_id": "8b30a5d0-f3f6-455b-9541-75881eda017d",
+    "prompt": "internal feedback for the team",
+    "prompt_summary": "{\n  \"survey_title\": \"Internal Feedback for the Team\",\n  \"intro\": \"This survey aims to gather your thoughts and opinions on our team's performance, communication, and overall work environment. Your feedback will help us identify areas for improvement and make informed decisions to enhance our team's effectiveness. Please answer the questions honestly, and feel free to elaborate on your responses as needed.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"What do you think is the team's greatest strength?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"How would you rate the team's communication?\",\n      \"type\": \"rating\",\n      \"options\": [\"Poor\", \"Fair\", \"Good\", \"Excellent\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"What can we do to improve our collaboration and teamwork?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"Which of the following best describes your level of job satisfaction?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Very Satisfied\", \"Satisfied\", \"Neutral\", \"Dissatisfied\", \"Very Dissatisfied\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"Do you have any suggestions for new projects or initiatives that the team could undertake?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"How would you rate the level of support you receive from your colleagues?\",\n      \"type\": \"rating\",\n      \"options\": [\"Poor\", \"Fair\", \"Good\", \"Excellent\"],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to provide your feedback. Your input is invaluable to us, and we will use it to make positive changes to our team's dynamics and work environment. If you have any further comments or suggestions, please do not hesitate to reach out to us.\"\n}",
+    "call_summary": "",
+    "created_at": "2025-03-25T12:40:02.175555"
+  },
+  {
+    "id": "4745572e-58b2-405c-83e2-ef0d51cad979",
+    "public_survey_id": "d0d0f4e9-0781-4dde-a5b2-b7a79c0fadb8",
+    "prompt": "internal feedback for the team",
+    "prompt_summary": "{\n  \"survey_title\": \"Internal Feedback for Team Improvement\",\n  \"intro\": \"The purpose of this survey is to gather your thoughts and opinions on our team's performance and identify areas for improvement. Your feedback will help us to better understand our strengths and weaknesses, and make informed decisions to enhance our overall team experience. Please answer the questions honestly, and feel free to provide any additional comments or suggestions you may have.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"What do you think is the team's greatest strength?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"How would you rate the level of communication within the team?\",\n      \"type\": \"rating\",\n      \"options\": [\"Poor\", \"Fair\", \"Good\", \"Excellent\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"What are some challenges you have faced while working with the team?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"How often do you receive feedback on your performance?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Daily\", \"Weekly\", \"Monthly\", \"Rarely\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"What changes would you like to see implemented to improve the team's overall performance?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"How satisfied are you with the team's current workflow and processes?\",\n      \"type\": \"rating\",\n      \"options\": [\"Very Dissatisfied\", \"Somewhat Dissatisfied\", \"Neutral\", \"Somewhat Satisfied\", \"Very Satisfied\"],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey. Your feedback is invaluable to us, and we will use it to make positive changes to our team's dynamics and performance. If you have any further comments or suggestions, please don't hesitate to reach out to us.\"\n}",
+    "call_summary": "",
+    "created_at": "2025-03-25T12:42:47.803677"
+  },
+  {
+    "id": "e7de5272-b143-448b-b18e-5bf771d6ba9f",
+    "public_survey_id": "d0d0f4e9-0781-4dde-a5b2-b7a79c0fadb8",
     "prompt": "",
     "prompt_summary": "",
-    "call_summary": "",
-    "created_at": "2025-03-21T13:14:52.344152"
-  },
-  {
-    "id": 5,
-    "public_survey_id": "58cf852d-697c-4c84-adc2-94dcd94205b8",
-    "prompt": "",
-    "prompt_summary": "",
-    "call_summary": "",
-    "created_at": "2025-03-21T13:14:54.061529"
-  },
-  {
-    "id": 6,
-    "public_survey_id": "58cf852d-697c-4c84-adc2-94dcd94205b8",
-    "prompt": "",
-    "prompt_summary": "",
-    "call_summary": "",
-    "created_at": "2025-03-21T13:14:56.654572"
-  },
-  {
-    "id": 7,
-    "public_survey_id": "58cf852d-697c-4c84-adc2-94dcd94205b8",
-    "prompt": "",
-    "prompt_summary": "",
-    "call_summary": "",
-    "created_at": "2025-03-21T13:14:57.211251"
-  },
-  {
-    "id": 8,
-    "public_survey_id": "58cf852d-697c-4c84-adc2-94dcd94205b8",
-    "prompt": "",
-    "prompt_summary": "",
-    "call_summary": "",
-    "created_at": "2025-03-21T13:14:57.320844"
-  },
-  {
-    "id": 9,
-    "public_survey_id": "58cf852d-697c-4c84-adc2-94dcd94205b8",
-    "prompt": "",
-    "prompt_summary": "",
-    "call_summary": "",
-    "created_at": "2025-03-21T13:20:11.401218"
-  },
-  {
-    "id": 10,
-    "public_survey_id": "5cff8a37-e243-4cb2-8402-4cac6c0d8f52",
-    "prompt": "loolol",
-    "prompt_summary": "{\n  \"survey_title\": \"Casual Expression Survey\",\n  \"intro\": \"We are conducting this survey to understand how people express themselves in informal settings. Your responses will help us better understand the nuances of casual communication and identify trends in online interactions. Please answer the questions honestly, and feel free to elaborate on your responses as needed.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How often do you use casual expressions like 'loolol' in your online interactions?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Daily\", \"Several times a week\", \"Occasionally\", \"Rarely\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What do you think is the primary purpose of using casual expressions in online communication?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"Can you describe a situation where you used a casual expression to diffuse tension or add humor to an online conversation?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"How important is it for you to be able to express yourself casually in online interactions?\",\n      \"type\": \"rating\",\n      \"options\": [\"Not important at all\", \"Somewhat important\", \"Important\", \"Very important\", \"Extremely important\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"Do you think casual expressions like 'loolol' can be misinterpreted or misunderstood in online communication?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Yes\", \"No\", \"Uncertain\"],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey! Your input is valuable to us, and we appreciate your honesty. If you have any additional comments or suggestions, please feel free to include them below.\"\n}",
-    "call_summary": "",
-    "created_at": "2025-03-21T15:05:51.983777"
-  },
-  {
-    "id": 11,
-    "public_survey_id": "3283425e-673c-4a46-a328-36cbda4ce3d2",
-    "prompt": "hello",
-    "prompt_summary": "{\n  \"survey_title\": \"User Experience and Feedback Survey\",\n  \"intro\": \"We value your opinion and would like to hear about your experiences. This survey aims to gather information about your preferences, expectations, and levels of satisfaction. Your feedback will help us improve and provide better services in the future. Please answer the questions honestly, and feel free to elaborate on your responses whenever possible.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How often do you use online services?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Daily\", \"Weekly\", \"Monthly\", \"Rarely\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What do you like most about our services?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"Can you describe a recent experience you had with our services?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"How would you rate the quality of our services?\",\n      \"type\": \"rating\",\n      \"options\": [\"Excellent\", \"Good\", \"Fair\", \"Poor\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How likely are you to recommend our services to a friend or family member?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Very Likely\", \"Likely\", \"Neutral\", \"Unlikely\", \"Very Unlikely\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"Do you have any suggestions for improving our services?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to participate in this survey. Your feedback is invaluable to us, and we appreciate your honesty. We will use the information gathered to make improvements and enhance your experience with our services. If you have any further comments or questions, please do not hesitate to contact us.\"\n}",
-    "call_summary": "",
-    "created_at": "2025-03-21T15:06:50.957959"
-  },
-  {
-    "id": 12,
-    "public_survey_id": "cc412acf-6baa-40f8-a41b-7a4f0c689dd9",
-    "prompt": "fvfdv",
-    "prompt_summary": "{\n  \"survey_title\": \"User Experience and Feedback Survey\",\n  \"intro\": \"We value your opinion and would like to hear about your recent interactions with our services. This survey aims to understand your experiences, gather feedback, and identify areas for improvement. Your responses will be kept confidential and anonymous. Please answer the questions honestly, and feel free to elaborate on your responses when necessary.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How did you hear about our services?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Social Media\", \"Search Engine\", \"Word of Mouth\", \"Other\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What do you like most about our services?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"Please describe your most recent experience with our services.\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"How would you rate the quality of our services?\",\n      \"type\": \"rating\",\n      \"options\": [\"Excellent\", \"Good\", \"Fair\", \"Poor\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How likely are you to recommend our services to a friend or colleague?\",\n      \"type\": \"rating\",\n      \"options\": [\"Very Likely\", \"Likely\", \"Neutral\", \"Unlikely\", \"Very Unlikely\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"Do you have any suggestions for how we can improve our services?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey. Your feedback is invaluable to us, and we will use it to make improvements to our services. If you have any further comments or suggestions, please do not hesitate to contact us.\"\n}",
-    "call_summary": "",
-    "created_at": "2025-03-21T15:10:24.363817"
-  },
-  {
-    "id": 13,
-    "public_survey_id": "81598cd0-721e-498b-9c72-3bc81afaac45",
-    "prompt": "dfvfvdfv",
-    "prompt_summary": "{\n  \"survey_title\": \"Understanding User Experience and Feedback\",\n  \"intro\": \"We value your opinion and would like to hear about your recent interactions. This survey aims to gather information about your experiences, preferences, and suggestions. Your input will help us improve our services and better meet your needs. Please answer the questions honestly, and thank you for taking the time to participate.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How did you hear about our service?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Social Media\", \"Friend or Family\", \"Online Search\", \"Other\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What do you like most about our service?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"How would you rate the quality of our service?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Poor)\", \"2 (Fair)\", \"3 (Good)\", \"4 (Very Good)\", \"5 (Excellent)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"Can you describe a recent experience you had with our service? Please provide as much detail as possible.\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How likely are you to recommend our service to a friend or colleague?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Very Likely\", \"Somewhat Likely\", \"Not Very Likely\", \"Not at All Likely\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"Do you have any suggestions for how we can improve our service?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey. Your feedback is invaluable to us, and we will use it to make improvements to our service. If you have any further comments or suggestions, please do not hesitate to contact us.\"\n}",
-    "call_summary": "",
-    "created_at": "2025-03-21T15:11:26.410195"
-  },
-  {
-    "id": 14,
-    "public_survey_id": "8c3d9e24-ff22-42be-89b1-0e2780fabbe7",
-    "prompt": "hello",
-    "prompt_summary": "{\n  \"survey_title\": \"User Experience and Feedback Survey\",\n  \"intro\": \"We value your opinions and would like to hear about your experiences. This survey aims to collect your thoughts and feelings about various aspects of our services. Your feedback will be used to improve our offerings and provide better support to our users. Please answer the questions honestly, and feel free to elaborate on your responses when necessary. The survey should take approximately 2 minutes to complete.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How did you hear about our services?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Social Media\", \"Search Engine\", \"Word of Mouth\", \"Other\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What do you like most about our services?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"Please describe a recent experience you had with our services.\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"How would you rate the quality of our services?\",\n      \"type\": \"rating\",\n      \"options\": [\"Poor\", \"Fair\", \"Good\", \"Excellent\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"What can we do to improve our services?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey. Your feedback is invaluable to us, and we appreciate your honesty. If you have any further comments or suggestions, please do not hesitate to contact us. We are committed to continually improving our services and look forward to serving you better in the future.\"\n}",
-    "call_summary": "",
-    "created_at": "2025-03-21T15:14:11.985452"
-  },
-  {
-    "id": 15,
-    "public_survey_id": "d9339eec-6ca2-4daf-9029-fdf57b23992c",
-    "prompt": "fvfdvfdv",
-    "prompt_summary": "{\n  \"survey_title\": \"Random Input Survey\",\n  \"intro\": \"We appreciate you taking the time to participate in this survey. The purpose of this survey is to gather your thoughts and opinions on various topics. Your input will help us better understand your preferences and needs. Please answer the questions honestly, and feel free to elaborate on your responses as needed.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"What is your preferred method of communication?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Email\", \"Phone\", \"Text Message\", \"Social Media\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"Can you describe a recent experience where you received excellent customer service?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"How would you rate the quality of our website?\",\n      \"type\": \"rating\",\n      \"options\": [\"Poor\", \"Fair\", \"Good\", \"Excellent\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"What is your favorite hobby or activity to do in your free time?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How likely are you to recommend our products or services to a friend or family member?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Very Likely\", \"Somewhat Likely\", \"Neutral\", \"Somewhat Unlikely\", \"Very Unlikely\"],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey. Your input is invaluable to us, and we appreciate your honesty. If you have any additional comments or suggestions, please feel free to include them below. We will use this information to improve our products and services to better meet your needs.\"\n}",
-    "call_summary": "",
-    "created_at": "2025-03-21T15:17:39.372450"
-  },
-  {
-    "id": 16,
-    "public_survey_id": "2af56986-5055-476f-9fe8-1ec413541902",
-    "prompt": "reddit survey",
-    "prompt_summary": "{\n  \"survey_title\": \"Reddit User Experience Survey\",\n  \"intro\": \"We value your opinion and want to hear about your experiences on Reddit. This survey aims to gather information about your usage habits, preferences, and suggestions for improvement. Your responses will help us better understand our community and make informed decisions to enhance the platform. Please answer the questions honestly, and thank you for participating!\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How often do you visit Reddit?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Daily\", \"Weekly\", \"Monthly\", \"Rarely\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What do you primarily use Reddit for?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"How would you rate the overall quality of content on Reddit?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Poor)\", \"2\", \"3\", \"4\", \"5 (Excellent)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"Have you ever encountered any issues or problems while using Reddit? If yes, please describe.\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How likely are you to recommend Reddit to a friend or colleague?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Not Likely)\", \"2\", \"3\", \"4\", \"5 (Very Likely)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"What features or changes would you like to see implemented on Reddit in the future?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey! Your feedback is invaluable to us, and we appreciate your honesty. Your responses will be kept confidential and used to improve the Reddit experience for everyone. If you have any further comments or suggestions, feel free to share them with us.\"\n}",
-    "call_summary": "",
-    "created_at": "2025-03-21T15:23:11.018980"
-  },
-  {
-    "id": 17,
-    "public_survey_id": "2af56986-5055-476f-9fe8-1ec413541902",
-    "prompt": "",
-    "prompt_summary": "",
-    "call_summary": "",
-    "created_at": "2025-03-21T15:26:21.002344"
-  },
-  {
-    "id": 18,
-    "public_survey_id": "2af56986-5055-476f-9fe8-1ec413541902",
-    "prompt": "",
-    "prompt_summary": "",
-    "call_summary": "",
-    "created_at": "2025-03-21T15:34:10.197334"
-  },
-  {
-    "id": 19,
-    "public_survey_id": "2af56986-5055-476f-9fe8-1ec413541902",
-    "prompt": "",
-    "prompt_summary": "",
-    "call_summary": "",
-    "created_at": "2025-03-21T15:34:16.753170"
-  },
-  {
-    "id": 20,
-    "public_survey_id": "2af56986-5055-476f-9fe8-1ec413541902",
-    "prompt": "",
-    "prompt_summary": "",
-    "call_summary": "",
-    "created_at": "2025-03-21T15:34:19.246960"
-  },
-  {
-    "id": 21,
-    "public_survey_id": "2af56986-5055-476f-9fe8-1ec413541902",
-    "prompt": "",
-    "prompt_summary": "",
-    "call_summary": "",
-    "created_at": "2025-03-21T15:36:17.801230"
-  },
-  {
-    "id": 22,
-    "public_survey_id": "2af56986-5055-476f-9fe8-1ec413541902",
-    "prompt": "",
-    "prompt_summary": "",
-    "call_summary": "",
-    "created_at": "2025-03-21T15:36:27.939163"
-  },
-  {
-    "id": 23,
-    "public_survey_id": "9c035d09-27a3-44f8-85b8-71a0e25fba0a",
-    "prompt": "ghghgg",
-    "prompt_summary": "{\n  \"survey_title\": \"Understanding User Input and Feedback\",\n  \"intro\": \"This survey aims to gather information about your expectations and experiences with text-based interactions. Your input will help us improve our systems and provide better services. Please answer the questions honestly, and feel free to elaborate on your responses when necessary.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"What do you think is the most important aspect of a text-based interaction system?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Accuracy\", \"Speed\", \"Relevance\", \"Tone\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"Can you describe a recent experience you had with a text-based system? What did you like or dislike about it?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"How would you rate the overall quality of text-based systems you have used in the past?\",\n      \"type\": \"rating\",\n      \"options\": [\"Poor\", \"Fair\", \"Good\", \"Excellent\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"What features do you think are missing from current text-based systems?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How likely are you to recommend text-based systems to friends or colleagues?\",\n      \"type\": \"rating\",\n      \"options\": [\"Not at all likely\", \"Somewhat unlikely\", \"Neutral\", \"Somewhat likely\", \"Very likely\"],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to participate in this survey. Your input is invaluable to us, and we appreciate your honesty. Your responses will be used to improve our systems and provide better services to you and others in the future.\"\n}",
-    "call_summary": "",
-    "created_at": "2025-03-21T16:07:33.002997"
-  },
-  {
-    "id": 24,
-    "public_survey_id": "71845b5e-f67a-46a6-a723-da828de55648",
-    "prompt": "fcsdc",
-    "prompt_summary": "{\n  \"survey_title\": \"Community Development and Service Center (FCSDC) Survey\",\n  \"intro\": \"The purpose of this survey is to gather your opinions and experiences about the services provided by the Family and Community Services Development Center (FCSDC). Your feedback will help us better understand the needs of our community and improve our services. Please answer the questions honestly, and thank you for taking the time to participate.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"What is your primary reason for visiting the FCSDC?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Seeking information on community resources\", \"Requiring assistance with a specific issue\", \"Volunteering or donating\", \"Other\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"How would you rate the overall quality of service you received from the FCSDC?\",\n      \"type\": \"rating\",\n      \"options\": [\"Poor\", \"Fair\", \"Good\", \"Excellent\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"Can you describe your experience with the FCSDC staff?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"What services or resources do you think are missing from the FCSDC?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How likely are you to recommend the FCSDC to a friend or family member?\",\n      \"type\": \"rating\",\n      \"options\": [\"Not likely at all\", \"Somewhat unlikely\", \"Neutral\", \"Somewhat likely\", \"Very likely\"],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey! Your input is invaluable to us. If you have any additional comments or suggestions, please do not hesitate to contact us. We appreciate your feedback and look forward to serving you better in the future.\"\n}",
-    "call_summary": "",
-    "created_at": "2025-03-21T16:55:58.922106"
-  },
-  {
-    "id": 25,
-    "public_survey_id": "2cb0ed2a-e3c0-45f8-b8fc-015d4b266c20",
-    "prompt": "iit survey",
-    "prompt_summary": "{\n  \"survey_title\": \"IIT Student Experience Survey\",\n  \"intro\": \"Dear students, we appreciate your participation in this survey. The purpose of this survey is to gather your opinions and experiences about various aspects of student life at IIT. Your feedback will help us understand your needs and make improvements to enhance your overall experience. Please answer the questions honestly, and all responses will be kept confidential.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"What is your current year of study?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"First year\", \"Second year\", \"Third year\", \"Fourth year\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"How would you rate the quality of teaching at IIT?\",\n      \"type\": \"rating\",\n      \"options\": [\"Excellent\", \"Good\", \"Fair\", \"Poor\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"What do you think are the strengths of the IIT curriculum?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"How often do you use the library facilities?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Daily\", \"Weekly\", \"Monthly\", \"Rarely\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"Please suggest any new facilities or services that you would like to see at IIT\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"How satisfied are you with the campus infrastructure?\",\n      \"type\": \"rating\",\n      \"options\": [\"Very satisfied\", \"Satisfied\", \"Neutral\", \"Dissatisfied\"],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey. Your feedback is valuable to us, and we will use it to make improvements to enhance your experience at IIT. If you have any further comments or suggestions, please do not hesitate to contact us.\"\n}",
-    "call_summary": "",
-    "created_at": "2025-03-21T17:21:39.079330"
-  },
-  {
-    "id": 26,
-    "public_survey_id": "34cdfda6-5c99-4248-a8ba-5498c4c70cd1",
-    "prompt": "iit survey ",
-    "prompt_summary": "{\n  \"survey_title\": \"IIT Survey: Understanding Your Experience\",\n  \"intro\": \"Welcome to the IIT survey. This survey aims to gather your feedback and opinions about your experience with IIT. Your input will help us understand your needs and improve our services. The survey should take approximately 2 minutes to complete. Please answer the questions honestly, and all responses will be kept confidential.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"What is your current affiliation with IIT?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Student\", \"Faculty\", \"Alumni\", \"Staff\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What do you think are the strengths of IIT?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"How would you rate the quality of education at IIT?\",\n      \"type\": \"rating\",\n      \"options\": [\"Poor\", \"Fair\", \"Good\", \"Excellent\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"Can you describe a particularly positive experience you've had with IIT?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How likely are you to recommend IIT to others?\",\n      \"type\": \"rating\",\n      \"options\": [\"Not at all likely\", \"Somewhat unlikely\", \"Neutral\", \"Somewhat likely\", \"Very likely\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"Do you have any suggestions for improving IIT?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey. Your feedback is invaluable to us, and we appreciate your honesty. If you have any further comments or suggestions, please feel free to include them below.\"\n}",
-    "call_summary": "",
-    "created_at": "2025-03-21T17:23:41.651831"
-  },
-  {
-    "id": 27,
-    "public_survey_id": "f20bd29a-5dba-48e9-a582-085fca82a274",
-    "prompt": "anime survey",
-    "prompt_summary": "{\n  \"survey_title\": \"Anime Preferences and Viewing Habits Survey\",\n  \"intro\": \"This survey aims to gather information about your anime preferences, viewing habits, and opinions. Your responses will help us better understand the anime community and provide insight into the types of anime that are currently popular. Please answer the questions honestly, and thank you for taking the time to participate in this survey.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"What type of anime do you enjoy watching the most?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Action\", \"Comedy\", \"Drama\", \"Fantasy\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"How often do you watch anime?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Daily\", \"Weekly\", \"Monthly\", \"Rarely\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"What is your favorite anime series and why do you like it?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"How do you usually find out about new anime series?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Social media\", \"Online forums\", \"Friends and family\", \"Anime streaming platforms\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How important is the quality of the animation to your overall enjoyment of an anime series?\",\n      \"type\": \"rating\",\n      \"options\": [\"Not important at all\", \"Somewhat important\", \"Very important\", \"Extremely important\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"Do you prefer watching anime dubbed or subtitled?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Dubbed\", \"Subtitled\", \"Either is fine\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 7,\n      \"question\": \"What do you think is missing from the current anime landscape?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 8,\n      \"question\": \"How likely are you to recommend anime to your friends and family?\",\n      \"type\": \"rating\",\n      \"options\": [\"Not likely at all\", \"Somewhat likely\", \"Very likely\", \"Extremely likely\"],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey! Your input is valuable to us, and we appreciate your honesty. If you have any additional comments or suggestions, please feel free to include them below.\"\n}",
-    "call_summary": "",
-    "created_at": "2025-03-21T17:25:28.864082"
-  },
-  {
-    "id": 28,
-    "public_survey_id": "6dbcad5e-c333-4138-a0b5-16d0f98e83d6",
-    "prompt": "iit survey",
-    "prompt_summary": "{\n  \"survey_title\": \"IIT Survey: Understanding Your Needs and Expectations\",\n  \"intro\": \"Thank you for participating in this survey. The purpose of this survey is to gather information about your experiences, opinions, and expectations related to IIT. Your responses will help us to better understand your needs and improve our services. Please answer the questions honestly, and to the best of your ability. The survey should take around 2 minutes to complete.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"What is your current affiliation with IIT?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Student\", \"Alumni\", \"Faculty\", \"Staff\", \"Other\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What do you think are the strengths of IIT?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"How would you rate the overall quality of education at IIT?\",\n      \"type\": \"rating\",\n      \"options\": [\"Excellent\", \"Good\", \"Fair\", \"Poor\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"Please describe your experience with the resources and facilities provided by IIT.\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How likely are you to recommend IIT to others?\",\n      \"type\": \"rating\",\n      \"options\": [\"Very Likely\", \"Somewhat Likely\", \"Not Very Likely\", \"Not at All Likely\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"Do you have any suggestions for improving IIT?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey. Your feedback is invaluable to us, and we appreciate your honesty. If you have any further comments or suggestions, please do not hesitate to contact us.\"\n}",
-    "call_summary": "",
-    "created_at": "2025-03-21T17:25:52.449894"
-  },
-  {
-    "id": 29,
-    "public_survey_id": "6f6d5665-e640-47a7-a826-ac8542a612ef",
-    "prompt": "internal suvery for the team",
-    "prompt_summary": "{\n  \"survey_title\": \"Internal Team Survey: Feedback and Improvement\",\n  \"intro\": \"This survey aims to gather your thoughts and opinions on our team's performance, communication, and overall work environment. Your input will help us identify areas of improvement and make informed decisions to enhance our team's productivity and job satisfaction. Please answer the questions honestly, and all responses will be kept confidential.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How would you rate your overall satisfaction with the team's current projects?\",\n      \"type\": \"rating\",\n      \"options\": [\"Very Satisfied\", \"Satisfied\", \"Neutral\", \"Dissatisfied\", \"Very Dissatisfied\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What do you think is the biggest challenge facing our team at the moment?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"How would you describe the communication style of our team leads?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Very Effective\", \"Somewhat Effective\", \"Neutral\", \"Somewhat Ineffective\", \"Very Ineffective\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"Can you suggest any new tools or resources that would help you perform your job more efficiently?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How likely are you to recommend our team to a friend or colleague?\",\n      \"type\": \"rating\",\n      \"options\": [\"Very Likely\", \"Somewhat Likely\", \"Neutral\", \"Somewhat Unlikely\", \"Very Unlikely\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"What changes would you like to see implemented in our team's workflow or processes?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey! Your input is invaluable to us, and we will use it to drive positive change within our team. If you have any further comments or suggestions, please don't hesitate to reach out to your team lead or HR representative.\"\n}",
-    "call_summary": "",
-    "created_at": "2025-03-21T17:28:28.904884"
-  },
-  {
-    "id": 30,
-    "public_survey_id": "d4f38cc9-22ff-43e5-bef1-c0b01ca50468",
-    "prompt": "anime survey",
-    "prompt_summary": "{\n  \"survey_title\": \"Anime Preferences and Viewing Habits Survey\",\n  \"intro\": \"This survey aims to understand your preferences and viewing habits when it comes to anime. Your responses will help us better understand the anime community and provide insights into the types of shows and genres that are most popular. Please answer the questions honestly, and thank you for taking the time to participate!\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"What type of anime genre do you enjoy the most?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Action\", \"Comedy\", \"Drama\", \"Romance\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"How many hours of anime do you watch per week?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"What do you think makes a good anime show?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"How do you usually find out about new anime shows?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Social Media\", \"Online Forums\", \"Friend Recommendations\", \"Anime Streaming Platforms\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How would you rate the importance of subtitles in anime?\",\n      \"type\": \"rating\",\n      \"options\": [\"Not Important at All\", \"Somewhat Important\", \"Very Important\", \"Extremely Important\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"What do you like to do while watching anime?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey! Your responses are valuable to us, and we appreciate your input. If you have any additional comments or suggestions, please feel free to include them below.\"\n}",
-    "call_summary": "",
-    "created_at": "2025-03-24T02:32:17.909316"
+    "call_summary": "{\n  \"summary\": \"Employee #102 participated in a team survey, expressing concerns about workplace toxicity, particularly abusive language from managers. Communication was rated positively, and they receive weekly feedback.\",\n  \"ratings\": {\n    \"Communication\": { \"rating\": 4, \"comment\": \"Meeting expectations\" },\n    \"Management\": { \"rating\": 1, \"comment\": \"Managers use very abusive words\" }\n  },\n  \"overall\": \"The employee seemed reluctant to elaborate on issues or suggest improvements, giving short answers and appearing disengaged by the end of the call.\",\n  \"next_steps\": \"Follow up on the serious allegation of abusive language from managers; consider a more private setting for sensitive feedback.\"\n}",
+    "created_at": "2025-03-25T12:43:06.221154",
+    "structured_data": {
+      "overall": "The employee reports a toxic work environment with abusive language from managers, which requires immediate attention. While communication meets expectations and feedback is received regularly, the employee's disengagement during the survey suggests significant underlying issues affecting their wellbeing and job satisfaction.",
+      "ratings": {
+        "enps": {
+          "rating": 1,
+          "comment": "Unlikely to recommend the company given the reported toxicity"
+        },
+        "happiness": {
+          "rating": 2,
+          "comment": "Employee appears unhappy due to reported toxicity in the workplace"
+        },
+        "communication": {
+          "rating": 3,
+          "comment": "Employee stated communication meets expectations, but engagement in the survey was minimal"
+        },
+        "mental_health": {
+          "rating": 2,
+          "comment": "Likely affected by the toxic environment and abusive language from managers"
+        },
+        "job_satisfaction": {
+          "rating": 2,
+          "comment": "Limited engagement suggests low satisfaction with current position"
+        }
+      },
+      "summary": "Employee reports good communication within the team but highlights serious concerns about toxicity, specifically managers using abusive language. Feedback is received weekly, but the employee showed minimal engagement during the survey.",
+      "next_steps": "Immediate investigation into claims of abusive language from managers. Schedule a follow-up conversation with employee #102 in a safe environment to gather more specific information. Consider implementing an anonymous reporting system for workplace toxicity.",
+      "employee_id": "102",
+      "raw_transcript": "AI: Hey. How are you? I want to take some some of time for a short survey. User: Yeah. Go ahead. AI: Great. To get started, could you please provide your employee ID? User: It's 102. AI: Thank you. Just to confirm, your employee ID is 102. Is that correct? User: Yes. AI: Perfect. Thanks for confirming. So this survey is all about gathering your thoughts on how our team is doing what's working well and where we can improve. Your honest feedback is super valuable and will help us strengthen our team dynamics and overall performance. Let's dive in. To start, when you think about our team as a whole, what would you say stands out as our biggest strength? Like, what do we do User: Communication as well. AI: Communication, it's definitely crucial. Speaking of which, how do you feel about the current level of communication within our team? Would you say it's meeting your expectations, or is there room for improvement? How would you rate it overall? User: Yeah. Yeah. It's meeting my expectation. AI: That's good to hear. It's always a relief when communication feels on point, but let's shift gears a bit. Have there been any obstacles or challenges that you faced while working with the team? Anything that stands out or has User: Yeah. They are toxicity. Based toxicity in the field. AI: I'm sorry to hear that. Toxicity can indeed be challenging to deal with. Could you share a bit more about how this has affected your experience with the team? What did you find challenging about it? User: Yeah. Managers use very abusive words. AI: That sounds really tough and unacceptable. I'm sorry you've had to deal with that. It's important for every team member to feel respected and valued. Are there any specific ways you think this issue could be addressed or improved to create a healthier work environment for everyone? User: No. AI: I understand and thank you for sharing that. Let's move on. When it comes to feedback on your performance, how often would you say you receive it? Do you feel like it's consistent and helpful, or is there room improvement in how often or how it's delivered? User: Weekly. AI: Receiving feedback weekly can be quite beneficial. A good rhythm for staying on track. Do you find this frequency to be effective for your growth and understanding of your performance? User: Go ahead. AI: Alright thanks for sharing that. Now considering the team as a whole, if you could implement any changes to help improve our performance, what would those changes be? Is there anything specific User: Hello?",
+      "transcript_summary": {
+        "concerns": [
+          "Toxicity in the workplace",
+          "Managers using abusive words",
+          "Employee's minimal engagement in the survey"
+        ],
+        "feedback": [
+          "Need to address managerial behavior",
+          "Create a safer work environment"
+        ],
+        "highlights": [
+          "Communication meets expectations",
+          "Feedback is received weekly"
+        ]
+      }
+    },
+    "employee_id": "102"
   }
 ]
