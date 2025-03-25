@@ -92,7 +92,7 @@
         // Display the introduction/summary
         const introPara = document.createElement("p");
         introPara.className = "mb-4 text-gray-700";
-        introPara.textContent = survey.intro;
+        introPara.textContent = survey.summary;
         surveyContainer.appendChild(introPara);
 
         // Button to reveal survey questions
@@ -546,7 +546,15 @@ chatButton.addEventListener("click", () => {
       const leftColumn = document.createElement("div");
       leftColumn.className = "w-full md:w-1/2 p-2 border rounded bg-gray-50";
       
-      let summaryText = response.summary || "No summary available";
+      // Combine overall and summary for display
+const overallText = response.overall || "No overall available";
+const summaryText = response.summary || "No summary available";
+const ratingsObj = response.ratings || {};
+const combinedData = {
+  summary: summaryText,
+  ratings: ratingsObj,
+  overall: overallText,
+};
       // Try to parse the summary as JSON and pretty-print if possible
       try {
         const summaryJson = JSON.parse(summaryText);
@@ -557,7 +565,7 @@ chatButton.addEventListener("click", () => {
       
       const summaryPre = document.createElement("pre");
       summaryPre.className = "text-sm text-gray-800 whitespace-pre-wrap break-words";
-      summaryPre.textContent = summaryText;
+      summaryPre.textContent = JSON.stringify(combinedData, null, 2);;
       leftColumn.appendChild(summaryPre);
       
       // Right Column: Create a horizontal bar chart for ratings
@@ -693,8 +701,7 @@ chatButton.addEventListener("click", () => {
         voice_ai_data: response, // response is the current voice AI response object
         prompt_summary: globalPromptSummary,
         messages: [{ role: "user", content: userMessage }],
-        summary: response.summary || "No summary available"
-      };
+ summary: (response.overall ? response.overall + "\n" : "") + (response.summary || "No summary available")      };
       
       fetch("/voiceai-manager", {
         method: "POST",
@@ -744,6 +751,127 @@ chatButton.addEventListener("click", () => {
         fetchVoiceAIResponses();
 
   });
+  // Create a Mega Chat Response button at the end of the page
+const megaChatButton = document.createElement("button");
+megaChatButton.className = "px-4 py-2 bg-purple-500 text-white rounded hover:bg-purple-600 mt-8 block mx-auto";
+megaChatButton.textContent = "Mega Chat Response";
+document.body.appendChild(megaChatButton);
+
+// Variables to hold the mega chat interface and its visibility state
+let megaChatInterface = null;
+let isMegaChatVisible = false;
+
+// Add event listener for the Mega Chat button
+megaChatButton.addEventListener("click", () => {
+  // If the mega chat interface doesn't exist, create it
+  if (!megaChatInterface) {
+    megaChatInterface = document.createElement("div");
+    megaChatInterface.className = "mt-4 p-4 border rounded bg-white w-full max-w-3xl mx-auto";
+
+    // Add a heading for the mega chat interface
+    const megaChatHeader = document.createElement("h2");
+    megaChatHeader.className = "text-xl font-semibold mb-2 text-purple-700";
+    megaChatHeader.textContent = "Mega Chat Interface";
+    megaChatInterface.appendChild(megaChatHeader);
+
+    // Create a scrollable container for messages
+    const megaMessagesContainer = document.createElement("div");
+    megaMessagesContainer.className = "max-h-64 overflow-y-auto p-2 border border-gray-200 rounded";
+    megaChatInterface.appendChild(megaMessagesContainer);
+
+    // Helper function to append messages to the mega chat messages container
+    function addMegaMessage(role, content) {
+      const msgDiv = document.createElement("div");
+      msgDiv.className = "mb-2";
+      if (role === "user") {
+        msgDiv.innerHTML = `<span class="font-bold text-blue-600">You:</span> ${content}`;
+      } else {
+        msgDiv.innerHTML = `<span class="font-bold text-green-600">Bot:</span> ${content}`;
+      }
+      megaMessagesContainer.appendChild(msgDiv);
+      megaMessagesContainer.scrollTop = megaMessagesContainer.scrollHeight;
+    }
+
+    // Create the input area (text input + send button)
+    const megaInputContainer = document.createElement("div");
+    megaInputContainer.className = "flex mt-4";
+    megaChatInterface.appendChild(megaInputContainer);
+
+    const megaChatInput = document.createElement("input");
+    megaChatInput.type = "text";
+    megaChatInput.className = "border border-gray-300 rounded-l px-2 py-2 w-full";
+    megaChatInput.placeholder = "Type your question...";
+    megaInputContainer.appendChild(megaChatInput);
+
+    const megaSendButton = document.createElement("button");
+    megaSendButton.className = "bg-green-500 text-white px-4 py-2 rounded-r hover:bg-green-600";
+    megaSendButton.textContent = "Send";
+    megaInputContainer.appendChild(megaSendButton);
+
+    // Append the mega chat interface to the page (for example, after the Voice AI Responses container)
+    const voiceContainer = document.getElementById("voiceAIResponses");
+    voiceContainer.parentNode.insertBefore(megaChatInterface, voiceContainer.nextSibling);
+
+    isMegaChatVisible = true;
+    megaChatButton.textContent = "Hide Mega Chat";
+
+    // When the mega send button is clicked, gather data from both survey and voice responses and send to backend
+    megaSendButton.addEventListener("click", () => {
+      const userMessage = megaChatInput.value.trim();
+      if (!userMessage) return;
+
+      // Display the user's message in the mega chat area
+      addMegaMessage("user", userMessage);
+
+      // Collect data from both the survey chat and voice AI responses containers.
+      // (You might customize this collection logic as needed.)
+      const surveyChatData = document.getElementById("surveyChatResponses").innerText;
+      const voiceAIData = document.getElementById("voiceAIResponses").innerText;
+
+      const payload = {
+        survey_chat_data: surveyChatData,
+        voice_ai_data: voiceAIData,
+        prompt_summary: globalPromptSummary,
+        messages: [{ role: "user", content: userMessage }]
+      };
+
+      // Send the collected data to the mega chat manager endpoint
+      fetch("/mega-chat-manager", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`Server error: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          // Display the backend response as a bot message
+          addMegaMessage("bot", data.response);
+          megaChatInput.value = "";
+        })
+        .catch(error => {
+          console.error("Error sending mega chat data:", error);
+          alert("Error sending data to mega-chat-manager.");
+        });
+    });
+  } else {
+    // Toggle the visibility of the mega chat interface
+    if (isMegaChatVisible) {
+      megaChatInterface.style.display = "none";
+      megaChatButton.textContent = "Mega Chat Response";
+      isMegaChatVisible = false;
+    } else {
+      megaChatInterface.style.display = "block";
+      megaChatButton.textContent = "Hide Mega Chat";
+      isMegaChatVisible = true;
+      const inputField = megaChatInterface.querySelector("input");
+      if (inputField) inputField.focus();
+    }
+  }
+});
     </script>
   </body>
 </html>

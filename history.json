@@ -213,5 +213,66 @@
     "prompt_summary": "{\n  \"survey_title\": \"Anime Preferences and Viewing Habits Survey\",\n  \"intro\": \"We are conducting this survey to gather information about anime fans' preferences and viewing habits. Your responses will help us better understand the anime community and provide insights for future anime productions. Please answer the questions honestly, and thank you for participating!\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"What type of anime genre do you enjoy watching the most?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Action\", \"Comedy\", \"Drama\", \"Romance\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"How often do you watch anime?\",\n      \"type\": \"rating\",\n      \"options\": [\"Daily\", \"Several times a week\", \"About once a week\", \"Less than once a week\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"What is your favorite anime series of all time?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"Can you tell us about your favorite anime character and why you like them?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How do you usually watch anime?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Streaming services\", \"TV broadcasts\", \"DVD/Blu-ray\", \"Online fan-subbed episodes\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"On a scale of 1-5, how important is subtitles or dubbing when watching anime?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Not important at all)\", \"2\", \"3\", \"4\", \"5 (Very important)\"],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey! Your input is invaluable to us, and we appreciate your participation. If you have any additional comments or suggestions, please feel free to include them. We will use the information collected to improve our understanding of the anime community and provide better content in the future.\"\n}",
     "call_summary": "",
     "created_at": "2025-03-25T17:37:36.702834"
+  },
+  {
+    "id": "6b7fbb4c-7456-4a43-a561-2e3215a59fdd",
+    "public_survey_id": "d0d0f4e9-0781-4dde-a5b2-b7a79c0fadb8",
+    "prompt": "",
+    "prompt_summary": "",
+    "call_summary": "{\n  \"summary\": \"Brief survey with employee ID 2914 who gave minimal responses. They identified communication as a team strength but noted it can be slow and messy. They suggested increasing recreational activities would improve team performance.\",\n  \"ratings\": {\n    \"Communication\": { \"rating\": 3, \"comment\": \"Just above average; sometimes slow and messy\" },\n    \"Feedback frequency\": { \"rating\": 1, \"comment\": \"Described as 'merely' occurring\" }\n  },\n  \"overall\": \"Employee seemed disengaged or reluctant during the survey, providing very short answers and often responding with 'I don't know' or 'No'.\",\n  \"next_steps\": \"Consider investigating why employee was minimally responsive. Follow up on communication issues and implement more recreational activities as suggested.\"\n}",
+    "created_at": "2025-03-25T20:01:46.513985",
+    "structured_data": {
+      "overall": "The employee provided minimal engagement throughout the survey, giving short answers with limited detail. They identified communication as both a strength and an area for improvement, noting it can be slow and messy. Their main suggestion was increasing recreational activities. Overall demeanor suggests possible disengagement or reluctance to provide detailed feedback.",
+      "ratings": {
+        "enps": {
+          "rating": 2,
+          "comment": "Low enthusiasm about workplace, minimal investment in providing feedback"
+        },
+        "happiness": {
+          "rating": 3,
+          "comment": "Employee showed neutral responses with minimal engagement"
+        },
+        "communication": {
+          "rating": 3,
+          "comment": "Described team communication as 'just above average' but sometimes 'slow and messy'"
+        },
+        "mental_health": {
+          "rating": 3,
+          "comment": "Limited emotional expression, brief responses suggest possible disengagement"
+        },
+        "job_satisfaction": {
+          "rating": 3,
+          "comment": "Neutral stance on workflow and processes with no specific improvement suggestions"
+        }
+      },
+      "summary": "Employee provided minimal feedback, indicating above-average but sometimes slow and messy communication. They suggested more recreational activities would benefit the team but offered limited detailed responses throughout the conversation.",
+      "next_steps": "Follow up with more direct questions about recreational activities they'd prefer. Consider investigating communication bottlenecks and reasons for the employee's limited engagement.",
+      "employee_id": "2914",
+      "raw_transcript": "AI: Hey. How are you? I want to take some some of time for a short survey.\nUser: Yeah. Go ahead.\nAI: Great. Before we dive in, could you please share your employee ID with me?\nUser: It's 29 14.\nAI: Got it. Your employee ID is 2 9 1 4. Correct? Let me know if I got that right.\nUser: Yeah.\nAI: Perfect. For confirming. Now let me quickly introduce the purpose of this survey. We're gathering feedback to better understand how our team is doing what's working well. And what could use a little improvement. Your input will help us enhance the team experience and make positive changes. So feel free to share your thoughts honestly. Let's start with something positive to get us going. What would you say is the 1 thing our team does exceptionally well? Something that stands out is a strength.\nUser: Communication.\nAI: That's great to hear. Communication is indeed vital for a team's success. Speaking of which, would you describe the general level of communication within our team? I'm curious to know your perspective on how well we communicate overall.\nUser: It's just above average.\nAI: I So it's leaning towards the positive side, but there's room for growth. Could you share some examples or challenges you've encountered when working with the team that might have impacted this communication?\nUser: Sometime the communication is very slow and messy.\nAI: I understand. Slow and messy communication can definitely pose challenges. Could you elaborate a bit more on that? What specific situations or examples come to mind? When you think of these communication issues?\nUser: I don't know.\nAI: No problem. Thanks for sharing your thoughts. Let's move on to another area of feedback. How frequently do you typically receive feedback on your performance from the team or your supervisors?\nUser: Merely.\nAI: Got It sounds like feedback might not be as frequent as you prefer. How do you think more feedback could help you or the team overall?\nUser: No. I don't know.\nAI: That's okay. I appreciate your honesty. Let's shift gears a bit if you had the power to make 1 change to improve the team's overall performance. What would it be? Something you think could make a big difference.\nUser: Recreational activity should be more.\nAI: That's a great suggestion. Adding more recreational activities could definitely help with team bonding and morale. Are there any types of activities you'd like to see? Or do you think just having more in general would be a good start?\nUser: More in general would be would be a fact.\nAI: Got it. Just having more in general sounds like a solid idea to boost the team's energy and connection. Shifting focus a bit do you currently feel about the team's workflow and processes? Would you say you're satisfied with how things are running, or do you think there's room for improvement? Sure. I understand. It sounds like you are feeling somewhat neutral about it. Is there anything specific about the workflow processes that you think could be adjusted to make things run more smoothly?\nUser: No.\nAI: Alright. Thanks for sharing your thoughts. Is there anything else you'd like to add or clarify about your experience with the team or any other suggestions you might have?\nUser: No.\nAI: Understood. Thank you so much for taking the time to share your feedback. We'll carefully review what you've shared and work on making improvements.",
+      "transcript_summary": {
+        "concerns": [
+          "Communication sometimes slow and messy",
+          "Minimal feedback received on performance",
+          "Limited engagement in the survey"
+        ],
+        "feedback": [
+          "Increase recreational activities",
+          "Improve communication speed and clarity"
+        ],
+        "highlights": [
+          "Communication identified as team strength",
+          "Suggested more recreational activities"
+        ]
+      }
+    },
+    "employee_id": "2914"
+  },
+  {
+    "id": "66debfc7-5beb-4d64-a357-3ed1db79c935",
+    "public_survey_id": "61ad7b9c-90b0-41d5-8369-40abd8b1abb3",
+    "prompt": "boss survey for the organisation",
+    "prompt_summary": "{\n  \"survey_title\": \"Organisational Effectiveness and Satisfaction Survey\",\n  \"intro\": \"We appreciate your participation in this survey, which aims to gather your feedback and opinions about our organisation. Your input will help us understand our strengths and weaknesses, and make informed decisions to improve our workplace. Please answer the questions honestly, and all responses will be kept confidential.\",\n  \"summary\": \"This survey focuses on your experience, satisfaction, and suggestions for improvement within our organisation, covering aspects such as communication, teamwork, and professional development.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How would you rate your overall satisfaction with our organisation?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Very Dissatisfied)\", \"2\", \"3\", \"4\", \"5 (Very Satisfied)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What do you like most about working in our organisation?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"Which of the following best describes your experience with communication within our organisation?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Effective and timely\", \"Somewhat effective\", \"Ineffective\", \"Not sure\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"Can you suggest any improvements or changes that you think would enhance our organisation's effectiveness?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How likely are you to recommend our organisation as a place to work to a friend or colleague?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Not at all likely)\", \"2\", \"3\", \"4\", \"5 (Very likely)\"],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey. Your feedback is invaluable to us, and we appreciate your contributions to our organisation's growth and improvement.\"\n}",
+    "call_summary": "",
+    "created_at": "2025-03-25T20:36:36.243196"
   }
 ]

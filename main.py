@@ -318,28 +318,26 @@ def groq_chat():
         else:
             length_instruction = ""
 
-        # UPDATED: Include intro and outro in the JSON schema instruction.
+        # UPDATED: Include intro, summary, questions, and outro in the JSON schema instruction.
         json_schema_instruction = (
             "Please generate a structured survey in JSON format using the following schema:\n\n"
             "json:\n"
             "{\n"
             '  "survey_title": "",\n'
             '  "intro": "",\n'
+            '  "summary": "",\n'
             '  "questions": [\n'
             "    {\n"
             '      "id": 1,\n'
             '      "question": "",\n'
-            "      \"type\": \"multiple_choice\", // Can be 'multiple_choice', 'short_answer', 'paragraph', 'rating'\n"
+            '      "type": "multiple_choice", // Can be "multiple_choice", "short_answer", "paragraph", "rating"\n'
             '      "options": ["", "", "", ""], // Only for multiple_choice or rating\n'
             '      "answer": ""\n'
             "    }\n"
             "  ],\n"
             '  "outro": ""\n'
             "}\n\n"
-            "Include a mix of multiple-choice, short-answer, paragraph, and rating questions. "
-            "Also, generate an 'intro' that explains the purpose of the survey, and an 'outro' that thanks the user. "
-            "Ensure that the survey_title is informative and derived from the initial prompt. "
-            "Return only the JSON content without additional commentary."
+            "Include a mix of multiple-choice, short-answer, paragraph, and rating questions. Also, generate an 'intro' that explains the purpose of the survey, a 'summary' that briefly recaps the survey's focus, and an 'outro' that thanks the user. Ensure that the survey_title is informative and derived from the initial prompt. Return only the JSON content without additional commentary."
         )
 
         # Combine the prompt, length instruction, and JSON schema instruction.
@@ -389,12 +387,13 @@ def groq_chat():
                 ),
                 500,
             )
+
         public_survey_id = str(uuid.uuid4())
         # Optionally, add a new record to your JSON history and capture the new record.
         new_record = add_history_record(prompt, json_content, public_survey_id)
         new_chat_record = add_chat_survey_record(prompt, json_content, public_survey_id)
 
-        # Return the structured survey response, including intro/outro, along with record id.
+        # Return the structured survey response, including intro, summary, questions, and outro, along with record id.
         return jsonify(
             {
                 "survey": structured_survey,
@@ -1231,13 +1230,13 @@ def voice_ai_response():
 
     results = []
     for conv in matching_conversations:
-        # Get the summary from the outer conversation object (not from structured_data)
-        summary = conv.get("call_summary") or "No summary available"
-
-        # Extract ratings from the structured_data if present; otherwise, use an empty dict
+        # Instead of using the outer summary, go inside structured_data
         structured = conv.get("structured_data", {})
-        ratings_data = structured.get("ratings") or {}
 
+        overall = structured.get("overall", "No overall available")
+        summary = structured.get("summary", "No summary available")
+
+        ratings_data = structured.get("ratings", {})
         extracted_ratings = {}
         for key, rating_obj in ratings_data.items():
             rating_value = (
@@ -1245,12 +1244,11 @@ def voice_ai_response():
             )
             extracted_ratings[key] = rating_value
 
-        results.append({"summary": summary, "ratings": extracted_ratings})
+        results.append(
+            {"overall": overall, "ratings": extracted_ratings, "summary": summary}
+        )
 
     return jsonify(results), 200
-
-
-import json
 
 
 @app.route("/chat-with-survey-manager", methods=["POST"])
@@ -1404,6 +1402,107 @@ def voiceai_manager():
 
     except Exception as e:
         app.logger.error("Error in /voiceai-manager: %s", str(e))
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route("/mega-chat-manager", methods=["POST"])
+def mega_chat_manager():
+    try:
+        data = request.get_json()
+        if not data:
+            return jsonify({"error": "No input data provided."}), 400
+
+        survey_chat_data = data.get("survey_chat_data")
+        voice_ai_data = data.get("voice_ai_data")
+        prompt_summary = data.get("prompt_summary")
+        messages = data.get("messages", [])
+
+        if not survey_chat_data or not voice_ai_data or not prompt_summary:
+            return (
+                jsonify(
+                    {
+                        "error": "Missing one or more required fields: survey_chat_data, voice_ai_data, prompt_summary."
+                    }
+                ),
+                400,
+            )
+
+        # Convert values to strings if they are dicts
+        if isinstance(survey_chat_data, dict):
+            survey_chat_data = json.dumps(survey_chat_data, indent=2)
+        else:
+            survey_chat_data = str(survey_chat_data)
+
+        if isinstance(voice_ai_data, dict):
+            voice_ai_data = json.dumps(voice_ai_data, indent=2)
+        else:
+            voice_ai_data = str(voice_ai_data)
+
+        if isinstance(prompt_summary, dict):
+            prompt_summary = json.dumps(prompt_summary, indent=2)
+        else:
+            prompt_summary = str(prompt_summary)
+
+        # Construct the system context string
+        system_context = (
+            "You are an intelligent assistant that integrates data from multiple sources. Use this context:\n\n"
+            "Survey Chat Data:\n"
+            + survey_chat_data
+            + "\n\n"
+            + "Voice AI Data:\n"
+            + voice_ai_data
+            + "\n\n"
+            + "Prompt Summary:\n"
+            + prompt_summary
+        )
+
+        # Build the messages for Groq API
+        formatted_messages = [{"role": "system", "content": system_context}]
+        if not isinstance(messages, list):
+            return jsonify({"error": "Messages must be a list."}), 400
+
+        for message in messages:
+            if (
+                not isinstance(message, dict)
+                or "role" not in message
+                or "content" not in message
+            ):
+                return (
+                    jsonify(
+                        {
+                            "error": "Each message must be an object with 'role' and 'content'."
+                        }
+                    ),
+                    400,
+                )
+            formatted_messages.append(message)
+
+        app.logger.info("Formatted messages for Mega Chat: %s", formatted_messages)
+
+        # Call Groq API
+        client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
+        chat_completion = client.chat.completions.create(
+            messages=formatted_messages,
+            model="llama-3.3-70b-versatile",
+            temperature=0.3,
+            max_tokens=1024,
+        )
+
+        response_text = chat_completion.choices[0].message.content
+        usage_info = chat_completion.usage
+
+        # Convert usage_info to a JSON-serializable object
+        try:
+            usage_info = json.loads(
+                json.dumps(usage_info, default=lambda o: o.__dict__)
+            )
+        except Exception:
+            usage_info = str(usage_info)
+
+        return jsonify({"response": response_text, "usage": usage_info})
+
+    except Exception as e:
+        app.logger.error("Error in /mega-chat-manager: %s", str(e))
         return jsonify({"error": str(e)}), 500
 
 
