@@ -120,8 +120,8 @@
         <!-- New Public Survey Link element -->
 <!-- <a id="public-survey-link" href="#" class="mt-2 text-xs hover:text-gray-400 text-center" title="Public Survey Link">
   Public Survey Link
-</a> -->
-<!-- <a
+</a>
+<a
           href="#"
           id="public-survey-link",
           class="mb-4 hover:text-gray-400 text-2xl text-center"
@@ -1456,32 +1456,32 @@ function renderAddQuestionForm(surveyData, formContainer, surveyContainer) {
         });
 
 
-        document.getElementById("public-survey-link").addEventListener("click", function(e) {
-  e.preventDefault();
+//         document.getElementById("public-survey-link").addEventListener("click", function(e) {
+//   e.preventDefault();
   
-  // Check if survey response and public survey ID have been generated.
-  if (!window.latestRecordId || !window.latestChatRecordId || !window.publicSurveyId) {
-    alert("Please complete the survey before copying the public survey link.");
-    return;
-  }
+//   // Check if survey response and public survey ID have been generated.
+//   if (!window.latestRecordId || !window.latestChatRecordId || !window.publicSurveyId) {
+//     alert("Please complete the survey before copying the public survey link.");
+//     return;
+//   }
   
-  // Retrieve the record IDs and public survey id from the global variables.
-  let recordid = window.latestRecordId;
-  let chatrecordid = window.latestChatRecordId;
-  let publicSurveyId = window.publicSurveyId;
+//   // Retrieve the record IDs and public survey id from the global variables.
+//   let recordid = window.latestRecordId;
+//   let chatrecordid = window.latestChatRecordId;
+//   let publicSurveyId = window.publicSurveyId;
   
-  // Construct the public survey URL with the record IDs and public survey id as query parameters.
-  let publicUrl = `${window.location.origin}/public_survey?recordid=${recordid}&chatrecordid=${chatrecordid}&public_survey_id=${publicSurveyId}`;
+//   // Construct the public survey URL with the record IDs and public survey id as query parameters.
+//   let publicUrl = `${window.location.origin}/public_survey?recordid=${recordid}&chatrecordid=${chatrecordid}&public_survey_id=${publicSurveyId}`;
   
-  // Copy the URL to clipboard using the Clipboard API.
-  navigator.clipboard.writeText(publicUrl)
-    .then(function() {
-      alert("Public survey link copied to clipboard:\n" + publicUrl);
-    })
-    .catch(function(err) {
-      alert("Error copying public survey link: " + err);
-    });
-});
+//   // Copy the URL to clipboard using the Clipboard API.
+//   navigator.clipboard.writeText(publicUrl)
+//     .then(function() {
+//       alert("Public survey link copied to clipboard:\n" + publicUrl);
+//     })
+//     .catch(function(err) {
+//       alert("Error copying public survey link: " + err);
+//     });
+// });
 document.getElementById("copy-public-survey-link-btn").addEventListener("click", function(e) {
   e.preventDefault();
   
