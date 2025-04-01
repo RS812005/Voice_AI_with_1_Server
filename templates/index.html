@@ -181,6 +181,7 @@
                   <option value="savannah">American Southern Accent</option>
                   <option value="kentucky_man">Kentucky Man</option>
                   <option value="kentucky_woman">Kentucky Woman</option>
+                  <option value="sesame">Sesame</option>
                 </select>
               </div>
               <div>
@@ -459,10 +460,13 @@
           case "kentucky_woman":
             voiceConfig = { provider: "cartesia", voiceId: "4f8651b0-bbbd-46ac-8b37-5168c5923303" };
             break;
+          case "sesame":
+            voiceConfig = { provider: "cartesia", voiceId: "4f8651b0-bbbd-46ac-8b37-5168c5923303" };
+            break;
           default:
             voiceConfig = {
-              provider: "cartesia",
-              voiceId: "3b554273-4299-48b9-9aaf-eefd438e3941",
+              provider: "sesame",
+              voiceId: "default",
             };
             break;
         }
@@ -481,7 +485,7 @@
               {
                 role: "system",
                 content: ` Please start by asking for the employee ID. Once the user provides an ID, confirm it by repeating it back and asking if it is correct.
-If the provided employee ID is valid, give a short, dynamic introduction about the survey based on the survey content below, then proceed with a structured, question-by-question survey flow. Keep the tone ${toneValue} and non-intrusive. Ensure that the conversation flows naturally and dynamically rather than presenting questions as a rigid list. The AI should integrate pre-configured questions fluidly—adapting to context. Encourage honest responses without pressure.
+If the provided employee ID is valid, give a short, dynamic introduction about the survey based on the survey content below and tell that all of their responses will strictly confidential, then proceed with a structured, question-by-question survey flow. Keep the tone ${toneValue} and non-intrusive. Ensure that the conversation flows naturally and dynamically rather than presenting questions as a rigid list. The AI should integrate pre-configured questions fluidly—adapting to context. Encourage honest responses without pressure.
 
 Flow of Questions:
 ${extractedText}

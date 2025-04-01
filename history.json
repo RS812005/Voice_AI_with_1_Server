@@ -362,5 +362,179 @@
     "prompt_summary": "{\n  \"survey_title\": \"Reddit User Engagement Survey\",\n  \"intro\": \"Welcome to the Reddit User Engagement Survey. The purpose of this survey is to gather information about your experiences and preferences on Reddit. Your responses will help us better understand the needs and behaviors of Reddit users, which will inform improvements to the platform. This survey should take approximately 2 minutes to complete, and all responses are anonymous.\",\n  \"summary\": \"This survey focuses on understanding user engagement, content preferences, and overall satisfaction with the Reddit platform.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How often do you use Reddit?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Daily\", \"Several times a week\", \"About once a week\", \"Less than once a week\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What do you primarily use Reddit for? (Check all that apply)\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Entertainment\", \"News\", \"Community discussion\", \"Learning new things\", \"Other\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"Can you describe your favorite subreddit and why you enjoy it?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"How would you rate the overall quality of content on Reddit?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Poor)\", \"2\", \"3\", \"4\", \"5 (Excellent)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"What feature or improvement would you like to see added to Reddit?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"How satisfied are you with your overall experience on Reddit?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Very Dissatisfied)\", \"2\", \"3\", \"4\", \"5 (Very Satisfied)\"],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey. Your feedback is greatly appreciated and will help us improve the Reddit experience for all users.\"\n}",
     "call_summary": "",
     "created_at": "2025-03-26T02:11:06.852382"
+  },
+  {
+    "id": "f174e60f-b752-4a7c-ab5a-3790b891a725",
+    "public_survey_id": "9485f49e-be58-45b8-8ef5-b4076a027576",
+    "prompt": "anime survey",
+    "prompt_summary": "{\n  \"survey_title\": \"Anime Preferences and Viewing Habits\",\n  \"intro\": \"Thank you for participating in this survey. The purpose of this survey is to understand your preferences and viewing habits when it comes to anime. Your responses will help us better understand the anime community and their interests. Please answer the questions honestly, and to the best of your ability.\",\n  \"summary\": \"This survey aims to gather information about anime viewers' preferences, favorite genres, and viewing habits.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"What type of anime do you enjoy watching the most?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Action\", \"Comedy\", \"Drama\", \"Romance\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What motivated you to start watching anime?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"How often do you watch anime?\",\n      \"type\": \"rating\",\n      \"options\": [\"Daily\", \"Weekly\", \"Monthly\", \"Rarely\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"Can you describe your favorite anime series and what makes it so appealing to you?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How do you usually find out about new anime series?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Social Media\", \"Online Forums\", \"Friend Recommendations\", \"Anime Streaming Platforms\"],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey. Your input is valuable to us, and we appreciate your contribution to our understanding of the anime community.\"\n}",
+    "call_summary": "",
+    "created_at": "2025-04-01T04:00:46.799597"
+  },
+  {
+    "id": "d9053318-000f-48bd-afd5-222ef7a77c45",
+    "public_survey_id": "7f042ca8-1d15-4704-a635-0c8a3afbd6e6",
+    "prompt": "anime survey\n",
+    "prompt_summary": "{\n  \"survey_title\": \"Anime Preferences and Viewing Habits Survey\",\n  \"intro\": \"Welcome to our anime survey. The purpose of this survey is to gather information about your anime preferences, viewing habits, and opinions on various aspects of the anime community. Your input will help us better understand what fans enjoy about anime and how we can improve their viewing experience. Please answer the questions honestly, and thank you for participating.\",\n  \"summary\": \"This survey focuses on anime preferences, favorite genres, viewing habits, and community engagement. It aims to understand what fans enjoy about anime and how to enhance their experience.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"What is your favorite anime genre?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Action\", \"Romance\", \"Comedy\", \"Drama\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"How often do you watch anime?\",\n      \"type\": \"rating\",\n      \"options\": [\"Daily\", \"Weekly\", \"Monthly\", \"Rarely\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"What do you value most when choosing an anime to watch?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"Can you describe your favorite anime series and what made it stand out to you?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How do you typically find out about new anime series?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Social Media\", \"Anime News Websites\", \"Friends' Recommendations\", \"Online Forums\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"On a scale of 1 to 5, how satisfied are you with the current state of the anime industry?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Very Dissatisfied)\", \"2\", \"3\", \"4\", \"5 (Very Satisfied)\"],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey. Your feedback is invaluable to us, and we appreciate your honesty. We hope you continue to enjoy the world of anime, and we look forward to using your input to improve the anime community.\"\n}",
+    "call_summary": "Based on the transcript, here's the extracted information:\n\n```json\n{\n  \"employee_id\": \"250\",\n  \"summary\": \"Brief call where the AI initiated a survey and collected the employee's ID. The conversation was just getting started.\",\n  \"ratings\": {\n    \"Cooperation\": { \"rating\": 4, \"comment\": \"User was willing to participate in the survey\" },\n    \"Responsiveness\": { \"rating\": 3, \"comment\": \"User gave short, direct answers\" }\n  },\n  \"overall\": \"The call was very brief and only covered the initial identification step of the survey. The user seemed neutral but cooperative.\",\n  \"next_steps\": \"Continue with the actual survey questions as the call only covered the identification portion.\"\n}\n```",
+    "created_at": "2025-04-01T04:01:32.012709",
+    "structured_data": {
+      "overall": "Interaction was too brief to make meaningful assessments. Only employee identification was completed.",
+      "ratings": {
+        "enps": {
+          "rating": 3,
+          "comment": "No indication of promotion likelihood"
+        },
+        "happiness": {
+          "rating": 3,
+          "comment": "Neutral tone in limited interaction"
+        },
+        "communication": {
+          "rating": 3,
+          "comment": "Brief but clear responses"
+        },
+        "mental_health": {
+          "rating": 3,
+          "comment": "Insufficient data to assess"
+        },
+        "job_satisfaction": {
+          "rating": 3,
+          "comment": "No information provided"
+        }
+      },
+      "summary": "Brief initial interaction where the employee (ID 250) agreed to participate in a survey. No substantive information was shared beyond identification.",
+      "next_steps": "Complete the full survey as only identification was established in this interaction",
+      "employee_id": "250",
+      "raw_transcript": "AI: Hey. How are you? I want to take some some of time for a short survey.\nUser: Yeah. Go ahead.\nAI: Great. To get started, could you please provide your employee ID?\nUser: 2 50.\nAI: Got it. You said your employee ID is 2 50. Is that correct?\nUser: Yeah.\nAI: Awesome. Thanks for confirming.",
+      "transcript_summary": {
+        "concerns": [
+          "Conversation ended after ID confirmation, no survey data collected"
+        ],
+        "feedback": [
+          "Survey introduction was completed successfully"
+        ],
+        "highlights": [
+          "Employee willingly agreed to participate in the survey"
+        ]
+      }
+    },
+    "employee_id": "250"
+  },
+  {
+    "id": "7ecfdb87-b5e8-437c-9389-a260adc565d1",
+    "public_survey_id": "b7c78789-7953-473f-8d18-c65e8824eb29",
+    "prompt": "anime survey\n",
+    "prompt_summary": "{\n  \"survey_title\": \"Anime Viewing Habits and Preferences Survey\",\n  \"intro\": \"Thank you for participating in this survey. The purpose of this survey is to gather information about your anime viewing habits and preferences. Your input will help us better understand the anime community and improve the overall viewing experience. Please answer the questions honestly, and to the best of your ability.\",\n  \"summary\": \"This survey focuses on your anime viewing habits, including the types of anime you watch, how you watch them, and your favorite genres and characters. It also collects information about your opinions on anime-related topics and your overall satisfaction with the anime community.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How often do you watch anime?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Daily\", \"Several times a week\", \"About once a week\", \"Less than once a week\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What is your favorite anime genre?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Action\", \"Comedy\", \"Drama\", \"Romance\", \"Other\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"What do you like most about anime?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"Can you tell us about your favorite anime character and why you like them?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How do you usually watch anime?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Streaming services\", \"DVD/Blu-ray\", \"TV broadcasts\", \"Other\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"How satisfied are you with the current anime selection available to you?\",\n      \"type\": \"rating\",\n      \"options\": [\"Very satisfied\", \"Somewhat satisfied\", \"Neutral\", \"Somewhat dissatisfied\", \"Very dissatisfied\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 7,\n      \"question\": \"Do you attend anime conventions or other anime-related events?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Yes, regularly\", \"Yes, occasionally\", \"No, but I'm interested\", \"No, and I'm not interested\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 8,\n      \"question\": \"Any additional comments or suggestions about anime or this survey?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey. Your input is valuable to us, and we appreciate your participation. If you have any further questions or comments, please don't hesitate to contact us.\"\n}",
+    "call_summary": "",
+    "created_at": "2025-04-01T04:04:13.951257"
+  },
+  {
+    "id": "b6712f90-a9bb-4d45-837f-f06a9c0d336f",
+    "public_survey_id": "2cf3fdd7-26da-429b-b3a4-55622e5b0864",
+    "prompt": "anime survey",
+    "prompt_summary": "{\n  \"survey_title\": \"Anime Preferences and Viewing Habits Survey\",\n  \"intro\": \"This survey aims to gather information about your anime viewing habits, preferences, and opinions. Your responses will help us better understand the anime community and identify trends in the industry. Please answer the questions honestly, and thank you for participating!\",\n  \"summary\": \"This survey explores your anime preferences, viewing habits, and opinions on various aspects of the anime industry.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"What type of anime do you usually watch?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Action\", \"Comedy\", \"Drama\", \"Romance\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"How often do you watch anime?\",\n      \"type\": \"rating\",\n      \"options\": [\"Daily\", \"Weekly\", \"Monthly\", \"Rarely\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"What is your favorite anime series and why do you like it?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"Can you describe your experience with anime conventions or events?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How do you typically discover new anime series?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Social Media\", \"Online Forums\", \"Friends' Recommendations\", \"Streaming Platforms\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"On a scale of 1-5, how important is subtitles or dubbing to your anime viewing experience?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Not Important)\", \"2\", \"3\", \"4\", \"5 (Very Important)\"],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey! Your input is valuable to us, and we appreciate your participation. If you have any additional comments or suggestions, please feel free to provide them. Your feedback will help shape the future of the anime industry.\"\n}",
+    "call_summary": "",
+    "created_at": "2025-04-01T04:06:59.644576"
+  },
+  {
+    "id": "69669f79-9c71-4b76-b0f6-d738d0d4d641",
+    "public_survey_id": "f83cb342-6481-426d-833e-1c780321ddc6",
+    "prompt": "mumbai survey",
+    "prompt_summary": "{\n  \"survey_title\": \"Mumbai Resident Experience Survey\",\n  \"intro\": \"We are conducting this survey to gather information about the experiences and perceptions of residents in Mumbai. Your feedback will help us understand the needs and concerns of the community, and inform initiatives to improve the quality of life in the city. Please take a few minutes to complete this survey, and thank you for your participation.\",\n  \"summary\": \"This survey focuses on understanding the experiences and perceptions of residents in Mumbai, covering aspects such as transportation, public services, and overall satisfaction with the city.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How often do you use public transportation in Mumbai?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Daily\", \"Weekly\", \"Monthly\", \"Rarely\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What are the biggest challenges you face while living in Mumbai?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"How would you rate the quality of public services in Mumbai, such as water supply, waste management, and healthcare?\",\n      \"type\": \"rating\",\n      \"options\": [\"Excellent\", \"Good\", \"Fair\", \"Poor\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"Can you describe your favorite aspect of living in Mumbai?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How likely are you to recommend Mumbai as a place to live to a friend or family member?\",\n      \"type\": \"rating\",\n      \"options\": [\"Very Likely\", \"Likely\", \"Neutral\", \"Unlikely\", \"Very Unlikely\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"What changes or improvements would you like to see in Mumbai to make it a better place to live?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey! Your feedback is invaluable to us, and will help us work towards creating a better Mumbai for all residents.\"\n}",
+    "call_summary": "```json\n{\n  \"employee_id\": \"299\",\n  \"summary\": \"Brief survey call with an employee who uses public transportation daily in Mumbai. The call was cut off before completion.\",\n  \"ratings\": {\n    \"Public Transportation Usage\": { \"rating\": 5, \"comment\": \"Employee relies on public transportation daily\" },\n    \"City Challenges\": { \"rating\": null, \"comment\": \"Employee did not specify any challenges when asked\" }\n  },\n  \"overall\": \"The employee was minimally responsive, giving very short answers. Their tone appeared neutral to slightly disinterested. The call ended abruptly before gathering substantial information.\",\n  \"next_steps\": \"Follow up with employee #299 to complete the survey as it was cut off. Consider using a more engaging approach to encourage more detailed responses.\"\n}\n```",
+    "created_at": "2025-04-01T04:09:17.846150",
+    "structured_data": {
+      "overall": "The survey was incomplete with minimal engagement from employee 299. The employee confirmed using public transportation daily in Mumbai but did not elaborate on challenges when asked. Follow-up is recommended to gather more meaningful data.",
+      "ratings": {
+        "enps": {
+          "rating": 3,
+          "comment": "No indication of promotion or detraction"
+        },
+        "happiness": {
+          "rating": 3,
+          "comment": "Neutral tone, minimal engagement"
+        },
+        "communication": {
+          "rating": 2,
+          "comment": "Very brief responses, minimal engagement"
+        },
+        "mental_health": {
+          "rating": 3,
+          "comment": "Insufficient data to assess"
+        },
+        "job_satisfaction": {
+          "rating": 3,
+          "comment": "No job-related information provided"
+        }
+      },
+      "summary": "Brief survey with employee 299 who relies on public transportation daily in Mumbai. The employee provided minimal responses and the survey was cut short.",
+      "next_steps": "Follow up with employee 299 to complete the survey and gather more comprehensive feedback.",
+      "employee_id": "299",
+      "raw_transcript": "AI: Hey. How are you? I want to take some some of time for a short survey.\nUser: Yeah. Go ahead.\nAI: Great. Could you please start by providing your employee ID?\nUser: 2 99.\nAI: Just to confirm, your employee ID is 299. Correct?\nUser: Yeah.\nAI: Thank you for confirming. We are conducting a survey to gather insights on the experiences and perceptions of residents in Mumbai. Your feedback will significantly help us understand the community's needs and concerns and guide initiatives to improve the quality of life in the city. All responses will be kept strictly confidential. Let's start with how often you use public transportation in Mumbai. Do you rely on it daily? Or perhaps you use it less frequently?\nUser: Reliator on daily.\nAI: Got it. You rely on public transportation daily. Quite common in a bustling city like Mumbai. Now living in such a dynamic city, what are some of the biggest challenges you face? Anything specific that comes to mind?\nUser: Nope.\nAI: I understand that nothing specific",
+      "transcript_summary": {
+        "concerns": [
+          "Minimal engagement in the survey",
+          "Survey appears to have been cut short"
+        ],
+        "feedback": [
+          "No specific challenges mentioned despite being asked"
+        ],
+        "highlights": [
+          "Employee relies on public transportation daily"
+        ]
+      }
+    },
+    "employee_id": "299"
+  },
+  {
+    "id": "b3dec8b5-6342-4cf7-807e-8ae85caeca73",
+    "public_survey_id": "326b5e95-356e-47a6-8514-bfe8d572846d",
+    "prompt": "reddit survey",
+    "prompt_summary": "{\n  \"survey_title\": \"Reddit User Experience Survey\",\n  \"intro\": \"We are conducting this survey to understand the needs and preferences of Reddit users. Your responses will help us improve the overall user experience on the platform. Please answer the questions honestly, and all responses will be kept anonymous. The survey should take approximately 2 minutes to complete.\",\n  \"summary\": \"This survey aims to gather information about Reddit users' habits, preferences, and opinions on the platform's features and content.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How often do you use Reddit?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Daily\", \"Weekly\", \"Monthly\", \"Rarely\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What do you primarily use Reddit for?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"How would you rate the overall quality of content on Reddit?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Poor)\", \"2\", \"3\", \"4\", \"5 (Excellent)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"Have you ever encountered any issues or problems while using Reddit? If yes, please describe.\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"Which of the following features would you like to see improved on Reddit? (Select all that apply)\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Comment sorting\", \"Post visibility\", \"User profiles\", \"Mod tools\", \"Other\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"How likely are you to recommend Reddit to a friend or colleague?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Not likely at all)\", \"2\", \"3\", \"4\", \"5 (Very likely)\"],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to participate in this survey. Your input is invaluable to us, and we appreciate your help in making Reddit a better platform for everyone.\"\n}",
+    "call_summary": "{\n  \"employee_id\": \"299\",\n  \"summary\": \"Brief survey about Reddit usage patterns. User rarely uses Reddit, mainly for passing time, and rates the content quality as 'good'.\",\n  \"ratings\": {\n    \"Usage Frequency\": { \"rating\": 1, \"comment\": \"User only uses Reddit on rare occasions\" },\n    \"Content Quality\": { \"rating\": 4, \"comment\": \"User rates the content as 'good'\" }\n  },\n  \"overall\": \"The user appears neutral to positive about Reddit, using it infrequently but finding the content quality satisfactory when they do use it.\",\n  \"next_steps\": \"The survey was interrupted before completion. Follow up to gather information about any issues the user experiences on Reddit and complete the remaining survey questions.\"\n}",
+    "created_at": "2025-04-01T04:17:40.988833",
+    "structured_data": {
+      "overall": "This appears to be a survey about Reddit usage rather than an employee wellness check. The employee provided minimal information with very brief responses.",
+      "ratings": {
+        "enps": {
+          "rating": 3,
+          "comment": "No clear promotion or detraction indicators"
+        },
+        "happiness": {
+          "rating": 3,
+          "comment": "Employee seemed neutral during the conversation"
+        },
+        "communication": {
+          "rating": 2,
+          "comment": "Employee provided very brief responses, minimal engagement"
+        },
+        "mental_health": {
+          "rating": 3,
+          "comment": "No indicators of mental health concerns in the brief interaction"
+        },
+        "job_satisfaction": {
+          "rating": 3,
+          "comment": "No job satisfaction information was discussed"
+        }
+      },
+      "summary": "Employee 299 uses Reddit occasionally for passing time and finds the content quality good. The employee was cooperative but provided brief responses during the survey.",
+      "next_steps": "Follow up with a more comprehensive survey focused on workplace experience as this conversation was primarily about Reddit usage.",
+      "employee_id": "299",
+      "raw_transcript": "AI: 8. How are you? I wanna take some some of the time for a short survey.\nUser: Yeah. Go ahead.\nAI: Great. First, could you please provide your employee ID?\nUser: It's 2 99.\nAI: Thank you. Just to confirm, your employee ID is 299. Correct?\nUser: Yeah. Go ahead.\nAI: Perfect. Thank you for confirming. We are conducting a survey to understand the needs and preferences of Reddit users better. Your responses will help improve the overall user experience on the platform. Rest assured, all of your responses will be strictly confidential. This should only take about 2 minutes. To start, how often do you find yourself using Reddit? Do you check-in daily, weekly, monthly, or is it only on rare occasions?\nUser: It's only on their occasions.\nAI: Got it. You use Reddit on rare occasions. When you do log in, what is it that primarily catches your interest, or what do you use Reddit for?\nUser: Mostly, for time pass.\nAI: Understood. You use Reddit mainly for passing the time. How do you feel about the overall quality of the content you come across on Reddit? Would you say it's excellent, good average, or perhaps needs improvement?\nUser: Good. Good.\nAI: Great to hear that you find the content good. Have you ever come across any issues or problems while browsing or using features on Reddit? If yes, could you share what those were?",
+      "transcript_summary": {
+        "concerns": [
+          "Very brief responses might indicate reluctance to engage",
+          "Survey appears to be about Reddit rather than work experience"
+        ],
+        "feedback": [
+          "No specific feedback provided about Reddit issues"
+        ],
+        "highlights": [
+          "Employee uses Reddit on rare occasions",
+          "Finds Reddit content quality to be good"
+        ]
+      }
+    },
+    "employee_id": "299"
   }
 ]

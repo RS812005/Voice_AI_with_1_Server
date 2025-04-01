@@ -600,7 +600,7 @@ def chat_with_survey():
 
                     dynamic_intro_prompt = (
                         f"Based on the following survey details:\n\n{survey_response}\n\n"
-                        "Generate a brief, friendly introduction that explains what this survey is about in a conversational tone."
+                        "Generate a brief, friendly introduction that explains what this survey is about in a conversational tone and also tell that their responses are confidential"
                     )
                     intro_completion = client.chat.completions.create(
                         messages=[{"role": "user", "content": dynamic_intro_prompt}],
