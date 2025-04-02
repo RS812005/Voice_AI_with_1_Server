@@ -9,23 +9,24 @@
 
     <style>
  
- /* Styles for the user avatar ripple */
-  #avatar-ripple {
-    position: absolute;
-    inset: 0;
-    border: 2px solid #3b82f6; /* Tailwind blue-500 */
-    border-radius: 9999px;
-    pointer-events: none;
-    transform: scale(1);
-    opacity: 0;
-    transition: transform 0.1s ease, opacity 0.1s ease;
-    z-index: 5; /* behind the avatar */
-  }
-  /* Ensure the avatar image is above the ripple */
-  #user-avatar {
-    position: relative;
-    z-index: 10;
-  }
+ #user-avatar-ripple,
+#ai-avatar-ripple {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  pointer-events: none;
+  transform: scale(1);
+  opacity: 0;
+  transition: transform 0.1s ease, opacity 0.1s ease;
+}
+
+/* (Optional) Adjust the border thickness/colors as needed */
+#user-avatar-ripple {
+  border: 4px solid #3b82f6; /* Blue for user */
+}
+#ai-avatar-ripple {
+  border: 4px solid #10B981; /* Green for AI */
+}
  /* Styles for the user avatar ripple */
 /* Hide the Vapi call button injected from the CDN */
        #vapi-icon-container,
@@ -64,36 +65,38 @@
       </div>
   
      <!-- In your Call Section (inside the body) -->
+<!-- Call Section with Two Avatars -->
 <div id="call-section" class="hidden w-full max-w-3xl mx-auto my-8 p-6 bg-white rounded-lg shadow-lg">
   <div class="flex justify-between items-center mb-4">
     <h2 id="call-heading" class="text-xl font-semibold text-gray-700">Call in Progress</h2>
-    <div id="call-timer" class="text-gray-800 font-semibold bg-gray-100 px-2 py-1 rounded shadow">
-      00:00
+    <div id="call-timer" class="text-gray-800 font-semibold bg-gray-100 px-2 py-1 rounded shadow">00:00</div>
+  </div>
+  <p id="assistant-status" class="text-sm text-gray-600 mb-12">Assistant Status: Not Speaking</p>
+  
+  <!-- Two avatars side by side -->
+  <div class="flex justify-around items-center mb-4">
+    <!-- User Avatar with Ripple Effect -->
+    <div id="user-avatar-wrapper" class="relative flex flex-col items-center">
+      <img id="user-avatar" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTi2haw1278i40sszGwCvy7LKP3j2KqLTnPJg&s" alt="User Avatar" class="w-24 h-24 rounded-full relative z-10">
+      <!-- User Ripple (initially hidden) -->
+      <div id="user-avatar-ripple" class="absolute inset-0 border-4 border-blue-500 rounded-full pointer-events-none"
+           style="transform: scale(1); opacity: 0; transition: transform 0.1s ease, opacity 0.1s ease;"></div>
+      
+    </div>
+    <!-- AI Avatar with Ripple Effect -->
+    <div id="ai-avatar-wrapper" class="relative flex flex-col items-center">
+      <img id="ai-avatar" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScCVSfGCuArq-pdk5dklWyrOB-6thHwQAyCA&s" alt="AI Avatar" class="w-24 h-24 rounded-full relative z-10">
+      <!-- AI Ripple (initially hidden) -->
+      <div id="ai-avatar-ripple" class="absolute inset-0 border-4 border-green-500 rounded-full pointer-events-none"
+           style="transform: scale(1); opacity: 0; transition: transform 0.1s ease, opacity 0.1s ease;"></div>
+      
     </div>
   </div>
-  <p id="assistant-status" class="text-sm text-gray-600 mb-4">
-    Assistant Status: Not Speaking
-  </p>
-
-  <!-- AI Volume Indicator (existing) -->
-  <div id="volume-level" class="flex space-x-2 mb-4"></div>
-
-  <!-- User Avatar with Ripple Effect -->
-  <div class="flex items-center space-x-4 mb-4">
-    <div id="user-avatar-wrapper" class="relative">
-      <!-- Circular Avatar (use your image URL here) -->
-      <img id="user-avatar" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd_XRGE9j0tQkvkYFKQU5MlZw86IXuV9TbfA&s" alt="User Avatar" class="w-16 h-16 rounded-full">
-      <!-- Ripple container -->
-      <div id="avatar-ripple"></div>
-    </div>
-    <span class="text-gray-700 font-medium">You</span>
-  </div>
-
-  <button id="stop-btn" class="bg-red-500 text-white py-1 px-3 rounded-md hover:bg-red-600 transition-colors">
-    Stop Call
-  </button>
+  
+  <button id="stop-btn" class="bg-red-500 text-white py-1 px-3 rounded-md hover:bg-red-600 transition-colors">Stop Call</button>
   <div id="call-summary" class="mt-4 text-sm text-gray-600"></div>
 </div>
+
   
       <!-- Chat Container -->
       <div
@@ -176,16 +179,15 @@
               "Assistant Status: Not Speaking";
           });
           vapiInstance.on("volume-level", (level) => {
-            const aiVolumeEl = document.getElementById("volume-level");
-  aiVolumeEl.innerHTML = "";
-  const numBars = 10;
-  for (let i = 0; i < numBars; i++) {
-    let bar = document.createElement("div");
-    bar.className =
-      "volume-bar" + (i / numBars < level ? " active" : "");
-    aiVolumeEl.appendChild(bar);
+  const aiRipple = document.getElementById("ai-avatar-ripple");
+  if (aiRipple) {
+    // Adjust scale for a bigger ripple effect
+    const scale = 1 + level * 0.8;
+    const opacity = level; 
+    aiRipple.style.transform = `scale(${scale})`;
+    aiRipple.style.opacity = opacity;
   }
-          });
+});
         };
       })(document, "script");
 
@@ -356,6 +358,20 @@ Closing:
         
         vapiInstance.stop();
         stopCallTimer();
+
+
+        const userRipple = document.getElementById("user-avatar-ripple");
+  if (userRipple) {
+    userRipple.style.opacity = 0;
+    userRipple.style.transform = "scale(1)";
+  }
+  
+  const aiRipple = document.getElementById("ai-avatar-ripple");
+  if (aiRipple) {
+    aiRipple.style.opacity = 0;
+    aiRipple.style.transform = "scale(1)";
+  }
+
         document.getElementById("call-summary").innerHTML =
     '<p class="text-gray-600">Summary loading...</p>';
         setTimeout(() => {
@@ -827,9 +843,9 @@ setupGoBackButton();
 //   }
 // }
 async function setupUserAvatarVolumeVisualizer() {
-  const avatarRipple = document.getElementById("avatar-ripple");
-  if (!avatarRipple) {
-    console.error("Avatar ripple element not found.");
+  const userRipple = document.getElementById("user-avatar-ripple");
+  if (!userRipple) {
+    console.error("User avatar ripple element not found.");
     return;
   }
   
@@ -839,41 +855,36 @@ async function setupUserAvatarVolumeVisualizer() {
     const analyser = audioContext.createAnalyser();
     const micSource = audioContext.createMediaStreamSource(stream);
     micSource.connect(analyser);
-    
-    // Increase FFT size for better resolution (optional)
     analyser.fftSize = 256;
     const bufferLength = analyser.frequencyBinCount;
     const dataArray = new Uint8Array(bufferLength);
+    
+    function updateUserRipple() {
+  analyser.getByteFrequencyData(dataArray);
+  let sum = 0;
+  for (let i = 0; i < bufferLength; i++) {
+    sum += dataArray[i];
+  }
+  let avg = sum / bufferLength;
+  let volumeLevel = avg / 255; // Normalize volume (0 to 1)
+  
+  // If volume is very low, set it to 0
+  if (volumeLevel < 0.1) {
+    volumeLevel = 0;
+  }
+  
+  const scale = 1 + volumeLevel * 3.0; // Adjust multiplier as desired
+  const opacity = volumeLevel;         // Opacity from 0 to 1
+  userRipple.style.transform = `scale(${scale})`;
+  userRipple.style.opacity = opacity;
+  
+  requestAnimationFrame(updateUserRipple);
+}
 
-    function updateAvatarRipple() {
-      analyser.getByteFrequencyData(dataArray);
-      
-      // Compute average volume
-      let sum = 0;
-      for (let i = 0; i < bufferLength; i++) {
-        sum += dataArray[i];
-      }
-      let avg = sum / bufferLength;
-      let volumeLevel = avg / 255; // Normalize between 0 and 1
-      
-      // Set a minimum threshold so a ripple is always visible (for testing)
-      volumeLevel = Math.max(volumeLevel, 0.2);
-      
-      // For debugging (optional):
-      // console.log("Volume Level:", volumeLevel);
-      
-      // Adjust scale and opacity based on volume
-      const scale = 1 + volumeLevel * 1.2;
-      const opacity = volumeLevel;         // Opacity from 0.2 to 1
-      avatarRipple.style.transform = `scale(${scale})`;
-      avatarRipple.style.opacity = opacity;
-      
-      requestAnimationFrame(updateAvatarRipple);
-    }
-    updateAvatarRipple();
+    updateUserRipple();
   } catch (err) {
-    console.error("Microphone access denied or error:", err);
-    avatarRipple.style.opacity = 0;
+    console.error("User mic access error:", err);
+    userRipple.style.opacity = 0;
   }
 }
 

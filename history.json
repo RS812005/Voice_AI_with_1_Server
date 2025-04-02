@@ -1139,5 +1139,179 @@
     "prompt_summary": "",
     "call_summary": "",
     "created_at": "2025-04-02T14:10:57.509171"
+  },
+  {
+    "id": "d7dd3e6a-9b28-46d1-a6fe-effce6289499",
+    "public_survey_id": "a4c1d0ae-a293-4c6e-afb8-e7b9ab003664",
+    "prompt": "",
+    "prompt_summary": "",
+    "call_summary": "{\n  \"summary\": \"Brief survey about Reddit usage. User ID 205 rarely uses Reddit, mainly for browsing content.\",\n  \"ratings\": {\n    \"Usage\": { \"rating\": 1, \"comment\": \"User rarely visits Reddit\" },\n    \"Purpose\": { \"rating\": 3, \"comment\": \"User primarily browses content\" }\n  },\n  \"overall\": \"Minimal engagement with Reddit platform, passive consumption rather than active participation.\",\n  \"next_steps\": \"Consider exploring why user only uses Reddit rarely and what might increase engagement.\"\n}",
+    "created_at": "2025-04-02T14:20:38.883478",
+    "structured_data": {
+      "overall": "The survey appears to be about Reddit usage rather than employee experience, making it difficult to assess workplace satisfaction metrics. The employee provided minimal information, only confirming their ID and briefly describing their Reddit usage habits.",
+      "ratings": {
+        "enps": {
+          "rating": 3,
+          "comment": "No promotion likelihood indicated"
+        },
+        "happiness": {
+          "rating": 3,
+          "comment": "Neutral tone throughout the brief interaction"
+        },
+        "communication": {
+          "rating": 3,
+          "comment": "Responded briefly but clearly to questions"
+        },
+        "mental_health": {
+          "rating": 3,
+          "comment": "No indicators of mental health concerns"
+        },
+        "job_satisfaction": {
+          "rating": 3,
+          "comment": "No job satisfaction data provided"
+        }
+      },
+      "summary": "Brief survey with employee 205 who uses Reddit rarely, primarily for browsing content.",
+      "next_steps": "Follow up with a more comprehensive survey focused on workplace experience rather than Reddit usage",
+      "employee_id": "205",
+      "raw_transcript": "AI: Hey. How are you? I want to take some some of time for a short survey.\nUser: Yeah. Go ahead.\nAI: Great. Before we dive in, could you please provide your employee ID?\nUser: It's 205.\nAI: Thank you. So your employee ID is 205. Is that correct?\nUser: Yeah.\nAI: Perfect. Thanks for confirming. So we're conducting a Reddit user experience survey to better understand how people use Reddit and what improvements they would like to see on the platform. Your insights are really valuable and will help shape the future of Reddit. Let's start with your usage habits. How frequently do you find yourself on Reddit? Do you use it daily, weekly, monthly, or perhaps only rarely?\nUser: Rarely.\nAI: Got it. So you use Reddit only occasionally. When you do visit Reddit, what is the main reason or purpose for your visit? Are you looking for specific information, participating in discussions, or maybe just browsing through content?\nUser: Browsing through content, Browsing through content.\nAI: That makes sense.",
+      "transcript_summary": {
+        "concerns": [
+          "Survey appears to be about Reddit rather than work experience",
+          "Very limited data collected"
+        ],
+        "feedback": [
+          "Survey should be more relevant to workplace experience"
+        ],
+        "highlights": [
+          "Employee ID confirmed as 205",
+          "Uses Reddit rarely"
+        ]
+      }
+    },
+    "employee_id": "205"
+  },
+  {
+    "id": "e37c2958-6d55-418f-9f18-c9b8d4f32574",
+    "public_survey_id": "a4c1d0ae-a293-4c6e-afb8-e7b9ab003664",
+    "prompt": "",
+    "prompt_summary": "",
+    "call_summary": "",
+    "created_at": "2025-04-02T14:23:25.144870"
+  },
+  {
+    "id": "8679fadc-d210-4f07-8170-d79fb24bbc41",
+    "public_survey_id": "a4c1d0ae-a293-4c6e-afb8-e7b9ab003664",
+    "prompt": "",
+    "prompt_summary": "",
+    "call_summary": "",
+    "created_at": "2025-04-02T14:25:32.831317"
+  },
+  {
+    "id": "e08c0c1d-6eb1-4a57-866b-286362289a89",
+    "public_survey_id": "a4c1d0ae-a293-4c6e-afb8-e7b9ab003664",
+    "prompt": "",
+    "prompt_summary": "",
+    "call_summary": "",
+    "created_at": "2025-04-02T14:29:29.779145"
+  },
+  {
+    "id": "e015814d-591d-4e75-95f8-37ea5802af15",
+    "public_survey_id": "a4c1d0ae-a293-4c6e-afb8-e7b9ab003664",
+    "prompt": "",
+    "prompt_summary": "",
+    "call_summary": "",
+    "created_at": "2025-04-02T14:30:11.122450"
+  },
+  {
+    "id": "9e9cdbce-86ac-4100-b09e-dad7dc43a9aa",
+    "public_survey_id": "a4c1d0ae-a293-4c6e-afb8-e7b9ab003664",
+    "prompt": "",
+    "prompt_summary": "",
+    "call_summary": "",
+    "created_at": "2025-04-02T14:32:02.566402"
+  },
+  {
+    "id": "78245a4c-6557-4fa7-806e-8337576d4e9e",
+    "public_survey_id": "e273ac0b-20ba-4681-9c73-a6d9b9273b08",
+    "prompt": "reddit survey",
+    "prompt_summary": "{\n  \"survey_title\": \"Reddit User Experience Survey\",\n  \"intro\": \"We are conducting this survey to gather information about your experiences and opinions on using Reddit. Your responses will help us understand how to improve the platform and provide a better experience for users. The survey should take around 2 minutes to complete and all responses are anonymous.\",\n  \"summary\": \"This survey focuses on your usage habits, opinions, and suggestions for improving Reddit.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How often do you use Reddit?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Daily\", \"Several times a week\", \"About once a week\", \"Less than once a week\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What is your favorite aspect of Reddit?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"How would you rate the overall user experience of Reddit?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Poor)\", \"2\", \"3\", \"4\", \"5 (Excellent)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"Can you describe a recent positive experience you had on Reddit?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How likely are you to recommend Reddit to a friend or colleague?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Very likely\", \"Somewhat likely\", \"Not very likely\", \"Not at all likely\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"Do you have any suggestions for new features or improvements to Reddit?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey. Your feedback is greatly appreciated and will help us improve the Reddit experience for all users.\"\n}",
+    "call_summary": "{\n  \"employee_id\": \"294\",\n  \"summary\": \"Brief survey about Reddit usage. User visits Reddit less often and doesn't find any features particularly enjoyable or standout.\",\n  \"ratings\": {\n    \"Usage frequency\": { \"rating\": 1, \"comment\": \"User reports using Reddit 'less often'\" },\n    \"Feature enjoyment\": { \"rating\": 1, \"comment\": \"User states 'Nothing that standouts to me'\" }\n  },\n  \"overall\": \"The user appears disinterested in Reddit, showing minimal engagement with the platform and expressing no particular enjoyment of any features.\",\n  \"next_steps\": \"Consider exploring why the user doesn't find Reddit engaging, and what might make the platform more appealing to occasional users.\"\n}",
+    "created_at": "2025-04-02T14:42:46.576821",
+    "structured_data": {
+      "overall": "The employee shows minimal engagement with Reddit, using it infrequently and finding nothing particularly noteworthy about the platform. The survey was cut short, limiting the insights that could be gathered.",
+      "ratings": {
+        "enps": {
+          "rating": 2,
+          "comment": "Shows no enthusiasm for Reddit, uses it 'less often'"
+        },
+        "happiness": {
+          "rating": 3,
+          "comment": "Neutral tone throughout the brief interaction"
+        },
+        "communication": {
+          "rating": 3,
+          "comment": "Provides brief, direct responses without elaboration"
+        },
+        "mental_health": {
+          "rating": 3,
+          "comment": "No indicators of mental health concerns in the limited conversation"
+        },
+        "job_satisfaction": {
+          "rating": 3,
+          "comment": "Insufficient data to determine job satisfaction"
+        }
+      },
+      "summary": "Employee #294 is a casual Reddit user who doesn't find anything particularly noteworthy about the platform. The survey was incomplete, with minimal responses that indicate low engagement with Reddit.",
+      "next_steps": "Follow up with a more complete survey as this one was cut short. Consider exploring why the employee doesn't find Reddit engaging.",
+      "employee_id": "294",
+      "raw_transcript": "AI: He How are you? I want to take some some of time for a short survey.\nUser: Yeah. Go ahead.\nAI: Great. You please provide your employee ID first?\nUser: It's 294.\nAI: Thank you. For sharing your employee ID 294. Can you please confirm if that is correct?\nUser: Yeah. It's correct.\nAI: Perfect. Thank you for confirming. So we're conducting a quick survey to learn more about how people experience Reddit. And how we can make it even better for users like you. Your responses will remain strictly confidential, so please feel free to share your thoughts openly. It should only take about 2 minutes. Let's start off simple. How often do you find yourself diving into Reddit? Is it something you use daily a few times a week or perhaps less often?\nUser: Less often.\nAI: Got it. Less often. Thanks for sharing that. Now I am curious when you do visit Reddit. What's the thing you enjoy the most? Is there a particular feature or aspect that stands out for you?\nUser: Nothing that standouts to me.\nAI: That's fair. Sometimes platforms can feel more functional than exciting. Is there anything about Reddit's overall user experience that you'd rate positively",
+      "transcript_summary": {
+        "concerns": [
+          "Lack of engagement with the platform",
+          "Survey was incomplete"
+        ],
+        "feedback": [
+          "No specific positive aspects of Reddit were mentioned"
+        ],
+        "highlights": [
+          "Employee uses Reddit less often than weekly",
+          "Nothing stands out to the employee about Reddit"
+        ]
+      }
+    },
+    "employee_id": "294"
+  },
+  {
+    "id": "c2d532a2-b211-4a81-bdb3-ce647969a598",
+    "public_survey_id": "7c226b1c-75ac-4b8a-aaf5-051aadf7de7d",
+    "prompt": "reddit survey",
+    "prompt_summary": "{\n  \"survey_title\": \"Reddit User Experience Survey\",\n  \"intro\": \"Thank you for participating in this survey. The purpose of this survey is to gather information about your experiences and opinions on using Reddit. Your input will help us better understand the community's needs and improve the overall user experience. The survey should take approximately 2 minutes to complete.\",\n  \"summary\": \"This survey focuses on your usage habits, favorite features, and suggestions for improvement on Reddit.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How often do you use Reddit?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\n        \"Daily\",\n        \"Weekly\",\n        \"Monthly\",\n        \"Rarely\"\n      ],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What do you primarily use Reddit for?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"How would you rate the overall quality of content on Reddit?\",\n      \"type\": \"rating\",\n      \"options\": [\n        \"1 (Poor)\",\n        \"2\",\n        \"3\",\n        \"4\",\n        \"5 (Excellent)\"\n      ],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"Have you ever participated in an AMA (Ask Me Anything) session on Reddit? If so, what was your experience like?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How likely are you to recommend Reddit to a friend or colleague?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\n        \"Very Likely\",\n        \"Somewhat Likely\",\n        \"Neutral\",\n        \"Somewhat Unlikely\",\n        \"Very Unlikely\"\n      ],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"What features or changes would you like to see implemented on Reddit to improve your experience?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey. Your input is valuable to us, and we appreciate your participation in helping to shape the future of Reddit.\"\n}",
+    "call_summary": "",
+    "created_at": "2025-04-02T14:48:34.986063"
+  },
+  {
+    "id": "f2e49377-5973-4f2a-9d39-ff3dfa345e25",
+    "public_survey_id": "2bed6868-6ef2-43d5-b9c1-940baa0070b8",
+    "prompt": "reddit survey",
+    "prompt_summary": "{\n  \"survey_title\": \"Reddit User Experience Survey\",\n  \"intro\": \"Welcome to the Reddit User Experience Survey. This survey aims to gather information about your experiences and preferences on the Reddit platform. Your input will help us understand what you like and dislike about Reddit, and how we can improve the platform to better serve your needs. The survey should take approximately 2 minutes to complete, and all responses are anonymous.\",\n  \"summary\": \"This survey focuses on your Reddit usage habits, favorite features, and suggestions for improvement.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How often do you visit Reddit?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Daily\", \"Several times a week\", \"About once a week\", \"Less than once a week\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What is your primary reason for using Reddit?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"How would you rate the overall quality of content on Reddit?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Poor)\", \"2\", \"3\", \"4\", \"5 (Excellent)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"Can you describe your favorite Reddit feature or community? Why do you enjoy it?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"Which of the following features would you like to see improved or added to Reddit?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Search functionality\", \"Comment formatting\", \"Mobile app usability\", \"Other (please specify)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"How likely are you to recommend Reddit to a friend or colleague?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Not likely at all)\", \"2\", \"3\", \"4\", \"5 (Very likely)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 7,\n      \"question\": \"Do you have any suggestions for new features or improvements that would enhance your Reddit experience?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to participate in this survey. Your feedback is greatly appreciated and will help us to improve the Reddit experience for all users.\"\n}",
+    "call_summary": "",
+    "created_at": "2025-04-02T14:55:39.602322"
+  },
+  {
+    "id": "8a8227ed-d724-41e3-a687-1fbf8bb8d6a8",
+    "public_survey_id": "7bc15a4c-ce90-42f1-8792-ae94faa2ff31",
+    "prompt": "reddit survey",
+    "prompt_summary": "{\n  \"survey_title\": \"Reddit User Experience Survey\",\n  \"intro\": \"Hello, we appreciate you taking the time to participate in this survey. The purpose of this survey is to gather information about your experience using Reddit, understand your preferences, and identify areas for improvement. Your input will help us better understand the Reddit community and make informed decisions to enhance the platform. Please answer the questions honestly, and all responses will be kept anonymous.\",\n  \"summary\": \"This survey focuses on understanding Reddit users' habits, preferences, and satisfaction with the platform, aiming to improve the overall user experience.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How often do you use Reddit?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Daily\", \"Weekly\", \"Monthly\", \"Rarely\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What do you primarily use Reddit for?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"How would you rate your overall satisfaction with Reddit?\",\n      \"type\": \"rating\",\n      \"options\": [\"Very Satisfied\", \"Satisfied\", \"Neutral\", \"Dissatisfied\", \"Very Dissatisfied\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"Can you describe a recent positive experience you had on Reddit?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How likely are you to recommend Reddit to a friend or family member?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Very Likely\", \"Likely\", \"Neutral\", \"Unlikely\", \"Very Unlikely\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"What features or improvements would you like to see on Reddit in the future?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey. Your input is invaluable to us, and we appreciate your participation. Your responses will help shape the future of Reddit and improve the community experience.\"\n}",
+    "call_summary": "",
+    "created_at": "2025-04-02T14:56:44.104050"
+  },
+  {
+    "id": "04de62f8-2702-4bfb-b0cc-d9211ed224ba",
+    "public_survey_id": "4cd4c3f2-78a2-4892-b108-c5cdd57b47f3",
+    "prompt": "reddit survey",
+    "prompt_summary": "{\n  \"survey_title\": \"Reddit User Experience Survey\",\n  \"intro\": \"Thank you for participating in this survey. The purpose of this survey is to gather information about your experiences and preferences on Reddit. Your input will help us understand how to improve the platform and provide a better experience for users. Please answer the questions honestly, and all responses will be kept anonymous.\",\n  \"summary\": \"This survey focuses on Reddit user experiences, preferences, and demographics to identify areas for improvement and provide insights for future development.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How often do you use Reddit?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Daily\", \"Weekly\", \"Monthly\", \"Rarely\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What is your favorite subreddit and why?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"How would you rate the overall quality of content on Reddit?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Poor)\", \"2\", \"3\", \"4\", \"5 (Excellent)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"Have you ever encountered any issues or problems while using Reddit? If so, please describe.\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"What features or improvements would you like to see added to Reddit in the future?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"How would you rate your overall satisfaction with Reddit?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Very Dissatisfied)\", \"2\", \"3\", \"4\", \"5 (Very Satisfied)\"],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey. Your feedback is valuable to us, and we appreciate your input. If you have any additional comments or suggestions, please feel free to share them. Your participation will help shape the future of Reddit and improve the experience for all users.\"\n}",
+    "call_summary": "",
+    "created_at": "2025-04-02T15:09:08.289501"
   }
 ]
