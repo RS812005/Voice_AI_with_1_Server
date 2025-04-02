@@ -299,8 +299,14 @@
         <!-- Call Section -->
 <div id="call-section" class="w-full max-w-3xl mx-auto my-8 p-6 bg-white rounded-lg shadow-lg">
   <!-- New heading element for survey heading -->
-  <h2 id="call-heading" class="text-xl font-semibold text-gray-700 mb-4">Call in Progress</h2>
+  <div class="flex justify-between items-center mb-4">
+    <h2 id="call-heading" class="text-xl font-semibold text-gray-700">Call in Progress</h2>
+    <div id="call-timer" class="text-gray-800 font-semibold bg-gray-100 px-2 py-1 rounded shadow">
+      00:00
+    </div>
+  </div>
   <p id="assistant-status" class="text-sm text-gray-600 mb-4">Assistant Status: Not Speaking</p>
+  
   <div id="volume-level" class="flex space-x-2 mb-4"></div>
   <button id="stop-btn" class="bg-red-500 text-white py-1 px-3 rounded-md hover:bg-red-600 transition-colors">
     Stop Call
@@ -394,6 +400,28 @@
       // }
 
       // Start the assistant call using the Web SDK
+
+      var callTimerInterval;
+var callStartTime;
+
+function startCallTimer() {
+  callStartTime = Date.now();
+  document.getElementById("call-timer").textContent = "00:00";
+  callTimerInterval = setInterval(() => {
+    const elapsed = Date.now() - callStartTime;
+    const totalSeconds = Math.floor(elapsed / 1000);
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    // Format minutes and seconds as two digits
+    document.getElementById("call-timer").textContent =
+      `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  }, 1000);
+}
+
+function stopCallTimer() {
+  clearInterval(callTimerInterval);
+}
+
       function startWebCall(extractedText) {
         const accentValue = document.getElementById("accent").value;
         const extrasValue = document.getElementById("extras").value;
@@ -512,6 +540,7 @@ Closing:
           .then((response) => {
             console.log("VAPI Web call started:", response);
             globalCallId = response.id;
+            startCallTimer();
             return response;
           })
           .catch((error) => {
@@ -521,6 +550,9 @@ Closing:
 
       function stopWebCall() {
         vapiInstance.stop();
+        stopCallTimer();
+        document.getElementById("call-summary").innerHTML =
+    '<p class="text-gray-600">Summary loading...</p>';
         setTimeout(() => {
           pollCallDetails(globalCallId);
         }, 1000);
@@ -841,11 +873,11 @@ function renderEditableSection(fieldName, surveyData, container, tagName, extraC
   container.appendChild(sectionContainer);
 }
 
-      // -----------------------------
-      // RENDERING FUNCTIONS
-      // -----------------------------
+// -----------------------------
+// RENDERING FUNCTIONS
+// -----------------------------
 
-      // Update the renderPreviewSurvey function to append the "Add Question" button and form container
+// Update the renderPreviewSurvey function to append the "Add Question" button and form container
 function renderPreviewSurvey(surveyData, container) {
   container.innerHTML = "";
   // Render the editable survey heading.
@@ -882,9 +914,9 @@ function renderPreviewSurvey(surveyData, container) {
     renderAddQuestionForm(surveyData, addQuestionFormContainer, container);
   });
   // Add a spacer element for extra spacing
-const spacer = document.createElement("div");
-spacer.className = "mt-6"; // Adjust this class for more/less spacing
-container.appendChild(spacer);
+  const spacer = document.createElement("div");
+  spacer.className = "mt-6"; // Adjust this class for more/less spacing
+  container.appendChild(spacer);
 
   // Render the editable Outro.
   renderEditableSection("outro", surveyData, container, "p", "text-base text-gray-700");
@@ -916,7 +948,7 @@ function renderAddQuestionForm(surveyData, formContainer, surveyContainer) {
     const option = document.createElement("option");
     option.value = t;
     // Display with spaces and uppercase for readability
-    option.textContent = t
+    option.textContent = t;
     typeSelect.appendChild(option);
   });
   formContainer.appendChild(typeSelect);
@@ -928,68 +960,63 @@ function renderAddQuestionForm(surveyData, formContainer, surveyContainer) {
 
   // Function to render the options input fields
   function renderOptionsInputs() {
-  optionsContainer.innerHTML = "";
+    optionsContainer.innerHTML = "";
 
-  // Create the "Add Option" button
-  const addOptionBtn = document.createElement("button");
-  addOptionBtn.textContent = "Add Option";
-  addOptionBtn.className = "bg-blue-500 text-white px-3 py-1 rounded mt-2";
-  addOptionBtn.type = "button";
+    // Create the "Add Option" button
+    const addOptionBtn = document.createElement("button");
+    addOptionBtn.textContent = "Add Option";
+    addOptionBtn.className = "bg-blue-500 text-white px-3 py-1 rounded mt-2";
+    addOptionBtn.type = "button";
 
-  // Append the button to the container first
-  optionsContainer.appendChild(addOptionBtn);
+    // Append the button to the container first
+    optionsContainer.appendChild(addOptionBtn);
 
-  // Helper: how many options currently in the container?
-  function getCurrentOptionCount() {
-    return optionsContainer.querySelectorAll("div.flex.items-center").length;
-  }
-
-  // Function to add an option input field
-  function addOptionInput(value = "") {
-    // If no value given, label it "Option X" based on the current count
-    if (!value) {
-      const nextIndex = getCurrentOptionCount() + 1;
-      value = `Option ${nextIndex}`;
+    // Helper: how many options currently in the container?
+    function getCurrentOptionCount() {
+      return optionsContainer.querySelectorAll("div.flex.items-center").length;
     }
 
-    // Create a row for the option
-    const optionDiv = document.createElement("div");
-    optionDiv.className = "flex items-center mt-2";
+    // Function to add an option input field
+    function addOptionInput(value = "") {
+      // If no value given, label it "Option X" based on the current count
+      if (!value) {
+        const nextIndex = getCurrentOptionCount() + 1;
+        value = `Option ${nextIndex}`;
+      }
 
-    // The text input for the option
-    const optionInput = document.createElement("input");
-    optionInput.type = "text";
-    optionInput.value = value;
-    optionInput.className = "flex-1 p-2 border rounded";
-    optionDiv.appendChild(optionInput);
+      // Create a row for the option
+      const optionDiv = document.createElement("div");
+      optionDiv.className = "flex items-center mt-2";
 
-    // Remove button
-    const removeBtn = document.createElement("button");
-    removeBtn.textContent = "X";
-    removeBtn.className = "bg-red-500 text-white px-2 py-1 rounded ml-2";
-    removeBtn.type = "button";
-    removeBtn.addEventListener("click", () => {
-      optionDiv.remove();
-      // Now, if you add another option, it will re-check getCurrentOptionCount()
-      // and give the new one a lower number if an option was removed.
-    });
-    optionDiv.appendChild(removeBtn);
+      // The text input for the option
+      const optionInput = document.createElement("input");
+      optionInput.type = "text";
+      optionInput.value = value;
+      optionInput.className = "flex-1 p-2 border rounded";
+      optionDiv.appendChild(optionInput);
 
-    // Insert the new option above the "Add Option" button
-    optionsContainer.insertBefore(optionDiv, addOptionBtn);
-  }
+      // Remove button
+      const removeBtn = document.createElement("button");
+      removeBtn.textContent = "X";
+      removeBtn.className = "bg-red-500 text-white px-2 py-1 rounded ml-2";
+      removeBtn.type = "button";
+      removeBtn.addEventListener("click", () => {
+        optionDiv.remove();
+      });
+      optionDiv.appendChild(removeBtn);
 
-  // Add an initial option field
-  addOptionInput();
+      // Insert the new option above the "Add Option" button
+      optionsContainer.insertBefore(optionDiv, addOptionBtn);
+    }
 
-  // Each time "Add Option" is clicked, re-check the count
-  addOptionBtn.addEventListener("click", () => {
+    // Add an initial option field
     addOptionInput();
-  });
-}
 
-
-
+    // Each time "Add Option" is clicked, re-check the count
+    addOptionBtn.addEventListener("click", () => {
+      addOptionInput();
+    });
+  }
 
   // Toggle options container visibility based on selected question type
   typeSelect.addEventListener("change", () => {
@@ -1048,251 +1075,257 @@ function renderAddQuestionForm(surveyData, formContainer, surveyContainer) {
   });
 }
 
+// Main render function for a question.
+// It will call either the preview or edit renderer based on question.editMode.
+function renderQuestion(question) {
+  return question.editMode ? renderQuestionEdit(question) : renderQuestionPreview(question);
+}
 
-      // Main render function for a question.
-      // It will call either the preview or edit renderer based on question.editMode.
-      function renderQuestion(question) {
-        return question.editMode ? renderQuestionEdit(question) : renderQuestionPreview(question);
+// Render a question in Preview Mode (read-only for structure, but answer inputs are now disabled)
+function renderQuestionPreview(question) {
+  const container = document.createElement("div");
+  container.className = "relative border p-4 rounded-lg bg-gray-50 mb-4";
+
+  // Header: Question text and inline Edit button (🖊️)
+  const headerDiv = document.createElement("div");
+  headerDiv.className = "flex justify-between items-center";
+  const questionText = document.createElement("p");
+  questionText.textContent = question.question;
+  questionText.className = "font-semibold text-gray-800";
+  headerDiv.appendChild(questionText);
+  const editBtn = document.createElement("button");
+  editBtn.innerHTML = "&#9998;"; // 🖊️ icon
+  editBtn.className = "text-blue-500";
+  editBtn.addEventListener("click", () => {
+    question.editMode = true;
+    container.replaceWith(renderQuestion(question));
+  });
+  headerDiv.appendChild(editBtn);
+  container.appendChild(headerDiv);
+
+  // Render answer input based on question type (all inputs are disabled)
+  if (question.type === "multiple_choice") {
+    question.options.forEach(opt => {
+      const optDiv = document.createElement("div");
+      optDiv.className = "flex items-center mt-2";
+      const radio = document.createElement("input");
+      radio.type = "radio";
+      radio.name = "question_" + question.id;
+      radio.value = opt;
+      radio.className = "mr-2 w-auto";
+      radio.disabled = true; // disable input
+      const label = document.createElement("label");
+      label.textContent = opt;
+      optDiv.appendChild(radio);
+      optDiv.appendChild(label);
+      container.appendChild(optDiv);
+    });
+  } else if (question.type === "short_answer") {
+    const input = document.createElement("input");
+    input.type = "text";
+    input.placeholder = "Your answer...";
+    input.className = "w-full p-2 border rounded mt-2";
+    input.disabled = true; // disable input
+    container.appendChild(input);
+  } else if (question.type === "rating") {
+    if (question.options && question.options.length > 0) {
+      const selectEl = document.createElement("select");
+      selectEl.className = "w-full p-2 border rounded mt-2";
+      selectEl.disabled = true; // disable select
+      const placeholder = document.createElement("option");
+      placeholder.value = "";
+      placeholder.textContent = "Select rating";
+      selectEl.appendChild(placeholder);
+      question.options.forEach(opt => {
+        const optionEl = document.createElement("option");
+        optionEl.value = opt;
+        optionEl.textContent = opt;
+        selectEl.appendChild(optionEl);
+      });
+      container.appendChild(selectEl);
+    } else {
+      const ratingDiv = document.createElement("div");
+      ratingDiv.className = "flex space-x-2 mt-2";
+      for (let i = 1; i <= 5; i++) {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.textContent = i;
+        btn.className = "px-3 py-1 border rounded";
+        btn.disabled = true; // disable button
+        ratingDiv.appendChild(btn);
       }
+      container.appendChild(ratingDiv);
+    }
+  } else if (question.type === "paragraph") {
+    const textarea = document.createElement("textarea");
+    textarea.rows = 3;
+    textarea.placeholder = "Your answer...";
+    textarea.className = "w-full p-2 border rounded mt-2";
+    textarea.disabled = true; // disable textarea
+    container.appendChild(textarea);
+  }
 
-      // Render a question in Preview Mode (read-only for structure, but answer input remains editable)
-      function renderQuestionPreview(question) {
-        const container = document.createElement("div");
-        container.className = "relative border p-4 rounded-lg bg-gray-50 mb-4";
+  return container;
+}
 
-        // Header: Question text and inline Edit button (🖊️)
-        const headerDiv = document.createElement("div");
-        headerDiv.className = "flex justify-between items-center";
-        const questionText = document.createElement("p");
-        questionText.textContent = question.question;
-        questionText.className = "font-semibold text-gray-800";
-        headerDiv.appendChild(questionText);
-        const editBtn = document.createElement("button");
-        editBtn.innerHTML = "&#9998;"; // 🖊️ icon
-        editBtn.className = "text-blue-500";
-        editBtn.addEventListener("click", () => {
-          question.editMode = true;
-          container.replaceWith(renderQuestion(question));
-        });
-        headerDiv.appendChild(editBtn);
-        container.appendChild(headerDiv);
+// Render a single question in Edit Mode (inline editing)
+function renderQuestionEdit(question) {
+  const container = document.createElement("div");
+  container.className = "relative border p-4 rounded-lg bg-gray-50 mb-4";
 
-        // Render answer input based on question type
-        // (This part remains interactive for users to input their answer.)
-        if (question.type === "multiple_choice") {
-          question.options.forEach(opt => {
-            const optDiv = document.createElement("div");
-            optDiv.className = "flex items-center mt-2";
-            const radio = document.createElement("input");
-            radio.type = "radio";
-            radio.name = "question_" + question.id;
-            radio.value = opt;
-            radio.className = "mr-2 w-auto";
-            const label = document.createElement("label");
-            label.textContent = opt;
-            optDiv.appendChild(radio);
-            optDiv.appendChild(label);
-            container.appendChild(optDiv);
-          });
-        } else if (question.type === "short_answer") {
-          const input = document.createElement("input");
-          input.type = "text";
-          input.placeholder = "Your answer...";
-          input.className = "w-full p-2 border rounded mt-2";
-          container.appendChild(input);
-        } else if (question.type === "rating") {
-          if (question.options && question.options.length > 0) {
-            const selectEl = document.createElement("select");
-            selectEl.className = "w-full p-2 border rounded mt-2";
-            const placeholder = document.createElement("option");
-            placeholder.value = "";
-            placeholder.textContent = "Select rating";
-            selectEl.appendChild(placeholder);
-            question.options.forEach(opt => {
-              const optionEl = document.createElement("option");
-              optionEl.value = opt;
-              optionEl.textContent = opt;
-              selectEl.appendChild(optionEl);
-            });
-            container.appendChild(selectEl);
-          } else {
-            const ratingDiv = document.createElement("div");
-            ratingDiv.className = "flex space-x-2 mt-2";
-            for (let i = 1; i <= 5; i++) {
-              const btn = document.createElement("button");
-              btn.type = "button";
-              btn.textContent = i;
-              btn.className = "px-3 py-1 border rounded";
-              ratingDiv.appendChild(btn);
-            }
-            container.appendChild(ratingDiv);
-          }
-        } else if (question.type === "paragraph") {
-          const textarea = document.createElement("textarea");
-          textarea.rows = 3;
-          textarea.placeholder = "Your answer...";
-          textarea.className = "w-full p-2 border rounded mt-2";
-          container.appendChild(textarea);
-        }
+  // Editable Question Text
+  const labelText = document.createElement("label");
+  labelText.textContent = "Question:";
+  labelText.className = "block font-semibold text-gray-800 mb-1";
+  container.appendChild(labelText);
+  const inputText = document.createElement("input");
+  inputText.type = "text";
+  inputText.value = question.question;
+  inputText.className = "w-full p-2 border rounded mb-2";
+  inputText.addEventListener("input", () => {
+    question.question = inputText.value;
+  });
+  container.appendChild(inputText);
 
-        return container;
-      }
-
-      // Render a single question in Edit Mode (inline editing)
-      function renderQuestionEdit(question) {
-        const container = document.createElement("div");
-        container.className = "relative border p-4 rounded-lg bg-gray-50 mb-4";
-
-        // Editable Question Text
-        const labelText = document.createElement("label");
-        labelText.textContent = "Question:";
-        labelText.className = "block font-semibold text-gray-800 mb-1";
-        container.appendChild(labelText);
-        const inputText = document.createElement("input");
-        inputText.type = "text";
-        inputText.value = question.question;
-        inputText.className = "w-full p-2 border rounded mb-2";
-        inputText.addEventListener("input", () => {
-          question.question = inputText.value;
-        });
-        container.appendChild(inputText);
-
-        // Editable Question Type Dropdown
-        const labelType = document.createElement("label");
-        labelType.textContent = "Type:";
-        labelType.className = "block font-semibold text-gray-800 mb-1";
-        container.appendChild(labelType);
-        const selectType = document.createElement("select");
-        selectType.className = "w-full p-2 border rounded mb-2";
-        ["multiple_choice", "short_answer", "rating", "paragraph"].forEach(t => {
-          const opt = document.createElement("option");
-          opt.value = t;
-          opt.textContent = t;
-          if (t === question.type) opt.selected = true;
-          selectType.appendChild(opt);
-        });
-        selectType.addEventListener("change", () => {
-          const oldType = question.type;
-          question.type = selectType.value;
-          // When switching to an option-based type from text-based, prompt for options.
-          if ((oldType === "paragraph" || oldType === "short_answer") &&
-              (question.type === "multiple_choice" || question.type === "rating")) {
-            if (confirm("Switched to an option-based question. Add options now?")) {
-              const numOptions = parseInt(prompt("How many options?", "2"), 10);
-              if (!isNaN(numOptions) && numOptions > 0) {
-                question.options = [];
-                for (let i = 0; i < numOptions; i++) {
-                  question.options.push(`Option ${i + 1}`);
-                }
-              } else {
-                question.options = [];
-              }
-            } else {
-              question.options = [];
-            }
-          } else if ((oldType === "multiple_choice" || oldType === "rating") &&
-                     (question.type === "paragraph" || question.type === "short_answer")) {
-            question.options = [];
-          }
-          renderOptionsEdit(question, optionsContainer);
-        });
-        container.appendChild(selectType);
-
-        // Container for editing options (if applicable)
-        const optionsContainer = document.createElement("div");
-        optionsContainer.className = "mb-2";
-        container.appendChild(optionsContainer);
-
-        // Function to render options edit interface
-        function renderOptionsEdit(question, container) {
-          container.innerHTML = "";
-          if (question.type === "multiple_choice" || question.type === "rating") {
-            if (!Array.isArray(question.options)) {
-              question.options = [];
-            }
-            question.options.forEach((opt, idx) => {
-              const row = document.createElement("div");
-              row.className = "flex items-center mb-1";
-              const optInput = document.createElement("input");
-              optInput.type = "text";
-              optInput.value = opt;
-              optInput.className = "flex-1 p-1 border rounded mr-2";
-              optInput.addEventListener("input", () => {
-                question.options[idx] = optInput.value;
-              });
-              const removeBtn = document.createElement("button");
-              removeBtn.textContent = "X";
-              removeBtn.className = "bg-red-500 text-white px-2 rounded";
-              removeBtn.addEventListener("click", () => {
-                question.options.splice(idx, 1);
-                renderOptionsEdit(question, container);
-              });
-              row.appendChild(optInput);
-              row.appendChild(removeBtn);
-              container.appendChild(row);
-            });
-            const addBtn = document.createElement("button");
-            addBtn.textContent = "Add Option";
-            addBtn.className = "bg-green-500 text-white px-2 py-1 rounded";
-            addBtn.addEventListener("click", () => {
-              question.options.push("New Option");
-              renderOptionsEdit(question, container);
-            });
-            container.appendChild(addBtn);
-          }
-        }
-        renderOptionsEdit(question, optionsContainer);
-
-        // Answer input (editable as in preview)
-        const labelAnswer = document.createElement("label");
-        labelAnswer.textContent = "Answer:";
-        labelAnswer.className = "block font-semibold text-gray-700 mb-1";
-        container.appendChild(labelAnswer);
-        let answerInput;
-        if (question.type === "multiple_choice" || question.type === "rating") {
-          answerInput = document.createElement("select");
-          answerInput.className = "w-full p-2 border rounded mb-2";
-          const defaultOpt = document.createElement("option");
-          defaultOpt.value = "";
-          defaultOpt.textContent = "Select an answer";
-          answerInput.appendChild(defaultOpt);
-          if (Array.isArray(question.options)) {
-            question.options.forEach(opt => {
-              const optEl = document.createElement("option");
-              optEl.value = opt;
-              optEl.textContent = opt;
-              if (question.answer === opt) optEl.selected = true;
-              answerInput.appendChild(optEl);
-            });
+  // Editable Question Type Dropdown
+  const labelType = document.createElement("label");
+  labelType.textContent = "Type:";
+  labelType.className = "block font-semibold text-gray-800 mb-1";
+  container.appendChild(labelType);
+  const selectType = document.createElement("select");
+  selectType.className = "w-full p-2 border rounded mb-2";
+  ["multiple_choice", "short_answer", "rating", "paragraph"].forEach(t => {
+    const opt = document.createElement("option");
+    opt.value = t;
+    opt.textContent = t;
+    if (t === question.type) opt.selected = true;
+    selectType.appendChild(opt);
+  });
+  selectType.addEventListener("change", () => {
+    const oldType = question.type;
+    question.type = selectType.value;
+    // When switching to an option-based type from text-based, prompt for options.
+    if ((oldType === "paragraph" || oldType === "short_answer") &&
+        (question.type === "multiple_choice" || question.type === "rating")) {
+      if (confirm("Switched to an option-based question. Add options now?")) {
+        const numOptions = parseInt(prompt("How many options?", "2"), 10);
+        if (!isNaN(numOptions) && numOptions > 0) {
+          question.options = [];
+          for (let i = 0; i < numOptions; i++) {
+            question.options.push(`Option ${i + 1}`);
           }
         } else {
-          if (question.type === "paragraph") {
-            answerInput = document.createElement("textarea");
-            answerInput.rows = 3;
-          } else {
-            answerInput = document.createElement("input");
-            answerInput.type = "text";
-          }
-          answerInput.value = question.answer || "";
-          answerInput.className = "w-full p-2 border rounded mb-2";
+          question.options = [];
         }
-        answerInput.addEventListener("input", () => {
-          question.answer = answerInput.value;
-        });
-        container.appendChild(answerInput);
-
-        // Save button to exit edit mode (positioned at top-right)
-        const saveBtn = document.createElement("button");
-        saveBtn.textContent = "Save";
-        saveBtn.className = "bg-blue-500 text-white px-3 py-1 rounded absolute top-2 right-2";
-        saveBtn.addEventListener("click", () => {
-          question.editMode = false;
-          container.replaceWith(renderQuestion(question));
-        });
-        container.appendChild(saveBtn);
-
-        return container;
+      } else {
+        question.options = [];
       }
+    } else if ((oldType === "multiple_choice" || oldType === "rating") &&
+               (question.type === "paragraph" || question.type === "short_answer")) {
+      question.options = [];
+    }
+    renderOptionsEdit(question, optionsContainer);
+  });
+  container.appendChild(selectType);
+
+  // Container for editing options (if applicable)
+  const optionsContainer = document.createElement("div");
+  optionsContainer.className = "mb-2";
+  container.appendChild(optionsContainer);
+
+  // Function to render options edit interface
+  function renderOptionsEdit(question, container) {
+    container.innerHTML = "";
+    if (question.type === "multiple_choice" || question.type === "rating") {
+      if (!Array.isArray(question.options)) {
+        question.options = [];
+      }
+      question.options.forEach((opt, idx) => {
+        const row = document.createElement("div");
+        row.className = "flex items-center mb-1";
+        const optInput = document.createElement("input");
+        optInput.type = "text";
+        optInput.value = opt;
+        optInput.className = "flex-1 p-1 border rounded mr-2";
+        optInput.addEventListener("input", () => {
+          question.options[idx] = optInput.value;
+        });
+        const removeBtn = document.createElement("button");
+        removeBtn.textContent = "X";
+        removeBtn.className = "bg-red-500 text-white px-2 rounded";
+        removeBtn.addEventListener("click", () => {
+          question.options.splice(idx, 1);
+          renderOptionsEdit(question, container);
+        });
+        row.appendChild(optInput);
+        row.appendChild(removeBtn);
+        container.appendChild(row);
+      });
+      const addBtn = document.createElement("button");
+      addBtn.textContent = "Add Option";
+      addBtn.className = "bg-green-500 text-white px-2 py-1 rounded";
+      addBtn.addEventListener("click", () => {
+        question.options.push("New Option");
+        renderOptionsEdit(question, container);
+      });
+      container.appendChild(addBtn);
+    }
+  }
+  renderOptionsEdit(question, optionsContainer);
+
+  // Answer input (editable as in preview but now disabled)
+  const labelAnswer = document.createElement("label");
+  labelAnswer.textContent = "Answer:";
+  labelAnswer.className = "block font-semibold text-gray-700 mb-1";
+  container.appendChild(labelAnswer);
+  let answerInput;
+  if (question.type === "multiple_choice" || question.type === "rating") {
+    answerInput = document.createElement("select");
+    answerInput.className = "w-full p-2 border rounded mb-2";
+    answerInput.disabled = true; // disable select
+    const defaultOpt = document.createElement("option");
+    defaultOpt.value = "";
+    defaultOpt.textContent = "Select an answer";
+    answerInput.appendChild(defaultOpt);
+    if (Array.isArray(question.options)) {
+      question.options.forEach(opt => {
+        const optEl = document.createElement("option");
+        optEl.value = opt;
+        optEl.textContent = opt;
+        if (question.answer === opt) optEl.selected = true;
+        answerInput.appendChild(optEl);
+      });
+    }
+  } else {
+    if (question.type === "paragraph") {
+      answerInput = document.createElement("textarea");
+      answerInput.rows = 3;
+    } else {
+      answerInput = document.createElement("input");
+      answerInput.type = "text";
+    }
+    answerInput.value = question.answer || "";
+    answerInput.className = "w-full p-2 border rounded mb-2";
+    answerInput.disabled = true; // disable input/textarea
+  }
+  answerInput.addEventListener("input", () => {
+    question.answer = answerInput.value;
+  });
+  container.appendChild(answerInput);
+
+  // Save button to exit edit mode (positioned at top-right)
+  const saveBtn = document.createElement("button");
+  saveBtn.textContent = "Save";
+  saveBtn.className = "bg-blue-500 text-white px-3 py-1 rounded absolute top-2 right-2";
+  saveBtn.addEventListener("click", () => {
+    question.editMode = false;
+    container.replaceWith(renderQuestion(question));
+  });
+  container.appendChild(saveBtn);
+
+  return container;
+}
+
 
       // Send Survey Response to Voice AI
       document

@@ -49,9 +49,13 @@
         id="call-section"
         class="hidden w-full mb-8 p-6 bg-white rounded-lg shadow-lg"
       >
-        <h2 id="call-heading" class="text-xl font-semibold text-gray-700 mb-4">
-          Call in Progress
-        </h2>
+         <div class="flex justify-between items-center mb-4">
+    <h2 id="call-heading" class="text-xl font-semibold text-gray-700">Call in Progress</h2>
+    <div id="call-timer" class="text-gray-800 font-semibold bg-gray-100 px-2 py-1 rounded shadow">
+      00:00
+    </div>
+  </div>
+  
         <p id="assistant-status" class="text-sm text-gray-600 mb-4">
           Assistant Status: Not Speaking
         </p>
@@ -171,6 +175,26 @@
       // if (!localStorage.getItem("chatRecordCounter")) {
       //   localStorage.setItem("chatRecordCounter", "1");
       // }
+      var callTimerInterval;
+var callStartTime;
+
+function startCallTimer() {
+  callStartTime = Date.now();
+  document.getElementById("call-timer").textContent = "00:00";
+  callTimerInterval = setInterval(() => {
+    const elapsed = Date.now() - callStartTime;
+    const totalSeconds = Math.floor(elapsed / 1000);
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    // Format minutes and seconds as two digits
+    document.getElementById("call-timer").textContent =
+      `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  }, 1000);
+}
+
+function stopCallTimer() {
+  clearInterval(callTimerInterval);
+}
 
       // Start the assistant call using the Web SDK
       function startWebCall(extractedText) {
@@ -291,6 +315,7 @@ Closing:
           .then((response) => {
             console.log("VAPI Web call started:", response);
             globalCallId = response.id;
+            startCallTimer();
             return response;
           })
           .catch((error) => {
@@ -299,7 +324,11 @@ Closing:
       }
 
       function stopWebCall() {
+        
         vapiInstance.stop();
+        stopCallTimer();
+        document.getElementById("call-summary").innerHTML =
+    '<p class="text-gray-600">Summary loading...</p>';
         setTimeout(() => {
           pollCallDetails(globalCallId);
         }, 1000);

@@ -536,5 +536,285 @@
       }
     },
     "employee_id": "299"
+  },
+  {
+    "id": "c71524ad-3996-43c5-b210-bc178d677f4b",
+    "public_survey_id": "a2d7b4ca-ab05-46fa-9265-b82c2eca8a39",
+    "prompt": "reddit survey",
+    "prompt_summary": "{\n  \"survey_title\": \"Reddit User Experience Survey\",\n  \"intro\": \"We appreciate you taking the time to participate in this survey. The purpose of this survey is to gather information about your experiences and opinions on using Reddit. Your feedback will help us understand what we're doing well and where we can improve. Please answer the questions honestly, and feel free to elaborate on your responses as needed.\",\n  \"summary\": \"This survey is focused on gathering information about your experiences and opinions on using Reddit, including your favorite features, interactions with the community, and suggestions for improvement.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How often do you visit Reddit?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Daily\", \"Several times a week\", \"About once a week\", \"Less than once a week\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What is your favorite aspect of Reddit?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"Please describe a particularly positive experience you've had on Reddit.\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"How would you rate the quality of content on Reddit?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Poor)\", \"2\", \"3\", \"4\", \"5 (Excellent)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How easy is it for you to find relevant content on Reddit?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Difficult)\", \"2\", \"3\", \"4\", \"5 (Easy)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"What features or changes would you like to see implemented on Reddit?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 7,\n      \"question\": \"How likely are you to recommend Reddit to a friend or colleague?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Very likely\", \"Somewhat likely\", \"Not very likely\", \"Not at all likely\"],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to participate in this survey. Your feedback is invaluable in helping us improve the Reddit experience. If you have any additional comments or suggestions, please feel free to include them below.\"\n}",
+    "call_summary": "```json\n{\n  \"employee_id\": \"292929\",\n  \"summary\": \"Brief interaction where the AI initiated a survey and collected the employee's ID number.\",\n  \"ratings\": {\n    \"Responsiveness\": { \"rating\": 4, \"comment\": \"User was willing to participate in the survey\" },\n    \"Clarity\": { \"rating\": 5, \"comment\": \"User clearly confirmed their employee ID\" }\n  },\n  \"overall\": \"This was a very short initial interaction where only the employee ID was collected. The user seemed cooperative but not particularly enthusiastic.\",\n  \"next_steps\": \"Continue with the survey questions as planned. Maintain a friendly tone to keep the user engaged.\"\n}\n```",
+    "created_at": "2025-04-01T17:08:46.052538",
+    "structured_data": {
+      "overall": "Incomplete interaction - only employee identification was completed before the transcript ends.",
+      "ratings": {
+        "enps": {
+          "rating": 3,
+          "comment": "Insufficient data to assess"
+        },
+        "happiness": {
+          "rating": 3,
+          "comment": "Insufficient data to assess"
+        },
+        "communication": {
+          "rating": 3,
+          "comment": "Brief but clear communication"
+        },
+        "mental_health": {
+          "rating": 3,
+          "comment": "Insufficient data to assess"
+        },
+        "job_satisfaction": {
+          "rating": 3,
+          "comment": "Insufficient data to assess"
+        }
+      },
+      "summary": "Brief initial contact with Blake to set up a survey. Only employee ID was collected before the transcript ends.",
+      "next_steps": "Complete the survey with Blake as the conversation was just getting started.",
+      "employee_id": "292929",
+      "raw_transcript": "AI: Hey. How are you? I want to take some some of time for a short survey.\nUser: Yeah. Blake?\nAI: Hi, Blake. Before we get started, could you please provide your employee ID\nUser: 29 29 29.\nAI: Thank you for providing your employee ID 2 9. 2 9 2 9. Is that correct?\nUser: Yes.\nAI: Great. Thank you for confirming.",
+      "transcript_summary": {
+        "concerns": [
+          "Conversation ended before any substantive information was gathered"
+        ],
+        "feedback": [
+          "No feedback provided in this brief exchange"
+        ],
+        "highlights": [
+          "Employee confirmed ID as 292929"
+        ]
+      }
+    },
+    "employee_id": "292929"
+  },
+  {
+    "id": "c01f5164-8d17-40dd-ae68-a40773b0b4b2",
+    "public_survey_id": "8f3b2214-5602-47a9-978a-96e36e0cfca6",
+    "prompt": "reddit survey",
+    "prompt_summary": "{\n  \"survey_title\": \"Reddit User Engagement Survey\",\n  \"intro\": \"We are conducting this survey to better understand Reddit user behavior and preferences. Your input will help us improve the overall user experience on the platform. The survey should take around 2 minutes to complete, and all responses will be kept anonymous.\",\n  \"summary\": \"This survey focuses on Reddit user demographics, usage patterns, and community engagement. Your responses will help identify trends and areas for improvement.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"What is your age range?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"18-24\", \"25-34\", \"35-44\", \"45-54\", \"55 or older\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"How often do you visit Reddit?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Daily\", \"Several times a week\", \"About once a week\", \"Less than once a week\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"What brings you to Reddit?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"How would you rate your overall satisfaction with Reddit?\",\n      \"type\": \"rating\",\n      \"options\": [\"Very dissatisfied\", \"Somewhat dissatisfied\", \"Neutral\", \"Somewhat satisfied\", \"Very satisfied\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"Can you describe your experience with Reddit's community features?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"How likely are you to recommend Reddit to a friend or colleague?\",\n      \"type\": \"rating\",\n      \"options\": [\"Not at all likely\", \"Somewhat unlikely\", \"Neutral\", \"Somewhat likely\", \"Very likely\"],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey. Your input is invaluable in helping us understand and improve the Reddit experience. If you have any additional comments or suggestions, please feel free to share them.\"\n}",
+    "call_summary": "Based on the transcript, I can extract the following information:\n\n```json\n{\n  \"employee_id\": \"29\",\n  \"summary\": \"Brief initial interaction where the AI requested the employee ID for a survey. The user provided their ID (29) and confirmed it when asked.\",\n  \"ratings\": {},\n  \"overall\": \"The interaction was minimal and focused only on ID collection. The user's responses were brief but cooperative.\",\n  \"next_steps\": \"Proceed with the actual survey questions as the introduction and identification phase is complete.\"\n}\n```\n\nNote: The transcript only contains the initial identification part of the conversation. No actual survey questions were asked yet, so there are no ratings to record. The user's tone appears neutral to slightly cooperative, responding briefly but without resistance.",
+    "created_at": "2025-04-01T17:16:28.941383",
+    "structured_data": {
+      "overall": "Incomplete interaction - only identification phase completed",
+      "ratings": {
+        "enps": {
+          "rating": 3,
+          "comment": "No indication of promotion likelihood"
+        },
+        "happiness": {
+          "rating": 3,
+          "comment": "Neutral tone in limited interaction"
+        },
+        "communication": {
+          "rating": 3,
+          "comment": "Brief but clear responses"
+        },
+        "mental_health": {
+          "rating": 3,
+          "comment": "Insufficient data to assess"
+        },
+        "job_satisfaction": {
+          "rating": 3,
+          "comment": "No information provided"
+        }
+      },
+      "summary": "Brief initial interaction where employee #29 agreed to participate in a survey. Only identification was completed before the transcript ended.",
+      "next_steps": "Complete the full survey with employee #29 as the conversation was only at the identification stage.",
+      "employee_id": "29",
+      "raw_transcript": "AI: Hey. How are you? I want to take some some of time for a short survey.\nUser: Go ahead.\nAI: Great. Before we dive in, could you please share your employee ID, This helps us ensure we're keeping track properly.\nUser: 29, 29, 29.\nAI: Thank you for that. Just to confirm, your employee ID is 29. Correct?\nUser: Yeah.\nAI: Perfect. Thank you for confirming. Let's get started.",
+      "transcript_summary": {
+        "concerns": [
+          "Transcript ended before any substantive questions were asked"
+        ],
+        "feedback": [
+          "No feedback provided yet"
+        ],
+        "highlights": [
+          "Employee agreed to participate in the survey"
+        ]
+      }
+    },
+    "employee_id": "29"
+  },
+  {
+    "id": "34192206-d8c7-4d88-9ca1-33383eea6357",
+    "public_survey_id": "e32f187d-77c1-466d-9d1e-4c1f260d00c1",
+    "prompt": "reddit survey",
+    "prompt_summary": "{\n  \"survey_title\": \"Reddit User Experience Survey\",\n  \"intro\": \"Thank you for participating in this survey. The purpose of this survey is to understand your experiences and opinions about using Reddit. Your feedback will help us to improve the platform and provide a better experience for all users. Please answer the questions honestly, and to the best of your ability.\",\n  \"summary\": \"This survey focuses on your usage of Reddit, including your favorite subreddits, posting habits, and overall satisfaction with the platform.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How often do you use Reddit?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Daily\", \"Several times a week\", \"About once a week\", \"Less than once a week\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What do you primarily use Reddit for?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"Can you describe your favorite subreddit and why you enjoy it?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"How would you rate your overall satisfaction with Reddit?\",\n      \"type\": \"rating\",\n      \"options\": [\"Very satisfied\", \"Somewhat satisfied\", \"Neutral\", \"Somewhat dissatisfied\", \"Very dissatisfied\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"What features would you like to see added or improved on Reddit? (Check all that apply)\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Improved moderation tools\", \"Enhanced search functionality\", \"More personalized content recommendations\", \"Better mobile app experience\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"Please share any additional thoughts or feedback you have about Reddit.\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey. Your feedback is invaluable to us, and we appreciate your honesty. Your responses will help us to make Reddit a better platform for everyone.\"\n}",
+    "call_summary": "```json\n{\n  \"employee_id\": \"294\",\n  \"summary\": \"The call began with a brief introduction and ID verification. The user confirmed their employee ID as 294. The AI was about to begin a survey about Reddit experiences when the transcript ended.\",\n  \"ratings\": {\n    \"Responsiveness\": { \"rating\": 3, \"comment\": \"User gave minimal responses, mostly single-word answers\" },\n    \"Engagement\": { \"rating\": 2, \"comment\": \"User seemed somewhat disinterested, providing only brief confirmations\" }\n  },\n  \"overall\": \"The user appeared neutral to slightly disengaged during the brief interaction. They were willing to participate but not enthusiastic.\",\n  \"next_steps\": \"Continue with the Reddit survey as planned. Consider using more engaging questions that might prompt fuller responses from this user.\"\n}\n```",
+    "created_at": "2025-04-01T17:27:05.688179",
+    "structured_data": {
+      "overall": "The conversation was too brief to make meaningful assessments. Employee #294 was responsive but minimal in their engagement.",
+      "ratings": {
+        "enps": {
+          "rating": 3,
+          "comment": "Insufficient data to properly assess"
+        },
+        "happiness": {
+          "rating": 3,
+          "comment": "Employee responded with 'Good' when asked how they were"
+        },
+        "communication": {
+          "rating": 2,
+          "comment": "Employee provided minimal responses throughout the conversation"
+        },
+        "mental_health": {
+          "rating": 3,
+          "comment": "Insufficient data to properly assess"
+        },
+        "job_satisfaction": {
+          "rating": 3,
+          "comment": "Insufficient data to properly assess"
+        }
+      },
+      "summary": "Brief check-in with employee #294 who responded minimally but positively. The conversation only covered ID confirmation before mentioning a Reddit survey.",
+      "next_steps": "Follow up with a complete survey as the conversation was cut short before gathering meaningful data",
+      "employee_id": "294",
+      "raw_transcript": "AI: Hey. How are you? I want to take some some of time for a short survey.\nUser: Yeah. Good.\nAI: Great to hear. Before we get started, could you please provide your employee ID?\nUser: Yeah. 2 94.\nAI: Thank you for sharing that. Just to confirm, your employee ID is 294. Right? Is that correct?\nUser: Yeah.\nAI: Perfect. Thank you. Let's dive in. This survey is designed to understand your experiences and opinions about using Reddit.",
+      "transcript_summary": {
+        "concerns": [
+          "Minimal engagement in the conversation"
+        ],
+        "feedback": [
+          "Survey appears to be about Reddit usage but was not completed"
+        ],
+        "highlights": [
+          "Employee confirmed ID as 294"
+        ]
+      }
+    },
+    "employee_id": "294"
+  },
+  {
+    "id": "a4c12ce0-fda7-49fc-b51d-1b34db5b3ac2",
+    "public_survey_id": "a7a6bce2-e4f5-4257-bc8a-9ddde3a2f0d8",
+    "prompt": "reddit survey",
+    "prompt_summary": "{\n  \"survey_title\": \"Reddit User Experience Survey\",\n  \"intro\": \"Thank you for participating in this survey. The purpose of this survey is to gather information about your experiences and opinions on using Reddit. Your feedback will help us understand how to improve the platform and provide a better experience for all users. Please answer the questions honestly, and to the best of your ability.\",\n  \"summary\": \"This survey focuses on your Reddit usage habits, preferences, and opinions on the platform's features and community.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How often do you visit Reddit?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Daily\", \"Several times a week\", \"About once a week\", \"Less than once a week\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What do you primarily use Reddit for?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"How would you rate the overall quality of content on Reddit?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Poor)\", \"2\", \"3\", \"4\", \"5 (Excellent)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"Have you ever participated in a Reddit community (e.g., commented, posted, or engaged in a discussion)?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Yes\", \"No\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"Please describe your experience with Reddit's moderation policies. Do you think they are effective, and why or why not?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"How satisfied are you with Reddit's features and functionality?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Very dissatisfied)\", \"2\", \"3\", \"4\", \"5 (Very satisfied)\"],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey. Your feedback is invaluable, and we appreciate your participation. Your input will help us shape the future of Reddit and create a better experience for all users.\"\n}",
+    "call_summary": "Based on the transcript, here's the extracted information:\n\n```json\n{\n  \"employee_id\": \"299\",\n  \"summary\": \"The call was a brief introduction to a survey about Reddit experience. The user agreed to participate and provided their employee ID.\",\n  \"ratings\": {\n    \"Participation\": { \"rating\": 5, \"comment\": \"User was cooperative and willing to take the survey\" }\n  },\n  \"overall\": \"The call was just beginning, with only the identification phase completed. The user seemed neutral in tone, neither enthusiastic nor resistant.\",\n  \"next_steps\": \"Continue with the Reddit experience survey questions as planned.\"\n}\n```",
+    "created_at": "2025-04-01T17:33:31.427756",
+    "structured_data": {
+      "overall": "Incomplete interaction - only captured the introduction and ID confirmation for a Reddit user experience survey",
+      "ratings": {
+        "enps": {
+          "rating": 3,
+          "comment": "No promotion sentiment expressed"
+        },
+        "happiness": {
+          "rating": 3,
+          "comment": "Neutral tone in limited interaction"
+        },
+        "communication": {
+          "rating": 3,
+          "comment": "Brief but clear responses"
+        },
+        "mental_health": {
+          "rating": 3,
+          "comment": "Insufficient data to assess"
+        },
+        "job_satisfaction": {
+          "rating": 3,
+          "comment": "No job-related discussion in transcript"
+        }
+      },
+      "summary": "Brief check-in with employee #299 who agreed to participate in a survey about Reddit user experience. The conversation was just beginning with ID confirmation before the transcript ended.",
+      "next_steps": "Complete the Reddit user experience survey with employee #299",
+      "employee_id": "299",
+      "raw_transcript": "AI: Hey. How are you? I want to take some some of time for a short survey.\nUser: Yeah. Go ahead.\nAI: Great. Begin, could you please provide your employee ID?\nUser: It's 2 99.\nAI: Just to confirm, your employee ID is 299. Correct?\nUser: Yeah.\nAI: Per Thanks for confirming. So this survey is about your experience and opinions on Reddit. The idea is to better understand how users interact with the platform and identify areas for improvement.",
+      "transcript_summary": {
+        "concerns": [
+          "Transcript ends before actual survey begins"
+        ],
+        "feedback": [
+          "No substantive feedback provided yet"
+        ],
+        "highlights": [
+          "Employee willing to participate in survey"
+        ]
+      }
+    },
+    "employee_id": "299"
+  },
+  {
+    "id": "817206ac-c606-4e98-8338-9c81010e96bd",
+    "public_survey_id": "40c7ad2c-80ef-406c-b369-173350bd6a1d",
+    "prompt": "mumbai survey",
+    "prompt_summary": "{\n  \"survey_title\": \"Mumbai Resident Satisfaction Survey\",\n  \"intro\": \"This survey aims to gather information about the quality of life in Mumbai, including transportation, infrastructure, and community services. Your input will help us understand the needs and concerns of Mumbai residents, and provide valuable insights for future development and improvement. Please answer the questions honestly, and to the best of your ability. The survey should take approximately 2 minutes to complete.\",\n  \"summary\": \"This survey focuses on various aspects of life in Mumbai, including transportation, infrastructure, community services, and overall satisfaction.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How often do you use public transportation in Mumbai?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Daily\", \"Several times a week\", \"About once a week\", \"Less than once a week\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What do you think is the biggest challenge facing Mumbai's transportation system?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"Please describe your experience with community services in Mumbai, such as parks, libraries, and healthcare facilities.\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"How would you rate the overall quality of life in Mumbai?\",\n      \"type\": \"rating\",\n      \"options\": [\"Excellent\", \"Good\", \"Fair\", \"Poor\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How satisfied are you with the cleanliness and maintenance of public spaces in Mumbai?\",\n      \"type\": \"rating\",\n      \"options\": [\"Very satisfied\", \"Satisfied\", \"Neutral\", \"Dissatisfied\", \"Very dissatisfied\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"What suggestions do you have for improving the infrastructure in Mumbai?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey. Your input is valuable to us, and will help shape the future of Mumbai. If you have any additional comments or suggestions, please feel free to include them below.\"\n}",
+    "call_summary": "",
+    "created_at": "2025-04-01T17:37:04.758992"
+  },
+  {
+    "id": "891e2fbb-0254-4fa7-a96e-8f8967f941e1",
+    "public_survey_id": "40c7ad2c-80ef-406c-b369-173350bd6a1d",
+    "prompt": "",
+    "prompt_summary": "",
+    "call_summary": "",
+    "created_at": "2025-04-01T17:37:16.398530"
+  },
+  {
+    "id": "049fad1b-ccef-443a-ab8c-6aabc026c4e7",
+    "public_survey_id": "40c7ad2c-80ef-406c-b369-173350bd6a1d",
+    "prompt": "",
+    "prompt_summary": "",
+    "call_summary": "",
+    "created_at": "2025-04-01T17:41:02.467920"
+  },
+  {
+    "id": "442392fd-42d0-4e17-8389-13fe6a1cd067",
+    "public_survey_id": "40c7ad2c-80ef-406c-b369-173350bd6a1d",
+    "prompt": "",
+    "prompt_summary": "",
+    "call_summary": "",
+    "created_at": "2025-04-01T17:44:25.955579"
+  },
+  {
+    "id": "190f51f7-6026-4462-adf1-1702e209d3a1",
+    "public_survey_id": "40c7ad2c-80ef-406c-b369-173350bd6a1d",
+    "prompt": "",
+    "prompt_summary": "",
+    "call_summary": "{\n  \"summary\": \"Very brief call where the AI begins a survey and asks for the user's employee ID (299). The call appears to end abruptly after ID confirmation.\",\n  \"ratings\": {\n    \"Responsiveness\": { \"rating\": 3, \"comment\": \"User responds minimally but cooperatively\" },\n    \"Engagement\": { \"rating\": 2, \"comment\": \"User provides only necessary information\" }\n  },\n  \"overall\": \"Incomplete interaction. The call ended unexpectedly after ID confirmation with an unclear phrase 'Tactic tan forming'.\",\n  \"next_steps\": \"Follow up to complete the intended survey. Investigate why the call ended abruptly.\"\n}",
+    "created_at": "2025-04-01T17:47:52.899542",
+    "structured_data": {
+      "overall": "Incomplete interaction - survey needs to be rescheduled to collect meaningful data.",
+      "ratings": {
+        "enps": {
+          "rating": 3,
+          "comment": "Unable to assess from limited interaction"
+        },
+        "happiness": {
+          "rating": 3,
+          "comment": "Neutral tone, insufficient data to assess"
+        },
+        "communication": {
+          "rating": 3,
+          "comment": "Brief but responsive to initial questions"
+        },
+        "mental_health": {
+          "rating": 3,
+          "comment": "No indicators provided in limited interaction"
+        },
+        "job_satisfaction": {
+          "rating": 3,
+          "comment": "No data available from truncated conversation"
+        }
+      },
+      "summary": "Brief check-in with minimal employee engagement. The employee provided their ID but the conversation was cut short before the actual survey could begin.",
+      "next_steps": "Reschedule complete survey as the conversation was cut short before any substantive questions were asked.",
+      "employee_id": "299",
+      "raw_transcript": "AI: Hey. How are you? I want to take some some of time for a short survey.\nUser: Yeah. Go ahead.\nAI: Great. Before we get started, could you please share your employee ID with me?\nUser: 2 99.\nAI: Thanks. Just to confirm, your employee ID is 299. Is that correct?\nUser: Yeah.\nAI: Perfect. Tactic tan forming.",
+      "transcript_summary": {
+        "concerns": [
+          "Conversation ended abruptly before survey began",
+          "No substantive data collected"
+        ],
+        "feedback": [
+          "Ensure technical stability for future surveys",
+          "Consider shorter introduction to get to key questions faster"
+        ],
+        "highlights": [
+          "Employee confirmed ID as 299",
+          "Employee was willing to participate in survey"
+        ]
+      }
+    },
+    "employee_id": "299"
   }
 ]
