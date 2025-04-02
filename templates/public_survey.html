@@ -8,7 +8,26 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
-       /* Hide the Vapi call button injected from the CDN */
+ 
+ /* Styles for the user avatar ripple */
+  #avatar-ripple {
+    position: absolute;
+    inset: 0;
+    border: 2px solid #3b82f6; /* Tailwind blue-500 */
+    border-radius: 9999px;
+    pointer-events: none;
+    transform: scale(1);
+    opacity: 0;
+    transition: transform 0.1s ease, opacity 0.1s ease;
+    z-index: 5; /* behind the avatar */
+  }
+  /* Ensure the avatar image is above the ripple */
+  #user-avatar {
+    position: relative;
+    z-index: 10;
+  }
+ /* Styles for the user avatar ripple */
+/* Hide the Vapi call button injected from the CDN */
        #vapi-icon-container,
       #vapi-support-btn {
         display: none !important;
@@ -44,30 +63,37 @@
         </div>
       </div>
   
-      <!-- Call Section -->
-      <div
-        id="call-section"
-        class="hidden w-full mb-8 p-6 bg-white rounded-lg shadow-lg"
-      >
-         <div class="flex justify-between items-center mb-4">
+     <!-- In your Call Section (inside the body) -->
+<div id="call-section" class="hidden w-full max-w-3xl mx-auto my-8 p-6 bg-white rounded-lg shadow-lg">
+  <div class="flex justify-between items-center mb-4">
     <h2 id="call-heading" class="text-xl font-semibold text-gray-700">Call in Progress</h2>
     <div id="call-timer" class="text-gray-800 font-semibold bg-gray-100 px-2 py-1 rounded shadow">
       00:00
     </div>
   </div>
-  
-        <p id="assistant-status" class="text-sm text-gray-600 mb-4">
-          Assistant Status: Not Speaking
-        </p>
-        <div id="volume-level" class="flex space-x-2 mb-4"></div>
-        <button
-          id="stop-btn"
-          class="bg-red-500 text-white py-1 px-3 rounded-md hover:bg-red-600 transition-colors"
-        >
-          Stop Call
-        </button>
-        <div id="call-summary" class="mt-4 text-sm text-gray-600"></div>
-      </div>
+  <p id="assistant-status" class="text-sm text-gray-600 mb-4">
+    Assistant Status: Not Speaking
+  </p>
+
+  <!-- AI Volume Indicator (existing) -->
+  <div id="volume-level" class="flex space-x-2 mb-4"></div>
+
+  <!-- User Avatar with Ripple Effect -->
+  <div class="flex items-center space-x-4 mb-4">
+    <div id="user-avatar-wrapper" class="relative">
+      <!-- Circular Avatar (use your image URL here) -->
+      <img id="user-avatar" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd_XRGE9j0tQkvkYFKQU5MlZw86IXuV9TbfA&s" alt="User Avatar" class="w-16 h-16 rounded-full">
+      <!-- Ripple container -->
+      <div id="avatar-ripple"></div>
+    </div>
+    <span class="text-gray-700 font-medium">You</span>
+  </div>
+
+  <button id="stop-btn" class="bg-red-500 text-white py-1 px-3 rounded-md hover:bg-red-600 transition-colors">
+    Stop Call
+  </button>
+  <div id="call-summary" class="mt-4 text-sm text-gray-600"></div>
+</div>
   
       <!-- Chat Container -->
       <div
@@ -150,15 +176,15 @@
               "Assistant Status: Not Speaking";
           });
           vapiInstance.on("volume-level", (level) => {
-            const volumeEl = document.getElementById("volume-level");
-            volumeEl.innerHTML = "";
-            const numBars = 10;
-            for (let i = 0; i < numBars; i++) {
-              let bar = document.createElement("div");
-              bar.className =
-                "volume-bar" + (i / numBars < level ? " active" : "");
-              volumeEl.appendChild(bar);
-            }
+            const aiVolumeEl = document.getElementById("volume-level");
+  aiVolumeEl.innerHTML = "";
+  const numBars = 10;
+  for (let i = 0; i < numBars; i++) {
+    let bar = document.createElement("div");
+    bar.className =
+      "volume-bar" + (i / numBars < level ? " active" : "");
+    aiVolumeEl.appendChild(bar);
+  }
           });
         };
       })(document, "script");
@@ -280,6 +306,9 @@ function stopCallTimer() {
         // }
         // console.log(toneValue);
         const assistantOverrides = {
+          startSpeakingPlan: {
+    waitSeconds: 1.4, // Set this to your desired wait time
+  },
           firstMessageMode: "assistant-speaks-first",
           model: {
             provider: "openai",
@@ -412,6 +441,9 @@ Closing:
         return;
       }
       document.getElementById("call-section").classList.remove("hidden");
+      // setupUserMicVolumeVisualizer();
+          setupUserAvatarVolumeVisualizer();
+
       document.getElementById("chat-container").classList.add("hidden");
   
       fetch("/public-survey-voice-ai", {
@@ -747,6 +779,105 @@ function startCountdown(callback) {
       }
 // Call this function on page load or after the button is rendered.
 setupGoBackButton();
+// async function setupUserMicVolumeVisualizer() {
+//   const container = document.getElementById("user-volume-level");
+//   const numBars = 10;
+//   const bars = [];
+
+//   container.innerHTML = "";
+//   for (let i = 0; i < numBars; i++) {
+//     const bar = document.createElement("div");
+//     bar.className = "volume-bar rounded";
+//     container.appendChild(bar);
+//     bars.push(bar);
+//   }
+
+//   try {
+//     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+//     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+//     const analyser = audioContext.createAnalyser();
+//     const micSource = audioContext.createMediaStreamSource(stream);
+//     micSource.connect(analyser);
+//     analyser.fftSize = 64;
+//     const dataArray = new Uint8Array(analyser.frequencyBinCount);
+
+//     function update() {
+//       analyser.getByteFrequencyData(dataArray);
+//       const avg = dataArray.reduce((a, b) => a + b, 0) / dataArray.length;
+//       const level = avg / 255;
+//       const activeBars = Math.round(level * numBars);
+
+//       bars.forEach((bar, idx) => {
+//         if (idx < activeBars) {
+//           bar.classList.add("active");
+//           bar.style.height = `${20 + idx * 3}px`;
+//         } else {
+//           bar.classList.remove("active");
+//           bar.style.height = `30px`;
+//         }
+//       });
+
+//       requestAnimationFrame(update);
+//     }
+
+//     update();
+//   } catch (err) {
+//     console.error("Mic permission denied or error:", err);
+//     container.innerHTML = "<p class='text-red-500'>Mic unavailable.</p>";
+//   }
+// }
+async function setupUserAvatarVolumeVisualizer() {
+  const avatarRipple = document.getElementById("avatar-ripple");
+  if (!avatarRipple) {
+    console.error("Avatar ripple element not found.");
+    return;
+  }
+  
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    const analyser = audioContext.createAnalyser();
+    const micSource = audioContext.createMediaStreamSource(stream);
+    micSource.connect(analyser);
+    
+    // Increase FFT size for better resolution (optional)
+    analyser.fftSize = 256;
+    const bufferLength = analyser.frequencyBinCount;
+    const dataArray = new Uint8Array(bufferLength);
+
+    function updateAvatarRipple() {
+      analyser.getByteFrequencyData(dataArray);
+      
+      // Compute average volume
+      let sum = 0;
+      for (let i = 0; i < bufferLength; i++) {
+        sum += dataArray[i];
+      }
+      let avg = sum / bufferLength;
+      let volumeLevel = avg / 255; // Normalize between 0 and 1
+      
+      // Set a minimum threshold so a ripple is always visible (for testing)
+      volumeLevel = Math.max(volumeLevel, 0.2);
+      
+      // For debugging (optional):
+      // console.log("Volume Level:", volumeLevel);
+      
+      // Adjust scale and opacity based on volume
+      const scale = 1 + volumeLevel * 1.2;
+      const opacity = volumeLevel;         // Opacity from 0.2 to 1
+      avatarRipple.style.transform = `scale(${scale})`;
+      avatarRipple.style.opacity = opacity;
+      
+      requestAnimationFrame(updateAvatarRipple);
+    }
+    updateAvatarRipple();
+  } catch (err) {
+    console.error("Microphone access denied or error:", err);
+    avatarRipple.style.opacity = 0;
+  }
+}
+
+
     </script>
   </body>
 </html>

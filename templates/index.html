@@ -505,6 +505,9 @@ function stopCallTimer() {
         }
         console.log(toneValue);
         const assistantOverrides = {
+          startSpeakingPlan: {
+    waitSeconds: 1.4, // Set this to your desired wait time
+  },
           firstMessageMode: "assistant-speaks-first",
           model: {
             provider: "openai",

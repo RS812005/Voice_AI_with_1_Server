@@ -816,5 +816,328 @@
       }
     },
     "employee_id": "299"
+  },
+  {
+    "id": "3827b043-c546-4557-a78e-f93a21462388",
+    "public_survey_id": "40c7ad2c-80ef-406c-b369-173350bd6a1d",
+    "prompt": "",
+    "prompt_summary": "",
+    "call_summary": "{\n  \"summary\": \"Brief survey about Mumbai quality of life. User provided employee ID 299 and indicated they use public transportation a few times per week. When asked about transportation challenges, user unexpectedly mentioned 'food' as an issue.\",\n  \"ratings\": {\n    \"PublicTransportUsage\": { \"rating\": 3, \"comment\": \"Uses public transport a few times weekly\" },\n    \"TransportationChallenges\": { \"rating\": null, \"comment\": \"User mentioned 'food' rather than a transportation issue\" }\n  },\n  \"overall\": \"Survey incomplete. User gave minimal responses and may have misunderstood the transportation question or has concerns about food availability during commutes.\",\n  \"next_steps\": \"Follow up to clarify food-related transportation concerns and complete remaining survey questions.\"\n}",
+    "created_at": "2025-04-02T04:23:33.639827",
+    "structured_data": {
+      "overall": "Limited engagement in a transportation survey with minimal information provided. Employee identified food as a transportation-related concern in Mumbai.",
+      "ratings": {
+        "enps": {
+          "rating": 3,
+          "comment": "Insufficient data to determine loyalty"
+        },
+        "happiness": {
+          "rating": 3,
+          "comment": "Neutral tone during brief interaction"
+        },
+        "communication": {
+          "rating": 3,
+          "comment": "Provided brief responses to questions"
+        },
+        "mental_health": {
+          "rating": 3,
+          "comment": "No indicators of mental health concerns"
+        },
+        "job_satisfaction": {
+          "rating": 3,
+          "comment": "No job satisfaction data provided"
+        }
+      },
+      "summary": "Brief survey about Mumbai's transportation system. Employee uses public transport a few times weekly and mentioned food as a concern.",
+      "next_steps": "Follow up about food-related concerns in public transportation",
+      "employee_id": "299",
+      "raw_transcript": "AI: Hey. How are you? Want to take some some of time for a short survey. User: Yeah. Go ahead. AI: Great. Before we start, can you please provide your employee ID, User: It's 2 99. AI: Thanks. Just to confirm, your employee ID is 299. Correct? User: Yeah. AI: Perfect. Thanks for confirming. We are conducting a survey to gather insights on the quality of life in Mumbai, focusing on transportation, infrastructure, and community services. Your feedback is valuable to and will help shape future improvements in the city. It should only take about 2 minutes. Let's get started. How frequently do you find yourself using public transportation in Mumbai? Is it something you rely on daily or perhaps a few times a week? User: Few times a week. AI: Got it. A few times a week it is. Now when you think about Mumbai's transportation system, what do you feel is the biggest challenge or issue that comes to mind? User: Food. AI: I understand that food might be a concern for you.",
+      "transcript_summary": {
+        "concerns": [
+          "Mentioned food as a challenge related to transportation"
+        ],
+        "feedback": [
+          "Brief responses indicate possible disinterest in survey"
+        ],
+        "highlights": [
+          "Uses public transportation a few times weekly"
+        ]
+      }
+    },
+    "employee_id": "299"
+  },
+  {
+    "id": "9325848e-fe13-491f-a876-a5c55a8fa850",
+    "public_survey_id": "e26778d1-1719-4582-837f-5722448f1b72",
+    "prompt": "reddit survey with ratings\n",
+    "prompt_summary": "{\n  \"survey_title\": \"Reddit User Experience Survey\",\n  \"intro\": \"Thank you for participating in this survey. The purpose of this survey is to gather information about your experience with Reddit, including your usage habits, preferences, and opinions. Your feedback will help us understand how to improve the platform and provide a better experience for all users. The survey should take approximately 2 minutes to complete, and all responses are anonymous.\",\n  \"summary\": \"This survey focuses on understanding Reddit users' experiences, habits, and opinions to identify areas for improvement and provide a better platform for the community.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How often do you use Reddit?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Daily\", \"Several times a week\", \"About once a week\", \"Less than once a week\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What do you primarily use Reddit for?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"How would you rate the overall quality of content on Reddit?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Poor)\", \"2\", \"3\", \"4\", \"5 (Excellent)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"Have you ever encountered any issues or problems while using Reddit? If yes, please describe.\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How satisfied are you with the Reddit community?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Very dissatisfied)\", \"2\", \"3\", \"4\", \"5 (Very satisfied)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"What features or improvements would you like to see added to Reddit?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey. Your feedback is greatly appreciated and will help us improve the Reddit experience for all users.\"\n}",
+    "call_summary": "",
+    "created_at": "2025-04-02T08:49:13.478908"
+  },
+  {
+    "id": "05f9be3f-6cf8-403e-8601-fd3c460fa1eb",
+    "public_survey_id": "c9b5369f-a129-45a8-a07e-a20973ad6289",
+    "prompt": "reddit survey",
+    "prompt_summary": "{\n  \"survey_title\": \"Reddit User Experience Survey\",\n  \"intro\": \"Thank you for participating in this survey. The purpose of this survey is to gather information about your experiences and opinions on Reddit. Your input will help us understand what we're doing well and where we can improve. The survey should take approximately 2 minutes to complete, and all responses will be kept anonymous.\",\n  \"summary\": \"This survey focuses on your Reddit usage habits, favorite features, and suggestions for improvement.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How often do you visit Reddit?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Daily\", \"Weekly\", \"Monthly\", \"Rarely\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What do you primarily use Reddit for?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"How would you rate the overall quality of content on Reddit?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Poor)\", \"2\", \"3\", \"4\", \"5 (Excellent)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"Can you describe your favorite Reddit feature or community?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"What would you like to see improved on Reddit?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"How likely are you to recommend Reddit to a friend or colleague?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Not likely at all)\", \"2\", \"3\", \"4\", \"5 (Very likely)\"],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to participate in this survey. Your input is invaluable to us, and we appreciate your feedback. If you have any additional comments or suggestions, feel free to include them below.\"\n}",
+    "call_summary": "",
+    "created_at": "2025-04-02T09:00:19.801898"
+  },
+  {
+    "id": "7aa892f9-161c-4ffe-98c9-025495ca9fbf",
+    "public_survey_id": "787f5199-fadb-473a-ad66-be750693bbf0",
+    "prompt": "anxiety survey in the workspace for employees",
+    "prompt_summary": "{\n  \"survey_title\": \"Anxiety in the Workplace: Employee Survey\",\n  \"intro\": \"Thank you for participating in this survey. The purpose of this survey is to understand the levels and sources of anxiety experienced by employees in the workplace. Your responses will help us identify areas of concern and develop strategies to support employee well-being. All responses will be kept confidential and anonymous. Please answer the questions honestly, and to the best of your ability.\",\n  \"summary\": \"This survey aims to explore the prevalence and impact of anxiety on employee well-being and job performance, and to gather insights on potential support systems and resources.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How often do you experience feelings of anxiety or stress at work?\",\n      \"type\": \"rating\",\n      \"options\": [\"Never\", \"Rarely\", \"Sometimes\", \"Often\", \"Almost Always\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What are the primary sources of anxiety for you in the workplace? (Select all that apply)\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Workload\", \"Deadlines\", \"Communication with colleagues\", \"Communication with management\", \"Other (please specify)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"Can you describe a recent situation at work that caused you significant anxiety?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"How do you currently manage anxiety or stress at work?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"On a scale of 1-5, how supportive do you feel your workplace is in terms of addressing employee anxiety and well-being?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Not supportive at all)\", \"2\", \"3\", \"4\", \"5 (Very supportive)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"What resources or support systems would you like to see implemented in the workplace to help manage anxiety and promote well-being?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey. Your input is valuable to us, and we appreciate your honesty. If you have any additional comments or concerns, please do not hesitate to reach out to us.\"\n}",
+    "call_summary": "",
+    "created_at": "2025-04-02T09:57:42.899667"
+  },
+  {
+    "id": "98b074cd-3783-4d80-b14d-3c7418016e78",
+    "public_survey_id": "48d1ab1a-8c7c-4d1b-8c95-66ab487bf4e8",
+    "prompt": "anxiety survey in the workspace for employees",
+    "prompt_summary": "{\n  \"survey_title\": \"Workplace Anxiety Survey for Employees\",\n  \"intro\": \"We are committed to maintaining a healthy and supportive work environment. This survey aims to understand the levels of anxiety experienced by our employees in the workplace and identify potential areas for improvement. Your participation is completely anonymous and will help us create a more comfortable and productive workspace for everyone. Please answer the questions honestly, and thank you for taking the time to participate.\",\n  \"summary\": \"This survey focuses on assessing anxiety levels, identifying sources of anxiety, and understanding how anxiety affects work performance and overall well-being in the workplace.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How often do you feel anxious at work?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Daily\", \"Several times a week\", \"About once a week\", \"Less than once a week\", \"Never\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What are the main sources of anxiety for you in the workplace? (Check all that apply)\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Workload\", \"Deadlines\", \"Interpersonal relationships\", \"Lack of recognition\", \"Other (please specify)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"How would you rate your current level of anxiety at work?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Low)\", \"2\", \"3\", \"4\", \"5 (High)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"Please describe a recent situation at work that made you feel anxious.\",\n      \"type\": \"paragraph\",\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How does anxiety affect your work performance?\",\n      \"type\": \"short_answer\",\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"What support or resources would you like to see implemented in the workplace to help manage anxiety?\",\n      \"type\": \"short_answer\",\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 7,\n      \"question\": \"How satisfied are you with the current work environment in terms of supporting mental health?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Very dissatisfied)\", \"2\", \"3\", \"4\", \"5 (Very satisfied)\"],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to participate in this survey. Your input is invaluable to us, and we are committed to using this information to create a healthier and more supportive work environment. If you have any additional comments or suggestions, please feel free to include them below.\"\n}",
+    "call_summary": "",
+    "created_at": "2025-04-02T10:04:05.364977"
+  },
+  {
+    "id": "aeafadd0-bf57-41a1-a5b7-a6702a9008b9",
+    "public_survey_id": "c91f85ca-18ba-4f83-9126-751c6e0c2f85",
+    "prompt": "anxiety survey in the workspace for employees",
+    "prompt_summary": "{\n  \"survey_title\": \"Anxiety in the Workspace: Employee Experience Survey\",\n  \"intro\": \"We value your well-being and want to understand how anxiety affects you in the workplace. Your responses will help us create a more supportive environment. Please answer the questions honestly, and all responses will be kept confidential. This survey should take approximately 2 minutes to complete.\",\n  \"summary\": \"This survey aims to gather insights into employee experiences with anxiety in the workplace, identifying areas of concern and potential support systems.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How often do you experience anxiety at work?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Daily\", \"Weekly\", \"Monthly\", \"Rarely\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What are the primary sources of anxiety for you in the workplace?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"On a scale of 1-5, how supported do you feel by your supervisors and colleagues in managing work-related anxiety?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Not supported at all)\", \"2\", \"3\", \"4\", \"5 (Very supported)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"Describe a recent situation where you felt anxious at work and how you managed it.\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"What resources or support systems would you find helpful in managing work-related anxiety?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"How likely are you to discuss your anxiety with a supervisor or HR representative?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Very likely\", \"Somewhat likely\", \"Not very likely\", \"Not at all likely\"],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey. Your input is invaluable in helping us understand and address anxiety in the workplace. Your responses will be treated with confidentiality and respect.\"\n}",
+    "call_summary": "",
+    "created_at": "2025-04-02T10:09:45.407732"
+  },
+  {
+    "id": "493df987-a154-4782-8d4d-463837a54d12",
+    "public_survey_id": "ba35d40c-bf07-4577-9de8-788d326aff26",
+    "prompt": "anxiety survey in the workspace for employees",
+    "prompt_summary": "{\n  \"survey_title\": \"Anxiety in the Workspace: Employee Experience Survey\",\n  \"intro\": \"We are committed to creating a supportive and inclusive work environment. This survey aims to understand the levels and impact of anxiety on our employees in the workplace. Your participation is completely anonymous, and your feedback will help us identify areas for improvement. Please answer the questions honestly, and thank you for taking the time to share your thoughts and experiences.\",\n  \"summary\": \"This survey explores anxiety in the workplace, focusing on employee experiences, stressors, and support systems.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How often do you experience anxiety at work?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Daily\", \"Weekly\", \"Monthly\", \"Rarely\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What are the primary sources of anxiety for you in the workplace?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"How would you rate your overall well-being at work?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Poor)\", \"2\", \"3 (Neutral)\", \"4\", \"5 (Excellent)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"Can you describe a recent situation at work that caused you significant anxiety? How did you handle it?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How supported do you feel by your manager and colleagues when dealing with work-related anxiety?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Not supported at all)\", \"2\", \"3 (Neutral)\", \"4\", \"5 (Very supported)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"What changes or support systems would you like to see implemented in the workplace to help manage anxiety?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to participate in this survey. Your feedback is invaluable to us, and we are committed to using it to create a healthier and more supportive work environment. If you need immediate support or resources for managing anxiety, please reach out to our HR department or visit our employee assistance program website.\"\n}",
+    "call_summary": "",
+    "created_at": "2025-04-02T10:13:00.501960"
+  },
+  {
+    "id": "ee90d655-787f-4eec-bb9b-c680507e2b64",
+    "public_survey_id": "be710696-d0c1-42f1-b664-0c4f3f6f76d0",
+    "prompt": "anxiety survey in the workspace for employees",
+    "prompt_summary": "{\n  \"survey_title\": \"Anxiety in the Workspace Survey for Employees\",\n  \"intro\": \"Welcome to this anonymous survey, designed to understand the levels and sources of anxiety among employees in the workspace. Your participation will help us identify areas of improvement to create a more supportive work environment. Please answer the questions honestly, and all responses will be kept confidential. The survey should take approximately 2 minutes to complete.\",\n  \"summary\": \"This survey focuses on understanding anxiety levels, sources of anxiety, and potential support systems within the workspace to foster a healthier work environment.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How often do you experience anxiety at work?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Daily\", \"Weekly\", \"Monthly\", \"Rarely\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What are the primary sources of your work-related anxiety? (Check all that apply)\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Workload\", \"Deadline pressures\", \"Communication issues\", \"Other (please specify)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"On a scale of 1 to 5, how would you rate your current level of anxiety at work?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Low)\", \"2\", \"3 (Moderate)\", \"4\", \"5 (High)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"Have you ever discussed your anxiety with a supervisor or HR? If yes, what was the outcome?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"What support systems (e.g., mental health days, counseling services, flexible work arrangements) would you find most helpful in managing your work-related anxiety?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"How satisfied are you with the current support provided by your employer for mental health and well-being?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Very Dissatisfied)\", \"2\", \"3 (Neutral)\", \"4\", \"5 (Very Satisfied)\"],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to participate in this survey. Your input is invaluable to us, and we appreciate your honesty. Your responses will contribute to creating a more supportive and healthy work environment for everyone.\"\n}",
+    "call_summary": "",
+    "created_at": "2025-04-02T10:36:49.599702"
+  },
+  {
+    "id": "8e383eea-f90d-43df-925c-11023c43e893",
+    "public_survey_id": "5a75ddaf-2811-43f4-ac04-3a30e0169ac5",
+    "prompt": "anxiety survey for the employees in the workspace",
+    "prompt_summary": "{\n  \"survey_title\": \"Anxiety in the Workspace: Employee Experience Survey\",\n  \"intro\": \"This survey aims to understand the level of anxiety experienced by employees in our workspace and identify potential factors that contribute to it. Your participation is completely anonymous and confidential. The information collected will help us to better support our employees and create a healthier work environment. Please answer the questions honestly, and thank you for taking the time to participate in this survey.\",\n  \"summary\": \"This survey assesses employee anxiety levels, workplace factors, and support systems, and will be used to develop initiatives to reduce anxiety and improve employee well-being.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How often do you feel anxious at work?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Almost never\", \"Occasionally\", \"Often\", \"Almost always\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What are some common situations or events at work that trigger your anxiety?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"On a scale of 1-5, how would you rate your current level of anxiety at work?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Low)\", \"2\", \"3\", \"4\", \"5 (High)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"Can you describe a recent situation where you felt anxious at work and how you handled it?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How supportive do you feel your manager and colleagues are in terms of helping you manage your anxiety at work?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Very supportive\", \"Somewhat supportive\", \"Not very supportive\", \"Not at all supportive\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"What do you think would help reduce your anxiety at work? (Check all that apply)\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"More flexible work arrangements\", \"Additional training or resources\", \"Improved communication with management\", \"Other (please specify)\"],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey. Your input is invaluable to us, and we will use it to create a better work environment for everyone. If you have any further comments or concerns, please don't hesitate to reach out to us.\"\n}",
+    "call_summary": "{\n  \"employee_id\": \"20\",\n  \"summary\": \"Employee reports experiencing anxiety at work 3-4 times per month, primarily triggered by deadlines. They rate their current work anxiety level as 3 out of 5.\",\n  \"ratings\": {\n    \"Anxiety Frequency\": { \"rating\": 3, \"comment\": \"3-4 times per month\" },\n    \"Anxiety Level\": { \"rating\": 3, \"comment\": \"Medium level on a 1-5 scale\" }\n  },\n  \"overall\": \"The employee experiences moderate anxiety related to work deadlines. They seem matter-of-fact about their situation, neither particularly distressed nor dismissive about their anxiety levels.\",\n  \"next_steps\": \"Consider providing deadline management strategies or workload distribution support. Follow up to understand if the employee would benefit from stress management resources.\"\n}",
+    "created_at": "2025-04-02T11:44:40.926868",
+    "structured_data": {
+      "overall": "Employee #20 experiences moderate workplace anxiety related to deadlines, particularly challenging as they're in their first role. They report anxiety occurring 3-4 times monthly and rate their current anxiety level as 3/5. Support with deadline management and first-role guidance could be beneficial.",
+      "ratings": {
+        "enps": {
+          "rating": 3,
+          "comment": "Neutral engagement, neither strongly positive nor negative"
+        },
+        "happiness": {
+          "rating": 3,
+          "comment": "Shows moderate contentment but experiences regular anxiety"
+        },
+        "communication": {
+          "rating": 4,
+          "comment": "Communicates clearly about challenges and triggers"
+        },
+        "mental_health": {
+          "rating": 3,
+          "comment": "Experiences anxiety 3-4 times monthly, rates anxiety level at 3/5"
+        },
+        "job_satisfaction": {
+          "rating": 3,
+          "comment": "Appears neutral about job, mentions pressure from deadlines"
+        }
+      },
+      "summary": "Employee experiences moderate anxiety (rated 3/5) about 3-4 times monthly, primarily triggered by deadlines in their first role which creates a pressured environment.",
+      "next_steps": "Provide deadline management strategies and stress reduction techniques. Consider checking in about workload distribution and offering additional support for this employee in their first role.",
+      "employee_id": "20",
+      "raw_transcript": "AI: Hey. How are you? I want to take some some of time for a short survey.\nUser: Yeah. Go ahead.\nAI: Great. Before we get started, could you please provide your employee ID?\nUser: My employees 20.\nAI: Just to make sure I got that right, your employee ID is 20. That correct?\nUser: Yeah.\nAI: Perfect. Thank you. We are conducting a survey to get a sense of how the work environment might be our team's mental well-being with a focus on anxiety. It's all about making sure we understand everyone's experience so we can create a supportive atmosphere. And don't worry. Everything you share today is completely anonymous and confidential. Let's ease into it. We all have those days when we feel a bit on edge, but I'm curious about how often you find yourself feeling anxious while at work. Would you say it's a rare thing for you? Or does it happen more often than you'd like?\nUser: Happens around 3 to 4 times in a month.\nAI: That sounds like it can be quite challenging. Dealing with that level of anxiety several times a month. Let's explore that a bit more. Are there certain situations or maybe specific tasks that seem to consist bring on those feelings of anxiety? What's happening around you when you notice the anxiety starting to build up?\nUser: Various deadlines, basically, my first foot so that results in a very inside anxious type of environment. I guess. So\nAI: Deadlines can definitely create a lot of pressure. Understandable that trying to meet them might lead to feeling anxious. Let's try to get a clearer picture of your current level of anxiety at work. If you were to rate it on a scale from 1 to 5, with 1 being very low and 5 being very high, where do you think you'd place it?\nUser: 3.",
+      "transcript_summary": {
+        "concerns": [
+          "Deadline pressure creates anxiety",
+          "Being in first role adds to stress"
+        ],
+        "feedback": [
+          "Could benefit from deadline management support",
+          "May need additional guidance as a newer employee"
+        ],
+        "highlights": [
+          "Employee experiences anxiety 3-4 times monthly",
+          "Rates current anxiety level as 3 out of 5"
+        ]
+      }
+    },
+    "employee_id": "20"
+  },
+  {
+    "id": "072d2003-cefb-467b-bf54-bf6342b655c5",
+    "public_survey_id": "abae3516-9960-4612-b77b-a4917e3afa06",
+    "prompt": "anxiety survey for the employees in the workspace",
+    "prompt_summary": "{\n  \"survey_title\": \"Anxiety in the Workspace: Employee Feedback Survey\",\n  \"intro\": \"The purpose of this survey is to assess the levels of anxiety experienced by employees in the workplace and understand its impact on their well-being and productivity. Your responses will be kept confidential and will help us identify areas for improvement to create a healthier work environment. Please answer the questions honestly, and to the best of your ability.\",\n  \"summary\": \"This survey aims to collect feedback from employees about their experiences with anxiety in the workplace, including its causes, effects, and potential solutions.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How often do you experience feelings of anxiety at work?\",\n      \"type\": \"rating\",\n      \"options\": [\"Never\", \"Rarely\", \"Sometimes\", \"Often\", \"Almost Always\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What are the primary sources of anxiety for you in the workplace? (Select all that apply)\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Workload\", \"Deadlines\", \"Communication with colleagues\", \"Lack of autonomy\", \"Other (please specify)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"Can you describe a recent situation at work that caused you significant anxiety?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"How does anxiety affect your productivity and overall well-being at work?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"On a scale of 1-5, how supportive do you feel your manager and colleagues are in helping you manage anxiety at work?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Not supportive at all)\", \"2\", \"3\", \"4\", \"5 (Very supportive)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"What strategies or resources would you like to see implemented in the workplace to help manage anxiety?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey. Your feedback is invaluable in helping us understand and address anxiety in the workplace. Your responses will be kept confidential and used to inform initiatives that promote a healthier work environment.\"\n}",
+    "call_summary": "",
+    "created_at": "2025-04-02T11:54:15.218087"
+  },
+  {
+    "id": "ebd45994-9236-4eff-b348-0c83b5ea56ef",
+    "public_survey_id": "01251e69-69fa-49ad-aa5d-29d8321ebf3a",
+    "prompt": "anxiety survey for the employees in the workspace",
+    "prompt_summary": "{\n  \"survey_title\": \"Anxiety in the Workspace Survey\",\n  \"intro\": \"Dear employees, we are conducting this survey to better understand the levels of anxiety experienced by our team members in the workspace. Your responses will help us identify areas of concern and implement strategies to create a healthier work environment. Please answer the questions honestly, and all responses will be kept confidential. The survey should take around 2 minutes to complete.\",\n  \"summary\": \"This survey aims to assess the prevalence and impact of anxiety on employees' well-being and productivity in the workplace.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How often do you feel anxious or stressed at work?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Never\", \"Rarely\", \"Sometimes\", \"Often\", \"Almost always\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What are some common factors that contribute to your anxiety at work? (Check all that apply)\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Heavy workload\", \"Tight deadlines\", \"Lack of control\", \"Poor communication\", \"Other (please specify)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"Can you describe a recent situation at work that made you feel anxious or stressed?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"How would you rate your overall well-being at work?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Poor)\", \"2\", \"3\", \"4\", \"5 (Excellent)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"What strategies do you currently use to manage your anxiety at work? (Short answer)\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"How satisfied are you with the support provided by the company to manage anxiety and stress?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Very dissatisfied)\", \"2\", \"3\", \"4\", \"5 (Very satisfied)\"],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey. Your input is invaluable in helping us create a healthier and more supportive work environment. If you have any further comments or suggestions, please feel free to include them below.\"\n}",
+    "call_summary": "{\n  \"employee_id\": \"20\",\n  \"summary\": \"The employee experiences anxiety 3-4 times per month, primarily due to tight deadlines set by their boss. Recently, they had to manage 10 deadlines in one week, which forced them to work on weekends.\",\n  \"ratings\": {\n    \"Workplace Stress\": { \"rating\": 4, \"comment\": \"Experiences stress 3-4 times monthly due to deadline pressure\" },\n    \"Work-Life Balance\": { \"rating\": 2, \"comment\": \"Had to work weekends to meet multiple deadlines\" }\n  },\n  \"overall\": \"The employee appears frustrated and overwhelmed by the workload and deadline management. Their tone suggests resignation to the situation but clear dissatisfaction with how deadlines are distributed.\",\n  \"next_steps\": \"Consider reviewing workload distribution and deadline setting processes. The employee might benefit from better project planning or support with time management.\"\n}",
+    "created_at": "2025-04-02T11:56:30.157200",
+    "structured_data": {
+      "overall": "Employee is experiencing significant work-related stress due to excessive deadlines and poor workload management, affecting their work-life balance and mental wellbeing.",
+      "ratings": {
+        "enps": {
+          "rating": 2,
+          "comment": "Unlikely to recommend workplace given stress levels and work-life balance issues"
+        },
+        "happiness": {
+          "rating": 2,
+          "comment": "Shows signs of being unhappy due to work pressure and weekend work requirements"
+        },
+        "communication": {
+          "rating": 3,
+          "comment": "Communication with management appears to be one-directional regarding deadlines"
+        },
+        "mental_health": {
+          "rating": 2,
+          "comment": "Experiences anxiety 3-4 times monthly due to deadline pressure"
+        },
+        "job_satisfaction": {
+          "rating": 2,
+          "comment": "Indicates dissatisfaction with workload management and deadline allocation"
+        }
+      },
+      "summary": "Employee experiences significant stress due to multiple tight deadlines, which recently required weekend work to complete. They report feeling anxious 3-4 times monthly, primarily triggered by workload pressure from their boss.",
+      "next_steps": "Schedule a follow-up meeting to discuss workload management strategies. Consider reviewing deadline allocation processes and implementing a more balanced distribution of tasks.",
+      "employee_id": "20",
+      "raw_transcript": "AI: Hey. How are you? I want to take some some of time for a short survey. User: Yeah. Go ahead. AI: Great. Let's start with your employee ID, User: Yeah. It's, uh, 20. AI: Thanks. Just to confirm, your employee ID is 20. Correct? User: Yeah. AI: Perfect. Thanks for confirming. We are conducting a survey to understand how our team members feel about anxiety in the workspace. Your honest feedback is really important. And will help us make improvements. Don't worry. All your responses will be kept strictly confidential. To start, how often do you find yourself feeling anxious or stressed out during work hours? User: Is it 3 to 4 times in a month? AI: Alright. So you feel anxious or stressed around 3 to 4 times a month? Thanks for sharing that. Let's dig a little deeper when you think about those moments. What usually seems to trigger those feelings for you at work. For example, is it something like workload deadlines, or maybe something else? Take your time. User: I think it's mostly deadlines because like, my boss gives me lots of deadline. It it kind of creates an anxious environment for me. So, yeah. AI: I understand Tight deadlines can definitely create a stressful environment. Thank you for sharing that. Can you recall a recent situation at work where you felt particularly anxious or stressed? What was happening at that time? User: So, yeah, last week only, I I got like, 10 deadlines, and I didn't add much time. So, yeah, that was pretty hectic for me. And I had to work in weekends also for that. So yeah. AI: That sounds really overwhelming. Having to manage multiple deadlines that spilled over into your weekends. It's a lot to handle. You for sharing.",
+      "transcript_summary": {
+        "concerns": [
+          "Required to work weekends to meet deadlines",
+          "Boss assigns too many deadlines creating an anxious environment"
+        ],
+        "feedback": [
+          "Need for better workload distribution",
+          "Potential burnout risk due to weekend work requirements"
+        ],
+        "highlights": [
+          "Experiences anxiety 3-4 times monthly",
+          "Recently had to manage 10 deadlines simultaneously"
+        ]
+      }
+    },
+    "employee_id": "20"
+  },
+  {
+    "id": "33ddc2b9-5480-47ef-b562-f1595afd67f7",
+    "public_survey_id": "e740b7c1-cf96-4abc-b2ff-8672005b6177",
+    "prompt": "3234",
+    "prompt_summary": "{\n  \"survey_title\": \"Numerical Insight Survey 3234\",\n  \"intro\": \"This survey aims to gather your opinions and perceptions on various aspects related to numerical data, such as its interpretation, usage, and impact. Your input will help us better understand how people interact with and understand numbers in different contexts. The survey should take approximately 2 minutes to complete, and all responses will be kept confidential.\",\n  \"summary\": \"This survey focuses on understanding user perspectives on numerical data, covering aspects such as interpretation, application, and perceived importance.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How often do you encounter numerical data in your daily life?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Daily\", \"Weekly\", \"Monthly\", \"Rarely\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What do you think is the most challenging aspect of working with numerical data?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"Can you describe a situation where numerical data significantly influenced a decision you made? Please provide as much detail as possible.\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"How would you rate the importance of numerical literacy in today's world?\",\n      \"type\": \"rating\",\n      \"options\": [\"Not Important at All\", \"Somewhat Important\", \"Important\", \"Very Important\", \"Extremely Important\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"Which of the following best describes your current level of comfort with numerical data?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Very Comfortable\", \"Somewhat Comfortable\", \"Neutral\", \"Somewhat Uncomfortable\", \"Very Uncomfortable\"],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey. Your responses are invaluable to us, and we appreciate your honesty and insight. If you have any further comments or suggestions, please do not hesitate to share them.\"\n}",
+    "call_summary": "",
+    "created_at": "2025-04-02T13:51:48.609975"
+  },
+  {
+    "id": "0e733eaf-ecb8-4f7b-829f-c65f26ca4ac5",
+    "public_survey_id": "a4c1d0ae-a293-4c6e-afb8-e7b9ab003664",
+    "prompt": "reddit survey",
+    "prompt_summary": "{\n  \"survey_title\": \"Reddit User Experience Survey\",\n  \"intro\": \"Hello, we appreciate you taking the time to participate in this survey. The purpose of this survey is to understand your experience and preferences on Reddit, and gather feedback to improve the platform. Your input will help us better understand what you like, what you don't, and what we can do to make Reddit a better place for you. Please answer the questions honestly, and thank you for your participation.\",\n  \"summary\": \"This survey focuses on understanding user experiences, preferences, and feedback on Reddit to identify areas for improvement and optimization.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How often do you use Reddit?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Daily\", \"Weekly\", \"Monthly\", \"Rarely\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What do you primarily use Reddit for?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"How would you rate the overall quality of content on Reddit?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Poor)\", \"2\", \"3\", \"4\", \"5 (Excellent)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"Have you ever encountered any issues or problems while using Reddit? If yes, please describe.\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How likely are you to recommend Reddit to a friend or colleague?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Not Likely)\", \"2\", \"3\", \"4\", \"5 (Very Likely)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"What features or changes would you like to see implemented on Reddit to improve your experience?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey. Your feedback is invaluable to us, and we appreciate your honesty. Your input will help us to continue improving Reddit and making it a better place for everyone. If you have any other comments or suggestions, please don't hesitate to share them. Thank you again for your participation.\"\n}",
+    "call_summary": "",
+    "created_at": "2025-04-02T13:53:11.325177"
+  },
+  {
+    "id": "2e42f45d-b3ba-4bca-9ca7-bbfef02b9061",
+    "public_survey_id": "a4c1d0ae-a293-4c6e-afb8-e7b9ab003664",
+    "prompt": "",
+    "prompt_summary": "",
+    "call_summary": "",
+    "created_at": "2025-04-02T13:53:23.352715"
+  },
+  {
+    "id": "bb5c5253-f8db-4e0d-98c9-af35c422815d",
+    "public_survey_id": "a4c1d0ae-a293-4c6e-afb8-e7b9ab003664",
+    "prompt": "",
+    "prompt_summary": "",
+    "call_summary": "",
+    "created_at": "2025-04-02T13:57:55.183420"
+  },
+  {
+    "id": "b34456fb-78a2-4b72-8a68-39001ac21544",
+    "public_survey_id": "a4c1d0ae-a293-4c6e-afb8-e7b9ab003664",
+    "prompt": "",
+    "prompt_summary": "",
+    "call_summary": "{\n  \"summary\": \"Attempted survey call that barely began. User only responded with 'Yeah. But' and did not provide their employee ID when asked.\",\n  \"ratings\": {\n    \"Engagement\": { \"rating\": 1, \"comment\": \"User showed minimal engagement\" },\n    \"Completion\": { \"rating\": 0, \"comment\": \"Survey did not progress beyond initial greeting\" }\n  },\n  \"overall\": \"Call was unsuccessful. User seemed hesitant or possibly interrupted.\",\n  \"next_steps\": \"Follow up with another call attempt at a more convenient time for the user.\"\n}",
+    "created_at": "2025-04-02T14:01:49.284605",
+    "structured_data": {
+      "overall": "Incomplete interaction. The survey could not be conducted as the user provided minimal responses and did not share their employee ID.",
+      "ratings": {
+        "enps": {
+          "rating": 1,
+          "comment": "Insufficient data to assess"
+        },
+        "happiness": {
+          "rating": 1,
+          "comment": "Insufficient data to assess"
+        },
+        "communication": {
+          "rating": 1,
+          "comment": "Minimal engagement from user"
+        },
+        "mental_health": {
+          "rating": 1,
+          "comment": "Insufficient data to assess"
+        },
+        "job_satisfaction": {
+          "rating": 1,
+          "comment": "Insufficient data to assess"
+        }
+      },
+      "summary": "The call was extremely brief with minimal interaction. The user only responded with 'Yeah. But' and did not provide their employee ID when requested.",
+      "next_steps": "Follow up with the employee to complete the survey as the call ended prematurely without gathering any meaningful data.",
+      "employee_id": "Not provided",
+      "raw_transcript": "AI: Hey. How are you? I want to take some some of time for a short survey.\nUser: Yeah. But\nAI: Great. Could you please start by providing your employee ID?\nUser: Yeah.",
+      "transcript_summary": {
+        "concerns": [
+          "User did not provide employee ID",
+          "Call ended abruptly"
+        ],
+        "feedback": [
+          "Survey was not completed"
+        ],
+        "highlights": [
+          "User acknowledged the call but provided minimal response"
+        ]
+      }
+    },
+    "employee_id": "Not provided"
+  },
+  {
+    "id": "346032d1-b475-497b-933f-2d704bdbacd5",
+    "public_survey_id": "a4c1d0ae-a293-4c6e-afb8-e7b9ab003664",
+    "prompt": "",
+    "prompt_summary": "",
+    "call_summary": "",
+    "created_at": "2025-04-02T14:04:42.216267"
+  },
+  {
+    "id": "18bf1845-0b28-4f6f-8730-0c28afff93f5",
+    "public_survey_id": "a4c1d0ae-a293-4c6e-afb8-e7b9ab003664",
+    "prompt": "",
+    "prompt_summary": "",
+    "call_summary": "",
+    "created_at": "2025-04-02T14:09:06.280009"
+  },
+  {
+    "id": "904454cf-f3d8-4b6d-a633-c50e3b9ab298",
+    "public_survey_id": "a4c1d0ae-a293-4c6e-afb8-e7b9ab003664",
+    "prompt": "",
+    "prompt_summary": "",
+    "call_summary": "",
+    "created_at": "2025-04-02T14:10:57.509171"
   }
 ]
