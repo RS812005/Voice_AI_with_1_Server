@@ -47,7 +47,7 @@
     <div class="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4 w-4/5">
       <!-- Survey Selection Card -->
       <div class="bg-white p-6 rounded shadow w-full text-center mb-8">
-        <h1 class="text-2xl font-bold mb-4">Public Survey</h1>
+               <h1 id="dynamic-heading" class="text-2xl font-bold mb-4">Public Survey</h1>
         <div class="flex flex-col space-y-4">
           <button
             id="public-voice-btn"
@@ -192,6 +192,7 @@
       })(document, "script");
 
       let globalCallId = null;
+      let userAvatarAnimationId = null;
       // Use separate variables for history record and chat record IDs.
       window.latestRecordId = null;
       window.latestChatRecordId = null;
@@ -355,29 +356,35 @@ Closing:
       }
 
       function stopWebCall() {
-        
-        vapiInstance.stop();
-        stopCallTimer();
-
-
-        const userRipple = document.getElementById("user-avatar-ripple");
-  if (userRipple) {
-    userRipple.style.opacity = 0;
-    userRipple.style.transform = "scale(1)";
-  }
+    // Stop the VAPI instance and call timer
+    vapiInstance.stop();
+    stopCallTimer();
+    
+    // Cancel the user avatar volume animation if it's running
+    if (userAvatarAnimationId) {
+      cancelAnimationFrame(userAvatarAnimationId);
+      userAvatarAnimationId = null;
+    }
+    
+    // Reset the ripple styles
+    const userRipple = document.getElementById("user-avatar-ripple");
+    if (userRipple) {
+      userRipple.style.opacity = 0;
+      userRipple.style.transform = "scale(1)";
+    }
+    
+    const aiRipple = document.getElementById("ai-avatar-ripple");
+    if (aiRipple) {
+      aiRipple.style.opacity = 0;
+      aiRipple.style.transform = "scale(1)";
+    }
   
-  const aiRipple = document.getElementById("ai-avatar-ripple");
-  if (aiRipple) {
-    aiRipple.style.opacity = 0;
-    aiRipple.style.transform = "scale(1)";
+    document.getElementById("call-summary").innerHTML =
+      '<p class="text-gray-600">Summary loading...</p>';
+    setTimeout(() => {
+      pollCallDetails(globalCallId);
+    }, 1000);
   }
-
-        document.getElementById("call-summary").innerHTML =
-    '<p class="text-gray-600">Summary loading...</p>';
-        setTimeout(() => {
-          pollCallDetails(globalCallId);
-        }, 1000);
-      }
 
       function pollCallDetails(callId, interval = 3000) {
         fetch("/call-details?call_id=" + callId, {
@@ -655,15 +662,18 @@ function getUrlParameter(name) {
     const results = regex.exec(location.search);
     return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
   }
-    // Get the 'heading' parameter from the URL
-  const headingFromUrl = getUrlParameter('heading');
-  if (headingFromUrl) {
-    // Update the main heading on the page
-    const headingEl = document.querySelector('h1');
-    if (headingEl) {
-      headingEl.textContent = headingFromUrl;
-    }
-  }
+  //   // Get the 'heading' parameter from the URL
+  // const headingFromUrl = getUrlParameter('heading');
+  // if (headingFromUrl) {
+  //   // Update the main heading on the page
+  //   const headingEl = document.querySelector('h1');
+  //   if (headingEl) {
+  //     headingEl.textContent = headingFromUrl;
+  //   }
+  // }
+
+  
+
    // Check if the page should display analysis (analysis=true in URL)
    if (getUrlParameter('analysis') === 'true') {
         document.getElementById('analysis-section').classList.remove('hidden');
@@ -748,6 +758,17 @@ function getUrlParameter(name) {
             console.error("Error fetching rating distribution:", error);
           })}, 1000);
       }
+       fetch(`/public-get-heading?recordid=${recordid}`)
+          .then(response => response.json())
+          .then(data => {
+            if (data.error) {
+              console.error("Error:", data.error);
+            } else if (data.survey_title) {
+              // Update the heading text dynamically
+              document.getElementById('dynamic-heading').textContent = data.survey_title;
+            }
+          })
+          .catch(error => console.error("Fetch error:", error));
       function setupGoBackButton() {
   const goBackBtn = document.getElementById("go-back-btn");
   if (goBackBtn) {
@@ -843,51 +864,51 @@ setupGoBackButton();
 //   }
 // }
 async function setupUserAvatarVolumeVisualizer() {
-  const userRipple = document.getElementById("user-avatar-ripple");
-  if (!userRipple) {
-    console.error("User avatar ripple element not found.");
-    return;
-  }
-  
-  try {
-    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-    const analyser = audioContext.createAnalyser();
-    const micSource = audioContext.createMediaStreamSource(stream);
-    micSource.connect(analyser);
-    analyser.fftSize = 256;
-    const bufferLength = analyser.frequencyBinCount;
-    const dataArray = new Uint8Array(bufferLength);
+    const userRipple = document.getElementById("user-avatar-ripple");
+    if (!userRipple) {
+      console.error("User avatar ripple element not found.");
+      return;
+    }
     
-    function updateUserRipple() {
-  analyser.getByteFrequencyData(dataArray);
-  let sum = 0;
-  for (let i = 0; i < bufferLength; i++) {
-    sum += dataArray[i];
-  }
-  let avg = sum / bufferLength;
-  let volumeLevel = avg / 255; // Normalize volume (0 to 1)
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      const analyser = audioContext.createAnalyser();
+      const micSource = audioContext.createMediaStreamSource(stream);
+      micSource.connect(analyser);
+      analyser.fftSize = 256;
+      const bufferLength = analyser.frequencyBinCount;
+      const dataArray = new Uint8Array(bufferLength);
+      
+      function updateUserRipple() {
+        analyser.getByteFrequencyData(dataArray);
+        let sum = 0;
+        for (let i = 0; i < bufferLength; i++) {
+          sum += dataArray[i];
+        }
+        let avg = sum / bufferLength;
+        let volumeLevel = avg / 255; // Normalize volume (0 to 1)
+        
+        // If volume is very low, set it to 0
+        if (volumeLevel < 0.1) {
+          volumeLevel = 0;
+        }
+        
+        const scale = 1 + volumeLevel * 3.0; // Adjust multiplier as desired
+        const opacity = volumeLevel;         // Opacity from 0 to 1
+        userRipple.style.transform = `scale(${scale})`;
+        userRipple.style.opacity = opacity;
+        
+        // Store the animation frame ID globally so it can be canceled later
+        userAvatarAnimationId = requestAnimationFrame(updateUserRipple);
+      }
   
-  // If volume is very low, set it to 0
-  if (volumeLevel < 0.1) {
-    volumeLevel = 0;
+      updateUserRipple();
+    } catch (err) {
+      console.error("User mic access error:", err);
+      userRipple.style.opacity = 0;
+    }
   }
-  
-  const scale = 1 + volumeLevel * 3.0; // Adjust multiplier as desired
-  const opacity = volumeLevel;         // Opacity from 0 to 1
-  userRipple.style.transform = `scale(${scale})`;
-  userRipple.style.opacity = opacity;
-  
-  requestAnimationFrame(updateUserRipple);
-}
-
-    updateUserRipple();
-  } catch (err) {
-    console.error("User mic access error:", err);
-    userRipple.style.opacity = 0;
-  }
-}
-
 
     </script>
   </body>

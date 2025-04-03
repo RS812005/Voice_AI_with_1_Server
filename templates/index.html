@@ -420,6 +420,7 @@
       })(document, "script");
 
       let globalCallId = null;
+      let userAvatarAnimationId = null;
       // Use separate variables for history record and chat record IDs.
       window.latestRecordId = null;
       window.latestChatRecordId = null;
@@ -589,6 +590,12 @@ Closing:
       function stopWebCall() {
         vapiInstance.stop();
         stopCallTimer();
+
+        // Cancel the user avatar volume animation if it's running
+    if (userAvatarAnimationId) {
+      cancelAnimationFrame(userAvatarAnimationId);
+      userAvatarAnimationId = null;
+    }
 
         const userRipple = document.getElementById("user-avatar-ripple");
   if (userRipple) {
@@ -1603,51 +1610,51 @@ document.getElementById("copy-public-survey-link-btn").addEventListener("click",
 });
 
 async function setupUserAvatarVolumeVisualizer() {
-  const userRipple = document.getElementById("user-avatar-ripple");
-  if (!userRipple) {
-    console.error("User avatar ripple element not found.");
-    return;
-  }
-  
-  try {
-    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-    const analyser = audioContext.createAnalyser();
-    const micSource = audioContext.createMediaStreamSource(stream);
-    micSource.connect(analyser);
-    analyser.fftSize = 256;
-    const bufferLength = analyser.frequencyBinCount;
-    const dataArray = new Uint8Array(bufferLength);
+    const userRipple = document.getElementById("user-avatar-ripple");
+    if (!userRipple) {
+      console.error("User avatar ripple element not found.");
+      return;
+    }
     
-    function updateUserRipple() {
-  analyser.getByteFrequencyData(dataArray);
-  let sum = 0;
-  for (let i = 0; i < bufferLength; i++) {
-    sum += dataArray[i];
-  }
-  let avg = sum / bufferLength;
-  let volumeLevel = avg / 255; // Normalize volume (0 to 1)
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      const analyser = audioContext.createAnalyser();
+      const micSource = audioContext.createMediaStreamSource(stream);
+      micSource.connect(analyser);
+      analyser.fftSize = 256;
+      const bufferLength = analyser.frequencyBinCount;
+      const dataArray = new Uint8Array(bufferLength);
+      
+      function updateUserRipple() {
+        analyser.getByteFrequencyData(dataArray);
+        let sum = 0;
+        for (let i = 0; i < bufferLength; i++) {
+          sum += dataArray[i];
+        }
+        let avg = sum / bufferLength;
+        let volumeLevel = avg / 255; // Normalize volume (0 to 1)
+        
+        // If volume is very low, set it to 0
+        if (volumeLevel < 0.1) {
+          volumeLevel = 0;
+        }
+        
+        const scale = 1 + volumeLevel * 3.0; // Adjust multiplier as desired
+        const opacity = volumeLevel;         // Opacity from 0 to 1
+        userRipple.style.transform = `scale(${scale})`;
+        userRipple.style.opacity = opacity;
+        
+        // Store the animation frame ID globally so it can be canceled later
+        userAvatarAnimationId = requestAnimationFrame(updateUserRipple);
+      }
   
-  // If volume is very low, set it to 0
-  if (volumeLevel < 0.1) {
-    volumeLevel = 0;
+      updateUserRipple();
+    } catch (err) {
+      console.error("User mic access error:", err);
+      userRipple.style.opacity = 0;
+    }
   }
-  
-  const scale = 1 + volumeLevel * 3.0; // Adjust multiplier as desired
-  const opacity = volumeLevel;         // Opacity from 0 to 1
-  userRipple.style.transform = `scale(${scale})`;
-  userRipple.style.opacity = opacity;
-  
-  requestAnimationFrame(updateUserRipple);
-}
-
-    updateUserRipple();
-  } catch (err) {
-    console.error("User mic access error:", err);
-    userRipple.style.opacity = 0;
-  }
-}
-
 
 
 

@@ -414,7 +414,7 @@ def history():
         records = read_history()
         # Sort by created_at in descending order and take the last 10
         records.sort(key=lambda x: x.get("created_at", ""), reverse=True)
-        records = records[:10]
+        records = records[:20]
 
         # Format records for display, including the record id
         formatted_records = []
@@ -422,6 +422,9 @@ def history():
             formatted_records.append(
                 {
                     "id": record.get("id", ""),
+                    "public_survey_id": record.get(
+                        "public_survey_id", ""
+                    ),  # Add this line
                     "prompt": record.get("prompt", ""),
                     "prompt_summary": record.get("prompt_summary", ""),
                     "call_summary": record.get("call_summary", ""),
@@ -1503,6 +1506,41 @@ def mega_chat_manager():
 
     except Exception as e:
         app.logger.error("Error in /mega-chat-manager: %s", str(e))
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route("/public-get-heading", methods=["GET"])
+def public_get_heading():
+    record_id = request.args.get("recordid")
+    if not record_id:
+        return jsonify({"error": "Missing recordid parameter"}), 400
+    try:
+        records = read_history()
+        # Find the matching record by record id
+        matching_record = next(
+            (record for record in records if str(record.get("id", "")) == record_id),
+            None,
+        )
+        if not matching_record:
+            return jsonify({"error": "Record not found"}), 404
+
+        # Get prompt_summary; assume it contains a JSON string with a key "survey_title"
+        prompt_summary = matching_record.get("prompt_summary", "")
+        if not prompt_summary:
+            return jsonify({"error": "Prompt summary not found"}), 404
+
+        # Convert the prompt_summary to a dict (assuming it is a JSON string)
+        try:
+            summary_data = json.loads(prompt_summary)
+        except json.JSONDecodeError:
+            return jsonify({"error": "Invalid prompt summary format"}), 500
+
+        survey_title = summary_data.get("survey_title", "")
+        if not survey_title:
+            return jsonify({"error": "survey_title not found in prompt_summary"}), 404
+
+        return jsonify({"survey_title": survey_title})
+    except Exception as e:
         return jsonify({"error": str(e)}), 500
 
 
