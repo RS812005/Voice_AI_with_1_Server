@@ -379,13 +379,24 @@
 </div>
 
       </div>
+      <div id="audio-device-selection" class="p-4 bg-white rounded shadow mb-4">
+  <label for="audioSource" class="block text-sm text-gray-700 mb-1">Audio Input:</label>
+  <select id="audioSource" class="w-full p-2 border rounded mb-4"></select>
+
+  <label for="audioOutput" class="block text-sm text-gray-700 mb-1">Audio Output:</label>
+  <select id="audioOutput" class="w-full p-2 border rounded"></select>
+
+  <!-- (Optional) If you need an element to play output -->
+  <audio id="audioPlayback" autoplay hidden></audio>
+</div>
+
     </div>
 
     <!-- VAPI SDK Script -->
     <script>
       var vapiInstance = null;
-      const assistant = "c2c9eeb8-5a2e-44d9-8bab-998770797253";
-      const apiKey = "917908ea-7b08-45b2-af6f-181bc59dfdc2";
+      const assistant = "5e7d3a07-f7d5-4975-8bd8-2c32ae092f01";
+      const apiKey = "c2e5d26a-941f-42c7-8bf4-02ebc2844242";
 
 
       (function (d, t) {
@@ -1683,7 +1694,7 @@ async function startPhoneCall(extractedText, phoneNumber) {
   
   // Set your Vapi API Authorization token and Phone Number ID
   const authToken = "<YOUR AUTH TOKEN>";
-  const phoneNumberId = "c91f5d3c-b4cd-431e-999a-4baf9be8878f";
+  const phoneNumberId = "bc9baaa4-90a9-4b99-a522-3c10b780400a";
 
   // Set up the voice configuration based on the accent value
   let voiceConfig = {};
@@ -1795,7 +1806,7 @@ Closing:
     const response = await fetch("https://api.vapi.ai/call/phone", {
       method: "POST",
       headers: {
-        "Authorization": `Bearer 19e411d7-8264-4f2b-a90c-1e9014822688`,
+        "Authorization": `Bearer 62b3825e-c2f6-4f4f-a450-cb9726235115`,
         "Content-Type": "application/json"
       },
       body: JSON.stringify(payload)
@@ -1870,6 +1881,103 @@ Closing:
             console.error("Error polling call details:", err);
           });
       }
+      function getAudioDevices() {
+  navigator.mediaDevices.enumerateDevices()
+    .then(deviceInfos => {
+      const audioInputSelect = document.getElementById('audioSource');
+      const audioOutputSelect = document.getElementById('audioOutput');
+
+      // Clear any existing options
+      audioInputSelect.innerHTML = '';
+      audioOutputSelect.innerHTML = '';
+
+      deviceInfos.forEach(deviceInfo => {
+        if (deviceInfo.kind === 'audioinput') {
+          const option = document.createElement('option');
+          option.value = deviceInfo.deviceId;
+          option.text = deviceInfo.label || `Microphone ${audioInputSelect.length + 1}`;
+          audioInputSelect.appendChild(option);
+        } else if (deviceInfo.kind === 'audiooutput') {
+          const option = document.createElement('option');
+          option.value = deviceInfo.deviceId;
+          option.text = deviceInfo.label || `Speaker ${audioOutputSelect.length + 1}`;
+          audioOutputSelect.appendChild(option);
+        }
+      });
+    })
+    .catch(error => {
+      console.error('Error getting devices:', error);
+    });
+}
+
+// Call this function when the page loads (or when needed)
+document.addEventListener('DOMContentLoaded', getAudioDevices);
+
+
+async function setupUserAvatarVolumeVisualizer() {
+  const userRipple = document.getElementById("user-avatar-ripple");
+  if (!userRipple) {
+    console.error("User avatar ripple element not found.");
+    return;
+  }
+  
+  try {
+    // Get the selected audio input device ID
+    const audioSourceSelect = document.getElementById('audioSource');
+    const selectedDeviceId = audioSourceSelect.value;
+    
+    // Use the selected device ID in the constraints
+    const stream = await navigator.mediaDevices.getUserMedia({ 
+      audio: { 
+        deviceId: selectedDeviceId ? { exact: selectedDeviceId } : undefined 
+      } 
+    });
+    
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    const analyser = audioContext.createAnalyser();
+    const micSource = audioContext.createMediaStreamSource(stream);
+    micSource.connect(analyser);
+    analyser.fftSize = 256;
+    const bufferLength = analyser.frequencyBinCount;
+    const dataArray = new Uint8Array(bufferLength);
+    
+    function updateUserRipple() {
+      analyser.getByteFrequencyData(dataArray);
+      let sum = 0;
+      for (let i = 0; i < bufferLength; i++) {
+        sum += dataArray[i];
+      }
+      let avg = sum / bufferLength;
+      let volumeLevel = avg / 255; // Normalize volume (0 to 1)
+      
+      if (volumeLevel < 0.1) {
+        volumeLevel = 0;
+      }
+      
+      const scale = 1 + volumeLevel * 3.0; // Adjust multiplier as desired
+      const opacity = volumeLevel;         
+      userRipple.style.transform = `scale(${scale})`;
+      userRipple.style.opacity = opacity;
+      
+      userAvatarAnimationId = requestAnimationFrame(updateUserRipple);
+    }
+
+    updateUserRipple();
+  } catch (err) {
+    console.error("User mic access error:", err);
+    userRipple.style.opacity = 0;
+  }
+}
+document.getElementById('audioOutput').addEventListener('change', async (e) => {
+  const selectedDeviceId = e.target.value;
+  try {
+    await vapi.setOutputDeviceAsync({ deviceId: selectedDeviceId });
+    console.log('Audio output updated to:', selectedDeviceId);
+  } catch (error) {
+    console.error('Error setting audio output device:', error);
+  }
+});
+
 
     </script>
   </body>
