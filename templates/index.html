@@ -379,16 +379,16 @@
 </div>
 
       </div>
-      <div id="audio-device-selection" class="p-4 bg-white rounded shadow mb-4">
+      <!-- <div id="audio-device-selection" class="p-4 bg-white rounded shadow mb-4">
   <label for="audioSource" class="block text-sm text-gray-700 mb-1">Audio Input:</label>
   <select id="audioSource" class="w-full p-2 border rounded mb-4"></select>
 
   <label for="audioOutput" class="block text-sm text-gray-700 mb-1">Audio Output:</label>
   <select id="audioOutput" class="w-full p-2 border rounded"></select>
 
-  <!-- (Optional) If you need an element to play output -->
-  <audio id="audioPlayback" autoplay hidden></audio>
-</div>
+   (Optional) If you need an element to play output -->
+  <!-- <audio id="audioPlayback" autoplay hidden></audio>
+  </div>  -->
 
     </div>
 
@@ -1922,17 +1922,18 @@ async function setupUserAvatarVolumeVisualizer() {
   }
   
   try {
-    // Get the selected audio input device ID
-    const audioSourceSelect = document.getElementById('audioSource');
-    const selectedDeviceId = audioSourceSelect.value;
+    // // Get the selected audio input device ID
+    // const audioSourceSelect = document.getElementById('audioSource');
+    // const selectedDeviceId = audioSourceSelect.value;
     
-    // Use the selected device ID in the constraints
-    const stream = await navigator.mediaDevices.getUserMedia({ 
-      audio: { 
-        deviceId: selectedDeviceId ? { exact: selectedDeviceId } : undefined 
-      } 
-    });
-    
+    // // Use the selected device ID in the constraints
+    // const stream = await navigator.mediaDevices.getUserMedia({ 
+    //   audio: { 
+    //     deviceId: selectedDeviceId ? { exact: selectedDeviceId } : undefined 
+    //   } 
+    // });
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+
     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
     const analyser = audioContext.createAnalyser();
     const micSource = audioContext.createMediaStreamSource(stream);
@@ -1968,15 +1969,17 @@ async function setupUserAvatarVolumeVisualizer() {
     userRipple.style.opacity = 0;
   }
 }
-document.getElementById('audioOutput').addEventListener('change', async (e) => {
-  const selectedDeviceId = e.target.value;
-  try {
-    await vapi.setOutputDeviceAsync({ deviceId: selectedDeviceId });
-    console.log('Audio output updated to:', selectedDeviceId);
-  } catch (error) {
-    console.error('Error setting audio output device:', error);
-  }
-});
+// document.getElementById('audioOutput').addEventListener('change', async (e) => {
+//   const selectedDeviceId = e.target.value;
+//   try {
+//     await vapi.setOutputDeviceAsync({ deviceId: selectedDeviceId });
+//     console.log('Audio output updated to:', selectedDeviceId);
+//   } catch (error) {
+//     console.error('Error setting audio output device:', error);
+//   }
+// });
+
+
 
 
     </script>
