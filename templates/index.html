@@ -311,6 +311,12 @@
               >
                 Chat with Survey
               </button>
+              <button
+  id="send-phone-call-btn"
+  class="bg-purple-500 hover:bg-purple-600 text-white py-2 px-4 rounded-md transition-colors font-semibold"
+>
+  Send Phone Call
+</button>
             </div>
           </div>
         </div>
@@ -378,8 +384,8 @@
     <!-- VAPI SDK Script -->
     <script>
       var vapiInstance = null;
-      const assistant = "5e7d3a07-f7d5-4975-8bd8-2c32ae092f01";
-      const apiKey = "c2e5d26a-941f-42c7-8bf4-02ebc2844242";
+      const assistant = "c2c9eeb8-5a2e-44d9-8bab-998770797253";
+      const apiKey = "917908ea-7b08-45b2-af6f-181bc59dfdc2";
 
 
       (function (d, t) {
@@ -1655,8 +1661,215 @@ async function setupUserAvatarVolumeVisualizer() {
       userRipple.style.opacity = 0;
     }
   }
+document.getElementById("send-phone-call-btn").addEventListener("click", function() {
+  // Prompt the user to input their phone number
+  const phoneNumber = prompt("Please enter the phone number you would like to call:");
+  const responseText = document.getElementById("survey-response").textContent;
+  if (!phoneNumber || phoneNumber.trim() === "") {
+    alert("No phone number entered.");
+    return;
+  }
+  // Optionally, add basic validation for the phone number here
 
+  // Start the phone call using the entered phone number
+  startPhoneCall(responseText, phoneNumber.trim());
+});
 
+async function startPhoneCall(extractedText, phoneNumber) {
+  // Get configuration values from DOM elements
+  const accentValue = document.getElementById("accent").value;
+  const extrasValue = document.getElementById("extras").value;
+  const toneValue = document.getElementById("tone").value;
+  
+  // Set your Vapi API Authorization token and Phone Number ID
+  const authToken = "<YOUR AUTH TOKEN>";
+  const phoneNumberId = "c91f5d3c-b4cd-431e-999a-4baf9be8878f";
+
+  // Set up the voice configuration based on the accent value
+  let voiceConfig = {};
+  switch (accentValue) {
+    case "indian_lady":
+      voiceConfig = { provider: "cartesia", voiceId: "3b554273-4299-48b9-9aaf-eefd438e3941" };
+      break;
+    case "indian_man":
+      voiceConfig = { provider: "cartesia", voiceId: "638efaaa-4d0c-442e-b701-3fae16aad012" };
+      break;
+    case "british_lady":
+      voiceConfig = { provider: "cartesia", voiceId: "79a125e8-cd45-4c13-8a67-188112f4dd22" };
+      break;
+    case "anime_girl":
+      voiceConfig = { provider: "cartesia", voiceId: "1001d611-b1a8-46bd-a5ca-551b23505334" };
+      break;
+    case "british_man":
+      voiceConfig = { provider: "cartesia", voiceId: "63ff761f-c1e8-414b-b969-d1833d1c870c" };
+      break;
+    case "middle_east_women":
+      voiceConfig = { provider: "cartesia", voiceId: "daf747c6-6bc2-4083-bd59-aa94dce23f5d" };
+      break;
+    case "australian_women":
+      voiceConfig = { provider: "cartesia", voiceId: "043cfc81-d69f-4bee-ae1e-7862cb358650" };
+      break;
+    case "california_girl":
+      voiceConfig = { provider: "cartesia", voiceId: "b7d50908-b17c-442d-ad8d-810c63997ed9" };
+      break;
+    case "new_york_man":
+      voiceConfig = { provider: "cartesia", voiceId: "34575e71-908f-4ab6-ab54-b08c95d6597d" };
+      break;
+    case "new_york_women":
+      voiceConfig = { provider: "cartesia", voiceId: "34bde396-9fde-4ebf-ad03-e3a1d1155205" };
+      break;
+    case "savannah":
+      voiceConfig = { provider: "vapi", voiceId: "Savannah" };
+      break;
+    case "kentucky_man":
+      voiceConfig = { provider: "cartesia", voiceId: "726d5ae5-055f-4c3d-8355-d9677de68937" };
+      break;
+    case "kentucky_woman":
+      voiceConfig = { provider: "cartesia", voiceId: "4f8651b0-bbbd-46ac-8b37-5168c5923303" };
+      break;
+    case "sesame":
+      voiceConfig = { provider: "cartesia", voiceId: "4f8651b0-bbbd-46ac-8b37-5168c5923303" };
+      break;
+    default:
+      voiceConfig = { provider: "sesame", voiceId: "default" };
+      break;
+  }
+  
+  // Add experimental controls if extras is selected
+  if (extrasValue !== "none") {
+    voiceConfig.experimentalControls = {
+      emotion: [`${extrasValue}:highest`]
+    };
+  }
+  
+  // Define the assistantOverrides configuration
+  const assistantOverrides = {
+    startSpeakingPlan: {
+      waitSeconds: 1.4, // Customize the wait time as needed
+    },
+    firstMessageMode: "assistant-speaks-first",
+    model: {
+      provider: "openai",
+      model: "gpt-4",
+      messages: [
+        {
+          role: "system",
+          content: `Please start by asking for the employee ID. Once the user provides an ID, confirm it by repeating it back and asking if it is correct.
+If the provided employee ID is valid, give a short, dynamic introduction about the survey based on the survey content below and tell that all of their responses will be strictly confidential, then proceed with a structured, question-by-question survey flow. Keep the tone ${toneValue} and non-intrusive. Ensure that the conversation flows naturally and dynamically rather than presenting questions as a rigid list. The AI should integrate pre-configured questions fluidly—adapting to context. Encourage honest responses without pressure.
+
+Flow of Questions:
+${extractedText}
+Make the questions strictly in a long conversational manner rather than just saying what the actual question is. You can change it to appear more conversational, even expand the question if it's too short, as if talking to a friend or co-worker. Avoid directly asking the question; guide the user towards thoughtful answers. If options are present, do not list them unless asked for.
+Stay on Topic: The conversation must remain strictly within the scope of the survey.
+If unrelated topics are introduced, respond with:
+"I'm here to assist with the survey. Let's stay focused on the questions."
+If persistence occurs, respond with:
+"I’m sorry, but I can only respond to questions related to the survey."
+If the answer is not satisfactory, include a follow-up like: "What did you find challenging about that?"
+Open Feedback:
+"Is there anything else you'd like to add or clarify?"
+Closing:
+"Thank you! We will carefully review your input and make improvements. If you think of anything else, feel free to share!"`
+        }
+      ]
+    },
+    summaryPrompt:
+      'You will be given a transcript of a call. Extract key information, including the employee ID  and the user’s tone, and structure it into a concise JSON-like format. For example:\n\n{\n  "employee_id": "",\n  "summary": "",\n  "ratings": {\n    "TopicA": { "rating": 5, "comment": "" },\n    "TopicB": { "rating": 2, "comment": "" }\n  },\n  "overall": "",\n  "next_steps": ""\n}',
+    voice: voiceConfig,
+  };
+
+  // Build the payload that includes all parameters needed for the call
+  const payload = {
+    // Transient assistant configuration passed in the assistantOverrides field
+    assistantOverrides: assistantOverrides,
+    // The assistantId may be a fixed identifier or variable depending on your implementation
+    assistantId: assistant, // Replace with your actual assistant ID if necessary
+    phoneNumberId: phoneNumberId,
+    // Specify the destination customer's phone number
+    customer: {
+      number: phoneNumber
+    }
+  };
+
+  try {
+    const response = await fetch("https://api.vapi.ai/call/phone", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer 19e411d7-8264-4f2b-a90c-1e9014822688`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    });
+    
+    if (response.ok) {
+      const jsonResponse = await response.json();
+      console.log("VAPI Web call started:", jsonResponse);
+      // If needed, store the call id and start the call timer
+      window.globalCallId = jsonResponse.id;
+      pollPhoneCallDetails(window.globalCallId)
+      // startCallTimer(); // Make sure this function is defined in your codebase
+      return jsonResponse;
+    } else {
+      const errorText = await response.text();
+      console.error("Failed to create call", errorText);
+    }
+  } catch (error) {
+    console.error("Error starting web call:", error);
+  }
+}
+
+ function pollPhoneCallDetails(callId, interval = 30000) {
+        fetch("/call-details?call_id=" + callId, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + apiKey,
+          },
+          body: JSON.stringify({ record_id: window.latestRecordId })
+        })
+          .then((response) => {
+            if (!response.ok) {
+              console.error(
+                "Error fetching call details:",
+                response.status,
+                response.statusText
+              );
+              if (response.status === 403) {
+                document.getElementById("call-summary").innerHTML =
+                  "<h3>Error:</h3><p>Access forbidden. Check credentials.</p>";
+              }
+              throw new Error("HTTP error " + response.status);
+            }
+            return response.json();
+          })
+          .then((data) => {
+            if (data.error) {
+              console.error("Error in call details response:", data.error);
+              return;
+            }
+            if (data.summary) {
+              document.getElementById("call-summary").innerHTML =
+                "<h3 class='font-semibold mb-2'>Call Summary</h3><p>" +
+                data.summary +
+                "</p>";
+              // Once summary is available, show the Chat with Survey button
+              let chatBtn = document.getElementById("chat-survey-btn");
+              if (chatBtn) {
+                chatBtn.classList.remove("hidden");
+              }
+            } else {
+              console.log(
+                "Summary not yet available; retrying in",
+                interval,
+                "ms"
+              );
+              setTimeout(() => pollPhoneCallDetails(callId, interval), interval);
+            }
+          })
+          .catch((err) => {
+            console.error("Error polling call details:", err);
+          });
+      }
 
     </script>
   </body>

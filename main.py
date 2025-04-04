@@ -185,8 +185,10 @@ def start_call():
     if data is None:
         return jsonify({"error": "Invalid JSON payload"}), 400
     context_text = data.get("text", "")
+    headers = get_auth_headers()
+    print(headers)
     try:
-        headers = get_auth_headers()
+        
         # Use the token directly from the header.
         client = Vapi(token=headers["Authorization"])
         call = client.calls.create(context_text)
