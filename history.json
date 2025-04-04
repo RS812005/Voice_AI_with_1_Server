@@ -1994,5 +1994,600 @@
     "prompt_summary": "{\n  \"survey_title\": \"Reddit User Experience Survey\",\n  \"intro\": \"We value your opinion and would like to hear about your experiences on Reddit. This survey aims to gather information about your interactions with the platform, including your favorite features, content preferences, and any challenges you've faced. Your feedback will help us improve the overall Reddit experience. Please answer the questions honestly, and feel free to elaborate whenever possible.\",\n  \"summary\": \"This survey focuses on understanding Reddit user behaviors, preferences, and pain points to identify areas for improvement and optimization.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How often do you use Reddit?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Daily\", \"Several times a week\", \"About once a week\", \"Less than once a week\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What do you primarily use Reddit for?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"Can you describe your most memorable experience on Reddit?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"How would you rate the overall quality of content on Reddit?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Poor)\", \"2\", \"3\", \"4\", \"5 (Excellent)\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"Which of the following features do you use most often on Reddit? (Select all that apply)\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Comments\", \"Posts\", \"Subreddits\", \"AMA (Ask Me Anything) sessions\", \"Other\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"Have you ever encountered any issues or challenges while using Reddit? If yes, please describe.\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 7,\n      \"question\": \"How likely are you to recommend Reddit to a friend or colleague?\",\n      \"type\": \"rating\",\n      \"options\": [\"1 (Not likely at all)\", \"2\", \"3\", \"4\", \"5 (Very likely)\"],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to participate in this survey. Your feedback is invaluable to us, and we appreciate your honesty. Your input will help shape the future of Reddit and improve the experience for all users.\"\n}",
     "call_summary": "",
     "created_at": "2025-04-04T12:14:56.050796"
+  },
+  {
+    "id": "f231117e-b1ab-4f08-93c6-b5f7e91004b9",
+    "public_survey_id": "12092816-7340-4cca-8758-6b696d3b555b",
+    "prompt": "mumbai survey",
+    "prompt_summary": "{\n  \"survey_title\": \"Mumbai Resident Satisfaction Survey\",\n  \"intro\": \"We are conducting this survey to understand the opinions and experiences of Mumbai residents. Your responses will help us identify areas of improvement and provide valuable insights for future development. Please answer the questions honestly, and all responses will be kept confidential. The survey should take approximately 2 minutes to complete.\",\n  \"summary\": \"This survey focuses on understanding the quality of life, infrastructure, and services in Mumbai, and gathering feedback from residents to inform future initiatives.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"What is your overall satisfaction with living in Mumbai?\",\n      \"type\": \"rating\",\n      \"options\": [\"Very Satisfied\", \"Satisfied\", \"Neutral\", \"Dissatisfied\", \"Very Dissatisfied\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"How would you rate the quality of public transportation in Mumbai?\",\n      \"type\": \"rating\",\n      \"options\": [\"Excellent\", \"Good\", \"Fair\", \"Poor\", \"Very Poor\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"What do you think is the biggest challenge facing Mumbai today?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"How often do you use public parks or recreational spaces in Mumbai?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Daily\", \"Weekly\", \"Monthly\", \"Rarely\", \"Never\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"Please share any suggestions you have for improving the quality of life in Mumbai.\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"Which of the following services do you think need improvement in Mumbai? (Select all that apply)\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Healthcare\", \"Education\", \"Public Safety\", \"Waste Management\", \"Other\"],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey. Your feedback is invaluable in helping us understand the needs and concerns of Mumbai residents. Your responses will be kept confidential and used to inform future initiatives.\"\n}",
+    "call_summary": "",
+    "created_at": "2025-04-04T12:22:27.432093"
+  },
+  {
+    "id": "65e38e06-17c0-4142-9141-71fa2fee17b7",
+    "public_survey_id": "e518159a-6f59-4d57-822b-d41542e5198b",
+    "prompt": {
+      "intro": "We are conducting this survey to understand the opinions and experiences of Mumbai residents. Your responses will help us identify areas of improvement and provide valuable insights for future development. Please answer the questions honestly, and all responses will be kept confidential. The survey should take approximately 2 minutes to complete.",
+      "outro": "Thank you for taking the time to complete this survey. Your feedback is invaluable in helping us understand the needs and concerns of Mumbai residents. Your responses will be kept confidential and used to inform future initiatives.",
+      "questions": [
+        {
+          "answer": "",
+          "id": 1,
+          "options": [
+            "Very Satisfied",
+            "Satisfied",
+            "Neutral",
+            "Dissatisfied",
+            "Very Dissatisfied"
+          ],
+          "question": "What is your overall satisfaction with living in Mumbai?",
+          "type": "rating",
+          "editMode": false
+        },
+        {
+          "answer": "",
+          "id": 2,
+          "options": [
+            "Excellent",
+            "Good",
+            "Fair",
+            "Poor",
+            "Very Poor"
+          ],
+          "question": "How would you rate the quality of public transportation in Mumbai?",
+          "type": "rating",
+          "editMode": false
+        },
+        {
+          "answer": "",
+          "id": 3,
+          "options": [],
+          "question": "What do you think is the biggest challenge facing Mumbai today?",
+          "type": "short_answer",
+          "editMode": false
+        },
+        {
+          "answer": "",
+          "id": 4,
+          "options": [
+            "Daily",
+            "Weekly",
+            "Monthly",
+            "Rarely",
+            "Never"
+          ],
+          "question": "How often do you use public parks or recreational spaces in Mumbai?",
+          "type": "multiple_choice",
+          "editMode": false
+        },
+        {
+          "answer": "",
+          "id": 5,
+          "options": [],
+          "question": "Please share any suggestions you have for improving the quality of life in Mumbai.",
+          "type": "paragraph",
+          "editMode": false
+        },
+        {
+          "answer": "",
+          "id": 6,
+          "options": [
+            "Healthcare",
+            "Education",
+            "Public Safety",
+            "Waste Management",
+            "Other"
+          ],
+          "question": "Which of the following services do you think need improvement in Mumbai? (Select all that apply)",
+          "type": "multiple_choice",
+          "editMode": false
+        }
+      ],
+      "summary": "This survey focuses on understanding the quality of life, infrastructure, and services in Mumbai, and gathering feedback from residents to inform future initiatives.",
+      "survey_title": "Mumbai Resident Satisfaction Survey"
+    },
+    "prompt_summary": "",
+    "call_summary": "",
+    "created_at": "2025-04-04T12:22:35.709776"
+  },
+  {
+    "id": "0a1ecb4d-9057-4ef1-b66f-07475e79e48c",
+    "public_survey_id": "19c92579-005b-400c-bfdd-ac65fd6d3931",
+    "prompt": "delhi survey",
+    "prompt_summary": "{\n  \"survey_title\": \"Delhi Resident Survey\",\n  \"intro\": \"We are conducting this survey to understand the opinions and experiences of residents in Delhi. Your responses will help us identify areas of improvement and provide valuable insights for future development. The survey should take approximately 2 minutes to complete, and all responses will be kept confidential.\",\n  \"summary\": \"This survey focuses on gathering information about your experiences, perceptions, and suggestions for Delhi, covering aspects such as infrastructure, services, and quality of life.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How long have you been living in Delhi?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Less than 1 year\", \"1-5 years\", \"5-10 years\", \"More than 10 years\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What do you like most about living in Delhi?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"Please rate the overall quality of life in Delhi.\",\n      \"type\": \"rating\",\n      \"options\": [\"Poor\", \"Fair\", \"Good\", \"Excellent\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"What are some challenges you face daily in Delhi? (Please elaborate)\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"How satisfied are you with the public transportation in Delhi?\",\n      \"type\": \"rating\",\n      \"options\": [\"Very Dissatisfied\", \"Somewhat Dissatisfied\", \"Neutral\", \"Somewhat Satisfied\", \"Very Satisfied\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"What changes would you suggest to improve the infrastructure in Delhi?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to participate in this survey. Your feedback is invaluable, and we appreciate your contributions to helping us understand and improve Delhi for its residents.\"\n}",
+    "call_summary": "",
+    "created_at": "2025-04-04T12:23:01.804919"
+  },
+  {
+    "id": "e5be02dd-0090-4a3c-b59a-a24feb5849b2",
+    "public_survey_id": "7a6577b3-df92-4f98-9296-ad6e1f452e3d",
+    "prompt": {
+      "intro": "We are conducting this survey to understand the opinions and experiences of residents in Delhi. Your responses will help us identify areas of improvement and provide valuable insights for future development. The survey should take approximately 2 minutes to complete, and all responses will be kept confidential.",
+      "outro": "Thank you for taking the time to participate in this survey. Your feedback is invaluable, and we appreciate your contributions to helping us understand and improve Delhi for its residents.",
+      "questions": [
+        {
+          "answer": "",
+          "id": 1,
+          "options": [
+            "Less than 1 year",
+            "1-5 years",
+            "5-10 years",
+            "More than 10 years"
+          ],
+          "question": "How long have you been living in Delhi?",
+          "type": "multiple_choice",
+          "editMode": false
+        },
+        {
+          "answer": "",
+          "id": 2,
+          "options": [],
+          "question": "What do you like most about living in Delhi?",
+          "type": "short_answer",
+          "editMode": false
+        },
+        {
+          "answer": "",
+          "id": 3,
+          "options": [
+            "Poor",
+            "Fair",
+            "Good",
+            "Excellent"
+          ],
+          "question": "Please rate the overall quality of life in Delhi.",
+          "type": "rating",
+          "editMode": false
+        },
+        {
+          "answer": "",
+          "id": 4,
+          "options": [],
+          "question": "What are some challenges you face daily in Delhi? (Please elaborate)",
+          "type": "paragraph",
+          "editMode": false
+        },
+        {
+          "answer": "",
+          "id": 5,
+          "options": [
+            "Very Dissatisfied",
+            "Somewhat Dissatisfied",
+            "Neutral",
+            "Somewhat Satisfied",
+            "Very Satisfied"
+          ],
+          "question": "How satisfied are you with the public transportation in Delhi?",
+          "type": "rating",
+          "editMode": false
+        },
+        {
+          "answer": "",
+          "id": 6,
+          "options": [],
+          "question": "What changes would you suggest to improve the infrastructure in Delhi?",
+          "type": "short_answer",
+          "editMode": false
+        }
+      ],
+      "summary": "This survey focuses on gathering information about your experiences, perceptions, and suggestions for Delhi, covering aspects such as infrastructure, services, and quality of life.",
+      "survey_title": "Delhi Resident Survey"
+    },
+    "prompt_summary": "",
+    "call_summary": "```json\n{\n  \"employee_id\": \"205\",\n  \"summary\": \"The call was a survey introduction to a Delhi resident. The AI confirmed the employee ID but the transcript cuts off before the actual survey questions began.\",\n  \"ratings\": {\n    \"Call initiation\": { \"rating\": 4, \"comment\": \"AI greeted properly but had some verbal stumbles\" },\n    \"ID verification\": { \"rating\": 5, \"comment\": \"Successfully obtained and confirmed employee ID\" }\n  },\n  \"overall\": \"The call only captured the initial identification phase. The user seemed cooperative but neutral in tone, responding with brief answers.\",\n  \"next_steps\": \"Complete the survey about Delhi living experiences. Follow up with this user if the call was disconnected prematurely.\"\n}\n```",
+    "created_at": "2025-04-04T12:23:04.073145",
+    "structured_data": {
+      "overall": "Incomplete survey - call was terminated before any meaningful data could be collected.",
+      "ratings": {
+        "enps": {
+          "rating": 3,
+          "comment": "Insufficient data to assess"
+        },
+        "happiness": {
+          "rating": 3,
+          "comment": "Insufficient data to assess"
+        },
+        "communication": {
+          "rating": 3,
+          "comment": "Employee was responsive but call ended prematurely"
+        },
+        "mental_health": {
+          "rating": 3,
+          "comment": "Insufficient data to assess"
+        },
+        "job_satisfaction": {
+          "rating": 3,
+          "comment": "Insufficient data to assess"
+        }
+      },
+      "summary": "Brief survey interaction with employee 205. The call was cut short before any substantive information could be gathered about the employee's experiences.",
+      "next_steps": "Follow up with employee 205 to complete the survey as the call was cut short.",
+      "employee_id": "205",
+      "raw_transcript": "AI: He How are you? I want to take some some of time for a short survey.\nUser: Yeah. Go ahead.\nAI: Great. To get started, could you please provide your employee ID?\nUser: It's 205\nAI: Thank you. Just to confirm, your employee ID is 205. Correct?\nUser: Yeah.\nAI: Perfect. Thank you. We are conducting a survey to gather insights from Delhi residents about their experiences and opinions. This is a chance for you to share your thoughts on living in Delhi, which will help",
+      "transcript_summary": {
+        "concerns": [
+          "Call ended abruptly before survey could begin"
+        ],
+        "feedback": [
+          "No substantive feedback was collected"
+        ],
+        "highlights": [
+          "Employee confirmed ID as 205"
+        ]
+      }
+    },
+    "employee_id": "205"
+  },
+  {
+    "id": "817569d5-8234-4e24-a8bb-10edde2d4296",
+    "public_survey_id": "58e3f35e-a536-41db-b3e5-3f8b715f3dcf",
+    "prompt": {
+      "intro": "We are conducting this survey to understand the opinions and experiences of residents in Delhi. Your responses will help us identify areas of improvement and provide valuable insights for future development. The survey should take approximately 2 minutes to complete, and all responses will be kept confidential.",
+      "outro": "Thank you for taking the time to participate in this survey. Your feedback is invaluable, and we appreciate your contributions to helping us understand and improve Delhi for its residents.",
+      "questions": [
+        {
+          "answer": "",
+          "id": 1,
+          "options": [
+            "Less than 1 year",
+            "1-5 years",
+            "5-10 years",
+            "More than 10 years"
+          ],
+          "question": "How long have you been living in Delhi?",
+          "type": "multiple_choice",
+          "editMode": false
+        },
+        {
+          "answer": "",
+          "id": 2,
+          "options": [],
+          "question": "What do you like most about living in Delhi?",
+          "type": "short_answer",
+          "editMode": false
+        },
+        {
+          "answer": "",
+          "id": 3,
+          "options": [
+            "Poor",
+            "Fair",
+            "Good",
+            "Excellent"
+          ],
+          "question": "Please rate the overall quality of life in Delhi.",
+          "type": "rating",
+          "editMode": false
+        },
+        {
+          "answer": "",
+          "id": 4,
+          "options": [],
+          "question": "What are some challenges you face daily in Delhi? (Please elaborate)",
+          "type": "paragraph",
+          "editMode": false
+        },
+        {
+          "answer": "",
+          "id": 5,
+          "options": [
+            "Very Dissatisfied",
+            "Somewhat Dissatisfied",
+            "Neutral",
+            "Somewhat Satisfied",
+            "Very Satisfied"
+          ],
+          "question": "How satisfied are you with the public transportation in Delhi?",
+          "type": "rating",
+          "editMode": false
+        },
+        {
+          "answer": "",
+          "id": 6,
+          "options": [],
+          "question": "What changes would you suggest to improve the infrastructure in Delhi?",
+          "type": "short_answer",
+          "editMode": false
+        }
+      ],
+      "summary": "This survey focuses on gathering information about your experiences, perceptions, and suggestions for Delhi, covering aspects such as infrastructure, services, and quality of life.",
+      "survey_title": "Delhi Resident Survey"
+    },
+    "prompt_summary": "",
+    "call_summary": "Based on the transcript, here's the extracted information:\n\n```json\n{\n  \"employee_id\": \"15\",\n  \"summary\": \"The AI initiated a survey call and collected the employee's ID. The conversation was brief with the employee confirming their ID number.\",\n  \"ratings\": {\n    \"Responsiveness\": { \"rating\": 4, \"comment\": \"Employee responded promptly to questions\" },\n    \"Engagement\": { \"rating\": 3, \"comment\": \"Employee was cooperative but minimal in responses\" }\n  },\n  \"overall\": \"The call was very brief and only covered the identification stage of the survey. The employee seemed willing to participate but provided minimal responses.\",\n  \"next_steps\": \"Continue with the actual survey questions as the introduction and identification phase is complete.\"\n}\n```",
+    "created_at": "2025-04-04T12:24:15.803042",
+    "structured_data": {
+      "overall": "Interaction too brief to make meaningful assessment. Survey needs to continue to gather actionable insights.",
+      "ratings": {
+        "enps": {
+          "rating": 3,
+          "comment": "No promotion sentiment expressed"
+        },
+        "happiness": {
+          "rating": 3,
+          "comment": "Neutral tone in limited interaction"
+        },
+        "communication": {
+          "rating": 3,
+          "comment": "Brief but clear responses"
+        },
+        "mental_health": {
+          "rating": 3,
+          "comment": "Insufficient data to assess"
+        },
+        "job_satisfaction": {
+          "rating": 3,
+          "comment": "No indicators provided"
+        }
+      },
+      "summary": "Brief initial interaction where the employee (ID: 15) agreed to participate in a survey. No substantive information was shared beyond confirming the employee ID.",
+      "next_steps": "Complete the full survey to gather substantive feedback",
+      "employee_id": "15",
+      "raw_transcript": "AI: He How are you? I want to take some some of time for a short survey.\nUser: Yeah. Go ahead.\nAI: Perfect. Before we begin, could you please provide your employee ID?\nUser: 15.\nAI: Thank you. Just to confirm, your employee ID is 15. Is that correct?\nUser: Yeah.",
+      "transcript_summary": {
+        "concerns": [
+          "Insufficient data to identify concerns"
+        ],
+        "feedback": [
+          "No feedback provided in this brief exchange"
+        ],
+        "highlights": [
+          "Employee agreed to participate in survey"
+        ]
+      }
+    },
+    "employee_id": "15"
+  },
+  {
+    "id": "d6ac3fa4-4e7b-4bf0-9a96-b8cca9ca9696",
+    "public_survey_id": "65c13c41-5cb0-41e5-9bb4-6d08092499df",
+    "prompt": "reddit survey",
+    "prompt_summary": "{\n  \"survey_title\": \"Reddit User Experience and Engagement Survey\",\n  \"intro\": \"Thank you for participating in this survey. The purpose of this survey is to understand your experiences and behaviors on Reddit, and gather your opinions on various aspects of the platform. Your responses will help us improve the Reddit community and provide better services to users. The survey should take approximately 2 minutes to complete.\",\n  \"summary\": \"This survey focuses on your Reddit usage habits, preferences, and opinions, with the goal of enhancing the overall user experience and community engagement.\",\n  \"questions\": [\n    {\n      \"id\": 1,\n      \"question\": \"How often do you visit Reddit?\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Daily\", \"Weekly\", \"Monthly\", \"Rarely\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 2,\n      \"question\": \"What do you primarily use Reddit for?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 3,\n      \"question\": \"How would you rate your overall satisfaction with Reddit?\",\n      \"type\": \"rating\",\n      \"options\": [\"Very Satisfied\", \"Satisfied\", \"Neutral\", \"Dissatisfied\", \"Very Dissatisfied\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 4,\n      \"question\": \"Can you describe a positive experience you've had on Reddit?\",\n      \"type\": \"paragraph\",\n      \"options\": [],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 5,\n      \"question\": \"Which of the following features do you use most on Reddit? (Select all that apply)\",\n      \"type\": \"multiple_choice\",\n      \"options\": [\"Subreddits\", \"Comments\", \"Posts\", \"Chat\", \"Other\"],\n      \"answer\": \"\"\n    },\n    {\n      \"id\": 6,\n      \"question\": \"How can Reddit improve your user experience?\",\n      \"type\": \"short_answer\",\n      \"options\": [],\n      \"answer\": \"\"\n    }\n  ],\n  \"outro\": \"Thank you for taking the time to complete this survey. Your feedback is valuable to us, and we appreciate your contribution to the Reddit community.\"\n}",
+    "call_summary": "",
+    "created_at": "2025-04-04T12:37:46.091541"
+  },
+  {
+    "id": "03ebbf80-5694-4380-8f5c-3b13239d72c6",
+    "public_survey_id": "65c13c41-5cb0-41e5-9bb4-6d08092499df",
+    "prompt": "reddit survey",
+    "prompt_summary": {
+      "intro": "Thank you for participating in this survey. The purpose of this survey is to understand your experiences and behaviors on Reddit, and gather your opinions on various aspects of the platform. Your responses will help us improve the Reddit community and provide better services to users. The survey should take approximately 2 minutes to complete.",
+      "outro": "Thank you for taking the time to complete this survey. Your feedback is valuable to us, and we appreciate your contribution to the Reddit community.",
+      "questions": [
+        {
+          "answer": "",
+          "id": 1,
+          "options": [
+            "Daily",
+            "Weekly",
+            "Monthly",
+            "Rarely"
+          ],
+          "question": "How often do you visit Reddit?",
+          "type": "multiple_choice",
+          "editMode": false
+        },
+        {
+          "answer": "",
+          "id": 2,
+          "options": [],
+          "question": "What do you primarily use Reddit for?",
+          "type": "short_answer",
+          "editMode": false
+        },
+        {
+          "answer": "",
+          "id": 3,
+          "options": [
+            "Very Satisfied",
+            "Satisfied",
+            "Neutral",
+            "Dissatisfied",
+            "Very Dissatisfied"
+          ],
+          "question": "How would you rate your overall satisfaction with Reddit?",
+          "type": "rating",
+          "editMode": false
+        },
+        {
+          "answer": "",
+          "id": 4,
+          "options": [],
+          "question": "Can you describe a positive experience you've had on Reddit?",
+          "type": "paragraph",
+          "editMode": false
+        },
+        {
+          "answer": "",
+          "id": 5,
+          "options": [
+            "Subreddits",
+            "Comments",
+            "Posts",
+            "Chat",
+            "Other"
+          ],
+          "question": "Which of the following features do you use most on Reddit? (Select all that apply)",
+          "type": "multiple_choice",
+          "editMode": false
+        },
+        {
+          "answer": "",
+          "id": 6,
+          "options": [],
+          "question": "How can Reddit improve your user experience?",
+          "type": "short_answer",
+          "editMode": false
+        }
+      ],
+      "summary": "This survey focuses on your Reddit usage habits, preferences, and opinions, with the goal of enhancing the overall user experience and community engagement.",
+      "survey_title": "Reddit User Experience and Engagement Survey"
+    },
+    "call_summary": "Based on the transcript, here's the extracted information:\n\n```json\n{\n  \"employee_id\": \"10\",\n  \"summary\": \"The AI initiated a survey call and collected the employee ID. The conversation was very brief with minimal interaction.\",\n  \"ratings\": {\n    \"Responsiveness\": { \"rating\": 3, \"comment\": \"User responded briefly but cooperatively\" }\n  },\n  \"overall\": \"The call was just beginning, with only the employee ID collection completed. The user's tone was neutral and cooperative but minimal.\",\n  \"next_steps\": \"Continue with the survey questions as the conversation was only at the initial stage.\"\n}\n```",
+    "created_at": "2025-04-04T12:38:10.463376",
+    "structured_data": {
+      "overall": "Incomplete interaction - only employee identification was completed before the transcript ended.",
+      "ratings": {
+        "enps": {
+          "rating": 3,
+          "comment": "No promotion or detraction indicators present"
+        },
+        "happiness": {
+          "rating": 3,
+          "comment": "Neutral tone, insufficient data to assess happiness"
+        },
+        "communication": {
+          "rating": 3,
+          "comment": "Brief but clear responses"
+        },
+        "mental_health": {
+          "rating": 3,
+          "comment": "No indicators of mental health status in the brief exchange"
+        },
+        "job_satisfaction": {
+          "rating": 3,
+          "comment": "No job-related discussion occurred"
+        }
+      },
+      "summary": "Brief interaction where employee ID was confirmed but no substantive discussion occurred about well-being or job satisfaction.",
+      "next_steps": "Complete the survey with this employee as the conversation was only at the identification stage.",
+      "employee_id": "10",
+      "raw_transcript": "AI: Hey. How are you? I want to take some some of time for a short survey.\nUser: Yeah. Go ahead.\nAI: Great. Before we begin, could you please share your employee ID with me?\nUser: 10.\nAI: Thanks for sharing your employee ID 10. Is that correct?\nUser: Yeah.\nAI: Awesome.",
+      "transcript_summary": {
+        "concerns": [
+          "Survey was not completed"
+        ],
+        "feedback": [
+          "No substantive feedback was provided"
+        ],
+        "highlights": [
+          "Employee confirmed ID number 10"
+        ]
+      }
+    },
+    "employee_id": "10"
+  },
+  {
+    "id": "3a47714c-6490-4ae8-9aad-463ecfec65bc",
+    "public_survey_id": "65c13c41-5cb0-41e5-9bb4-6d08092499df",
+    "prompt": "reddit survey",
+    "prompt_summary": {
+      "intro": "Thank you for participating in this survey. The purpose of this survey is to understand your experiences and behaviors on Reddit, and gather your opinions on various aspects of the platform. Your responses will help us improve the Reddit community and provide better services to users. The survey should take approximately 2 minutes to complete.",
+      "outro": "Thank you for taking the time to complete this survey. Your feedback is valuable to us, and we appreciate your contribution to the Reddit community.",
+      "questions": [
+        {
+          "answer": "",
+          "id": 1,
+          "options": [
+            "Daily",
+            "Weekly",
+            "Monthly",
+            "Rarely"
+          ],
+          "question": "How often do you visit Reddit?",
+          "type": "multiple_choice",
+          "editMode": false
+        },
+        {
+          "answer": "",
+          "id": 2,
+          "options": [],
+          "question": "What do you primarily use Reddit for?",
+          "type": "short_answer",
+          "editMode": false
+        },
+        {
+          "answer": "",
+          "id": 3,
+          "options": [
+            "Very Satisfied",
+            "Satisfied",
+            "Neutral",
+            "Dissatisfied",
+            "Very Dissatisfied"
+          ],
+          "question": "How would you rate your overall satisfaction with Reddit?",
+          "type": "rating",
+          "editMode": false
+        },
+        {
+          "answer": "",
+          "id": 4,
+          "options": [],
+          "question": "Can you describe a positive experience you've had on Reddit?",
+          "type": "paragraph",
+          "editMode": false
+        },
+        {
+          "answer": "",
+          "id": 5,
+          "options": [
+            "Subreddits",
+            "Comments",
+            "Posts",
+            "Chat",
+            "Other"
+          ],
+          "question": "Which of the following features do you use most on Reddit? (Select all that apply)",
+          "type": "multiple_choice",
+          "editMode": false
+        },
+        {
+          "answer": "",
+          "id": 6,
+          "options": [],
+          "question": "How can Reddit improve your user experience?",
+          "type": "short_answer",
+          "editMode": false
+        }
+      ],
+      "summary": "This survey focuses on your Reddit usage habits, preferences, and opinions, with the goal of enhancing the overall user experience and community engagement.",
+      "survey_title": "Reddit User Experience and Engagement Survey"
+    },
+    "call_summary": "Based on the transcript, here's the extracted information:\n\n```json\n{\n  \"employee_id\": \"15\",\n  \"summary\": \"Brief interaction where the AI requested to conduct a survey and collected the employee's ID.\",\n  \"ratings\": {\n    \"Survey Participation\": { \"rating\": 3, \"comment\": \"User agreed to participate but the survey didn't actually begin in this transcript.\" }\n  },\n  \"overall\": \"The interaction was minimal and neutral. The user was cooperative but not particularly enthusiastic.\",\n  \"next_steps\": \"Proceed with the actual survey questions as the introduction and ID verification are complete.\"\n}\n```\n\nThe user's tone appears neutral and cooperative, though the interaction was very brief. The employee confirmed their ID is 15, and they seemed willing to participate in the survey, though we don't see the actual survey questions in this transcript.",
+    "created_at": "2025-04-04T12:39:25.292618",
+    "structured_data": {
+      "overall": "Incomplete survey interaction with minimal data collected. Only employee ID was confirmed.",
+      "ratings": {
+        "enps": {
+          "rating": 3,
+          "comment": "No promotion sentiment expressed"
+        },
+        "happiness": {
+          "rating": 3,
+          "comment": "Neutral tone in limited interaction"
+        },
+        "communication": {
+          "rating": 3,
+          "comment": "Brief but responsive communication"
+        },
+        "mental_health": {
+          "rating": 3,
+          "comment": "Insufficient data to assess"
+        },
+        "job_satisfaction": {
+          "rating": 3,
+          "comment": "No information provided"
+        }
+      },
+      "summary": "Brief interaction where employee confirmed their ID but did not complete the full survey.",
+      "next_steps": "Follow up to complete the full survey as only ID confirmation was obtained",
+      "employee_id": "15",
+      "raw_transcript": "AI: He How are you? I want to take some some of time for a short survey.\nUser: Yeah. Go ahead.\nAI: Great. Before we dive into the survey, could you please share your employee ID with me?\nUser: It's 15.\nAI: Thank you for providing your employee ID, 15. Could you please confirm if this is correct?\nUser: Yeah.",
+      "transcript_summary": {
+        "concerns": [
+          "Survey was not completed",
+          "Limited engagement in conversation"
+        ],
+        "feedback": [
+          "Ensure complete survey completion in future interactions"
+        ],
+        "highlights": [
+          "Employee willingly agreed to participate in survey",
+          "Employee confirmed ID number 15"
+        ]
+      }
+    },
+    "employee_id": "15"
   }
 ]

@@ -663,10 +663,10 @@ Closing:
               console.error("Error in call details response:", data.error);
               return;
             }
-            if (data.summary) {
+            if (data.structuredData) {
               document.getElementById("call-summary").innerHTML =
                 "<h3 class='font-semibold mb-2'>Call Summary</h3><p>" +
-                data.summary +
+                data.structuredData +
                 "</p>";
               // Once summary is available, show the Chat with Survey button
               let chatBtn = document.getElementById("chat-survey-btn");
@@ -1407,6 +1407,7 @@ function renderQuestionEdit(question) {
       document
         .getElementById("send-voice-btn")
         .addEventListener("click", function () {
+          createNewSession().then(() => {
           const responseText = document.getElementById("survey-response").textContent;
           if (!responseText) {
             alert("No response text available to send.");
@@ -1435,6 +1436,7 @@ function renderQuestionEdit(question) {
               pollCallDetails(callId);
             });
           startWebCall(responseText);
+           });
           setTimeout(() => {
             document
               .getElementById("call-section")
@@ -1673,6 +1675,7 @@ async function setupUserAvatarVolumeVisualizer() {
     }
   }
 document.getElementById("send-phone-call-btn").addEventListener("click", function() {
+  createNewSession().then(() => {
   // Prompt the user to input their phone number
   const phoneNumber = prompt("Please enter the phone number you would like to call:");
   const responseText = document.getElementById("survey-response").textContent;
@@ -1684,6 +1687,7 @@ document.getElementById("send-phone-call-btn").addEventListener("click", functio
 
   // Start the phone call using the entered phone number
   startPhoneCall(responseText, phoneNumber.trim());
+   });
 });
 
 async function startPhoneCall(extractedText, phoneNumber) {
@@ -1858,10 +1862,10 @@ Closing:
               console.error("Error in call details response:", data.error);
               return;
             }
-            if (data.summary) {
+            if (data.structuredData) {
               document.getElementById("call-summary").innerHTML =
                 "<h3 class='font-semibold mb-2'>Call Summary</h3><p>" +
-                data.summary +
+                data.structuredData +
                 "</p>";
               // Once summary is available, show the Chat with Survey button
               let chatBtn = document.getElementById("chat-survey-btn");
@@ -1979,7 +1983,24 @@ async function setupUserAvatarVolumeVisualizer() {
 //   }
 // });
 
-
+function createNewSession() {
+    const surveyPrompt = document.getElementById("survey-prompt").value;
+  const publicSurveyId = window.publicSurveyId;
+  return fetch("/new-session", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    // Optionally include survey info if needed
+    body: JSON.stringify({ survey: window.currentSurvey, survey_prompt: surveyPrompt, public_survey_id: publicSurveyId  })
+  })
+    .then(response => response.json())
+    .then(data => {
+      // Update the global record IDs
+      window.latestRecordId = data.record_id;
+      // window.latestChatRecordId = data.chatRecordId;
+      // window.publicSurveyId = data.public_survey_id;
+      return data;
+    });
+}
 
 
     </script>

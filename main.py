@@ -430,6 +430,7 @@ def history():
                     "prompt": record.get("prompt", ""),
                     "prompt_summary": record.get("prompt_summary", ""),
                     "call_summary": record.get("call_summary", ""),
+                    "structured_data": record.get("structured_data","")
                 }
             )
 
@@ -1544,6 +1545,26 @@ def public_get_heading():
         return jsonify({"survey_title": survey_title})
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+
+@app.route("/new-session", methods=["POST"])
+def new_session():
+    data = request.get_json() or {}
+    survey = data.get("survey", "")
+    survey_prompt = data.get("survey_prompt", "")
+    # Create a new history record and a new chat survey record.
+    # public_survey_id = str(uuid.uuid4())
+    public_survey_id = data.get("public_survey_id")
+
+    new_record = add_history_record(survey_prompt,survey, public_survey_id)
+    # new_chat_record = add_chat_survey_record(survey_prompt, "", public_survey_id)
+    return jsonify(
+        {
+            "record_id": new_record["id"],
+            # "chatRecordId": new_chat_record["id"],
+            "public_survey_id": new_record["public_survey_id"],
+        }
+    )
 
 
 if __name__ == "__main__":
